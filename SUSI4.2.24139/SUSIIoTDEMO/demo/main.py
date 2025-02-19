@@ -13,7 +13,10 @@ def json_indent(n):
 
 def json_real_precision(n):
     return ((n & 0x1F) << 11)
-
+def turn_byte_to_json(json_bytes ):
+    json_str = json_bytes.decode('utf-8')
+    data = json.loads(json_str)
+    return data
 # exec_by_menu
 def execute_by_menu(susi_iot_lib,library_json):
     # if(op == OPT_CAPABILITY_OBJECT)
@@ -25,6 +28,7 @@ def execute_by_menu(susi_iot_lib,library_json):
         print("SusiIoTGetPFCapability failed.")
     else:
         buffer = library_json.json_dumps(jsonObject, json_indent(4) | JSON_PRESERVE_ORDER | json_real_precision(10))
+        buffer=turn_byte_to_json(buffer)
         print("buffer ",buffer)
     print(jsonObject)
 
