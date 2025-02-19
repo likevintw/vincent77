@@ -25,7 +25,7 @@ def execute_by_menu(susi_iot_lib,library_json):
         print("SusiIoTGetPFCapability failed.")
     else:
         buffer = library_json.json_dumps(jsonObject, json_indent(4) | JSON_PRESERVE_ORDER | json_real_precision(10))
-        print("buffer ",str(buffer))
+        print("buffer ",buffer)
     print(jsonObject)
 
 if __name__ == "__main__":
@@ -35,6 +35,8 @@ if __name__ == "__main__":
     library_json=ctypes.CDLL("libjansson.so.4")
 
     susi_iot_lib.SusiIoTInitialize.restype = ctypes.c_int
+    library_json.json_dumps.restype = ctypes.c_char_p
+
     status = susi_iot_lib.SusiIoTInitialize()
     if status != 0:
         print("Initialization failed.")

@@ -21,6 +21,8 @@ int main(int argc, char **argv)
     char jsonToStringResult[1100];
 
     json_t *jsonObject = json_object();
+    sprintf(jsonToStringResult,"%s", jsonObject);
+    printf("FFFFFFFF %s\n", jsonToStringResult);
     
     if(SusiIoTGetPFCapability(jsonObject) != 0)
     {
