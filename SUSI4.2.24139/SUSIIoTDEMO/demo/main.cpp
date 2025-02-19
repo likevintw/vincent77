@@ -598,19 +598,22 @@ int main(int argc, char **argv)
         printf("SusiIoTInitialize() failed.");
         return status;
     }
-
+    printf("11111111");
     SusiIoTSetPFEventHandler(EventCallBack);
-
+    printf("2222222");
     if ( argc > 1 )
     {
         status = exec_by_args(argc - 1, argv + 1);
+        printf("3333333");
     }
     else
     {
         status = exec_by_menu();
+        printf("4444444");
     }
+    printf("555555555");
+    // SusiIoTUninitialize();
+    printf("6666666");
 
-    SusiIoTUninitialize();
-
-    return status;
+    return 0;
 }
