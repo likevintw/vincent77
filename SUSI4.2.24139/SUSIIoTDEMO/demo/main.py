@@ -2,15 +2,38 @@
 
 import ctypes
 import json
+import sys
 
 
+JSON_MAX_INDENT = 0x1F
+JSON_PRESERVE_ORDER= 0x100
 
-    
+def json_indent(n):
+    return n & JSON_MAX_INDENT
+
+def json_real_precision(n):
+    return ((n & 0x1F) << 11)
+
+# exec_by_menu
+def execute_by_menu(susi_iot_lib,library_json):
+    # if(op == OPT_CAPABILITY_OBJECT)
+    jsonObject=library_json.json_object()
+    print(jsonObject)
+    print( "4 ",json_indent(4))
+    print( "20480 ",json_real_precision(10))
+    if susi_iot_lib.SusiIoTGetPFCapability(jsonObject) != 0:
+        print("SusiIoTGetPFCapability failed.")
+    else:
+        buffer = library_json.json_dumps(jsonObject, json_indent(4) | JSON_PRESERVE_ORDER | json_real_precision(10))
+        print("buffer ",str(buffer))
+    print(jsonObject)
 
 if __name__ == "__main__":
-    library_path = "libSusiIoT.so"
-    # 加載 .so 文件
-    susi_iot_lib = ctypes.CDLL(library_path)
+    argv = sys.argv
+
+    susi_iot_lib = ctypes.CDLL("libSusiIoT.so")
+    library_json=ctypes.CDLL("libjansson.so.4")
+
     susi_iot_lib.SusiIoTInitialize.restype = ctypes.c_int
     status = susi_iot_lib.SusiIoTInitialize()
     if status != 0:
@@ -18,3 +41,8 @@ if __name__ == "__main__":
     else:
         print("Initialization successful.")
 
+    susi_iot_lib.SusiIoTSetPFEventHandler()
+
+    execute_by_menu(susi_iot_lib,library_json)
+
+    susi_iot_lib.SusiIoTUninitialize()

@@ -250,15 +250,17 @@ static SusiIoTStatus_t exec_by_menu()
         if(op == OPT_CAPABILITY_OBJECT)
         {
             json_t *jsonObject = json_object();
-
+            
             if(SusiIoTGetPFCapability(jsonObject) != 0)
             {
                 printf("\nSusiIoTGetPFCapability failed. \n");
             }
             else
             {
+                printf("kkkkkkkkkkkkk %d\n", JSON_INDENT(4));
+                printf("kkkkkkkkkkkkllllll %d\n", JSON_REAL_PRECISION(10));
                 buffer = json_dumps(jsonObject, JSON_INDENT(4) | JSON_PRESERVE_ORDER | JSON_REAL_PRECISION(10));
-                printf("%s\n", buffer);
+                printf("GGGG %s\n", buffer);
             }
 
             json_object_clear(jsonObject);
@@ -592,28 +594,29 @@ int main(int argc, char **argv)
     SusiIoTStatus_t status;
 
     status = SusiIoTInitialize();
+    printf("111111111\n");
 
     if(status != SUSIIOT_STATUS_SUCCESS)
     {
         printf("SusiIoTInitialize() failed.");
         return status;
     }
-    printf("11111111");
+    
+    printf("2222222222\n");
     SusiIoTSetPFEventHandler(EventCallBack);
-    printf("2222222");
+    
+    printf("33333333\n");
     if ( argc > 1 )
     {
         status = exec_by_args(argc - 1, argv + 1);
-        printf("3333333");
     }
     else
     {
         status = exec_by_menu();
-        printf("4444444");
     }
-    printf("555555555");
-    // SusiIoTUninitialize();
-    printf("6666666");
 
-    return 0;
+    SusiIoTUninitialize();
+
+    printf("444444444\n");
+    return status;
 }
