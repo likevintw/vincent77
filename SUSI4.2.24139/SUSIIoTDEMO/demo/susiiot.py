@@ -20,7 +20,7 @@ class SusiIot:
         self.json_library.json_dumps.restype = ctypes.c_char_p
         self.susi_iot_library.SusiIoTGetPFCapabilityString.restype = ctypes.c_char_p
         self.susi_iot_library.SusiIoTGetPFDataString.restype = ctypes.c_char_p
-        self.susi_iot_library.SusiIoTGetPFDataString.argtypes = [ctypes.c_uint32]
+        self.susi_iot_library.SusiIoTGetPFDataString.argtypes = [ctypes.c_uint]
 
         self.susi_iot_library_status = self.susi_iot_library.SusiIoTInitialize()
         self.susi_iot_library.SusiIoTSetPFEventHandler()
@@ -72,7 +72,7 @@ class SusiIot:
         return self.susi_json_t
 
     def get_data_by_id(self,id):
-        id=ctypes.c_uint32(id)
+        id=ctypes.c_uint(id)
         result=self.susi_iot_library.SusiIoTGetPFDataString(id)
         print(result.decode('utf-8'))
         return self.turn_byte_to_json(result)
