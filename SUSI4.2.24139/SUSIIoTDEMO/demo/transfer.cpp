@@ -35,6 +35,10 @@ int main(int argc, char **argv)
         sprintf(jsonToStringResult,"%s", buffer);
         printf("%s\n", jsonToStringResult);
 
+        printf("KKKKKKKKKK\n");
+        buffer = SusiIoTGetPFDataString(353697792);
+        printf("%s\n", buffer);
+
     }
     if (buffer != NULL)
     {

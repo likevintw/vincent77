@@ -3,13 +3,30 @@ import unittest
 import susiiot
 
 
-class TestExcelHandler(unittest.TestCase):
+class TestHandler(unittest.TestCase):
     def test_get_susi_information(self):
         handler=susiiot.SusiIot()
         results=handler.get_susi_information()
+        print(results)
+        print(handler.get_id_list())
 
-        for result in results:
-            print(result)
+    def test_get_id_list(self):
+        handler=susiiot.SusiIot()
+        results=handler.get_susi_information()
+        print(handler.get_id_list())
+    
+    def test_get_susi_json_t(self):
+        handler=susiiot.SusiIot()
+        results=handler.get_susi_information()
+        print(handler.get_susi_json_t())
+
+    def test_get_data_by_id(self):
+        handler=susiiot.SusiIot()
+        identities=handler.get_id_list()
+        print(identities)
+        # for identity in identities:
+        #     print(handler.get_data_by_id(identity))
+        print(handler.get_data_by_id(353697792))
 
 if __name__ == '__main__':
     unittest.main()
