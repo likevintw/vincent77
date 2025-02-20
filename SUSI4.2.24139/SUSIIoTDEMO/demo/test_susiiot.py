@@ -19,14 +19,20 @@ class TestHandler(unittest.TestCase):
         handler=susiiot.SusiIot()
         results=handler.get_susi_information()
         print(handler.get_susi_json_t())
-
+    
+    # @unittest.skip("todo")
     def test_get_data_by_id(self):
         handler=susiiot.SusiIot()
         identities=handler.get_id_list()
         print(identities)
         # for identity in identities:
         #     print(handler.get_data_by_id(identity))
-        print(handler.get_data_by_id(353697792))
+        print(handler.get_data_by_id(257))
+    
+    def test_get_data_by_uri(self):
+        handler=susiiot.SusiIot()
+        result=handler.get_data_by_uri("SUSIIoT Information")
+        print(result)
 
 if __name__ == '__main__':
     unittest.main()

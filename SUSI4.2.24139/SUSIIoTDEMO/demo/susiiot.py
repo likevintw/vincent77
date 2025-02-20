@@ -3,7 +3,6 @@ import json
 import sys
 
 
-
 class SusiIot:
     def __init__(self,susi_iot_library_path="libSusiIoT.so",json_library_path="libjansson.so.4"):
         self.susi_iot_library=ctypes.CDLL(susi_iot_library_path)
@@ -17,10 +16,12 @@ class SusiIot:
         
     def initialization(self):
         self.susi_iot_library.SusiIoTInitialize.restype = ctypes.c_int
-        self.json_library.json_dumps.restype = ctypes.c_char_p
         self.susi_iot_library.SusiIoTGetPFCapabilityString.restype = ctypes.c_char_p
         self.susi_iot_library.SusiIoTGetPFDataString.restype = ctypes.c_char_p
-        self.susi_iot_library.SusiIoTGetPFDataString.argtypes = [ctypes.c_uint]
+        self.susi_iot_library.SusiIoTGetPFDataString.argtypes = [ctypes.c_uint32]
+        self.susi_iot_library.SusiIoTGetPFDataStringByUri.restype = ctypes.c_char_p
+        self.susi_iot_library.SusiIoTGetPFDataStringByUri.argtypes = [ctypes.c_char_p]
+        self.json_library.json_dumps.restype = ctypes.c_char_p
 
         self.susi_iot_library_status = self.susi_iot_library.SusiIoTInitialize()
         self.susi_iot_library.SusiIoTSetPFEventHandler()
@@ -34,7 +35,6 @@ class SusiIot:
         self.susi_iot_library.SusiIoTUninitialize()
 
         self.id_list=self.extract_ids(self.susi_information)
-
     
     def json_indent(self,n):
         return n & self.json_max_indent
@@ -72,7 +72,12 @@ class SusiIot:
         return self.susi_json_t
 
     def get_data_by_id(self,id):
-        id=ctypes.c_uint(id)
+        id=id.encode('utf-8')
         result=self.susi_iot_library.SusiIoTGetPFDataString(id)
-        print(result.decode('utf-8'))
+        print(result)
         return self.turn_byte_to_json(result)
+    
+    def get_data_by_uri(self,uri):
+        uri = "SUSIIoT Information"
+        result=self.susi_iot_library.SusiIoTGetPFDataStringByUri(uri.encode('utf-8'))
+        print(result.decode('utf-8'))
