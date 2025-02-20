@@ -19,26 +19,7 @@ def turn_byte_to_json(json_bytes ):
     data = json.loads(json_str)
     return data
 
-class SusiIot:
-    def __init__(susi_iot_library_path="libSusiIoT.so",json_library_path="libjansson.so.4"):
-        self.susi_iot_library=ctypes.CDLL(susi_iot_library_path)
-        self.json_library=ctypes.CDLL(json_library_path)
-        self.susi_iot_library.SusiIoTInitialize.restype = ctypes.c_int
-        self.json_library.json_dumps.restype = ctypes.c_char_p
-        self.susi_iot_library.SusiIoTGetPFCapabilityString.restype = ctypes.c_char_p
-        self.susi_iot_library_status = self.susi_iot_library.SusiIoTInitialize()
-        self.susi_iot_library.SusiIoTSetPFEventHandler()
-        jsonObject=json_library.json_object()
-        if self.susi_iot_lib.SusiIoTGetPFCapability(jsonObject) != 0:
-                self.susi_information="SusiIoTGetPFCapability failed."
-        else:
-            buffer = library_json.json_dumps(jsonObject, json_indent(4) | JSON_PRESERVE_ORDER | json_real_precision(10))
-            buffer=turn_byte_to_json(buffer)
-            self.susi_information=buffer
-        self.susi_iot_library.SusiIoTUninitialize()
-        
-    def get_susi_information():
-        return self.susi_information
+
 
 if __name__ == "__main__":
     argv = sys.argv
