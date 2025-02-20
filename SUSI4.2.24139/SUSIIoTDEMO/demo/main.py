@@ -17,8 +17,26 @@ def turn_byte_to_json(json_bytes ):
     json_str = json_bytes.decode('utf-8')
     data = json.loads(json_str)
     return data
-# exec_by_menu
-def execute_by_menu(susi_iot_lib,library_json):
+    
+
+if __name__ == "__main__":
+    argv = sys.argv
+
+    susi_iot_lib = ctypes.CDLL("libSusiIoT.so")
+    library_json=ctypes.CDLL("libjansson.so.4")
+
+    susi_iot_lib.SusiIoTInitialize.restype = ctypes.c_int
+    library_json.json_dumps.restype = ctypes.c_char_p
+    susi_iot_lib.SusiIoTGetPFCapabilityString.restype = ctypes.c_char_p
+
+    status = susi_iot_lib.SusiIoTInitialize()
+    if status != 0:
+        print("Initialization failed.")
+    else:
+        print("Initialization successful.")
+
+    susi_iot_lib.SusiIoTSetPFEventHandler()
+
     # if(op == OPT_CAPABILITY_OBJECT)
     jsonObject=library_json.json_object()
     print(jsonObject)
@@ -29,26 +47,15 @@ def execute_by_menu(susi_iot_lib,library_json):
     else:
         buffer = library_json.json_dumps(jsonObject, json_indent(4) | JSON_PRESERVE_ORDER | json_real_precision(10))
         buffer=turn_byte_to_json(buffer)
-        print("buffer ",buffer)
+        print("json_dumps ",buffer)
     print(jsonObject)
 
-if __name__ == "__main__":
-    argv = sys.argv
+    # else if(op == OPT_CAPABILITY_STRING)
+    buffer=susi_iot_lib.SusiIoTGetPFCapabilityString()
+    buffer=turn_byte_to_json(buffer)
+    print("SusiIoTGetPFCapabilityString ",buffer)
 
-    susi_iot_lib = ctypes.CDLL("libSusiIoT.so")
-    library_json=ctypes.CDLL("libjansson.so.4")
-
-    susi_iot_lib.SusiIoTInitialize.restype = ctypes.c_int
-    library_json.json_dumps.restype = ctypes.c_char_p
-
-    status = susi_iot_lib.SusiIoTInitialize()
-    if status != 0:
-        print("Initialization failed.")
-    else:
-        print("Initialization successful.")
-
-    susi_iot_lib.SusiIoTSetPFEventHandler()
-
-    execute_by_menu(susi_iot_lib,library_json)
+    # else if(op == OPT_GET_DATA_OBJECT)
+    jsonObject=library_json.json_object()
 
     susi_iot_lib.SusiIoTUninitialize()
