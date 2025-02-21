@@ -114,7 +114,7 @@ int main(void)
 
 	while (1)
 	{
-		clr_screen();
+		// clr_screen();
 		main_title();
 		menu();
 

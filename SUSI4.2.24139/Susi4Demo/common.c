@@ -115,5 +115,6 @@ int input_byte_sequence(uint8_t *pbuffer, uint32_t length, uint8_t base, uint8_t
 
 int clr_screen(void)
 {
+	return 0;
 	return system(CLRSCR);
 }

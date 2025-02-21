@@ -52,15 +52,9 @@ uint8_t gpio_init(void)
 	index = 0;
 	for (i = 0; i < SUSIDEMO_BANK_MAX; i++)
 	{
-
 		id = SUSI_ID_GPIO_BANK(i);
+
 		status = SusiGPIOGetCaps(id, SUSI_ID_GPIO_INPUT_SUPPORT, &info[i].supInput);
-		
-		printf("22222222222222222\n");
-		printf("id %d\n",id);
-		printf("SUSI_ID_GPIO_INPUT_SUPPORT %d\n",SUSI_ID_GPIO_INPUT_SUPPORT);
-		printf("&info[i].supInput %ls\n",&info[i].supInput);
-		printf("status %d\n",status);
 		if (status != SUSI_STATUS_SUCCESS)
 			continue;
 
@@ -745,7 +739,7 @@ void gpio_main(void)
 	for (;;)
 	{
 		uint8_t bIRQ = info[iBank].supIRQ;
-		// clr_screen();
+		clr_screen();
 		if (title(iPin, config.idType) != 0)
 		{
 			printf("\nPress ENTER to continue. ");
@@ -859,5 +853,5 @@ void gpio_main(void)
 			wait_enter();
 		}
 	}
-	// clr_screen();
+	clr_screen();
 }
