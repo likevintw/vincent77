@@ -1,0 +1,80 @@
+================================================
+
+There are three ways to output the UPS status 
+information in this test program. Please refer 
+to the following instructions for testing. You 
+may need to modify the Makefile according to 
+the current system type (32bit/64bit).
+
+In this example, UPS was connected to ARS-2110 
+COM1(/dev/ttyXR0).
+
+================================================
+
+>> C++ only （Default way）.
+>> Users can implement custom functions in 
+Callback function(testdl_ipsae.cpp).
+
+#Update EAPI UPS library
+make uninstall
+make install
+
+#Modify testdl_ipsae.cpp
+-- #define PYTHON_CALL_TEST
+-- #define USE_FIFO
+++ //#define PYTHON_CALL_TEST
+++ //#define USE_FIFO
+
+#Check Makefile and build test progrem
+make
+
+#Test UPS
+./testdl_ipsae /dev/ttyXR0
+
+================================================
+
+>> Call python function from C++.
+>> Users can implement custom functions in 
+Callback function (testdl_ipsae.cpp) or python 
+class server (cppCallPython.py).
+
+#Update EAPI UPS library
+make uninstall
+make install
+
+#Modify testdl_ipsae.cpp
+-- //#define PYTHON_CALL_TEST
+-- //#define USE_FIFO
+++ #define PYTHON_CALL_TEST
+++ //#define USE_FIFO
+
+#Check Makefile and build test progrem
+make
+
+#Test UPS
+./cppCallPython.py /dev/ttyXR0
+
+================================================
+>> Call C++ program from python.
+>> Users can implement custom functions in 
+Callback function (testdl_ipsae.cpp) or python 
+function pipeListener (cppCallPythonWithPipe.py).
+
+#Update EAPI UPS library
+make uninstall
+make install
+
+#Modify testdl_ipsae.cpp
+-- //#define PYTHON_CALL_TEST
+-- //#define USE_FIFO
+++ //#define PYTHON_CALL_TEST
+++ #define USE_FIFO
+
+#Check Makefile and build test progrem
+make
+
+#Test UPS
+./cppCallPythonWithPipe.py /dev/ttyXR0
+
+================================================
+

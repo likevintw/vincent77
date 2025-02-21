@@ -1,0 +1,15 @@
+[Unit]
+Description=Advantech GPIO expot
+Before=gdm.service
+After=NetworkManager.service
+ConditionPathExists=/usr/src/advantech/libEAPI/adv-gpio.sh
+
+[Service]
+Type=oneshot
+ExecStartPre=-/usr/src/advantech/libEAPI/adv-gpio.sh start
+ExecStart=-/usr/src/advantech/libEAPI/adv-gpioled.sh start
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
+
