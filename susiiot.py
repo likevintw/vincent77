@@ -4,8 +4,8 @@ import sys
 
 
 class SusiIot:
-    def __init__(self, susi_iot_library_path="libSusiIoT.so",
-                 json_library_path="libjansson.so.4"):
+    def __init__(self, susi_iot_library_path="libSusiIoTArm.so",
+                 json_library_path="libjanssonArm.so.4"):
         self.susi_iot_library = ctypes.CDLL(susi_iot_library_path)
         self.json_library = ctypes.CDLL(json_library_path)
         self.susi_iot_library_status = None
