@@ -4,7 +4,7 @@ import sys
 
 
 class Susi4:
-    def __init__(self, susi4_library_path="./libSUSI-4-Arm.00.so"):
+    def __init__(self, susi4_library_path="./libSUSI-4.00.so.1 "):
         self.susi4_library = ctypes.CDLL(susi4_library_path)
         self.initialization()
         self.SUSIDEMO_INFORMATION_STRING_MAX = 9

@@ -1,1 +1,3 @@
-python3 -m unittest -v test_susiiot.TestHandler.test_get_susi_information
+sudo python3 -m unittest -v test_susiiot.TestHandler.test_get_susi_information
+
+sudo python3 -m unittest -v test_susi4.TestHandler.test_get_gpio_information
