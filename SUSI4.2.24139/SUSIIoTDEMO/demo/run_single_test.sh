@@ -1,1 +1,0 @@
-python3 -m unittest -v test_susiiot.TestHandler.test_get_data_by_uri
