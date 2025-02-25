@@ -123,14 +123,14 @@ static json_t* setDataJson(uint32_t &id)
             ret = SCANF("%lf", &setReal);
             printf("setReal: %f\n", setReal);
             jsonObject = json_real(setReal);
-            printf("111111111 jsonObject: %d\n",jsonObject);
+            printf("2222222222 jsonObject: %d\n",jsonObject);
             break;
         case TYPE_STRING:
             getchar();  // clear scanf input buffer
             ret = SCANF("%[^\n]", setStr);
             printf("setStr: %s\n", setStr);
             jsonObject = json_string((char*)setStr);
-            printf("111111111 jsonObject: %s\n",jsonObject);
+            printf("3333333 jsonObject: %s\n",jsonObject);
             break;
         default:
             printf("no this type\n");
@@ -610,17 +610,21 @@ int main(int argc, char **argv)
     
     SusiIoTSetPFEventHandler(EventCallBack);
     
-    if ( argc > 1 )
-    {
-        status = exec_by_args(argc - 1, argv + 1);
-    }
-    else
-    {
-        status = exec_by_menu();
-    }
+    // if ( argc > 1 )
+    // {
+    //     status = exec_by_args(argc - 1, argv + 1);
+    // }
+    // else
+    // {
+    //     status = exec_by_menu();
+    // }
+    uint32_t id = 0;
+    json_t *jsonObject = setDataJson(id);
+    printf("jsonObject:%d\n",jsonObject->type);
+    printf("jsonObject:%d\n",jsonObject->refcount);
 
     printf("\n");
-    printf("SusiIoTUninitialize:%s\n",SusiIoTUninitialize());
+    SusiIoTUninitialize();
 
     return status;
 }
