@@ -5,15 +5,19 @@ import susiiot
 
 class TestHandler(unittest.TestCase):
     def test_get_susi_information(self):
-        handler = susiiot.SusiIot()
+        susi_iot_library_path="./SUSI4.2.24139/SUSIIoTDEMO/demo/libSusiIoT.4"
+        json_library_path="./SUSI4.2.24139/SUSIIoTDEMO/demo/libjansson.so.4"
+        handler = susiiot.SusiIot(susi_iot_library_path,json_library_path)
         results = handler.get_susi_information()
         print(results)
         print(handler.get_id_list())
 
     def test_get_id_list(self):
-        handler = susiiot.SusiIot()
-        results = handler.get_susi_information()
-        print(handler.get_id_list())
+        susi_iot_library_path="./SUSI4.2.24139/SUSIIoTDEMO/demo/libSusiIoT.4"
+        json_library_path="./SUSI4.2.24139/SUSIIoTDEMO/demo/libjansson.so.4"
+        handler = susiiot.SusiIot(susi_iot_library_path,json_library_path)
+        results = handler.get_id_list()
+        print(results)
 
     def test_get_susi_json_t(self):
         handler = susiiot.SusiIot()
