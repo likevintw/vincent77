@@ -38,6 +38,9 @@ class SusiIot:
             ctypes.c_char_p]
         self.json_library.json_dumps.restype = ctypes.c_char_p
         self.json_library.json_integer.restype = ctypes.POINTER(JsonT)
+        self.json_library.json_real.restype = ctypes.POINTER(JsonT)
+        self.json_library.json_string.restype = ctypes.POINTER(JsonT)
+        
 
         self.susi_iot_library_status = self.susi_iot_library.SusiIoTInitialize()
 
@@ -107,15 +110,17 @@ class SusiIot:
     def get_json_format_data(self,data):
         result=None
         if isinstance(data, int):
-            self.json_library.json_integer.argtypes = [json_int_t]
+            self.json_library.json_integer.argtypes = [ctypes.c_int]
             result_ptr  = self.json_library.json_integer(0)
             result = result_ptr.contents
         elif isinstance(data, float):
             self.json_library.json_integer.argtypes = [ctypes.c_double]
-            result = self.json_library.json_real(ctypes.c_double(data))
+            result_ptr  = self.json_library.json_real(ctypes.c_double(data))
+            result = result_ptr.contents
         elif isinstance(data, str):
             self.json_library.json_string.argtypes = [ctypes.c_char_p]
-            result = self.json_library.json_string(ctypes.c_char_p("".encode("utf-8")))
+            result_ptr  = self.json_library.json_string(ctypes.c_char_p("".encode("utf-8")))
+            result = result_ptr.contents
             
         else:
             print(f"type {type(data)} is not support")

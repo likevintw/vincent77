@@ -615,6 +615,14 @@ int main(int argc, char **argv)
     // {
     //     status = exec_by_menu();
     // }
+    json_t *json_obj = NULL;
+    union JSON_OBJ_VALUE obj_value;
+    json_obj = json_integer(obj_value.i);
+    printf("%d\n",json_obj->type);
+    json_obj = json_real(obj_value.f);
+    printf("%d\n",json_obj->type);
+    json_obj = json_string(obj_value.s);
+    printf("%d\n",json_obj->type);
 
     printf("\n");
     printf("SusiIoTUninitialize:%s\n",SusiIoTUninitialize());
