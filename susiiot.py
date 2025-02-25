@@ -28,6 +28,7 @@ class SusiIot:
         self.susi_iot_library.SusiIoTInitialize.restype = ctypes.c_int
         self.susi_iot_library.SusiIoTGetPFCapabilityString.restype = ctypes.c_char_p
         self.susi_iot_library.SusiIoTGetPFDataString.restype = ctypes.c_char_p
+        self.susi_iot_library.SusiIoTGetLoggerPath.restype = ctypes.c_char_p
         self.susi_iot_library.SusiIoTGetPFDataString.argtypes = [
             ctypes.c_uint32]
         self.susi_iot_library.SusiIoTGetPFDataStringByUri.restype = ctypes.c_char_p
@@ -97,4 +98,8 @@ class SusiIot:
         result = self.susi_iot_library.SusiIoTGetPFDataStringByUri(
             uri.encode('utf-8'))
         print(result.decode('utf-8'))
+
+    def get_log_path(self):
+        return self.susi_iot_library.SusiIoTGetLoggerPath().decode()
+         
 

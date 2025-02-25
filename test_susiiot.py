@@ -41,6 +41,13 @@ class TestHandler(unittest.TestCase):
         results = handler.check_root_authorization()
         print(results)
 
+    def test_get_log_path(self):
+        susi_iot_library_path="libSusiIoT.so"
+        json_library_path="libjansson.so.4"
+        handler = susiiot.SusiIot(susi_iot_library_path,json_library_path)
+        results = handler.get_log_path()
+        print(results)
+
 
 if __name__ == '__main__':
     unittest.main()
