@@ -28,6 +28,7 @@ class SusiIot:
         self.json_library.json_dumps.restype = ctypes.c_char_p
 
         self.susi_iot_library_status = self.susi_iot_library.SusiIoTInitialize()
+
         self.susi_iot_library.SusiIoTSetPFEventHandler()
         jsonObject = self.json_library.json_object()
         if self.susi_iot_library.SusiIoTGetPFCapability(jsonObject) != 0:
@@ -40,6 +41,10 @@ class SusiIot:
         self.susi_iot_library.SusiIoTUninitialize()
 
         self.id_list = self.extract_ids(self.susi_information)
+
+    def check_root_authorization(self):
+        # todo
+        pass
 
     def get_json_indent(self, n):
         return n & self.json_max_indent
