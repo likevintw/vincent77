@@ -35,7 +35,7 @@ class SusiIot:
             self.susi_information = "SusiIoTGetPFCapability failed."
         else:
             self.susi_json_t = self.json_library.json_dumps(jsonObject, self.get_json_indent(
-                4) | self.json_max_indent | self.json_real_precision(10))
+                4) | self.json_max_indent | self.get_json_real_precision(10))
             self.susi_information = self.turn_byte_to_json(self.susi_json_t)
 
         self.susi_iot_library.SusiIoTUninitialize()
@@ -49,7 +49,7 @@ class SusiIot:
     def get_json_indent(self, n):
         return n & self.json_max_indent
 
-    def json_real_precision(self, n):
+    def get_json_real_precision(self, n):
         return ((n & 0x1F) << 11)
 
     def turn_byte_to_json(self, json_bytes):
