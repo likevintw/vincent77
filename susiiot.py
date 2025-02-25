@@ -16,7 +16,8 @@ class SusiIot:
         self.json_preserve_order = 0x100
         self.susi_information = None
         self.initialize()
-
+    def __del__(self):
+        self.susi_iot_library.SusiIoTUninitialize()
     def initialize(self):
         try:
             if not self.check_root_authorization():
@@ -43,8 +44,6 @@ class SusiIot:
             self.susi_json_t = self.json_library.json_dumps(jsonObject, self.get_json_indent(
                 4) | self.json_max_indent | self.get_json_real_precision(10))
             self.susi_information = self.turn_byte_to_json(self.susi_json_t)
-
-        self.susi_iot_library.SusiIoTUninitialize()
 
         self.id_list = self.extract_ids(self.susi_information)
 
@@ -90,10 +89,7 @@ class SusiIot:
         return self.susi_json_t
 
     def get_data_by_id(self, device_id):
-        print("33333333333")
-        result = self.susi_iot_library.SusiIoTGetPFDataString(int(device_id))
-        print("444444")
-        print(result)
+        result = self.susi_iot_library.SusiIoTGetPFDataString(device_id)
         return self.turn_byte_to_json(result)
 
     def get_data_by_uri(self, uri):
@@ -101,3 +97,4 @@ class SusiIot:
         result = self.susi_iot_library.SusiIoTGetPFDataStringByUri(
             uri.encode('utf-8'))
         print(result.decode('utf-8'))
+

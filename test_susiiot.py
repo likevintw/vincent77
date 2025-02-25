@@ -22,12 +22,11 @@ class TestHandler(unittest.TestCase):
     def test_get_data_by_id(self):
         susi_iot_library_path="libSusiIoT.so"
         json_library_path="libjansson.so.4"
-        print("111111111")
         handler = susiiot.SusiIot(susi_iot_library_path,json_library_path)
-        print("2222222222")
-        print(handler.get_data_by_id(131072))
+        id_list=handler.get_id_list()
+        for device_id in id_list:
+            print(handler.get_data_by_id(device_id))
 
-    # @unittest.skip("todo")
     def test_get_data_by_uri(self):
         susi_iot_library_path="libSusiIoT.so"
         json_library_path="libjansson.so.4"
