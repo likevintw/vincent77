@@ -615,9 +615,6 @@ int main(int argc, char **argv)
     // {
     //     status = exec_by_menu();
     // }
-    int32_t id=131072;
-    printf("ID: %d\n",id);
-    printf("SusiIoTGetPFDataString: %s\n",SusiIoTGetPFDataString(id));
 
     printf("\n");
     printf("SusiIoTUninitialize:%s\n",SusiIoTUninitialize());

@@ -27,6 +27,8 @@ class SusiIot:
             exit(1)
         self.susi_iot_library.SusiIoTInitialize.restype = ctypes.c_int
         self.susi_iot_library.SusiIoTGetPFCapabilityString.restype = ctypes.c_char_p
+        
+
         self.susi_iot_library.SusiIoTGetPFDataString.restype = ctypes.c_char_p
         self.susi_iot_library.SusiIoTGetLoggerPath.restype = ctypes.c_char_p
         self.susi_iot_library.SusiIoTGetPFDataString.argtypes = [
@@ -35,6 +37,7 @@ class SusiIot:
         self.susi_iot_library.SusiIoTGetPFDataStringByUri.argtypes = [
             ctypes.c_char_p]
         self.json_library.json_dumps.restype = ctypes.c_char_p
+        self.json_library.json_integer.restype = ctypes.POINTER(JsonT)
 
         self.susi_iot_library_status = self.susi_iot_library.SusiIoTInitialize()
 
@@ -101,5 +104,36 @@ class SusiIot:
 
     def get_log_path(self):
         return self.susi_iot_library.SusiIoTGetLoggerPath().decode()
+    def get_json_format_data(self,data):
+        result=None
+        if isinstance(data, int):
+            self.json_library.json_integer.argtypes = [json_int_t]
+            result_ptr  = self.json_library.json_integer(0)
+            result = result_ptr.contents
+        elif isinstance(data, float):
+            self.json_library.json_integer.argtypes = [ctypes.c_double]
+            result = self.json_library.json_real(ctypes.c_double(data))
+        elif isinstance(data, str):
+            self.json_library.json_string.argtypes = [ctypes.c_char_p]
+            result = self.json_library.json_string(ctypes.c_char_p("".encode("utf-8")))
+            
+        else:
+            print(f"type {type(data)} is not support")
+        return result
          
 
+class JsonType:
+    JSON_OBJECT = 0
+    JSON_ARRAY = 1
+    JSON_STRING = 2
+    JSON_INTEGER = 3
+    JSON_REAL = 4
+    JSON_TRUE = 5
+    JSON_FALSE = 6
+    JSON_NULL = 7
+
+class JsonT(ctypes.Structure):
+    _fields_ = [
+        ("type", ctypes.c_int),  
+        ("refcount", ctypes.c_size_t)
+    ]
