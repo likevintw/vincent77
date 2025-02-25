@@ -4,7 +4,6 @@ import susiiot
 
 
 class TestHandler(unittest.TestCase):
-    @unittest.skip("pass")
     def test_get_susi_information(self):
         susi_iot_library_path="libSusiIoT.so"
         json_library_path="libjansson.so.4"
@@ -13,7 +12,6 @@ class TestHandler(unittest.TestCase):
         print(results)
         print(handler.get_id_list())
 
-    @unittest.skip("pass")
     def test_get_id_list(self):
         susi_iot_library_path="libSusiIoT.so"
         json_library_path="libjansson.so.4"
@@ -39,6 +37,13 @@ class TestHandler(unittest.TestCase):
         handler = susiiot.SusiIot(susi_iot_library_path,json_library_path)
         result = handler.get_data_by_uri("SUSIIoT Information")
         print(result)
+
+    def test_check_root_authorization(self):
+        susi_iot_library_path="libSusiIoT.so"
+        json_library_path="libjansson.so.4"
+        handler = susiiot.SusiIot(susi_iot_library_path,json_library_path)
+        results = handler.check_root_authorization()
+        print(results)
 
 
 if __name__ == '__main__':

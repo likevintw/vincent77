@@ -1,6 +1,7 @@
 import ctypes
 import json
 import sys
+import os
 
 
 
@@ -17,6 +18,12 @@ class SusiIot:
         self.initialize()
 
     def initialize(self):
+        try:
+            if not self.check_root_authorization():
+                pass
+        except PermissionError as e:
+            print(f"Error: {e}")
+            exit(1)
         self.susi_iot_library.SusiIoTInitialize.restype = ctypes.c_int
         self.susi_iot_library.SusiIoTGetPFCapabilityString.restype = ctypes.c_char_p
         self.susi_iot_library.SusiIoTGetPFDataString.restype = ctypes.c_char_p
@@ -43,8 +50,10 @@ class SusiIot:
         self.id_list = self.extract_ids(self.susi_information)
 
     def check_root_authorization(self):
-        # todo
-        pass
+        if os.geteuid() != 0:
+            raise PermissionError("Please run this program with root authorization (sudo).")
+        else:
+            return True
 
     def get_json_indent(self, n):
         return n & self.json_max_indent
