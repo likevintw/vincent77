@@ -18,8 +18,10 @@ class SusiIot:
         self.json_preserve_order = 0x100
         self.susi_information = None
         self.initialize()
+
     def __del__(self):
         self.susi_iot_library.SusiIoTUninitialize()
+
     def initialize(self):
         try:
             if not self.check_root_authorization():
@@ -29,7 +31,8 @@ class SusiIot:
             exit(1)
         self.susi_iot_library.SusiIoTInitialize.restype = ctypes.c_int
         self.susi_iot_library.SusiIoTGetPFCapabilityString.restype = ctypes.c_char_p
-        self.susi_iot_library.SusiIoTGetPFData.argtypes = [SusiIoTId_t, ctypes.POINTER(JsonT)]
+        self.susi_iot_library.SusiIoTGetPFData.argtypes = [
+            SusiIoTId_t, ctypes.POINTER(JsonT)]
         self.susi_iot_library.SusiIoTGetPFData.restype = SusiIoTStatus_t
 
         self.susi_iot_library.SusiIoTGetPFDataString.restype = ctypes.c_char_p
@@ -43,7 +46,6 @@ class SusiIot:
         self.json_library.json_integer.restype = ctypes.POINTER(JsonT)
         self.json_library.json_real.restype = ctypes.POINTER(JsonT)
         self.json_library.json_string.restype = ctypes.POINTER(JsonT)
-        
 
         self.susi_iot_library_status = self.susi_iot_library.SusiIoTInitialize()
 
@@ -59,7 +61,8 @@ class SusiIot:
 
     def check_root_authorization(self):
         if os.geteuid() != 0:
-            raise PermissionError("Please run this program with root authorization (sudo).")
+            raise PermissionError(
+                "Please run this program with root authorization (sudo).")
         else:
             return True
 
@@ -110,29 +113,31 @@ class SusiIot:
 
     def get_log_path(self):
         return self.susi_iot_library.SusiIoTGetLoggerPath().decode()
-    def get_json_format_data(self,data):
-        result=None
+
+    def get_json_format_data(self, data):
+        result = None
         if isinstance(data, int):
             self.json_library.json_integer.argtypes = [ctypes.c_int]
-            result_ptr  = self.json_library.json_integer(0)
+            result_ptr = self.json_library.json_integer(0)
             result = result_ptr.contents
         elif isinstance(data, float):
             self.json_library.json_integer.argtypes = [ctypes.c_double]
-            result_ptr  = self.json_library.json_real(ctypes.c_double(data))
+            result_ptr = self.json_library.json_real(ctypes.c_double(data))
             result = result_ptr.contents
         elif isinstance(data, str):
             self.json_library.json_string.argtypes = [ctypes.c_char_p]
-            result_ptr  = self.json_library.json_string(ctypes.c_char_p("".encode("utf-8")))
+            result_ptr = self.json_library.json_string(
+                ctypes.c_char_p("".encode("utf-8")))
             result = result_ptr.contents
-            
+
         else:
             print(f"type {type(data)} is not support")
         return result
 
-    def set_value(self,device_id,value):
+    def set_value(self, device_id, value):
         SusiIoTSetValue
         pass
-         
+
 
 class JsonType:
     JSON_OBJECT = 0
@@ -144,8 +149,9 @@ class JsonType:
     JSON_FALSE = 6
     JSON_NULL = 7
 
+
 class JsonT(ctypes.Structure):
     _fields_ = [
-        ("type", ctypes.c_int),  
+        ("type", ctypes.c_int),
         ("refcount", ctypes.c_size_t)
     ]
