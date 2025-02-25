@@ -605,18 +605,22 @@ int main(int argc, char **argv)
         return status;
     }
     
-    SusiIoTSetPFEventHandler(EventCallBack);
+    // SusiIoTSetPFEventHandler(EventCallBack);
     
-    if ( argc > 1 )
-    {
-        status = exec_by_args(argc - 1, argv + 1);
-    }
-    else
-    {
-        status = exec_by_menu();
-    }
+    // if ( argc > 1 )
+    // {
+    //     status = exec_by_args(argc - 1, argv + 1);
+    // }
+    // else
+    // {
+    //     status = exec_by_menu();
+    // }
+    int32_t id=131072;
+    printf("ID: %d\n",id);
+    printf("SusiIoTGetPFDataString: %s\n",SusiIoTGetPFDataString(id));
 
-    SusiIoTUninitialize();
+    printf("\n");
+    printf("SusiIoTUninitialize:%s\n",SusiIoTUninitialize());
 
     return status;
 }
