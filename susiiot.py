@@ -3,6 +3,8 @@ import json
 import sys
 import os
 
+SusiIoTStatus_t = ctypes.c_uint32
+SusiIoTId_t = ctypes.c_uint32
 
 
 class SusiIot:
@@ -125,6 +127,10 @@ class SusiIot:
         else:
             print(f"type {type(data)} is not support")
         return result
+
+    def set_value(self,device_id,value):
+        SusiIoTSetValue
+        pass
          
 
 class JsonType:
