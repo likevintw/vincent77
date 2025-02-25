@@ -36,7 +36,6 @@ class SusiIot:
 
         self.susi_iot_library_status = self.susi_iot_library.SusiIoTInitialize()
 
-        # self.susi_iot_library.SusiIoTSetPFEventHandler()
         jsonObject = self.json_library.json_object()
         if self.susi_iot_library.SusiIoTGetPFCapability(jsonObject) != 0:
             self.susi_information = "SusiIoTGetPFCapability failed."
@@ -90,9 +89,9 @@ class SusiIot:
     def get_susi_json_t(self):
         return self.susi_json_t
 
-    def get_data_by_id(self, id):
+    def get_data_by_id(self, device_id):
         print("33333333333")
-        result = self.susi_iot_library.SusiIoTGetPFDataString(int(id))
+        result = self.susi_iot_library.SusiIoTGetPFDataString(int(device_id))
         print("444444")
         print(result)
         return self.turn_byte_to_json(result)
