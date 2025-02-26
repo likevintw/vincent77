@@ -1,4 +1,4 @@
-export LD_LIBRARY_PATH=$(pwd):$LD_LIBRARY_PATH
+
 
 cp libSUSI-4.00.so ../../ &&\
 cp libSUSI-4.00.so.1 ../../ &&\

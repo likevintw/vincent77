@@ -53,9 +53,9 @@ class TestHandler(unittest.TestCase):
         json_library_path = "libjansson.so.4"
         handler = susiiot.SusiIot(susi_iot_library_path, json_library_path)
         results = handler.get_json_format_data(0)
-        print(results.type)
+        self.assertEqual(results.type, 3)
         results = handler.get_json_format_data(0.0)
-        print(results.type)
+        self.assertEqual(results.type, 4)
         results = handler.get_json_format_data("")
         print(results.type)
 

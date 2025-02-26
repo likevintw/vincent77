@@ -618,10 +618,19 @@ int main(int argc, char **argv)
     // {
     //     status = exec_by_menu();
     // }
-    uint32_t id = 0;
-    json_t *jsonObject = setDataJson(id);
-    printf("jsonObject:%d\n",jsonObject->type);
-    printf("jsonObject:%d\n",jsonObject->refcount);
+    // uint32_t id = 0;
+    // json_t *jsonObject = setDataJson(id);
+    // printf("jsonObject:%d\n",jsonObject->type);
+    // printf("jsonObject:%d\n",jsonObject->refcount);
+
+    json_t *json_obj = NULL;
+    union JSON_OBJ_VALUE obj_value;
+    json_obj = json_integer(obj_value.i);
+    printf("11111:%d\n",json_obj->type);
+    printf("11111:%d\n",json_obj->refcount);
+    json_obj = json_real(obj_value.f);
+    printf("222222:%d\n",json_obj->type);
+    printf("222222:%d\n",json_obj->refcount);
 
     printf("\n");
     SusiIoTUninitialize();
