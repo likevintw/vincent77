@@ -117,7 +117,7 @@ static json_t* setDataJson(uint32_t &id)
             ret = SCANF("%d", &setInt);
             printf("setInt: %d\n", setInt);
             jsonObject = json_integer(setInt);
-            printf("111111111 jsonObject: %d\n",jsonObject);
+            printf("111111111 jsonObject: %d\n",jsonObject->type);
             break;
         case TYPE_REAL:
             ret = SCANF("%lf", &setReal);
@@ -623,16 +623,23 @@ int main(int argc, char **argv)
     // printf("jsonObject:%d\n",jsonObject->type);
     // printf("jsonObject:%d\n",jsonObject->refcount);
 
-    json_t *json_obj = NULL;
-    union JSON_OBJ_VALUE obj_value;
-    json_obj = json_integer(obj_value.i);
-    printf("11111:%d\n",json_obj->type);
-    printf("11111:%d\n",json_obj->refcount);
-    json_obj = json_real(obj_value.f);
-    printf("222222:%d\n",json_obj->type);
-    printf("222222:%d\n",json_obj->refcount);
+    // uint32_t id;
+    // json_t *json_obj = NULL;
+    // union JSON_OBJ_VALUE obj_value;
+    // SusiIoTStatus_t resp = SUSIIOT_STATUS_ERROR;
 
-    printf("\n");
+    // json_obj = json_integer(obj_value.i);
+    // printf("11111:%d\n",json_obj->type);
+    // printf("11111:%d\n",json_obj->refcount);
+
+    // resp = SusiIoTSetValue(id, json_obj);
+    // printf("%s\n",resp);
+
+    uint32_t id=123456789;
+    json_t *jsonSet = setDataJson(id);
+    printf("999999:%d\n",jsonSet->type);
+    printf("99999:%d\n",jsonSet->refcount);
+
     SusiIoTUninitialize();
 
     return status;
