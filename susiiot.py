@@ -169,8 +169,6 @@ class SusiIot:
     def set_value(self, device_id, value):
         result_ptr = self.json_library.json_integer(value)
         result = result_ptr.contents
-        print(result.type)
-        print(result.refcount)
         return self.susi_iot_library.SusiIoTSetValue(device_id, result)
 
     def get_system_temperature_in_celsius(self):
