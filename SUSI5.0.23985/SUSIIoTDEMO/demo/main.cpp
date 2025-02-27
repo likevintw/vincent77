@@ -390,7 +390,9 @@ static SusiIoTStatus_t exec_by_menu()
         {
             uint32_t id = 0;
             json_t *jsonObject = setDataJson(id);
-
+            printf("KKKKKKKKKKK\n");
+            printf("%d\n",jsonObject->type);
+            printf("%d\n",jsonObject->refcount);
             if(SusiIoTSetValue(id, jsonObject) != 0)
             {
                 printf("SusiIoTSetValue Failed. \n");

@@ -6,7 +6,7 @@
 sudo rm kengweisusiiot
 g++ -Wall -O2 -I. -D _LINUX \
     /home/advantech/kengwei/vincent77/SUSI4.2.24139/SUSIIoTDEMO/demo/main.cpp \
-    -o kengweisusiiot libjansson.so.4 libSusiIoT.so
+    -o kengweisusiiot libjansson.x86.so libSusiIoT.x86.so
 sudo ./kengweisusiiot
 
 # on ARM, todo

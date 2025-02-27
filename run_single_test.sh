@@ -15,3 +15,5 @@ sudo python3 -m unittest -v test_susi4.TestHandler.test_get_gpio_information
 sudo python3 -m unittest -v test_susiiot.TestHandler.test_get_json_format_data
 sudo python3 -m unittest -v test_susiiot.TestHandler.test_get_system_temperature
 sudo python3 -m unittest -v test_susiiot.TestHandler.test_get_id_dictionary
+sudo python3 -m unittest -v test_susiiot.TestHandler.test_set_gpio_01
+sudo python3 -m unittest -v test_susiiot.TestHandler.test_set_value

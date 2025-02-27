@@ -117,20 +117,17 @@ static json_t* setDataJson(uint32_t &id)
             ret = SCANF("%d", &setInt);
             printf("setInt: %d\n", setInt);
             jsonObject = json_integer(setInt);
-            printf("111111111 jsonObject: %d\n",jsonObject->type);
             break;
         case TYPE_REAL:
             ret = SCANF("%lf", &setReal);
             printf("setReal: %f\n", setReal);
             jsonObject = json_real(setReal);
-            printf("2222222222 jsonObject: %d\n",jsonObject);
             break;
         case TYPE_STRING:
             getchar();  // clear scanf input buffer
             ret = SCANF("%[^\n]", setStr);
             printf("setStr: %s\n", setStr);
             jsonObject = json_string((char*)setStr);
-            printf("3333333 jsonObject: %s\n",jsonObject);
             break;
         default:
             printf("no this type\n");
@@ -149,14 +146,13 @@ static void testfunction()
     uint32_t id;
 
     printf("Test SusiIoTGetPFCapability\r\n");
-    printf("id=%d\n",id);
     json_t *susi_iot = json_object();
     for(int i = 0; i < count; i++)
     {
         printf("\r%.2f %%", i * (100 / (float)count));
         if(SusiIoTGetPFCapability(susi_iot) != 0)
         {
-            printf("\nSusiIoTGetPFCapability failed. \n");
+            //printf("\nSusiIoTGetPFCapability failed. \n");
         }
     }
     json_object_clear(susi_iot);
@@ -164,14 +160,13 @@ static void testfunction()
     ret = PAUSE();
 
     printf("Test SusiIoTGetPFData\r\n");
-    printf("id=%d\n",id);
     json_t *jtmp = json_object();
     for(int i = 0; i < count; i++)
     {
         printf("\r%.2f %%", i * (100 / (float)count));
         if(SusiIoTGetPFData(0, jtmp) != 0)
         {
-            printf("SusiIoTGetPFData failed. \n");
+            //printf("SusiIoTGetPFData failed. \n");
         }
     }
     json_object_clear(jtmp);
@@ -179,18 +174,17 @@ static void testfunction()
     ret = PAUSE();
 
     printf("Test SusiIoTSetPFData\r\n");
-    printf("id=%d\n",id);
     jtmp = json_object();
     for(int i = 0; i < count; i++)
     {
         printf("\r%.2f %%", i * (100 / (float)count));
         if(SusiIoTGetPFData(0, jtmp) != 0)
         {
-            printf("SusiIoTGetPFData failed. \n");
+            //printf("SusiIoTGetPFData failed. \n");
         }
         if(SusiIoTSetPFData(jtmp) != 0)
         {
-            printf("SusiIoTSetPFData failed. \n");
+            //printf("SusiIoTSetPFData failed. \n");
         }
     }
     json_object_clear(jtmp);
@@ -198,15 +192,13 @@ static void testfunction()
     PAUSE();
 
     printf("Test SusiIoTGetValue\r\n");
-    printf("id=%d\n",id);
     json_t *jsonGet = getDataJson(id);
     for(int i = 0; i < count; i++)
     {
         printf("\r%.2f %%", i * (100 / (float)count));
         if(SusiIoTGetValue(id, jsonGet) != 0)
         {
-            printf("SusiIoTGetValue failed. \n");
-            printf("id=%d\n",id);
+            //printf("SusiIoTGetValue failed. \n");
         }
     }
     json_object_clear(jsonGet);
@@ -214,14 +206,13 @@ static void testfunction()
     ret = PAUSE();
 
     printf("Test SusiIoTSetValue\r\n");
-    printf("id=%d\n",id);
     json_t *jsonSet = setDataJson(id);
     for(int i = 0; i < count; i++)
     {
         printf("\r%.2f %%", i * (100 / (float)count));
         if(SusiIoTSetValue(131072, jsonSet) != 0)
         {
-            printf("SusiIoTSetValue failed. \n");
+            //printf("SusiIoTSetValue failed. \n");
         }
     }
     json_object_clear(jsonSet);
@@ -259,7 +250,7 @@ static SusiIoTStatus_t exec_by_menu()
         if(op == OPT_CAPABILITY_OBJECT)
         {
             json_t *jsonObject = json_object();
-            
+
             if(SusiIoTGetPFCapability(jsonObject) != 0)
             {
                 printf("\nSusiIoTGetPFCapability failed. \n");
@@ -399,7 +390,9 @@ static SusiIoTStatus_t exec_by_menu()
         {
             uint32_t id = 0;
             json_t *jsonObject = setDataJson(id);
-
+            printf("KKKKKKKKKKK\n");
+            printf("%d\n",jsonObject->type);
+            printf("%d\n",jsonObject->refcount);
             if(SusiIoTSetValue(id, jsonObject) != 0)
             {
                 printf("SusiIoTSetValue Failed. \n");
@@ -607,38 +600,17 @@ int main(int argc, char **argv)
         printf("SusiIoTInitialize() failed.");
         return status;
     }
-    
+
     SusiIoTSetPFEventHandler(EventCallBack);
-    
-    // if ( argc > 1 )
-    // {
-    //     status = exec_by_args(argc - 1, argv + 1);
-    // }
-    // else
-    // {
-    //     status = exec_by_menu();
-    // }
-    // uint32_t id = 0;
-    // json_t *jsonObject = setDataJson(id);
-    // printf("jsonObject:%d\n",jsonObject->type);
-    // printf("jsonObject:%d\n",jsonObject->refcount);
 
-    // uint32_t id;
-    // json_t *json_obj = NULL;
-    // union JSON_OBJ_VALUE obj_value;
-    // SusiIoTStatus_t resp = SUSIIOT_STATUS_ERROR;
-
-    // json_obj = json_integer(obj_value.i);
-    // printf("11111:%d\n",json_obj->type);
-    // printf("11111:%d\n",json_obj->refcount);
-
-    // resp = SusiIoTSetValue(id, json_obj);
-    // printf("%s\n",resp);
-
-    uint32_t id=123456789;
-    json_t *jsonSet = setDataJson(id);
-    printf("999999:%d\n",jsonSet->type);
-    printf("99999:%d\n",jsonSet->refcount);
+    if ( argc > 1 )
+    {
+        status = exec_by_args(argc - 1, argv + 1);
+    }
+    else
+    {
+        status = exec_by_menu();
+    }
 
     SusiIoTUninitialize();
 

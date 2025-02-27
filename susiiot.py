@@ -65,6 +65,9 @@ class SusiIot:
         self.susi_iot_library.SusiIoTGetPFData.argtypes = [
             ctypes.c_uint32, ctypes.POINTER(JsonT)]
         self.susi_iot_library.SusiIoTGetPFData.restype = ctypes.c_uint32
+        self.susi_iot_library.SusiIoTSetValue.argtypes = [
+            ctypes.c_uint32, ctypes.POINTER(JsonT)]
+        self.susi_iot_library.SusiIoTSetValue.restype = ctypes.c_uint32
 
         self.susi_iot_library.SusiIoTGetPFDataString.restype = ctypes.c_char_p
         self.susi_iot_library.SusiIoTGetLoggerPath.restype = ctypes.c_char_p
@@ -164,8 +167,11 @@ class SusiIot:
         return result
 
     def set_value(self, device_id, value):
-        # SusiIoTSetValue todo
-        pass
+        result_ptr = self.json_library.json_integer(value)
+        result = result_ptr.contents
+        print(result.type)
+        print(result.refcount)
+        return self.susi_iot_library.SusiIoTSetValue(device_id, result)
 
     def get_system_temperature_in_celsius(self):
         return self.get_data_by_id(self.susi_id_dictionary['CPU'])['v']
