@@ -50,8 +50,14 @@ class TestHandler(unittest.TestCase):
 
     def test_get_system_temperature(self):
         handler = susiiot.SusiIot()
-        result=handler.get_system_temperature()
+        result = handler.get_system_temperature()
         print(result)
+
+    def test_get_id_dictionary(self):
+        handler = susiiot.SusiIot()
+        results = handler.get_id_dictionary()
+        for key in results.keys():
+            print(result)
 
 
 if __name__ == '__main__':

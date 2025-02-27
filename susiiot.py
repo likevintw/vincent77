@@ -14,9 +14,13 @@ class SusiIot:
         self.json_max_indent = 0x1F
         self.json_preserve_order = 0x100
         self.susi_information = None
+        self.susi_id_dictionary = {}
 
         self.import_library()
         self.initialize()
+
+        self.id_list = self.extract_ids(self.susi_information)
+        self.susi_id_dictionary = self.get_id_dictionary()
 
     def __del__(self):
         try:
@@ -79,12 +83,11 @@ class SusiIot:
         jsonObject = self.json_library.json_object()
         if self.susi_iot_library.SusiIoTGetPFCapability(jsonObject) != 0:
             self.susi_information = "SusiIoTGetPFCapability failed."
+            exit(1)
         else:
             self.susi_json_t = self.json_library.json_dumps(jsonObject, self.get_json_indent(
                 4) | self.json_max_indent | self.get_json_real_precision(10))
             self.susi_information = self.turn_byte_to_json(self.susi_json_t)
-
-        self.id_list = self.extract_ids(self.susi_information)
 
     def check_root_authorization(self):
         if os.geteuid() != 0:
@@ -161,10 +164,23 @@ class SusiIot:
         return result
 
     def set_value(self, device_id, value):
-        # SusiIoTSetValue
+        # SusiIoTSetValue todo
         pass
-    def get_system_temperature(self):
-        return self.get_data_by_id(16908547)['v']
+
+    def get_system_temperature_in_celsius(self):
+        return self.get_data_by_id(self.susi_id_dictionary['CPU'])['v']
+
+    def get_id_dictionary(self):
+        if self.susi_id_dictionary == {}:
+            id_list = self.get_id_list()
+            for device_id in id_list:
+                results = self.get_data_by_id(device_id)
+                try:
+                    self.susi_id_dictionary.update(
+                        {results['n']: results['id']})
+                except:
+                    pass
+        return self.susi_id_dictionary
 
 
 class JsonType:
