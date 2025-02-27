@@ -50,21 +50,16 @@ class TestHandler(unittest.TestCase):
 
     def test_get_system_temperature(self):
         handler = susiiot.SusiIot()
-        result = handler.get_system_temperature()
+        result = handler.get_system_temperature_in_celsius()
         print(result)
 
     def test_get_id_dictionary(self):
         handler = susiiot.SusiIot()
         results = handler.get_id_dictionary()
         for key in results.keys():
-            print(result)
+            print(key)
 
     def test_set_gpio_01(self):
-        handler = susiiot.SusiIot()
-        result = handler.get_data_by_id(17039873)
-        print(result)
-
-    def test_set_value(self):
         handler = susiiot.SusiIot()
         result = handler.set_value(17039873, 0)
         result = handler.get_data_by_id(17039873)
