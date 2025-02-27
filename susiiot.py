@@ -4,10 +4,6 @@ import sys
 import os
 import platform
 
-SusiIoTStatus_t = ctypes.c_uint32
-SusiIoTId_t = ctypes.c_uint32
-current_dir = os.path.dirname(os.path.realpath(__file__))+"/"
-
 
 class SusiIot:
     def __init__(self):
@@ -18,7 +14,7 @@ class SusiIot:
         self.json_max_indent = 0x1F
         self.json_preserve_order = 0x100
         self.susi_information = None
-        
+
         self.import_library()
         self.initialize()
 
@@ -29,6 +25,7 @@ class SusiIot:
             pass
 
     def import_library(self):
+        current_dir = os.path.dirname(os.path.realpath(__file__))+"/"
         architecture = platform.machine()
         if 'x86' in architecture.lower():
             susi_iot_library_path = current_dir+"libSusiIoT.x86.so"
@@ -49,8 +46,8 @@ class SusiIot:
         self.susi_iot_library.SusiIoTInitialize.restype = ctypes.c_int
         self.susi_iot_library.SusiIoTGetPFCapabilityString.restype = ctypes.c_char_p
         self.susi_iot_library.SusiIoTGetPFData.argtypes = [
-            SusiIoTId_t, ctypes.POINTER(JsonT)]
-        self.susi_iot_library.SusiIoTGetPFData.restype = SusiIoTStatus_t
+            ctypes.c_uint32, ctypes.POINTER(JsonT)]
+        self.susi_iot_library.SusiIoTGetPFData.restype = ctypes.c_uint32
 
         self.susi_iot_library.SusiIoTGetPFDataString.restype = ctypes.c_char_p
         self.susi_iot_library.SusiIoTGetLoggerPath.restype = ctypes.c_char_p
