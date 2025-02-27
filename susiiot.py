@@ -27,12 +27,25 @@ class SusiIot:
     def import_library(self):
         current_dir = os.path.dirname(os.path.realpath(__file__))+"/"
         architecture = platform.machine()
-        if 'x86' in architecture.lower():
+        os_name = platform.system()
+
+        if os_name == "Linux" and 'x86' in architecture.lower():
             susi_iot_library_path = current_dir+"libSusiIoT.x86.so"
             json_library_path = current_dir+"libjansson.x86.so"
-        elif 'arm' in architecture.lower():
+
+        elif os_name == "Linux" and 'arm' in architecture.lower():
             susi_iot_library_path = current_dir+"libSusiIoT.arm.so"
             json_library_path = current_dir+"libjansson.4.arm.so"
+
+        elif os_name == "Windows" and 'x86' in architecture.lower():
+            pass
+
+        elif os_name == "Windows" and 'arm' in architecture.lower():
+            pass
+
+        else:
+            print(f"disable to import library, architechture:{architecture.lower()}, os:{os_name}")
+
         self.susi_iot_library = ctypes.CDLL(susi_iot_library_path)
         self.json_library = ctypes.CDLL(json_library_path)
 
