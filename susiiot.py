@@ -2,23 +2,24 @@ import ctypes
 import json
 import sys
 import os
+import platform
 
 SusiIoTStatus_t = ctypes.c_uint32
 SusiIoTId_t = ctypes.c_uint32
-current_dir = os.path.dirname(os.path.realpath(__file__))
+current_dir = os.path.dirname(os.path.realpath(__file__))+"/"
 
 
 class SusiIot:
-    def __init__(self,
-                 susi_iot_library_path=current_dir+"/libSusiIoT.x86.so",
-                 json_library_path=current_dir+"/libjansson.4.arm.so"):
-        self.susi_iot_library = ctypes.CDLL(susi_iot_library_path)
-        self.json_library = ctypes.CDLL(json_library_path)
+    def __init__(self):
+        self.susi_iot_library = None
+        self.json_library = None
         self.susi_iot_library_status = None
         self.id_list = None
         self.json_max_indent = 0x1F
         self.json_preserve_order = 0x100
         self.susi_information = None
+        
+        self.import_library()
         self.initialize()
 
     def __del__(self):
@@ -26,6 +27,17 @@ class SusiIot:
             self.susi_iot_library.SusiIoTUninitialize()
         except:
             pass
+
+    def import_library(self):
+        architecture = platform.machine()
+        if 'x86' in architecture.lower():
+            susi_iot_library_path = current_dir+"libSusiIoT.x86.so"
+            json_library_path = current_dir+"libjansson.x86.so"
+        elif 'arm' in architecture.lower():
+            susi_iot_library_path = current_dir+"libSusiIoT.arm.so"
+            json_library_path = current_dir+"libjansson.4.arm.so"
+        self.susi_iot_library = ctypes.CDLL(susi_iot_library_path)
+        self.json_library = ctypes.CDLL(json_library_path)
 
     def initialize(self):
         try:
@@ -140,7 +152,7 @@ class SusiIot:
         return result
 
     def set_value(self, device_id, value):
-        SusiIoTSetValue
+        # SusiIoTSetValue
         pass
 
 

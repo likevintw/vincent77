@@ -2,59 +2,46 @@
 import unittest
 import susiiot
 import os
+import platform
 
 current_dir = os.path.dirname(os.path.realpath(__file__))+"/"
 
 
 class TestHandler(unittest.TestCase):
     def test_get_susi_information(self):
-        susi_iot_library_path = current_dir+"libSusiIoT.x86.so"
-        json_library_path = current_dir+"libjansson.4.arm.so"
-        handler = susiiot.SusiIot(susi_iot_library_path, json_library_path)
+        handler = susiiot.SusiIot()
         results = handler.get_susi_information()
         print(results)
         print(handler.get_id_list())
 
     def test_get_id_list(self):
-        susi_iot_library_path = current_dir+"libSusiIoT.x86.so"
-        json_library_path = current_dir+"libjansson.4.arm.so"
-        handler = susiiot.SusiIot(susi_iot_library_path, json_library_path)
+        handler = susiiot.SusiIot()
         results = handler.get_id_list()
         print(results)
 
     def test_get_data_by_id(self):
-        susi_iot_library_path = current_dir+"libSusiIoT.x86.so"
-        json_library_path = current_dir+"libjansson.4.arm.so"
-        handler = susiiot.SusiIot(susi_iot_library_path, json_library_path)
+        handler = susiiot.SusiIot()
         id_list = handler.get_id_list()
         for device_id in id_list:
             print(handler.get_data_by_id(device_id))
 
     def test_get_data_by_uri(self):
-        susi_iot_library_path = current_dir+"libSusiIoT.x86.so"
-        json_library_path = current_dir+"libjansson.4.arm.so"
-        handler = susiiot.SusiIot(susi_iot_library_path, json_library_path)
+        handler = susiiot.SusiIot()
         result = handler.get_data_by_uri("SUSIIoT Information")
         print(result)
 
     def test_check_root_authorization(self):
-        susi_iot_library_path = current_dir+"libSusiIoT.x86.so"
-        json_library_path = current_dir+"libjansson.4.arm.so"
-        handler = susiiot.SusiIot(susi_iot_library_path, json_library_path)
+        handler = susiiot.SusiIot()
         results = handler.check_root_authorization()
         print(results)
 
     def test_get_log_path(self):
-        susi_iot_library_path = current_dir+"libSusiIoT.x86.so"
-        json_library_path = current_dir+"libjansson.4.arm.so"
-        handler = susiiot.SusiIot(susi_iot_library_path, json_library_path)
+        handler = susiiot.SusiIot()
         results = handler.get_log_path()
         print(results)
 
     def test_get_json_format_data(self):
-        susi_iot_library_path = current_dir+"libSusiIoT.x86.so"
-        json_library_path = current_dir+"libjansson.4.arm.so"
-        handler = susiiot.SusiIot(susi_iot_library_path, json_library_path)
+        handler = susiiot.SusiIot()
         results = handler.get_json_format_data(0)
         self.assertEqual(results.type, 3)
         results = handler.get_json_format_data(0.0)
