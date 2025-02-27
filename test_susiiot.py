@@ -4,8 +4,6 @@ import susiiot
 import os
 import platform
 
-current_dir = os.path.dirname(os.path.realpath(__file__))+"/"
-
 
 class TestHandler(unittest.TestCase):
     def test_get_susi_information(self):
