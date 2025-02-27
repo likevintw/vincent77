@@ -5,11 +5,13 @@ import os
 
 SusiIoTStatus_t = ctypes.c_uint32
 SusiIoTId_t = ctypes.c_uint32
+current_dir = os.path.dirname(os.path.realpath(__file__))
 
 
 class SusiIot:
-    def __init__(self, susi_iot_library_path="libSusiIoT.so",
-                 json_library_path="libjansson.so.4"):
+    def __init__(self,
+                 susi_iot_library_path=current_dir+"/libSusiIoT.x86.so",
+                 json_library_path=current_dir+"/libjansson.4.arm.so"):
         self.susi_iot_library = ctypes.CDLL(susi_iot_library_path)
         self.json_library = ctypes.CDLL(json_library_path)
         self.susi_iot_library_status = None
@@ -20,7 +22,10 @@ class SusiIot:
         self.initialize()
 
     def __del__(self):
-        self.susi_iot_library.SusiIoTUninitialize()
+        try:
+            self.susi_iot_library.SusiIoTUninitialize()
+        except:
+            pass
 
     def initialize(self):
         try:
