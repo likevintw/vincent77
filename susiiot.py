@@ -133,7 +133,6 @@ class SusiIot:
         return self.turn_byte_to_json(result)
 
     def get_data_by_uri(self, uri):
-        uri = "SUSIIoT Information"
         result = self.susi_iot_library.SusiIoTGetPFDataStringByUri(
             uri.encode('utf-8'))
         print(result.decode('utf-8'))
@@ -164,6 +163,8 @@ class SusiIot:
     def set_value(self, device_id, value):
         # SusiIoTSetValue
         pass
+    def get_system_temperature(self):
+        return self.get_data_by_id(16908547)['v']
 
 
 class JsonType:
