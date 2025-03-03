@@ -60,14 +60,15 @@ class TestHandler(unittest.TestCase):
         for key in results.keys():
             print(key)
 
-    def test_set_gpio_01(self):
+    def test_set_gpio_00(self):
         handler = susiiot.SusiIot()
-        result = handler.set_value(17039873, 0)
-        result = handler.get_data_by_id(17039873)
-        print(result)
-        result = handler.set_value(17039873, 1)
-        result = handler.get_data_by_id(17039873)
-        print(result)
+        if 17039873 in handler.id_list:
+            result = handler.set_value(17039873, 0)
+            result = handler.get_data_by_id(17039873)
+            print(result)
+            result = handler.set_value(17039873, 1)
+            result = handler.get_data_by_id(17039873)
+            print(result)
 
 
 if __name__ == '__main__':

@@ -7,6 +7,7 @@ import platform
 
 class SusiIot:
     def __init__(self):
+        print("__init____init____init____init__")
         self.susi_iot_library = None
         self.json_library = None
         self.susi_iot_library_status = None
@@ -25,6 +26,7 @@ class SusiIot:
     def __del__(self):
         try:
             self.susi_iot_library.SusiIoTUninitialize()
+            print("__del____del____del____del__")
         except:
             pass
 
@@ -40,8 +42,6 @@ class SusiIot:
         elif os_name == "Linux" and 'aarch64' in architecture.lower():
             susi_iot_library_path = current_dir+"libSusiIoT.arm.so"
             json_library_path = current_dir+"libjansson.arm.so"
-            print(susi_iot_library_path)
-            print(json_library_path)
 
         elif os_name == "Windows" and 'x86' in architecture.lower():
             pass
@@ -52,8 +52,6 @@ class SusiIot:
         else:
             print(f"disable to import library, architechture:{architecture.lower()}, os:{os_name}")
 
-        self.susi_iot_library = ctypes.CDLL(susi_iot_library_path)
-        self.json_library = ctypes.CDLL(json_library_path)
         self.susi_iot_library = ctypes.CDLL(susi_iot_library_path)
         self.json_library = ctypes.CDLL(json_library_path)
 
@@ -177,7 +175,10 @@ class SusiIot:
         return self.susi_iot_library.SusiIoTSetValue(device_id, result)
 
     def get_system_temperature_in_celsius(self):
-        return self.get_data_by_id(self.susi_id_dictionary['CPU'])['v']
+        if 'CPU' in self.susi_id_dictionary:
+            return self.get_data_by_id(self.susi_id_dictionary['CPU'])['v']
+        else:
+            return None
 
     def get_id_dictionary(self):
         if self.susi_id_dictionary == {}:

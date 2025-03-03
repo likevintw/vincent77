@@ -10,4 +10,5 @@ sudo python3 -m unittest -v test_susiiot.py
 remind user to run python with root authorization, sudo, ok
 
 test on arm linux:
-test_get_data_by_uri
+test_get_data_by_uri, ok
+sudo python3 -m unittest -v test_susiiot, Segmentation fault 
