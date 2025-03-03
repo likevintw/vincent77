@@ -25,9 +25,10 @@ class TestHandler(unittest.TestCase):
 
     def test_get_data_by_uri(self):
         handler = susiiot.SusiIot()
-        result = handler.get_data_by_uri("SUSIIoT Information")
-        result = handler.get_data_by_uri("Hardware Monitor")
-        print(result)
+        uris=handler.susi_information.keys()
+        for uri in uris:
+            result = handler.get_data_by_uri(uri)
+            print(result)
 
     def test_check_root_authorization(self):
         handler = susiiot.SusiIot()

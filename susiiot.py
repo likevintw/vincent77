@@ -143,9 +143,10 @@ class SusiIot:
         return self.turn_byte_to_json(result)
 
     def get_data_by_uri(self, uri):
+        print(uri)
         result = self.susi_iot_library.SusiIoTGetPFDataStringByUri(
             uri.encode('utf-8'))
-        print(result.decode('utf-8'))
+        return result.decode('utf-8')
 
     def get_log_path(self):
         return self.susi_iot_library.SusiIoTGetLoggerPath().decode()

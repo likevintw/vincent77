@@ -7,4 +7,7 @@ sudo python3 -m unittest -v test_susiiot.py
 
 
 ## Todo
-remind user to run python with root authorization, sudo
+remind user to run python with root authorization, sudo, ok
+
+test on arm linux:
+test_get_data_by_uri
