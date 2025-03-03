@@ -12,7 +12,7 @@ docker run \
     susiiot_ubuntu:1.0.1 \
     /bin/bash
 
-docker run \
+sudo docker run \
     --rm \
     -it \
     --name susi_iot_demo \
