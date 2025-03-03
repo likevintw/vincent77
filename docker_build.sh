@@ -1,0 +1,1 @@
+docker build -t susiiot_ubuntu:1.0.1 .

@@ -48,7 +48,7 @@ class SusiIot:
 
         else:
             print(f"disable to import library, architechture:{architecture.lower()}, os:{os_name}")
-
+        
         self.susi_iot_library = ctypes.CDLL(susi_iot_library_path)
         self.json_library = ctypes.CDLL(json_library_path)
 

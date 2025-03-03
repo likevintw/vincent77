@@ -1,6 +1,10 @@
 
-# Install Python3
-
+# Requirement on Linux
+```sh
+apt update \
+    apt install python3 python3-pip \
+    apt install libjansson4
+```
 # Run Example
 ```sh
 sudo python3 test_susiiot.py
