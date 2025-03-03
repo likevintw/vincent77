@@ -8,7 +8,7 @@ This allows customers to more easily program and configure features while mainta
 
 ## Architecture
 
-![image](Photo/SUSI.png)
+![image](photo.png)
 
 ## Service Highlights
 
