@@ -7,7 +7,6 @@ import platform
 
 class SusiIot:
     def __init__(self):
-        print("__init____init____init____init__")
         self.susi_iot_library = None
         self.json_library = None
         self.susi_iot_library_status = None
@@ -16,19 +15,17 @@ class SusiIot:
         self.json_preserve_order = 0x100
         self.susi_information = None
         self.susi_id_dictionary = {}
-
         self.import_library()
         self.initialize()
-
         self.id_list = self.extract_ids(self.susi_information)
         self.susi_id_dictionary = self.get_id_dictionary()
 
     def __del__(self):
         try:
-            self.susi_iot_library.SusiIoTUninitialize()
-            print("__del____del____del____del__")
-        except:
+            # self.susi_iot_library.SusiIoTUninitialize()
             pass
+        except Exception as e:
+            print(e)
 
     def import_library(self):
         current_dir = os.path.dirname(os.path.realpath(__file__))+"/"
@@ -58,10 +55,11 @@ class SusiIot:
     def initialize(self):
         try:
             if not self.check_root_authorization():
-                pass
+                print("check_root_authorizationcheck_root_authorization")
         except PermissionError as e:
             print(f"Error: {e}")
             exit(1)
+        
         self.susi_iot_library.SusiIoTInitialize.restype = ctypes.c_int
         self.susi_iot_library.SusiIoTGetPFCapabilityString.restype = ctypes.c_char_p
         self.susi_iot_library.SusiIoTGetPFData.argtypes = [
@@ -82,7 +80,7 @@ class SusiIot:
         self.json_library.json_integer.restype = ctypes.POINTER(JsonT)
         self.json_library.json_real.restype = ctypes.POINTER(JsonT)
         self.json_library.json_string.restype = ctypes.POINTER(JsonT)
-
+        
         self.susi_iot_library_status = self.susi_iot_library.SusiIoTInitialize()
 
         jsonObject = self.json_library.json_object()
