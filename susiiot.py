@@ -37,19 +37,23 @@ class SusiIot:
             susi_iot_library_path = current_dir+"libSusiIoT.x86.so"
             json_library_path = current_dir+"libjansson.x86.so"
 
-        elif os_name == "Linux" and 'arm' in architecture.lower():
+        elif os_name == "Linux" and 'aarch64' in architecture.lower():
             susi_iot_library_path = current_dir+"libSusiIoT.arm.so"
-            json_library_path = current_dir+"libjansson.4.arm.so"
+            json_library_path = current_dir+"libjansson.arm.so"
+            print(susi_iot_library_path)
+            print(json_library_path)
 
         elif os_name == "Windows" and 'x86' in architecture.lower():
             pass
 
-        elif os_name == "Windows" and 'arm' in architecture.lower():
+        elif os_name == "Windows" and 'aarch64' in architecture.lower():
             pass
 
         else:
             print(f"disable to import library, architechture:{architecture.lower()}, os:{os_name}")
 
+        self.susi_iot_library = ctypes.CDLL(susi_iot_library_path)
+        self.json_library = ctypes.CDLL(json_library_path)
         self.susi_iot_library = ctypes.CDLL(susi_iot_library_path)
         self.json_library = ctypes.CDLL(json_library_path)
 
