@@ -9,4 +9,5 @@ docker run \
     -v /var/:/var/ \
     -v /lib/:/lib/ \
     -v /home/:/volume \
-    susiiot_ubuntu:1.0.1
+    susiiot_ubuntu:1.0.1 \
+    /bin/bash
