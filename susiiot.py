@@ -15,9 +15,9 @@ class SusiIot:
         self.json_preserve_order = 0x100
         self.susi_information = None
         self.susi_id_dictionary = {}
-        self.gpio_list=[]
-        self.memory_list=[]
-        
+        self.gpio_list = []
+        self.memory_list = []
+
         self.import_library()
         self.initialize()
         self.id_list = self.extract_ids(self.susi_information)
@@ -51,7 +51,7 @@ class SusiIot:
 
         else:
             print(f"disable to import library, architechture:{architecture.lower()}, os:{os_name}")
-        
+
         self.susi_iot_library = ctypes.CDLL(susi_iot_library_path)
         self.json_library = ctypes.CDLL(json_library_path)
 
@@ -62,7 +62,7 @@ class SusiIot:
         except PermissionError as e:
             print(f"Error: {e}")
             exit(1)
-        
+
         self.susi_iot_library.SusiIoTInitialize.restype = ctypes.c_int
         self.susi_iot_library.SusiIoTGetPFCapabilityString.restype = ctypes.c_char_p
         self.susi_iot_library.SusiIoTGetPFData.argtypes = [
@@ -83,7 +83,7 @@ class SusiIot:
         self.json_library.json_integer.restype = ctypes.POINTER(JsonT)
         self.json_library.json_real.restype = ctypes.POINTER(JsonT)
         self.json_library.json_string.restype = ctypes.POINTER(JsonT)
-        
+
         self.susi_iot_library_status = self.susi_iot_library.SusiIoTInitialize()
 
         jsonObject = self.json_library.json_object()
@@ -192,102 +192,119 @@ class SusiIot:
                 except:
                     pass
         return self.susi_id_dictionary
-    
+
     def get_boot_up_times(self):
         if 'Boot up times' in self.susi_id_dictionary:
             return self.get_data_by_id(self.susi_id_dictionary['Boot up times'])['v']
         else:
             return None
+
     def get_running_time_in_hours(self):
         if 'Running time (hours)' in self.susi_id_dictionary:
             return self.get_data_by_id(self.susi_id_dictionary['Running time (hours)'])['v']
         else:
             return None
+
     def get_board_name(self):
         if 'Board name' in self.susi_id_dictionary:
             return self.get_data_by_id(self.susi_id_dictionary['Board name'])['sv']
         else:
             return None
+
     def get_bios_revision(self):
-        uri="BIOS revision"
+        uri = "BIOS revision"
         if uri in self.susi_id_dictionary:
             return self.get_data_by_id(self.susi_id_dictionary[uri])['sv']
         else:
             return None
+
     def get_firmware_name(self):
-        uri="Firmware Name"
+        uri = "Firmware Name"
         if uri in self.susi_id_dictionary:
             return self.get_data_by_id(self.susi_id_dictionary[uri])['sv']
         else:
             return None
+
     def get_driver_version(self):
-        uri="Driver version"
+        uri = "Driver version"
         if uri in self.susi_id_dictionary:
             return self.get_data_by_id(self.susi_id_dictionary[uri])['sv']
         else:
             return None
+
     def get_firmware_version(self):
-        uri="Firmware version"
+        uri = "Firmware version"
         if uri in self.susi_id_dictionary:
             return self.get_data_by_id(self.susi_id_dictionary[uri])['sv']
         else:
             return None
-    
+
     def get_vcore(self):
         try:
             return self.susi_information["Hardware Monitor"]["Voltage"]["e"][0]["v"]
         except:
             return None
+
     def get_vcore_max(self):
         try:
             return self.susi_information["Hardware Monitor"]["Voltage"]["e"][0]["max"]
         except:
             return None
+
     def get_vcore_min(self):
         try:
             return self.susi_information["Hardware Monitor"]["Voltage"]["e"][0]["min"]
         except:
             return None
+
     def get_5v_standby(self):
         try:
             return self.susi_information["Hardware Monitor"]["Voltage"]["e"][1]["v"]
         except:
             return None
+
     def get_5v_standby_max(self):
         try:
             return self.susi_information["Hardware Monitor"]["Voltage"]["e"][1]["max"]
         except:
             return None
+
     def get_5v_standby_min(self):
         try:
             return self.susi_information["Hardware Monitor"]["Voltage"]["e"][1]["min"]
         except:
             return None
+
     def get_cmos_battery(self):
         try:
             return self.susi_information["Hardware Monitor"]["Voltage"]["e"][2]["v"]
         except:
             return None
+
     def get_cmos_battery_max(self):
         try:
             return self.susi_information["Hardware Monitor"]["Voltage"]["e"][2]["max"]
         except:
             return None
+
     def get_cmos_battery_min(self):
         try:
             return self.susi_information["Hardware Monitor"]["Voltage"]["e"][2]["min"]
         except:
             return None
+
     def get_dc_power(self):
         try:
             return self.susi_information["Hardware Monitor"]["Voltage"]["e"][3]["v"]
         except:
             return None
+
     def get_dc_power_max(self):
         try:
             return self.susi_information["Hardware Monitor"]["Voltage"]["e"][3]["max"]
         except:
             return None
+
     def get_dc_power_min(self):
         try:
             return self.susi_information["Hardware Monitor"]["Voltage"]["e"][3]["min"]
@@ -299,213 +316,242 @@ class SusiIot:
             return self.susi_information["Hardware Monitor"]["Temperature"]["e"][0]["v"]
         except:
             return None
+
     def get_cpu_temperature_max_in_celsius(self):
         try:
             return self.susi_information["Hardware Monitor"]["Temperature"]["e"][0]["max"]
         except:
             return None
+
     def get_cpu_temperature_min_in_celsius(self):
         try:
             return self.susi_information["Hardware Monitor"]["Temperature"]["e"][0]["min"]
         except:
             return None
+
     def get_system_temperature_in_celsius(self):
         try:
             return self.susi_information["Hardware Monitor"]["Temperature"]["e"][1]["v"]
         except:
             return None
+
     def get_system_temperature_max_in_celsius(self):
         try:
             return self.susi_information["Hardware Monitor"]["Temperature"]["e"][1]["max"]
         except:
             return None
+
     def get_system_temperature_min_in_celsius(self):
         try:
             return self.susi_information["Hardware Monitor"]["Temperature"]["e"][1]["min"]
         except:
             return None
-        
+
     def get_gpio_counter(self):
-        counter=0
+        counter = 0
         for key in self.susi_information["GPIO"].keys():
             if "GPIO" in key:
-                counter+=1
+                counter += 1
         return counter
-    def get_gpio_direction(self,gpio_number=0):
-        command=self.gpio_list[gpio_number]
+
+    def get_gpio_direction(self, gpio_number=0):
+        command = self.gpio_list[gpio_number]
         try:
             return self.susi_information["GPIO"][command]["e"][0]["bv"]
         except:
             return None
-    def get_gpio_level(self,gpio_number=0):
-        command=self.gpio_list[gpio_number]
+
+    def get_gpio_level(self, gpio_number=0):
+        command = self.gpio_list[gpio_number]
         try:
             return self.susi_information["GPIO"][command]["e"][1]["bv"]
         except:
             return None
-    
-
 
     def get_memory_count(self):
-        counter=0
+        counter = 0
         for key in self.susi_information["SDRAM"].keys():
             if "SDRAM" in key:
-                counter+=1
+                counter += 1
         return counter
 
-    def get_memory_type(self,memory_number=0):
-        command=self.memory_list[memory_number]
+    def get_memory_type(self, memory_number=0):
+        command = self.memory_list[memory_number]
         try:
             return self.susi_information["SDRAM"][command]["e"][0]['sv']
         except:
             return None
 
-    def get_module_type(self,memory_number=0):
-        command=self.memory_list[memory_number]
+    def get_module_type(self, memory_number=0):
+        command = self.memory_list[memory_number]
         try:
             return self.susi_information["SDRAM"][command]["e"][1]['sv']
         except:
             return None
-    def get_module_size_in_GB(self,memory_number=0):
-        command=self.memory_list[memory_number]
+
+    def get_module_size_in_GB(self, memory_number=0):
+        command = self.memory_list[memory_number]
         try:
             return self.susi_information["SDRAM"][command]["e"][2]['v']
         except:
             return None
-    def get_memory_speed(self,memory_number=0):
-        command=self.memory_list[memory_number]
+
+    def get_memory_speed(self, memory_number=0):
+        command = self.memory_list[memory_number]
         try:
             return self.susi_information["SDRAM"][command]["e"][3]['sv']
         except:
             return None
-    def get_memory_rank(self,memory_number=0):
-        command=self.memory_list[memory_number]
+
+    def get_memory_rank(self, memory_number=0):
+        command = self.memory_list[memory_number]
         try:
             return self.susi_information["SDRAM"][command]["e"][4]['v']
         except:
             return None
-    def get_memory_voltage(self,memory_number=0):
-        command=self.memory_list[memory_number]
+
+    def get_memory_voltage(self, memory_number=0):
+        command = self.memory_list[memory_number]
         try:
             return self.susi_information["SDRAM"][command]["e"][5]['v']
         except:
             return None
-    def get_memory_bank(self,memory_number=0):
-        command=self.memory_list[memory_number]
+
+    def get_memory_bank(self, memory_number=0):
+        command = self.memory_list[memory_number]
         try:
             return self.susi_information["SDRAM"][command]["e"][6]['sv']
         except:
             return None
-    def get_memory_week_year(self,memory_number=0):
-        command=self.memory_list[memory_number]
+
+    def get_memory_week_year(self, memory_number=0):
+        command = self.memory_list[memory_number]
         try:
             return self.susi_information["SDRAM"][command]["e"][7]['sv']
         except:
             return None
-    def get_memory_temperature(self,memory_number=0):
-        command=self.memory_list[memory_number]
+
+    def get_memory_temperature(self, memory_number=0):
+        command = self.memory_list[memory_number]
         try:
             return self.susi_information["SDRAM"][command]["e"][8]['v']
         except:
             return None
-
 
     def get_disk_total_disk_space(self):
         try:
             return self.susi_information["DiskInfo"]["e"][0]['v']
         except:
             return None
+
     def get_disk_total_disk_space_max(self):
         try:
             return self.susi_information["DiskInfo"]["e"][0]['max']
         except:
             return None
+
     def get_disk_total_disk_space_min(self):
         try:
             return self.susi_information["DiskInfo"]["e"][0]['min']
         except:
             return None
+
     def get_disk_free_disk_space(self):
         try:
             return self.susi_information["DiskInfo"]["e"][1]['v']
         except:
             return None
+
     def get_disk_free_disk_space_max(self):
         try:
             return self.susi_information["DiskInfo"]["e"][1]['max']
         except:
             return None
+
     def get_disk_free_disk_space_min(self):
         try:
             return self.susi_information["DiskInfo"]["e"][1]['min']
         except:
             return None
+
     def get_disk_media_recovery_total_disk_space(self):
         try:
             return self.susi_information["DiskInfo"]["e"][2]['v']
         except:
             return None
+
     def get_disk_media_recovery_total_disk_space_max(self):
         try:
             return self.susi_information["DiskInfo"]["e"][2]['v']
         except:
             return None
+
     def get_disk_media_recovery_total_disk_space_min(self):
         try:
             return self.susi_information["DiskInfo"]["e"][2]['v']
         except:
             return None
+
     def get_disk_media_recovery_free_disk_space(self):
         try:
             return self.susi_information["DiskInfo"]["e"][3]['v']
         except:
             return None
+
     def get_disk_media_recovery_free_disk_space_max(self):
         try:
             return self.susi_information["DiskInfo"]["e"][3]['max']
         except:
             return None
+
     def get_disk_media_recovery_free_disk_space_min(self):
         try:
             return self.susi_information["DiskInfo"]["e"][3]['min']
         except:
             return None
+
     def get_disk_home_total_disk_space(self):
         try:
             return self.susi_information["DiskInfo"]["e"][4]['v']
         except:
             return None
+
     def get_disk_home_total_disk_space_max(self):
         try:
             return self.susi_information["DiskInfo"]["e"][4]['max']
         except:
             return None
+
     def get_disk_home_total_disk_space_min(self):
         try:
             return self.susi_information["DiskInfo"]["e"][4]['min']
         except:
             return None
+
     def get_disk_free_disk_space(self):
         try:
             return self.susi_information["DiskInfo"]["e"][5]['v']
         except:
             return None
+
     def get_disk_free_disk_space_max(self):
         try:
             return self.susi_information["DiskInfo"]["e"][5]['max']
         except:
             return None
+
     def get_disk_free_disk_space_min(self):
         try:
             return self.susi_information["DiskInfo"]["e"][5]['min']
         except:
             return None
-        
+
     def get_susiiot_version(self):
         try:
             return self.susi_information["SUSIIoT Information"]["e"][0]['sv']
         except:
             return None
+
 
 class JsonType:
     JSON_OBJECT = 0

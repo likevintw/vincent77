@@ -13,21 +13,21 @@ logging.basicConfig(
     ]
 )
 
+
 class TestHandler(unittest.TestCase):
     def test_get_susi_information(self):
         handler = susiiot.SusiIot()
         results = handler.get_susi_information()
         logging.debug(results)
 
-
     def test_get_gpio_list(self):
         handler = susiiot.SusiIot()
-        self.assertNotEqual(len(handler.gpio_list),0)
+        self.assertNotEqual(len(handler.gpio_list), 0)
         logging.debug(handler.gpio_list)
-        
+
     def test_get_memory_list(self):
         handler = susiiot.SusiIot()
-        self.assertNotEqual(len(handler.memory_list),0)
+        self.assertNotEqual(len(handler.memory_list), 0)
         logging.debug(handler.memory_list)
 
     def test_get_id_list(self):
@@ -43,7 +43,7 @@ class TestHandler(unittest.TestCase):
 
     def test_get_data_by_uri(self):
         handler = susiiot.SusiIot()
-        uris=handler.susi_information.keys()
+        uris = handler.susi_information.keys()
         for uri in uris:
             result = handler.get_data_by_uri(uri)
             logging.debug(result)
@@ -89,32 +89,36 @@ class TestHandler(unittest.TestCase):
         for key in results.keys():
             logging.debug(key)
 
-
-
     def test_get_boot_up_times(self):
         handler = susiiot.SusiIot()
         results = handler.get_boot_up_times()
         self.assertNotEqual(results, None)
+
     def test_get_running_time_in_hours(self):
         handler = susiiot.SusiIot()
         results = handler.get_running_time_in_hours()
         self.assertNotEqual(results, None)
+
     def test_get_board_name(self):
         handler = susiiot.SusiIot()
         results = handler.get_board_name()
         self.assertNotEqual(results, None)
+
     def test_get_bios_revision(self):
         handler = susiiot.SusiIot()
         results = handler.get_bios_revision()
         self.assertNotEqual(results, None)
+
     def test_get_firmware_name(self):
         handler = susiiot.SusiIot()
         results = handler.get_firmware_name()
         self.assertNotEqual(results, None)
+
     def test_get_driver_version(self):
         handler = susiiot.SusiIot()
         results = handler.get_driver_version()
         self.assertNotEqual(results, None)
+
     def test_get_firmware_version(self):
         handler = susiiot.SusiIot()
         results = handler.get_firmware_version()
@@ -124,70 +128,87 @@ class TestHandler(unittest.TestCase):
         handler = susiiot.SusiIot()
         results = handler.get_vcore()
         self.assertNotEqual(results, None)
+
     def test_get_vcore_max(self):
         handler = susiiot.SusiIot()
         results = handler.get_vcore_max()
         self.assertNotEqual(results, None)
+
     def test_get_vcore_min(self):
         handler = susiiot.SusiIot()
         results = handler.get_vcore_min()
         self.assertNotEqual(results, None)
+
     def test_get_5v_standby(self):
         handler = susiiot.SusiIot()
         results = handler.get_5v_standby()
         self.assertNotEqual(results, None)
+
     def test_get_5v_standby_max(self):
         handler = susiiot.SusiIot()
         results = handler.get_5v_standby_max()
         self.assertNotEqual(results, None)
+
     def test_get_5v_standby_min(self):
         handler = susiiot.SusiIot()
         results = handler.get_5v_standby_min()
         self.assertNotEqual(results, None)
+
     def test_get_cmos_battery(self):
         handler = susiiot.SusiIot()
         results = handler.get_cmos_battery()
         self.assertNotEqual(results, None)
+
     def test_get_cmos_battery_max(self):
         handler = susiiot.SusiIot()
         results = handler.get_cmos_battery_max()
         self.assertNotEqual(results, None)
+
     def test_get_cmos_battery_min(self):
         handler = susiiot.SusiIot()
         results = handler.get_cmos_battery_min()
         self.assertNotEqual(results, None)
+
     def test_get_dc_power(self):
         handler = susiiot.SusiIot()
         results = handler.get_dc_power()
         self.assertNotEqual(results, None)
+
     def test_get_dc_power_max(self):
         handler = susiiot.SusiIot()
         results = handler.get_dc_power_max()
         self.assertNotEqual(results, None)
+
     def test_get_dc_power_min(self):
         handler = susiiot.SusiIot()
         results = handler.get_dc_power_min()
         self.assertNotEqual(results, None)
+
     def test_get_cpu_temperature_in_celsius(self):
         handler = susiiot.SusiIot()
         results = handler.get_cpu_temperature_in_celsius()
         self.assertNotEqual(results, None)
+
     def test_get_cpu_temperature_max_in_celsius(self):
         handler = susiiot.SusiIot()
         results = handler.get_cpu_temperature_max_in_celsius()
         self.assertNotEqual(results, None)
+
     def test_get_cpu_temperature_min_in_celsius(self):
         handler = susiiot.SusiIot()
         results = handler.get_cpu_temperature_min_in_celsius()
         self.assertNotEqual(results, None)
+
     def test_get_system_temperature_in_celsius(self):
         handler = susiiot.SusiIot()
         results = handler.get_system_temperature_in_celsius()
         self.assertNotEqual(results, None)
+
     def test_get_system_temperature_max_in_celsius(self):
         handler = susiiot.SusiIot()
         results = handler.get_system_temperature_max_in_celsius()
         self.assertNotEqual(results, None)
+
     def test_get_system_temperature_min_in_celsius(self):
         handler = susiiot.SusiIot()
         results = handler.get_system_temperature_min_in_celsius()
@@ -201,19 +222,19 @@ class TestHandler(unittest.TestCase):
 
     def test_get_gpio_direction(self):
         handler = susiiot.SusiIot()
-        gpio_count=handler.get_gpio_counter()
+        gpio_count = handler.get_gpio_counter()
         for gpio in range(gpio_count):
-            result=handler.get_gpio_direction(gpio)
+            result = handler.get_gpio_direction(gpio)
             logging.debug(result)
-            self.assertNotEqual(result,None)
+            self.assertNotEqual(result, None)
 
     def test_get_gpio_level(self):
         handler = susiiot.SusiIot()
-        gpio_count=handler.get_gpio_counter()
+        gpio_count = handler.get_gpio_counter()
         for gpio in range(gpio_count):
-            result=handler.get_gpio_level(gpio)
+            result = handler.get_gpio_level(gpio)
             logging.debug(result)
-            self.assertNotEqual(result,None)
+            self.assertNotEqual(result, None)
 
     def test_get_memory_count(self):
         handler = susiiot.SusiIot()
@@ -233,61 +254,73 @@ class TestHandler(unittest.TestCase):
         handler = susiiot.SusiIot()
         results = handler.get_module_type()
         self.assertNotEqual(results, None)
+
     def test_get_module_size_in_GB(self):
         handler = susiiot.SusiIot()
         results = handler.get_module_size_in_GB()
         self.assertNotEqual(results, None)
+
     def test_get_memory_speed(self):
         handler = susiiot.SusiIot()
         results = handler.get_memory_speed()
         self.assertNotEqual(results, None)
+
     def test_get_memory_rank(self):
         handler = susiiot.SusiIot()
         results = handler.get_memory_rank()
         self.assertNotEqual(results, None)
+
     def test_get_memory_voltage(self):
         handler = susiiot.SusiIot()
         results = handler.get_memory_voltage()
         self.assertNotEqual(results, None)
+
     def test_get_memory_bank(self):
         handler = susiiot.SusiIot()
         results = handler.get_memory_bank()
         self.assertNotEqual(results, None)
+
     def test_get_memory_week_year(self):
         handler = susiiot.SusiIot()
         results = handler.get_memory_week_year()
         self.assertNotEqual(results, None)
+
     def test_get_memory_temperature(self):
         handler = susiiot.SusiIot()
         result = handler.get_memory_temperature()
         logging.debug(result)
         self.assertNotEqual(result, None)
 
-
     def test_get_disk_total_disk_space(self):
         handler = susiiot.SusiIot()
         results = handler.get_disk_total_disk_space()
         self.assertNotEqual(results, None)
+
     def test_get_disk_free_disk_space(self):
         handler = susiiot.SusiIot()
         results = handler.get_disk_free_disk_space()
         self.assertNotEqual(results, None)
+
     def test_get_disk_media_recovery_total_disk_space(self):
         handler = susiiot.SusiIot()
         results = handler.get_disk_media_recovery_total_disk_space()
         self.assertNotEqual(results, None)
+
     def test_get_disk_media_recovery_free_disk_space(self):
         handler = susiiot.SusiIot()
         results = handler.get_disk_media_recovery_free_disk_space()
         self.assertNotEqual(results, None)
+
     def test_get_disk_free_disk_space(self):
         handler = susiiot.SusiIot()
         results = handler.get_disk_free_disk_space()
         self.assertNotEqual(results, None)
+
     def test_get_susiiot_version(self):
         handler = susiiot.SusiIot()
         results = handler.get_susiiot_version()
         self.assertNotEqual(results, None)
+
 
 if __name__ == '__main__':
     unittest.main()
