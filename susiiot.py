@@ -225,40 +225,34 @@ class SusiIot:
             return None
     
     def get_vcore(self):
-        uri="Vcore"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['v']
-        else:
+        try:
+            return self.susi_information["Hardware Monitor"]["Voltage"]["e"][0]["v"]
+        except:
             return None
     def get_vcore_max(self):
-        uri="Vcore"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['max']
-        else:
+        try:
+            return self.susi_information["Hardware Monitor"]["Voltage"]["e"][0]["max"]
+        except:
             return None
     def get_vcore_min(self):
-        uri="Vcore"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['min']
-        else:
+        try:
+            return self.susi_information["Hardware Monitor"]["Voltage"]["e"][0]["min"]
+        except:
             return None
     def get_5v_standby(self):
-        uri="5V Standby"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['v']
-        else:
+        try:
+            return self.susi_information["Hardware Monitor"]["Voltage"]["e"][1]["v"]
+        except:
             return None
     def get_5v_standby_max(self):
-        uri="5V Standby"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['max']
-        else:
+        try:
+            return self.susi_information["Hardware Monitor"]["Voltage"]["e"][1]["max"]
+        except:
             return None
     def get_5v_standby_min(self):
-        uri="5V Standby"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['min']
-        else:
+        try:
+            return self.susi_information["Hardware Monitor"]["Voltage"]["e"][1]["min"]
+        except:
             return None
     def get_cmos_battery(self):
         uri="CMOS Battery"
