@@ -19,6 +19,17 @@ class TestHandler(unittest.TestCase):
         results = handler.get_susi_information()
         logging.debug(results)
 
+
+    def test_get_gpio_list(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(len(handler.gpio_list),0)
+        logging.debug(handler.gpio_list)
+        
+    def test_get_memory_list(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(len(handler.memory_list),0)
+        logging.debug(handler.memory_list)
+
     def test_get_id_list(self):
         handler = susiiot.SusiIot()
         results = handler.get_id_list()

@@ -15,6 +15,9 @@ class SusiIot:
         self.json_preserve_order = 0x100
         self.susi_information = None
         self.susi_id_dictionary = {}
+        self.gpio_list=[]
+        self.memory_list=[]
+        
         self.import_library()
         self.initialize()
         self.id_list = self.extract_ids(self.susi_information)
@@ -91,6 +94,13 @@ class SusiIot:
             self.susi_json_t = self.json_library.json_dumps(jsonObject, self.get_json_indent(
                 4) | self.json_max_indent | self.get_json_real_precision(10))
             self.susi_information = self.turn_byte_to_json(self.susi_json_t)
+
+        for key in self.susi_information["GPIO"].keys():
+            if "GPIO" in key:
+                self.gpio_list.append(key)
+        for key in self.susi_information["SDRAM"].keys():
+            if "SDRAM" in key:
+                self.memory_list.append(key)
 
     def check_root_authorization(self):
         if os.geteuid() != 0:
@@ -322,95 +332,18 @@ class SusiIot:
                 counter+=1
         return counter
     def get_gpio_direction(self,gpio_number=0):
-        command=""
-        if gpio_number > 9:
-            command = f"GPIO{gpio_number}"
-        else:
-            command = f"GPIO0{gpio_number}"
+        command=self.gpio_list[gpio_number]
         try:
             return self.susi_information["GPIO"][command]["e"][0]["bv"]
         except:
             return None
     def get_gpio_level(self,gpio_number=0):
-        command=""
-        if gpio_number > 9:
-            command = f"GPIO{gpio_number}"
-        else:
-            command = f"GPIO0{gpio_number}"
+        command=self.gpio_list[gpio_number]
         try:
             return self.susi_information["GPIO"][command]["e"][1]["bv"]
         except:
             return None
-    def get_gpio01_direction(self):
-        try:
-            return self.susi_information["GPIO01"]["e"][0]["bv"]
-        except:
-            return None
-    def get_gpio01_level(self):
-        try:
-            return self.susi_information["GPIO01"]["e"][1]["bv"]
-        except:
-            return None
-    def get_gpio02_direction(self):
-        try:
-            return self.susi_information["GPIO02"]["e"][0]["bv"]
-        except:
-            return None
-    def get_gpio02_level(self):
-        try:
-            return self.susi_information["GPIO02"]["e"][1]["bv"]
-        except:
-            return None
-    def get_gpio03_direction(self):
-        try:
-            return self.susi_information["GPIO03"]["e"][0]["bv"]
-        except:
-            return None
-    def get_gpio03_level(self):
-        try:
-            return self.susi_information["GPIO03"]["e"][1]["bv"]
-        except:
-            return None
-    def get_gpio04_direction(self):
-        try:
-            return self.susi_information["GPIO04"]["e"][0]["bv"]
-        except:
-            return None
-    def get_gpio04_level(self):
-        try:
-            return self.susi_information["GPIO04"]["e"][1]["bv"]
-        except:
-            return None
-    def get_gpio05_direction(self):
-        try:
-            return self.susi_information["GPIO05"]["e"][0]["bv"]
-        except:
-            return None
-    def get_gpio05_level(self):
-        try:
-            return self.susi_information["GPIO05"]["e"][1]["bv"]
-        except:
-            return None
-    def get_gpio06_direction(self):
-        try:
-            return self.susi_information["GPIO06"]["e"][0]["bv"]
-        except:
-            return None
-    def get_gpio06_level(self):
-        try:
-            return self.susi_information["GPIO06"]["e"][1]["bv"]
-        except:
-            return None
-    def get_gpio07_direction(self):
-        try:
-            return self.susi_information["GPIO07"]["e"][0]["bv"]
-        except:
-            return None
-    def get_gpio07_level(self):
-        try:
-            return self.susi_information["GPIO07"]["e"][1]["bv"]
-        except:
-            return None
+    
 
 
     def get_memory_count(self):
@@ -421,56 +354,56 @@ class SusiIot:
         return counter
 
     def get_memory_type(self,memory_number=0):
-        command=f"SDRAM{memory_number}"
+        command=self.memory_list[memory_number]
         try:
             return self.susi_information["SDRAM"][command]["e"][0]['sv']
         except:
             return None
 
     def get_module_type(self,memory_number=0):
-        command=f"SDRAM{memory_number}"
+        command=self.memory_list[memory_number]
         try:
             return self.susi_information["SDRAM"][command]["e"][1]['sv']
         except:
             return None
     def get_module_size_in_GB(self,memory_number=0):
-        command=f"SDRAM{memory_number}"
+        command=self.memory_list[memory_number]
         try:
             return self.susi_information["SDRAM"][command]["e"][2]['v']
         except:
             return None
     def get_memory_speed(self,memory_number=0):
-        command=f"SDRAM{memory_number}"
+        command=self.memory_list[memory_number]
         try:
             return self.susi_information["SDRAM"][command]["e"][3]['sv']
         except:
             return None
     def get_memory_rank(self,memory_number=0):
-        command=f"SDRAM{memory_number}"
+        command=self.memory_list[memory_number]
         try:
             return self.susi_information["SDRAM"][command]["e"][4]['v']
         except:
             return None
     def get_memory_voltage(self,memory_number=0):
-        command=f"SDRAM{memory_number}"
+        command=self.memory_list[memory_number]
         try:
             return self.susi_information["SDRAM"][command]["e"][5]['v']
         except:
             return None
     def get_memory_bank(self,memory_number=0):
-        command=f"SDRAM{memory_number}"
+        command=self.memory_list[memory_number]
         try:
             return self.susi_information["SDRAM"][command]["e"][6]['sv']
         except:
             return None
     def get_memory_week_year(self,memory_number=0):
-        command=f"SDRAM{memory_number}"
+        command=self.memory_list[memory_number]
         try:
             return self.susi_information["SDRAM"][command]["e"][7]['sv']
         except:
             return None
     def get_memory_temperature(self,memory_number=0):
-        command=f"SDRAM{memory_number}"
+        command=self.memory_list[memory_number]
         try:
             return self.susi_information["SDRAM"][command]["e"][8]['v']
         except:
