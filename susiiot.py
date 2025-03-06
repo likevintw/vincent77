@@ -255,84 +255,73 @@ class SusiIot:
         except:
             return None
     def get_cmos_battery(self):
-        uri="CMOS Battery"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['v']
-        else:
+        try:
+            return self.susi_information["Hardware Monitor"]["Voltage"]["e"][2]["v"]
+        except:
             return None
     def get_cmos_battery_max(self):
-        uri="CMOS Battery"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['max']
-        else:
+        try:
+            return self.susi_information["Hardware Monitor"]["Voltage"]["e"][2]["max"]
+        except:
             return None
     def get_cmos_battery_min(self):
-        uri="CMOS Battery"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['min']
-        else:
+        try:
+            return self.susi_information["Hardware Monitor"]["Voltage"]["e"][2]["min"]
+        except:
             return None
     def get_dc_power(self):
-        uri="DC"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['v']
-        else:
+        try:
+            return self.susi_information["Hardware Monitor"]["Voltage"]["e"][3]["v"]
+        except:
             return None
     def get_dc_power_max(self):
-        uri="DC"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['max']
-        else:
+        try:
+            return self.susi_information["Hardware Monitor"]["Voltage"]["e"][3]["max"]
+        except:
             return None
     def get_dc_power_min(self):
-        uri="DC"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['min']
-        else:
+        try:
+            return self.susi_information["Hardware Monitor"]["Voltage"]["e"][3]["min"]
+        except:
             return None
 
     def get_cpu_temperature_in_celsius(self):
-        uri="CPU"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['v']
-        else:
-            return None
-    def get_cpu_temperature_max_in_celsius(self):
-        uri="CPU"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['max']
-        else:
-            return None
-    def get_cpu_temperature_min_in_celsius(self):
-        uri="CPU"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['min']
-        else:
-            return None
-    def get_system_temperature_in_celsius(self):
-        uri="System"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['v']
-        else:
-            return None
-    def get_system_temperature_max_in_celsius(self):
-        uri="System"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['max']
-        else:
-            return None
-    def get_system_temperature_min_in_celsius(self):
-        uri="System"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['min']
-        else:
-            return None
-        
-    def get_gpio00_direction(self):
         try:
-            return self.susi_information["GPIO00"]["e"][0]["bv"]
+            return self.susi_information["Hardware Monitor"]["Temperature"]["e"][0]["v"]
         except:
             return None
+    def get_cpu_temperature_max_in_celsius(self):
+        try:
+            return self.susi_information["Hardware Monitor"]["Temperature"]["e"][0]["max"]
+        except:
+            return None
+    def get_cpu_temperature_min_in_celsius(self):
+        try:
+            return self.susi_information["Hardware Monitor"]["Temperature"]["e"][0]["min"]
+        except:
+            return None
+    def get_system_temperature_in_celsius(self):
+        try:
+            return self.susi_information["Hardware Monitor"]["Temperature"]["e"][1]["v"]
+        except:
+            return None
+    def get_system_temperature_max_in_celsius(self):
+        try:
+            return self.susi_information["Hardware Monitor"]["Temperature"]["e"][1]["max"]
+        except:
+            return None
+    def get_system_temperature_min_in_celsius(self):
+        try:
+            return self.susi_information["Hardware Monitor"]["Temperature"]["e"][1]["min"]
+        except:
+            return None
+        
+    def get_gpio_counter(self):
+        counter=0
+        for key in self.susi_information["GPIO"].keys():
+            if "GPIO" in key:
+                counter+=1
+        return counter
     def get_gpio00_level(self):
         try:
             return self.susi_information["GPIO00"]["e"][1]["bv"]

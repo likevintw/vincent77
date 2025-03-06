@@ -6,7 +6,7 @@ import platform
 import logging
 
 logging.basicConfig(
-    level=logging.INFO,  # 设置日志级别（DEBUG, INFO, WARNING, ERROR, CRITICAL）
+    level=logging.DEBUG,  # 设置日志级别（ DEBUG, INFO, WARNING, ERROR, CRITICAL）
     format='%(asctime)s - %(levelname)s - %(message)s',  # 设置日志输出格式
     handlers=[
         logging.StreamHandler()  # 输出到控制台
@@ -182,6 +182,11 @@ class TestHandler(unittest.TestCase):
         results = handler.get_system_temperature_min_in_celsius()
         self.assertNotEqual(results, None)
 
+    def test_get_gpio_counter(self):
+        handler = susiiot.SusiIot()
+        result = handler.get_gpio_counter()
+        self.assertNotEqual(result, None)
+        logging.debug(result)
 
     def test_get_gpio00_direction(self):
         handler = susiiot.SusiIot()
