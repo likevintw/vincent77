@@ -189,8 +189,8 @@ class SusiIot:
         else:
             return None
     def get_running_time_in_hours(self):
-        if 'Running time' in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary['Running time'])['v']
+        if 'Running time (hours)' in self.susi_id_dictionary:
+            return self.get_data_by_id(self.susi_id_dictionary['Running time (hours)'])['v']
         else:
             return None
     def get_board_name(self):
@@ -436,7 +436,7 @@ class SusiIot:
     def get_module_size_in_GB(self,memory_number=0):
         command=f"SDRAM{memory_number}"
         try:
-            return self.susi_information["SDRAM"][command]["e"][2]['sv']
+            return self.susi_information["SDRAM"][command]["e"][2]['v']
         except:
             return None
     def get_memory_speed(self,memory_number=0):
@@ -448,13 +448,13 @@ class SusiIot:
     def get_memory_rank(self,memory_number=0):
         command=f"SDRAM{memory_number}"
         try:
-            return self.susi_information["SDRAM"][command]["e"][4]['sv']
+            return self.susi_information["SDRAM"][command]["e"][4]['v']
         except:
             return None
     def get_memory_voltage(self,memory_number=0):
         command=f"SDRAM{memory_number}"
         try:
-            return self.susi_information["SDRAM"][command]["e"][5]['sv']
+            return self.susi_information["SDRAM"][command]["e"][5]['v']
         except:
             return None
     def get_memory_bank(self,memory_number=0):

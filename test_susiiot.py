@@ -6,7 +6,7 @@ import platform
 import logging
 
 logging.basicConfig(
-    level=logging.DEBUG,  # 设置日志级别（ DEBUG, INFO, WARNING, ERROR, CRITICAL）
+    level=logging.INFO,  # 设置日志级别（ DEBUG, INFO, WARNING, ERROR, CRITICAL）
     format='%(asctime)s - %(levelname)s - %(message)s',  # 设置日志输出格式
     handlers=[
         logging.StreamHandler()  # 输出到控制台
