@@ -6,7 +6,7 @@ import platform
 import logging
 
 logging.basicConfig(
-    level=logging.INFO,  # 设置日志级别（ DEBUG, INFO, WARNING, ERROR, CRITICAL）
+    level=logging.DEBUG,  # 设置日志级别（ DEBUG, INFO, WARNING, ERROR, CRITICAL）
     format='%(asctime)s - %(levelname)s - %(message)s',  # 设置日志输出格式
     handlers=[
         logging.StreamHandler()  # 输出到控制台
@@ -206,7 +206,7 @@ class TestHandler(unittest.TestCase):
 
     def test_get_memory_count(self):
         handler = susiiot.SusiIot()
-        result = handler.get_memory_count(0)
+        result = handler.get_memory_count()
         logging.debug(result)
         self.assertNotEqual(result, 0)
 
@@ -217,7 +217,7 @@ class TestHandler(unittest.TestCase):
             result = handler.get_memory_type(memeory_number)
             logging.debug(result)
             self.assertNotEqual(result, None)
-            
+
     def test_get_module_type(self):
         handler = susiiot.SusiIot()
         results = handler.get_module_type()
@@ -234,9 +234,9 @@ class TestHandler(unittest.TestCase):
         handler = susiiot.SusiIot()
         results = handler.get_memory_rank()
         self.assertNotEqual(results, None)
-    def test_get_SDRAM_voltage(self):
+    def test_get_memory_voltage(self):
         handler = susiiot.SusiIot()
-        results = handler.get_SDRAM_voltage()
+        results = handler.get_memory_voltage()
         self.assertNotEqual(results, None)
     def test_get_memory_bank(self):
         handler = susiiot.SusiIot()
@@ -248,13 +248,14 @@ class TestHandler(unittest.TestCase):
         self.assertNotEqual(results, None)
     def test_get_memory_temperature(self):
         handler = susiiot.SusiIot()
-        results = handler.get_memory_temperature()
-        self.assertNotEqual(results, None)
+        result = handler.get_memory_temperature()
+        logging.debug(result)
+        self.assertNotEqual(result, None)
 
 
     def test_get_disk_total_disk_space(self):
         handler = susiiot.SusiIot()
-        results = handler.test_get_disk_total_disk_space()
+        results = handler.get_disk_total_disk_space()
         self.assertNotEqual(results, None)
     def test_get_disk_free_disk_space(self):
         handler = susiiot.SusiIot()

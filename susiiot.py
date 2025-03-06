@@ -139,7 +139,6 @@ class SusiIot:
         return self.turn_byte_to_json(result)
 
     def get_data_by_uri(self, uri):
-        print(uri)
         result = self.susi_iot_library.SusiIoTGetPFDataStringByUri(
             uri.encode('utf-8'))
         return result.decode('utf-8')
@@ -452,6 +451,12 @@ class SusiIot:
             return self.susi_information["SDRAM"][command]["e"][4]['sv']
         except:
             return None
+    def get_memory_voltage(self,memory_number=0):
+        command=f"SDRAM{memory_number}"
+        try:
+            return self.susi_information["SDRAM"][command]["e"][5]['sv']
+        except:
+            return None
     def get_memory_bank(self,memory_number=0):
         command=f"SDRAM{memory_number}"
         try:
@@ -467,7 +472,7 @@ class SusiIot:
     def get_memory_temperature(self,memory_number=0):
         command=f"SDRAM{memory_number}"
         try:
-            return self.susi_information["SDRAM"][command]["e"][8]['sv']
+            return self.susi_information["SDRAM"][command]["e"][8]['v']
         except:
             return None
 
