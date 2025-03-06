@@ -322,9 +322,24 @@ class SusiIot:
             if "GPIO" in key:
                 counter+=1
         return counter
-    def get_gpio00_level(self):
+    def get_gpio_direction(self,gpio_number=0):
+        command=""
+        if gpio_number > 9:
+            command = f"GPIO{gpio_number}"
+        else:
+            command = f"GPIO0{gpio_number}"
         try:
-            return self.susi_information["GPIO00"]["e"][1]["bv"]
+            return self.susi_information["GPIO"][command]["e"][0]["bv"]
+        except:
+            return None
+    def get_gpio_level(self,gpio_number=0):
+        command=""
+        if gpio_number > 9:
+            command = f"GPIO{gpio_number}"
+        else:
+            command = f"GPIO0{gpio_number}"
+        try:
+            return self.susi_information["GPIO"][command]["e"][1]["bv"]
         except:
             return None
     def get_gpio01_direction(self):

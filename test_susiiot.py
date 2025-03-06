@@ -188,70 +188,21 @@ class TestHandler(unittest.TestCase):
         self.assertNotEqual(result, None)
         logging.debug(result)
 
-    def test_get_gpio00_direction(self):
+    def test_get_gpio_direction(self):
         handler = susiiot.SusiIot()
-        results = handler.get_gpio00_direction()
-        self.assertNotEqual(results, None)
-    def test_get_gpio00_level(self):
+        gpio_count=handler.get_gpio_counter()
+        for gpio in range(gpio_count):
+            result=handler.get_gpio_direction(gpio)
+            logging.debug(result)
+            self.assertNotEqual(result,None)
+
+    def test_get_gpio_level(self):
         handler = susiiot.SusiIot()
-        results = handler.get_gpio00_level()
-        self.assertNotEqual(results, None)
-    def test_get_gpio01_direction(self):
-        handler = susiiot.SusiIot()
-        results = handler.get_gpio01_direction()
-        self.assertNotEqual(results, None)
-    def test_get_gpio01_level(self):
-        handler = susiiot.SusiIot()
-        results = handler.get_gpio01_level()
-        self.assertNotEqual(results, None)
-    def test_get_gpio02_direction(self):
-        handler = susiiot.SusiIot()
-        results = handler.get_gpio02_direction()
-        self.assertNotEqual(results, None)
-    def test_get_gpio02_level(self):
-        handler = susiiot.SusiIot()
-        results = handler.get_gpio02_level()
-        self.assertNotEqual(results, None)
-    def test_get_gpio03_direction(self):
-        handler = susiiot.SusiIot()
-        results = handler.get_gpio03_direction()
-        self.assertNotEqual(results, None)
-    def test_get_gpio03_level(self):
-        handler = susiiot.SusiIot()
-        results = handler.get_gpio03_level()
-        self.assertNotEqual(results, None)
-    def test_get_gpio04_direction(self):
-        handler = susiiot.SusiIot()
-        results = handler.get_gpio04_direction()
-        self.assertNotEqual(results, None)
-    def test_get_gpio04_level(self):
-        handler = susiiot.SusiIot()
-        results = handler.get_gpio04_level()
-        self.assertNotEqual(results, None)
-    def test_get_gpio05_direction(self):
-        handler = susiiot.SusiIot()
-        results = handler.get_gpio05_direction()
-        self.assertNotEqual(results, None)
-    def test_get_gpio05_level(self):
-        handler = susiiot.SusiIot()
-        results = handler.get_gpio05_level()
-        self.assertNotEqual(results, None)
-    def test_get_gpio06_direction(self):
-        handler = susiiot.SusiIot()
-        results = handler.get_gpio06_direction()
-        self.assertNotEqual(results, None)
-    def test_get_gpio06_level(self):
-        handler = susiiot.SusiIot()
-        results = handler.get_gpio06_level()
-        self.assertNotEqual(results, None)
-    def test_get_gpio07_direction(self):
-        handler = susiiot.SusiIot()
-        results = handler.get_gpio07_direction()
-        self.assertNotEqual(results, None)
-    def test_get_gpio07_level(self):
-        handler = susiiot.SusiIot()
-        results = handler.get_gpio07_level()
-        self.assertNotEqual(results, None)
+        gpio_count=handler.get_gpio_counter()
+        for gpio in range(gpio_count):
+            result=handler.get_gpio_level(gpio)
+            logging.debug(result)
+            self.assertNotEqual(result,None)
 
 
     def test_get_memory_type(self):
