@@ -6,7 +6,7 @@ import platform
 import logging
 
 logging.basicConfig(
-    level=logging.DEBUG,  # 设置日志级别（ DEBUG, INFO, WARNING, ERROR, CRITICAL）
+    level=logging.INFO,  # 设置日志级别（ DEBUG, INFO, WARNING, ERROR, CRITICAL）
     format='%(asctime)s - %(levelname)s - %(message)s',  # 设置日志输出格式
     handlers=[
         logging.StreamHandler()  # 输出到控制台
@@ -204,11 +204,20 @@ class TestHandler(unittest.TestCase):
             logging.debug(result)
             self.assertNotEqual(result,None)
 
+    def test_get_memory_count(self):
+        handler = susiiot.SusiIot()
+        result = handler.get_memory_count(0)
+        logging.debug(result)
+        self.assertNotEqual(result, 0)
 
     def test_get_memory_type(self):
         handler = susiiot.SusiIot()
-        results = handler.get_memory_type()
-        self.assertNotEqual(results, None)
+        memory_count = handler.get_memory_count()
+        for memeory_number in range(memory_count):
+            result = handler.get_memory_type(memeory_number)
+            logging.debug(result)
+            self.assertNotEqual(result, None)
+            
     def test_get_module_type(self):
         handler = susiiot.SusiIot()
         results = handler.get_module_type()

@@ -414,170 +414,159 @@ class SusiIot:
             return None
 
 
-    def get_memory_type(self):
-        uri="Memory Type"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['sv']
-        else:
+    def get_memory_count(self):
+        counter=0
+        for key in self.susi_information["SDRAM"].keys():
+            if "SDRAM" in key:
+                counter+=1
+        return counter
+
+    def get_memory_type(self,memory_number=0):
+        command=f"SDRAM{memory_number}"
+        try:
+            return self.susi_information["SDRAM"][command]["e"][0]['sv']
+        except:
             return None
-    def get_module_type(self):
-        uri="Module Type"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['sv']
-        else:
+
+    def get_module_type(self,memory_number=0):
+        command=f"SDRAM{memory_number}"
+        try:
+            return self.susi_information["SDRAM"][command]["e"][1]['sv']
+        except:
             return None
-    def get_module_size_in_GB(self):
-        uri="Module Size"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['v']
-        else:
+    def get_module_size_in_GB(self,memory_number=0):
+        command=f"SDRAM{memory_number}"
+        try:
+            return self.susi_information["SDRAM"][command]["e"][2]['sv']
+        except:
             return None
-    def get_memory_speed(self):
-        uri="Memory Speed"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['sv']
-        else:
+    def get_memory_speed(self,memory_number=0):
+        command=f"SDRAM{memory_number}"
+        try:
+            return self.susi_information["SDRAM"][command]["e"][3]['sv']
+        except:
             return None
-    def get_memory_rank(self):
-        uri="Rank"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['v']
-        else:
+    def get_memory_rank(self,memory_number=0):
+        command=f"SDRAM{memory_number}"
+        try:
+            return self.susi_information["SDRAM"][command]["e"][4]['sv']
+        except:
             return None
-    def get_SDRAM_voltage(self):
-        pass
-        # todo
-    def get_memory_bank(self):
-        uri="Bank"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['sv']
-        else:
+    def get_memory_bank(self,memory_number=0):
+        command=f"SDRAM{memory_number}"
+        try:
+            return self.susi_information["SDRAM"][command]["e"][6]['sv']
+        except:
             return None
-    def get_memory_week_year(self):
-        uri="Week Year"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['sv']
-        else:
+    def get_memory_week_year(self,memory_number=0):
+        command=f"SDRAM{memory_number}"
+        try:
+            return self.susi_information["SDRAM"][command]["e"][7]['sv']
+        except:
             return None
-    def get_memory_temperature(self):
-        pass
-        # todo
+    def get_memory_temperature(self,memory_number=0):
+        command=f"SDRAM{memory_number}"
+        try:
+            return self.susi_information["SDRAM"][command]["e"][8]['sv']
+        except:
+            return None
 
 
     def get_disk_total_disk_space(self):
-        uri="Disk - Total Disk Space"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['v']
-        else:
+        try:
+            return self.susi_information["DiskInfo"]["e"][0]['v']
+        except:
             return None
     def get_disk_total_disk_space_max(self):
-        uri="Disk - Total Disk Space"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['max']
-        else:
+        try:
+            return self.susi_information["DiskInfo"]["e"][0]['max']
+        except:
             return None
     def get_disk_total_disk_space_min(self):
-        uri="Disk - Total Disk Space"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['min']
-        else:
+        try:
+            return self.susi_information["DiskInfo"]["e"][0]['min']
+        except:
             return None
     def get_disk_free_disk_space(self):
-        uri="Disk - Free Disk Space"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['v']
-        else:
+        try:
+            return self.susi_information["DiskInfo"]["e"][1]['v']
+        except:
             return None
     def get_disk_free_disk_space_max(self):
-        uri="Disk - Free Disk Space"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['max']
-        else:
+        try:
+            return self.susi_information["DiskInfo"]["e"][1]['max']
+        except:
             return None
     def get_disk_free_disk_space_min(self):
-        uri="Disk - Free Disk Space"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['min']
-        else:
+        try:
+            return self.susi_information["DiskInfo"]["e"][1]['min']
+        except:
             return None
     def get_disk_media_recovery_total_disk_space(self):
-        uri="Disk -media-recovery Total Disk Space"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['v']
-        else:
+        try:
+            return self.susi_information["DiskInfo"]["e"][2]['v']
+        except:
             return None
     def get_disk_media_recovery_total_disk_space_max(self):
-        uri="Disk -media-recovery Total Disk Space"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['max']
-        else:
+        try:
+            return self.susi_information["DiskInfo"]["e"][2]['v']
+        except:
             return None
     def get_disk_media_recovery_total_disk_space_min(self):
-        uri="Disk -media-recovery Total Disk Space"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['min']
-        else:
+        try:
+            return self.susi_information["DiskInfo"]["e"][2]['v']
+        except:
             return None
     def get_disk_media_recovery_free_disk_space(self):
-        uri="Disk -media-recovery Free Disk Space"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['v']
-        else:
+        try:
+            return self.susi_information["DiskInfo"]["e"][3]['v']
+        except:
             return None
     def get_disk_media_recovery_free_disk_space_max(self):
-        uri="Disk -media-recovery Free Disk Space"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['max']
-        else:
+        try:
+            return self.susi_information["DiskInfo"]["e"][3]['max']
+        except:
             return None
     def get_disk_media_recovery_free_disk_space_min(self):
-        uri="Disk -media-recovery Free Disk Space"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['min']
-        else:
+        try:
+            return self.susi_information["DiskInfo"]["e"][3]['min']
+        except:
             return None
     def get_disk_home_total_disk_space(self):
-        uri="Disk -home Total Disk Space"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['v']
-        else:
+        try:
+            return self.susi_information["DiskInfo"]["e"][4]['v']
+        except:
             return None
     def get_disk_home_total_disk_space_max(self):
-        uri="Disk -home Total Disk Space"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['max']
-        else:
+        try:
+            return self.susi_information["DiskInfo"]["e"][4]['max']
+        except:
             return None
     def get_disk_home_total_disk_space_min(self):
-        uri="Disk -home Total Disk Space"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['min']
-        else:
-            return None     
+        try:
+            return self.susi_information["DiskInfo"]["e"][4]['min']
+        except:
+            return None
     def get_disk_free_disk_space(self):
-        uri="Disk -home Free Disk Space"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['v']
-        else:
+        try:
+            return self.susi_information["DiskInfo"]["e"][5]['v']
+        except:
             return None
     def get_disk_free_disk_space_max(self):
-        uri="Disk -home Free Disk Space"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['max']
-        else:
+        try:
+            return self.susi_information["DiskInfo"]["e"][5]['max']
+        except:
             return None
     def get_disk_free_disk_space_min(self):
-        uri="Disk -home Free Disk Space"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['min']
-        else:
+        try:
+            return self.susi_information["DiskInfo"]["e"][5]['min']
+        except:
             return None
         
     def get_susiiot_version(self):
-        uri="version"
-        if uri in self.susi_id_dictionary:
-            return self.get_data_by_id(self.susi_id_dictionary[uri])['sv']
-        else:
+        try:
+            return self.susi_information["SUSIIoT Information"]["e"][0]['sv']
+        except:
             return None
 
 class JsonType:

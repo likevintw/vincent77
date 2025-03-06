@@ -13,4 +13,4 @@ sudo python3 -m unittest -v test_susiiot.TestHandler.test_get_id_list
 sudo python3 -m unittest -v test_susiiot.TestHandler.test_get_json_format_data
 sudo python3 -m unittest -v test_susiiot.TestHandler.test_get_system_temperature
 sudo python3 -m unittest -v test_susiiot.TestHandler.test_get_id_dictionary
-sudo python3 -m unittest -v test_susiiot.TestHandler.test_get_gpio_direction
+sudo python3 -m unittest -v test_susiiot.TestHandler.test_get_memory_type
