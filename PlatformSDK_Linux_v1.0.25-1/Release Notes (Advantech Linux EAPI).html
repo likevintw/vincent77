@@ -1,0 +1,483 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+  <meta http-equiv="Content-Language" content="en-us">
+  <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><title>Advantech Linux EAPI Release Notes</title> 
+  <style type="text/css">
+<!--
+/* --------------------------------------------------
+                  MAIN TOPIC STYLES
+-------------------------------------------------- */
+A:link
+{
+      COLOR: #0000FF;
+      TEXT-DECORATION: underline
+}
+A:active
+{
+ 
+    COLOR: green;
+   
+    TEXT-DECORATION: underline
+}
+A:visited
+{
+   
+    COLOR: purple;
+   
+    TEXT-DECORATION: underline
+}
+A:hover
+{
+    
+    COLOR: red;   
+    TEXT-DECORATION: underline
+}
+BODY
+{
+    BACKGROUND: white;
+    font-family: Verdana;font-size:9pt
+
+}
+
+img
+{
+	font-family: Verdana;
+	font-size:10pt; 
+	margin-top:0.5em;
+	 margin-bottom:1.5em; margin-left:2em 
+
+}
+
+img.folder
+{
+	font-family: Verdana;
+	font-size:10pt; 
+	margin-top:0em;
+	 margin-bottom:0em; margin-left:0em 
+ 
+
+}
+
+
+/* --------------------------------------------------
+                    HEADING STYLES
+-------------------------------------------------- */
+
+h1
+{
+	font-family: Verdana;
+	font-size:12pt; font-weight:bold; margin-top:0; margin-bottom:1em
+}
+h2
+{
+	font-family: Verdana;
+	font-size:10pt; font-weight:bold; margin-top:1.5em; margin-bottom:0 
+}
+h3
+{
+	font-family: Verdana;
+	font-size:9pt; font-weight:bold; margin-top:1em; margin-bottom:0;margin-left:1em
+}
+h4
+{
+	font-family: Times New Roman, Times;
+	
+}
+
+h1.BlueHead
+{
+	font-family: Verdana;
+	font-size:12pt; font-weight:bold; margin-top:0; margin-bottom:1em; color:#000080
+
+}
+hr
+{
+margin-top: 2em
+}
+
+
+/* --------------------------------------------------
+                     TEXT STYLES
+-------------------------------------------------- */
+P
+{
+    MARGIN-TOP: 4pt;
+    FONT-SIZE: 9pt;
+    MARGIN-BOTTOM: 4pt;
+    FONT-FAMILY: Verdana; margin-left:16pt
+}
+
+P.P1
+{
+    MARGIN-TOP: 3pt;
+    FONT-SIZE: 9pt;
+    MARGIN-BOTTOM: 3pt;
+    FONT-FAMILY: Verdana; list-style-type:disc
+}
+
+div.tablediv
+	{
+	width: 100%; /* Forces tables to have correct right margins and top spacing */
+	word-spacing:0; text-indent:0; margin-left:2em; margin-right:0
+	}
+div.head
+	{
+	width: 100%; /* Forces tables to have correct right margins and top spacing */
+	word-spacing:0; text-indent:0; margin-left:0; margin-right:0; background-color:#9CCFFF
+	}
+
+/* --------------------------------------------------
+                    TABLE STYLES
+-------------------------------------------------- */
+Table.Bordered
+{
+	width: 100%; /* Forces tables to have correct right margin */
+	margin-top: .6em;
+	margin-bottom: .3em;
+	border-width: 1px 1px 0px 0px;
+	border-style: solid;
+	border-color: #999999;
+	background-color: #999999; 
+	font-size: 100%; /* Text in Table is same size as text outside table */
+}
+table.Bordered tr, table.Bordered td
+	{ 
+	border-style: solid; /* Creates the cell border and color */
+	border-width: 0px 0px 1px 1px;
+	border-style: solid;
+	border-color: #999999;
+	padding: 4px 6px;
+	text-align: left;
+	}
+table.Bordered th
+{
+	border-style: solid; /* Creates the cell border and color */
+	border-width: 0px 0px 1px 1px;
+	border-style: solid;
+	border-color: #999999;
+	padding: 4px 6px;
+	text-align: left;
+	background: #cccccc; /* Creates the shaded table header row */
+	vertical-align: bottom;
+
+
+}
+
+table.Bordered tr	
+	{ 
+	background: #cccccc; /* Creates the shaded table header row */
+	vertical-align: bottom;
+	}
+table.Bordered td	
+	{
+	background: #ffffff;
+	vertical-align: top;
+	}
+
+/* --------------------------------------------------
+                     LIST STYLES
+-------------------------------------------------- */
+
+ol, ul
+	{
+	margin-top: 0.5em; 
+	padding-left: 1px; 
+	margin-left:20pt
+	}
+li
+	{
+	margin-bottom: 0.5em;  
+	margin-left:20pt;; 
+	margin-top:0 
+	}
+ul p, ol p, dl p
+	{
+	margin-left: 0em;
+	}
+ul p.label, ol p.label
+	{
+	margin-top: 0.5em;
+	}
+
+/* --------------------------------------------------
+               DEFINITION LIST STYLES
+-------------------------------------------------- */
+
+dl
+	{
+	margin-top: 0em; 
+	padding-left: 1px; margin-left:16pt
+	}
+dd
+	{
+	margin-bottom: 0em;  
+	margin-left: 1.5em; 
+	}
+dt
+	{
+	margin-top: .5em; 
+	}
+
+/* --------------------------------------------------
+           CODE, SYNTAX, and REFTIP STYLES
+-------------------------------------------------- */
+pre
+	{
+	margin-top: 2;
+	margin-bottom: 2; 
+	}
+pre.code
+	{
+	/* This is 100% of 70% */
+	background:#F0F0F0; cursor: text;
+	margin-top: 1em;
+	margin-bottom: 1em; 
+	color: #000066;
+	font-style:normal; font-variant:normal; font-weight:normal; font-size:100%; font-family:Courier New, Monospace, Courier; margin-left:16pt; padding-left:8px; padding-right:8px; padding-top:4px; padding-bottom:4px
+	}
+pre b, code b
+	{
+	letter-spacing: .1em; /* opens kerning on bold in Syntax/Code */
+	}
+pre.syntax
+	{
+	/* This is 100% of 70% */
+	border:1px solid #999999; background:#CCCCCC; cursor: text;
+	margin-top: 1em;
+	margin-bottom: 1em; 
+	color: #000000;
+	font-style:normal; font-variant:normal; font-weight:normal; font-size:100%; font-family:Courier New, Monospace, Courier; margin-left:16pt; padding-left:8px; padding-right:8px; padding-top:4px; padding-bottom:4px
+	}-->
+  </style></head><body>
+<h1>Advantech Linux EAPI Release Notes</h1>
+<p>December 27, 2024</p>
+<p>Please read this documentation carefully. It includes late-breaking information about Advantech Linux EAPI<p>
+
+<h2>Contents</h2>
+<p><a href="#Overview">Overview</a></p>
+<p><a href="#Version_Information">Version Information</a></p>
+<p><a href="#Requirement">Requirement</a></p>
+<p><a href="#OS_support_list">OS support list</a></p>
+<p><a href="#Notes">Notes</a></p>
+<p><a href="#Important_Features">Important Features</a></p>
+<P><A href="#Known_Issue">Known Issues</A></P>
+<p><A href="#Checksum_Information">Checksum Information</A></p>
+
+<h2><a name="Overview">Overview</a></h2>
+<p>Linux EAPI Library currently include libEAPI, libATGPIO and libEAPI-IPS. All the EC library depends on the EC linux driver.</p>
+
+<h2><a name="Version_Information">Version Information</a></h2>
+
+<p>[v1.0.25-1] : 2024/12/27</p>
+<ul>
+<li>Watchdog, Hwmon and GPIO functions support MIC-770V3H, MIC-770V3W, UNO-247V2</li>
+</ul>
+
+<p>[v1.0.24-3] : 2024/11/25</p>
+<ul>
+<li>New SMBus library, libATSMBUS.so, support SMBus read function</li>
+<li>Watchdog function supports:</li>
+<ul style="margin-left: 20pt; margin-top: 0.5em; padding-left: 1px"> 
+<p>AMAX-5570, AMAX-5570E, AMAX-5570S, UNO-127, UNO-137_V2, UNO-2271G_V2, UNO-2372G_V2,</p>
+<p>PPC-3100-7701, PPC-3120-7701, PPC-3150-7701, PPC-415-7705, PPC-310-7706, PPC-312-7706,</p>
+<p>PPC-315-7706, PPC-321W-7706, PPC-315W-7707, PPC-318W-7707, PPC-321W-7707, PPC-324W-7707,</p>
+<p>PPC-415-7708, PPC-417-7708, PPC-419-7708, PPC-415W-7709, PPC-421W-7709, PPC-306-7710,</p>
+<p>TPC-307W, TPC-B300, TPC-B520, TPC-B610H-A*, TPC-B610W-A*, TPC-315-RE22A</p>
+</ul>
+<li>Brightness function supports:</li>
+<ul style="margin-left: 20pt; margin-top: 0.5em; padding-left: 1px"> 
+<p>PPC-306-7710, PPC-3???-7707, PPC-415W-7709, PPC-421W-7709, PPC-415-7705,</p>
+<p>PPC-310-7706, PPC-312-7706, PPC-315-7706, PPC-321W-7706, PPC-415-7708,</p>
+<p>PPC-417-7708, PPC-419-7708, TPC-307W, TPC-B300, TPC-B520, TPC-B610H-A*, TPC-B610W-A*,</p>
+<p>TPC-315-RE22A, TPC-312-RE23A, TPC-312-RJ23A, TPC-315-RE23A, TPC-315-RJ23A,</p>
+<p>TPC-317-RE23A, TPC-317-RJ23A, TPC-B520L</p>
+</ul>
+<li>Hwmon function supports:</li>
+<ul style="margin-left: 20pt; margin-top: 0.5em; padding-left: 1px"> 
+<p>PPC-415-7705, PPC-417-7705, PPC-419-7705, PPC-315W-7707, PPC-318W-7707,</p>
+<p>PPC-321W-7707, PPC-324W-7707, PPC-415W-7709, PPC-417W-7709, PPC-419W-7709,</p>
+<p>PPC-315SW-7711, PPC-318SW-7711, PPC-321SW-7711, PPC-312SW-7712, PPC-315S-7712,</p>
+<p>PPC-315SW-7712, PPC-317S-7712, PPC-317SW-7712, PPC-612-7760, PPC-6151C-7760,</p>
+<p>PPC-615W-7760, PPC-6171C-7760, PPC-618W-7760, PPC-6191C-7760, PPC-621W-7760,</p>
+<p>PPC-612-7762, PPC-6151C-7762, PPC-615W-7762, PPC-6171C-7762, PPC-618W-7762,</p>
+<p>PPC-6191C-7762, PPC-621W-7762, PPC-61X1C-8260H, PPC-61X1C-8260, UNO-238V2</p>
+</ul>
+<li>GPIO function supports:</li>
+<ul style="margin-left: 20pt; margin-top: 0.5em; padding-left: 1px"> 
+<p>PPC-315SW-7711, PPC-318SW-7711, PPC-321SW-7711, PPC-612-7762, PPC-6151C-7762,</p>
+<p>PPC-615W-7762, PPC-6171C-7762, PPC-618W-7762, PPC-6191C-7762, PPC-621W-7762</p>
+</ul>
+</ul>
+
+<p>[v1.0.23] : 2024/08/02</p>
+<ul>
+<li>Hardware monitor support TPC-B520, TPC-307W, TPC-300 EHL</li>
+</ul>
+
+<p>[v1.0.22-1] : 2024/05/03</p>
+<ul>
+<li>Add some check strategy in install script</li>
+<li>Support PPC-3*-7701, PPC-3*-7706, PPC-3*-7710, PPC-4*-7708, TPC-B300, TPC-315-R83xB(TPC-300-?8??B)</li>
+<li>Add R1_5VSB and R2_5VSB for PPC-4*-7708 in Hardware monitor</li>
+<li>Fixed AMAX-5570E lack of on board LED</li>
+</ul>
+
+<p>[v1.0.20-3] : 2023/10/26</p>
+<ul>
+<li>Adjust the sequence of GPIO 22 and GPIO 23 on AMAX-5570S due to hardware layout consideration</li>
+<li>Hardware monitoring is supported on UNO-430-x1</li>
+</ul>
+
+<p>[v1.0.20-1] : 2023/09/26</p>
+<ul>
+<li>Support HW UNO-137_V2 and UNO-238_V2</li>
+<li>Add GPIO sysfs pin auto-exported feature</li>
+</ul>
+
+<p>[v1.0.16-2] : 2023/03/14</p>
+<ul>
+<li>Support Debian package to install on Debian-based OS, such as Ubuntu, Debian</li>
+<li>LED function: add support UNO-2271G_V2, UNO-127, UNO-148 and AMAX-5570</li>
+<li>Sensors command: add support UNO-348, UNO-420, PPC-3* and AMAX-5580(WISE-5580)</li>
+<li>AuxIO function: add support UNO-410</li>
+<li>Update GPIO configuration for UNO-2484G_V2</li>
+<li>Hide 12v-in for UNO-2372G_V2</li>
+<li>Optimized the testdl_extfunc example</li>
+</ul>
+
+<p>[v1.0.14] : 2022/08/15</p>
+<ul>
+<li>Add GPIO Library (libATGPIO.so) to support EC & sysfs GPIO.</li>
+<li>Update GPIO Library to support GPIO count.</li>
+</ul>
+
+<p>[v1.0.8] : 2019/02/28</p>
+<ul>
+<li>Update EAPI and GPIO Library to support imx6 WISE-710 and TPC-71W.</li>
+<li>Update IPS library to support UNO-IPS1560.</li>
+<li>Add Boardresource library to support Edgelink for WISE-710.</li>
+</ul>
+
+<p>[v1.0.7] : 2018/08/20</p>
+<ul>
+<li>Update EAPI Library v1.04, support EC WDT API.</li>
+</ul>
+
+<p>[v1.0.4] : 2018/03/07</p>
+<ul>
+<li>Add GPIO Library v1.0.0, support SUSI GPIO API.</li>
+<li>Update EC Library v1.0.2, support SUSI HWMON API.</li>
+</ul>
+
+<p>[v1.0.3] : 2018/02/01</p>
+<ul>
+<li>Update IPS Library v1.0.1.</li>
+</ul>
+
+<p>[v1.0.2] : 2017/12/15</p>
+<ul>
+<li>Update EC Library v1.0.1, support EC ETP API</li>
+</ul>
+
+<p>[v1.0.1] : 2017/11/30</p>
+<ul>
+<li>Add EC Library v1.0.0, support EC Common API.</li>
+</ul>
+
+<p>[v1.0.0] : 2017/11/11</p>
+<ul>
+<li>The first released and add IPS Library v1.0.0 to support IPS-AE(UPS) API</li>
+</ul>
+
+<h2><a name="Requirement">Requirement</a></h2>
+<p>EC Driver v2.20 or later (For EC chip, e.g. TPC-300-?8??B, ...)</p>
+<p>superio-nct Driver 1.0.6 or later (For NCT chip or led gpio, e.g. PPC-3*-7701, AMAX-5570E, ...)</p>
+<p>gpio-f75111 1.0.3 or later (For gpio, e.g. PPC-3*-7701, ...)</p>
+<p>susiconverter v1.0.2 or later</p>
+<p>GCC/G++ 5.4.0 or later</p>
+<p>mio_pnp0c02 Driver v6.0.1-3 (For RDC HW chip, e.g. UNO-238 V2)</p>
+<p>atcc-libsensors-config v1.0.5-1 or later (For NCT6106, NCT6116, NCT6126, NCT6776 sensor chip)</p>
+
+<h2><a name="OS_support_list">OS Information</a></h2>
+<p>AdvLinuxTu-IOTG-V4.0.6, kernel 5.15.0-1026-intel-iotg</p>
+<p>AdvLinuxTu-IOTG-V4.3.2, kernel 5.15.0-1026-intel-iotg</p>
+<p>Ubuntu 20.04.5 LTS, kernel 5.15.0-46-generic</p>
+<p>Ubuntu 22.04.2 LTS, kernel 5.19.0-32-generic</p>
+<p>Ubuntu 22.04.4 LTS, kernel 6.5.0-18-generic</p>
+<p>Ubuntu 22.04.5 LTS, kernel 6.8.0-50-generic</p>
+<p>Ubuntu 20.04.5 LTS, kernel 5.15.0-1016-intel-iotg</p>
+<p>Ubuntu 22.04.2 LTS, kernel 5.15.0-1026-intel-iotg</p>
+<p>Ubuntu 22.04.5 LTS, kernel 5.15.0-1026-intel-iotg</p>
+
+<h2><a name="Notes">Notes</a></h2>
+<p>1. The sysfs gpio can set values "low" and "high" in DI state, but EC gpio must be in DO state.</p>
+<p>2. The UNO-2484G-V2 with PoE IDoor(PCM-24R2PE-AE) supports PoE(Power-over-Ethernet) function.</p>
+<p>3. Before using DeviceOn, you must install and setup <a href="https://docs.wise-paas.advantech.com/zh-tw/Guides_and_API_References/ApplicationServices/1564727799415968385/1564727878040194797/v1.0.2">Wise Agent Device On 4.x</a> first</p>
+<p>4. Before using DeviceOn Remote Desktop or Screenshot on Ubuntu 22.04 LTS, you must disable the display feature wayland:</p>
+<ul style="margin-left: 30pt; margin-top: 0.5em; padding-left: 1px"> 
+<p><b>$ sudo sed -e 's/#WaylandEnable=.*/WaylandEnable=false/' -i /etc/gdm3/custom.conf</b></p>
+<p><b>$ sudo reboot</b></p>
+</ul>
+<p>5. Some device of wdat_wdt watchdog driver (e.g. UNO-137_V2, UNO-2372G_V2) need to enable TCO timer in BIOS</p>
+<ul style="margin-left: 30pt; margin-top: 0.5em; padding-left: 1px"> 
+<p>[Chipset] -> [PCH-IO Configuration] -> [Enable TCO Timer] -> [Enabled]</p>
+</ul>
+
+<h2><a name="Important_Features">Important Features</a></h2>
+<p>Embedded API (EAPI) will cover all interfaces in the device to unify the software control for:</p>
+<ul style="margin-left: 20pt; margin-top: 0.5em; padding-left: 1px">
+	<li>System information.</li>
+	<li>UPS</li>
+	<li>ETP</li>
+	<li>GPIO</li>
+	<li>NVRAM (User storage area)</li>
+	<li>Electric type plate</li>
+	<li>HW monitor</li>
+	<li>Brightness</li>
+	<li>Network</li>
+	<li>Capability</li>
+	<li>Power over Ethernet</li>
+	<li>SMBus</li>
+</ul>
+
+<H2><A name="Known_Issue">Known issues</A></H2>
+<ul style="margin-left: 20pt; margin-top: 0.5em; padding-left: 1px">
+	<li>#29097 Current UPS library only supports PCB version 01-2(including) or above version. PCB version 01-1 (inclusive) may print "unknown reply" frequently</li>
+	<li>#29098 Due to use the old EC firmware, UNO-1372G-E3AE LED operation was must be use the GPIO API</li>
+	<li>#28606 When running "testdl_ec", some information strings are displayed incorrectly</li>
+	<li>#32208 Unable to get library version by command "make libversion"</li>
+	<li>#35414 At AMAX-5570E, DeviceOn hard drive only detects USB storage and cannot switch to emmc</li>
+	<li>#35614 EC watchdog example (testdl_wdt&wdttest) doesn't support nct chipset</li>
+</ul>
+
+<H2><A name="Checksum_Information">Checksum Information</A></H2>
+<TABLE border="1" cellpadding="5">
+  <TBODY>
+  <TR bgcolor="#e0e0e0">
+    <TH><FONT size="2">Filename </FONT> 
+    <TH><FONT size="2">MD5 </FONT> 
+    <TH><FONT size="2">CRC32 </FONT> 
+    <TH><FONT size="2">SHA-256 </FONT> 
+    <TH><FONT size="2">File Size </FONT> 
+  </TR>
+  <TR>
+    <TD nowrap="" bgcolor="#ffffff"><FONT size="2">libEAPI_linux-x86_64.tar.gz</FONT>
+    <TD nowrap="" bgcolor="#ffffff"><FONT size="2">b1cca802421fbf34a5ad0f4bd5c1a407</FONT>
+    <TD nowrap="" bgcolor="#ffffff"><FONT size="2">89e291d8</FONT>
+    <TD nowrap="" bgcolor="#ffffff"><FONT size="2">210a480868ad99503778b3e0d97d0d54564e608d70e9de2904543c5c9ee2b736</FONT>
+    <TD nowrap="" bgcolor="#ffffff"><FONT size="2">144,977</FONT>
+  </TR>
+  <TR>
+    <TD nowrap="" bgcolor="#ffffff"><FONT size="2">adv-libeapi_1.0.25-1_all.deb</FONT>
+    <TD nowrap="" bgcolor="#ffffff"><FONT size="2">7586cd4e9d64197b595f079164910087</FONT>
+    <TD nowrap="" bgcolor="#ffffff"><FONT size="2">a8d06170</FONT>
+    <TD nowrap="" bgcolor="#ffffff"><FONT size="2">a0613392e3da944e5d7592b513809819b1e7e5a7b4bcac7aaa32105e3f35b020</FONT>
+    <TD nowrap="" bgcolor="#ffffff"><FONT size="2">1,680,932</FONT>
+  </TR>
+  </TBODY>
+</TABLE>
+
+<p>&nbsp;</p>
+<p align="center">Copyright (C) 2024 Advantech Co., Ltd. All Rights Reserved</p>
+
+</body></html>
