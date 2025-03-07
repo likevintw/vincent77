@@ -34,6 +34,8 @@ class SusiIot:
         current_dir = os.path.dirname(os.path.realpath(__file__))+"/"
         architecture = platform.machine()
         os_name = platform.system()
+        susi_iot_library_path=""
+        json_library_path=""
 
         if os_name == "Linux" and 'x86' in architecture.lower():
             susi_iot_library_path = current_dir+"libSusiIoT.x86.so"
