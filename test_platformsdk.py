@@ -37,9 +37,9 @@ class TestHandler(unittest.TestCase):
             print(i,status)
 
     def test_get_board_value_data(self):
-        for i in range(330240,330265):
-            status = handler.get_board_string_data(i)
-            print(i,status)
+        handler = platformsdk.PlatformSDK()
+        status = handler.get_board_value_data(handler.EAPI_ID_HWMON_TEMP_CPU)
+        print(status)
 
 if __name__ == '__main__':
     unittest.main()

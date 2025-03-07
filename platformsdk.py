@@ -11,7 +11,37 @@ import platform
 class PlatformSDK:
     def __init__(self):
         self.e_api_library = None
-        
+        self.EApiBoardGetValue= None
+        self.fnEApiBoardGetStringA=None
+
+        self.import_library()
+        self.initial_constant()
+        self.initialize()
+
+    def import_library(self):
+        current_dir = os.path.dirname(os.path.realpath(__file__))+"/"
+        architecture = platform.machine()
+        os_name = platform.system()
+        e_api_library_path = ""
+
+        if os_name == "Linux" and 'x86' in architecture.lower():
+            e_api_library_path = current_dir+"libEAPI.x86.so"
+
+        elif os_name == "Linux" and 'aarch64' in architecture.lower():
+            e_api_library_path = current_dir+"libSusiIoT.arm.so"
+
+        elif os_name == "Windows" and 'x86' in architecture.lower():
+            pass
+
+        elif os_name == "Windows" and 'aarch64' in architecture.lower():
+            pass
+
+        else:
+            print(f"disable to import library, architechture:{architecture.lower()}, os:{os_name}")
+
+        self.e_api_library = ctypes.CDLL(e_api_library_path)
+
+    def initial_constant(self):
         self.EAPI_VER_MASK_VER = 0xFF000000
         self.EAPI_VER_MASK_REV = 0x00FF0000
         self.EAPI_VER_MASK_BUILD = 0x0000FFFF
@@ -153,37 +183,10 @@ class PlatformSDK:
         self.EAPI_ID_GPIO_BASE = 0x00070000
         self.EAPI_ID_GPIO_POE_PINNUM = self.EAPI_ID_GPIO_BASE + 1
 
-        self.fnEApiBoardGetStringA=None
-
-        self.import_library()
-        self.initialize()
-
-    def import_library(self):
-        current_dir = os.path.dirname(os.path.realpath(__file__))+"/"
-        architecture = platform.machine()
-        os_name = platform.system()
-        e_api_library_path = ""
-
-        if os_name == "Linux" and 'x86' in architecture.lower():
-            e_api_library_path = current_dir+"libEAPI.x86.so"
-
-        elif os_name == "Linux" and 'aarch64' in architecture.lower():
-            e_api_library_path = current_dir+"libSusiIoT.arm.so"
-
-        elif os_name == "Windows" and 'x86' in architecture.lower():
-            pass
-
-        elif os_name == "Windows" and 'aarch64' in architecture.lower():
-            pass
-
-        else:
-            print(f"disable to import library, architechture:{architecture.lower()}, os:{os_name}")
-
-        self.e_api_library = ctypes.CDLL(e_api_library_path)
-
     def initialize(self):
         EApiStatus_t = ctypes.c_int
         EApiId_t = ctypes.c_int
+
         prototype = ctypes.CFUNCTYPE(
             EApiStatus_t,           # 返回類型
             EApiId_t,               # 參數 1: EApiId_t
@@ -199,6 +202,7 @@ class PlatformSDK:
         )
         self.EApiBoardGetValue = prototype(("EApiBoardGetValue", self.e_api_library))
         
+        
 
     def get_board_string_data(self,id_number):
         # 緩衝區大小和初始化
@@ -212,19 +216,19 @@ class PlatformSDK:
         if status == 0:  # 假設 0 是成功的狀態碼
             return pValue.value.decode("utf-8")
         else:
+            print("eeeeeeeeeeeeeerror",status)
             return None
     def get_board_value_data(self,id_number):
-        # 緩衝區大小和初始化
-        buf_len = 100
-        pValue = ctypes.create_string_buffer(buf_len)  # 創建一個字符緩衝區
-        pBufLen = ctypes.c_uint32(buf_len)  # 創建緩衝區長度
+        pValue = ctypes.c_uint32(0)
 
         # 調用函數
-        status = self.e_api_library.EApiBoardGetStringA(id_number, pValue, ctypes.byref(pBufLen))
-
+        print("555555555",id_number)
+        status = self.e_api_library.EApiBoardGetValue(id_number, ctypes.byref(pValue))
+        
         if status == 0:  # 假設 0 是成功的狀態碼
-            return pValue.value.decode("utf-8")
+            return pValue.value
         else:
+            print("eeeeeeeeeeeeeerror",status)
             return None
 
 

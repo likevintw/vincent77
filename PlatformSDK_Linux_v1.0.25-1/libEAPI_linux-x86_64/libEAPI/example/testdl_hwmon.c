@@ -65,6 +65,7 @@ void BoardGetValue(EApiId_t Id, uint32_t *pValue)
                 EApiBoardGetValue = (fnEApiBoardGetValue)dlsym(hDLL,"EApiBoardGetValue");
                 if (EApiBoardGetValue != NULL) {
                         status = EApiBoardGetValue(Id, pValue);
+                        printf("516514658161685 status: %d\n",status);
                 } else {
                         printf("Dlsym Error : %s \n", __func__);
                 }
@@ -74,7 +75,9 @@ void BoardGetValue(EApiId_t Id, uint32_t *pValue)
 
         if (status != EAPI_STATUS_SUCCESS) {
             char errorstr[0x80] = {0};
+            printf("666666666666 %d\n",status);
             printf("Unsuccess Status: %s:%d (0x00%X) %s\n", __func__, __LINE__, status, EApiStatus_StringTranslator(status, errorstr));
+            printf("555555555GGGG \n");
         }
 }
 
@@ -91,9 +94,11 @@ int main(int argc, char* argv[])
 
 printf("----------------------------------------------------------\n");
 printf("BoardGetString\n");
+printf("qqqqqqqqqqqqqqqqq%d\n",EAPI_STATUS_SUCCESS);
 hDLL = OpenEAPILIB();
 printf("----------------------------------------------------------\n");
         Id = EAPI_ID_BOARD_MANUFACTURER_STR;
+printf("11111111111111%d\n",Id);
         BoardGetString(Id, result);
         printf("EAPI_BOARD_MANUFACTURER_STR\n Id: 0x%X  Value: %s \n", Id, result);
 printf("----------------------------------------------------------\n");
@@ -137,12 +142,15 @@ printf("----------------------------------------------------------\n");
 printf("BoardGetValue\n");
 printf("----------------------------------------------------------\n");
         Id = EAPI_ID_HWMON_TEMP_CPU;
+        printf("9999999999999999: %d\n",Id);
         BoardGetValue(Id, &Value);
+        printf("7878787878787: %d, %d\n",Id, Value);
         Value = ((uint32_t)(EAPI_DECODE_CELCIUS(Value)));
         printf("EAPI_ID_HWMON_TEMP_CPU\n Id: 0x%X  Value: %u \n", Id, Value);
         Value = 0;
 printf("----------------------------------------------------------\n");
         Id = EAPI_ID_HWMON_TEMP_SYSTEM;
+        printf("88888888: %d\n",Id);
         BoardGetValue(Id, &Value);
         Value = ((uint32_t)(EAPI_DECODE_CELCIUS(Value)));
         printf("EAPI_ID_HWMON_TEMP_SYSTEM\n Id: 0x%X  Value: %u \n", Id, Value);

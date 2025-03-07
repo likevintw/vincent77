@@ -15,3 +15,7 @@ sudo python3 -m unittest -v test_susiiot.TestHandler.test_get_gpio_list
 
 # Todo
 sudo python3 -m unittest -v test_platformsdk
+
+sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_board_string_data
+sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_board_value_data
+
