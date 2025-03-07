@@ -8,9 +8,10 @@ sudo python3 -m unittest -v test_susiiot.TestHandler.test_get_data_by_id
 sudo python3 -m unittest -v test_susiiot.TestHandler.test_get_data_by_uri
 sudo python3 -m unittest -v test_susiiot.TestHandler.test_get_log_path
 sudo python3 -m unittest -v test_susiiot.TestHandler.test_get_id_list
-
-# Todo
 sudo python3 -m unittest -v test_susiiot.TestHandler.test_get_json_format_data
 sudo python3 -m unittest -v test_susiiot.TestHandler.test_get_system_temperature
 sudo python3 -m unittest -v test_susiiot.TestHandler.test_get_id_dictionary
 sudo python3 -m unittest -v test_susiiot.TestHandler.test_get_gpio_list
+
+# Todo
+sudo python3 -m unittest -v test_platformsdk
