@@ -238,7 +238,8 @@ class PlatformSDK:
         if status == 0:  # 假設 0 是成功的狀態碼
             return pValue.value.decode("utf-8")
         else:
-            print("eeeeeeeeeeeeeerror", status)
+            error_message=self.handle_error_code(status)
+            print("eeeeeeeeeeeeeerror", status,error_message)
             return None
 
     def get_board_value_data(self, id_number):
@@ -252,7 +253,8 @@ class PlatformSDK:
         if status == 0:  # 假設 0 是成功的狀態碼
             return pValue.value
         else:
-            print("eeeeeeeeeeeeeerror", status)
+            error_message=self.handle_error_code(status)
+            print("eeeeeeeeeeeeeerror", status,error_message)
             return None
 
     def initial_EApiLibrary(self):
