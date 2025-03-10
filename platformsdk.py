@@ -129,6 +129,7 @@ class PlatformSDK:
             return "EAPI_STATUS_UNSUPPORTED"
     
     def get_board_string_data(self, id_number):
+        print("111111",id_number)
         # 緩衝區大小和初始化
         CMD_RETURN_BUF_SIZE = 4096
         pValue = ctypes.create_string_buffer(CMD_RETURN_BUF_SIZE)  # 創建一個字符緩衝區
