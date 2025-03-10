@@ -243,8 +243,8 @@ class PlatformSDK:
             return pValue.value.decode("utf-8")
         else:
             error_message=self.handle_error_code(status)
-            print("error: ",id_number, status,error_message)
-            return None
+            # print("error: ",id_number, status,error_message)
+            return error_message
 
     def get_board_value_data(self, id_number):
         pValue = ctypes.c_uint32(0)
