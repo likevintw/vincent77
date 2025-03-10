@@ -73,9 +73,11 @@ class PlatformSDK:
             "EAPI_ID_HWMON_FAN_SYSTEM": 0x00052001,
         }
         for i in self.board_information_string.keys():
-            self.board_information.update({i:self.get_board_string_data(i)})
+            print(i,self.board_information_string[i])
+            self.board_information.update({i:self.board_information_string[i]})
         for i in self.board_information_value.keys():
-            self.board_information.update({i:self.get_board_value_data(i)})
+            print(i,self.board_information_value[i])
+            self.board_information.update({i:self.board_information_value[i]})
         print(self.board_information)
 
     def initialize(self):
