@@ -15,8 +15,8 @@ class PlatformSDK:
         self.EApiLibInitialize= None
 
         self.import_library()
-        self.initial_constant()
         self.initialize()
+        self.initial_constant()
 
     def import_library(self):
         current_dir = os.path.dirname(os.path.realpath(__file__))+"/"
