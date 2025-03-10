@@ -74,10 +74,12 @@ class PlatformSDK:
         }
         for i in self.board_information_string.keys():
             print(i,self.board_information_string[i])
-            self.board_information.update({i:self.board_information_string[i]})
+            result=self.get_board_string_data(self.board_information_string[i])
+            self.board_information.update({i:result})
         for i in self.board_information_value.keys():
             print(i,self.board_information_value[i])
-            self.board_information.update({i:self.board_information_value[i]})
+            result=self.get_board_string_data(self.board_information_value[i])
+            self.board_information.update({i:result})
         print(self.board_information)
 
     def initialize(self):
