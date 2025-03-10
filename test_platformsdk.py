@@ -14,32 +14,11 @@ logging.basicConfig(
 
 
 class TestHandler(unittest.TestCase):
-    def test_get_board_string_data(self):
-        handler = platformsdk.PlatformSDK()
-        print()
-        for i in range(10):
-            status = handler.get_board_string_data(i)
-            print(i, status)
-        for i in range(16, 19):
-            status = handler.get_board_string_data(i)
-            print(i, status)
-        for i in range(257, 260):
-            status = handler.get_board_string_data(i)
-            print(i, status)
-        for i in range(513, 526):
-            status = handler.get_board_string_data(i)
-            print(i, status)
-        for i in range(327680, 327690):
-            status = handler.get_board_string_data(i)
-            print(i, status)
-        for i in range(330240, 330265):
-            status = handler.get_board_string_data(i)
-            print(i, status)
-
     def test_get_board_information(self):
         handler = platformsdk.PlatformSDK()
+        print()
         for i in handler.board_information.keys():
-            print(i,"\t\t",handler.board_information[i])
+            print(i,"\t",handler.board_information[i])
 
     def test_get_board_value_data(self):
         handler = platformsdk.PlatformSDK()
