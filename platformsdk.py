@@ -174,6 +174,11 @@ class PlatformSDK:
         self.e_api_library.EApiGPIOGetLevel()
 
     def get_available_memory(self):
-        available_memory = ctypes.c_float()  # 创建一个 ctypes.c_float 类型的变量
-        status = self.EApiGetMemoryAvailable(ctypes.byref(available_memory))  # 传递指针
-        print(status, available_memory.value)  # 直接打印浮动值
+        try:
+            available_memory = ctypes.c_float()
+            status = self.EApiGetMemoryAvailable(ctypes.byref(available_memory))
+            print(status, available_memory.value)
+            return available_memory.value
+        except Exception as e:
+            print("error: ",e)
+            return None
