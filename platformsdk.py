@@ -194,7 +194,6 @@ class PlatformSDK:
             return None
 
     def get_disk_information(self):
-        # EApiGetDiskInfo
         try:
             disk_info_c = DiskInfoC()
             status = self.EApiGetDiskInfo(ctypes.byref(disk_info_c))
