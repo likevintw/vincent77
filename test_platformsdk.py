@@ -47,10 +47,11 @@ class TestHandler(unittest.TestCase):
         print(status)
     def test_check_table(self):
         handler = platformsdk.PlatformSDK()
+        print()
         for i in handler.board_information_value.keys():
             print(i,handler.board_information_value[i])
         for i in handler.board_information_string.keys():
-            print(i,handler.board_information_value[i])
+            print(i,handler.board_information_string[i])
 
 
 if __name__ == '__main__':

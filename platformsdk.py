@@ -52,9 +52,8 @@ class PlatformSDK:
             "EAPI_ID_BOARD_PLATFORM_TYPE_STR":0x6,
             "EAPI_ID_BOARD_EC_REVISION_STR":0x101,
             "EAPI_ID_BOARD_OS_REVISION_STR":0x102,
-            "EAPI_ID_BOARD_CPU_MODEL_NAME_STR":0x103
+            "EAPI_ID_BOARD_CPU_MODEL_NAME_STR":0x103,
         }
-        #define EAPI_ID_HWMON_TEMP_CPU               EAPI_UINT32_C(0x00050000 + 0)
         self.board_information_value = {
             "EAPI_ID_HWMON_TEMP_CPU": 0x00050000,
             "EAPI_ID_HWMON_FAN_SYSTEM": 0x00052001,
@@ -112,13 +111,6 @@ class PlatformSDK:
         self.EAPI_ID_BASE_GET_NAME_STORAGE = 0x70000000
         self.EAPI_ID_BASE_GET_NAME_TML = 0x80000000
 
-        self.EAPI_ID_BOARD_MANUFACTURER_STR = 0
-        self.EAPI_ID_BOARD_NAME_STR = 1
-        self.EAPI_ID_BOARD_REVISION_STR = 2
-        self.EAPI_ID_BOARD_SERIAL_STR = 3
-        self.EAPI_ID_BOARD_BIOS_REVISION_STR = 4
-        self.EAPI_ID_BOARD_HW_REVISION_STR = 5
-        self.EAPI_ID_BOARD_PLATFORM_TYPE_STR = 6
 
         self.EAPI_ID_HWMON_TEMP_MAX = 10
         self.EAPI_ID_HWMON_TEMP_BASE = 0x00050000
