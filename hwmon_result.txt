@@ -1,0 +1,101 @@
+----------------------------------------------------------
+BoardGetString
+----------------------------------------------------------
+Unsuccess Status: BoardGetString:52 (0x00FFFFF0FF) Generic error
+EAPI_BOARD_MANUFACTURER_STR
+ Id: 0x0  Value:  
+----------------------------------------------------------
+EAPI_ID_BOARD_NAME_STR
+ Id: 0x1  Value: UNO-1372G-J021AE 
+----------------------------------------------------------
+Unsuccess Status: BoardGetString:52 (0x00FFFFF0FF) Generic error
+EAPI_ID_BOARD_REVISION_STR
+ Id: 0x2  Value:  
+----------------------------------------------------------
+Unsuccess Status: BoardGetString:52 (0x00FFFFF0FF) Generic error
+EAPI_ID_BOARD_SERIAL_STR
+ Id: 0x3  Value:  
+----------------------------------------------------------
+EAPI_ID_BOARD_BIOS_REVISION_STR
+ Id: 0x4  Value: Not support. 
+----------------------------------------------------------
+Unsuccess Status: BoardGetString:52 (0x00FFFFF0FF) Generic error
+EAPI_ID_BOARD_HW_REVISION_STR
+ Id: 0x5  Value:  
+----------------------------------------------------------
+Unsuccess Status: BoardGetString:52 (0x00FFFFF0FF) Generic error
+EAPI_ID_BOARD_PLATFORM_TYPE_STR
+ Id: 0x6  Value:  
+----------------------------------------------------------
+EAPI_ID_BOARD_EC_REVISION_STR
+ Id: 0x101  Value: Not support. 
+----------------------------------------------------------
+EAPI_ID_BOARD_OS_REVISION_STR
+ Id: 0x102  Value: Ubuntu 18.04.6 LTS 
+----------------------------------------------------------
+EAPI_ID_BOARD_CPU_MODEL_NAME_STR
+ Id: 0x103  Value: Intel(R) Celeron(R) CPU  J1900  @ 1.99GHz 
+
+----------------------------------------------------------
+BoardGetValue
+----------------------------------------------------------
+Unsuccess Status: BoardGetValue:77 (0x00FFFFFCFF) Unsupported
+EAPI_ID_HWMON_TEMP_CPU
+ Id: 0x50000  Value: 429496456 
+----------------------------------------------------------
+Unsuccess Status: BoardGetValue:77 (0x00FFFFFCFF) Unsupported
+EAPI_ID_HWMON_TEMP_SYSTEM
+ Id: 0x50002  Value: 429496456 
+----------------------------------------------------------
+Unsuccess Status: BoardGetValue:77 (0x00FFFFFCFF) Unsupported
+EAPI_ID_HWMON_VOLTAGE_VCORE
+ Id: 0x51000  Value: 0.000000 
+----------------------------------------------------------
+Unsuccess Status: BoardGetValue:77 (0x00FFFFFCFF) Unsupported
+EAPI_ID_HWMON_VOLTAGE_3V3
+ Id: 0x51003  Value: 0.000000 
+----------------------------------------------------------
+Unsuccess Status: BoardGetValue:77 (0x00FFFFFCFF) Unsupported
+EAPI_ID_HWMON_VOLTAGE_5V
+ Id: 0x51004  Value: 0.000000 
+----------------------------------------------------------
+Unsuccess Status: BoardGetValue:77 (0x00FFFFFCFF) Unsupported
+EAPI_ID_HWMON_VOLTAGE_12V
+ Id: 0x51005  Value: 0.000000 
+----------------------------------------------------------
+Unsuccess Status: BoardGetValue:77 (0x00FFFFFCFF) Unsupported
+EAPI_ID_HWMON_VOLTAGE_VBAT
+ Id: 0x51008  Value: 0.000000 
+----------------------------------------------------------
+Unsuccess Status: BoardGetValue:77 (0x00FFFFFCFF) Unsupported
+EAPI_ID_HWMON_VOLTAGE_DC
+ Id: 0x5100D  Value: 0.000000 
+----------------------------------------------------------
+Unsuccess Status: BoardGetValue:77 (0x00FFFFFCFF) Unsupported
+EAPI_ID_HWMON_VOLTAGE_3VSB
+ Id: 0x51007  Value: 0.000000 
+----------------------------------------------------------
+Unsuccess Status: BoardGetValue:77 (0x00FFFFFCFF) Unsupported
+EAPI_ID_HWMON_VOLTAGE_5VSB
+ Id: 0x51006  Value: 0.000000 
+----------------------------------------------------------
+Unsuccess Status: BoardGetValue:77 (0x00FFFFFCFF) Unsupported
+EAPI_ID_HWMON_VOLTAGE_VIN
+ Id: 0x51018  Value: 0.000000 
+----------------------------------------------------------
+Unsuccess Status: BoardGetValue:77 (0x00FFFFFCFF) Unsupported
+EAPI_ID_HWMON_CURRENT_OEM1
+ Id: 0x53001  Value: 0.000000 
+----------------------------------------------------------
+Unsuccess Status: BoardGetValue:77 (0x00FFFFFCFF) Unsupported
+EAPI_ID_GPIO_POE_PINNUM
+ Id: 0x70001  Value: 0 
+----------------------------------------------------------
+Unsuccess Status: BoardGetValue:77 (0x00FFFFFCFF) Unsupported
+EAPI_ID_HWMON_FAN_CPU
+ Id: 0x52000  Value: 0 
+----------------------------------------------------------
+Unsuccess Status: BoardGetValue:77 (0x00FFFFFCFF) Unsupported
+EAPI_ID_HWMON_FAN_SYSTEM
+ Id: 0x52001  Value: 0 
+----------------------------------------------------------
