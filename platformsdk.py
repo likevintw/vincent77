@@ -13,6 +13,7 @@ class PlatformSDK:
         self.EApiBoardGetStringA = None
         self.EApiBoardGetValue = None
         self.EApiLibInitialize= None
+        self.EApiBoardGetStringA= None
 
         self.import_library()
         self.initialize()
@@ -115,6 +116,13 @@ class PlatformSDK:
         self.EApiLibInitialize = prototype(
             ("EApiGPIOGetLevel", self.e_api_library))
         
+        prototype = ctypes.CFUNCTYPE(
+            EApiStatus_t,
+            ctypes.POINTER(ctypes.c_float)
+        )
+        self.EApiGetMemoryAvailable = prototype(
+            ("EApiGetMemoryAvailable", self.e_api_library))
+        
     def handle_error_code(self,n):
         n=int(n)
         if n < 0:
@@ -158,10 +166,14 @@ class PlatformSDK:
             return status
         else:
             error_message=self.handle_error_code(status)
-            print("error: ", status,error_message)
-            return None
+            return error_message
 
     def get_gpio_level(self,id):
         buf_len=100
         pLevel = ctypes.c_uint32(buf_len)  # 創建緩衝區長度
         self.e_api_library.EApiGPIOGetLevel()
+
+    def get_available_memory(self):
+        available_memory=0
+        status=self.EApiGetMemoryAvailable(available_memory)
+        print(status,available_memory)
