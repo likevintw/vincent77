@@ -9,7 +9,7 @@ class PlatformSDK:
         self.e_api_library = None
         self.board_information_string=None
         self.board_information_value=None
-        self.board_information=None
+        self.board_information={}
         self.EApiBoardGetStringA = None
         self.EApiBoardGetValue = None
         self.EApiLibInitialize= None
