@@ -149,8 +149,7 @@ class PlatformSDK:
             return pValue.value
         else:
             error_message=self.handle_error_code(status)
-            print("error: ",id_number, status,error_message)
-            return None
+            return error_message
 
     def initial_EApiLibrary(self):
         status =self.e_api_library.EApiLibInitialize()
