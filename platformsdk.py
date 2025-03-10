@@ -4,6 +4,7 @@ import os
 import platform
 
 
+
 class PlatformSDK:
     def __init__(self):
         self.e_api_library = None
@@ -14,6 +15,7 @@ class PlatformSDK:
         self.EApiBoardGetValue = None
         self.EApiLibInitialize= None
         self.EApiGetMemoryAvailable= None
+        self.EApiGetDiskInfo=None
 
         self.import_library()
         self.initialize()
@@ -124,6 +126,13 @@ class PlatformSDK:
         self.EApiGetMemoryAvailable = prototype(
             ("EApiGetMemoryAvailable", self.e_api_library))
         
+        prototype = ctypes.CFUNCTYPE(
+            EApiStatus_t,
+            ctypes.POINTER(DiskInfoC)  # 傳入 DISK_INFO 結構的指針
+        )
+        self.EApiGetDiskInfo = prototype(
+            ("EApiGetDiskInfo", self.e_api_library))
+        
     def handle_error_code(self,n):
         n=int(n)
         if n < 0:
@@ -183,3 +192,41 @@ class PlatformSDK:
         except Exception as e:
             print("error: ",e)
             return None
+
+    def get_disk_information(self):
+        # EApiGetDiskInfo
+        try:
+            disk_info_c = DiskInfoC()
+            status = self.EApiGetDiskInfo(ctypes.byref(disk_info_c))
+            disk_info_obj = DiskInfo(disk_count=disk_info_c.disk_count,
+                disk_part_info=[DiskPartInfo(
+                    partition_id=disk_info_c.disk_part_info[i].partition_id,
+                    partition_size=disk_info_c.disk_part_info[i].partition_size,
+                    partition_name=disk_info_c.disk_part_info[i].partition_name.decode("utf-8")
+                ) for i in range(disk_info_c.disk_count)])
+            print(status)
+            return disk_info_obj
+        except Exception as e:
+            print("error: ",e)
+            return None
+    
+class DiskPartInfo:
+    def __init__(self, partition_id, partition_size, partition_name):
+        self.partition_id = partition_id
+        self.partition_size = partition_size
+        self.partition_name = partition_name
+
+class DiskInfo:
+    def __init__(self, disk_count, disk_part_info):
+        self.disk_count = disk_count
+        self.disk_part_info = disk_part_info
+
+# 定義 ctypes 結構映射
+class DiskPartInfoC(ctypes.Structure):
+    _fields_ = [("partition_id", ctypes.c_int),
+                ("partition_size", ctypes.c_int),
+                ("partition_name", ctypes.c_char_p)]
+
+class DiskInfoC(ctypes.Structure):
+    _fields_ = [("disk_count", ctypes.c_int),
+                ("disk_part_info", DiskPartInfoC * 8)]  # 最多支持 8 個分區

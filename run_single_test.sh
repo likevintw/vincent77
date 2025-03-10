@@ -22,6 +22,7 @@ sudo python3 -m unittest -v test_platformsdk.TestHandler.test_initial_EApiLibrar
 sudo python3 -m unittest -v test_platformsdk.TestHandler.test_check_table
 sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_board_information
 sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_available_memory
+sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_disk_information
 
 
 
