@@ -9,6 +9,7 @@ class PlatformSDK:
         self.e_api_library = None
         self.board_information_string=None
         self.board_information_value=None
+        self.board_information=None
         self.EApiBoardGetStringA = None
         self.EApiBoardGetValue = None
         self.EApiLibInitialize= None
@@ -71,6 +72,11 @@ class PlatformSDK:
             "EAPI_ID_HWMON_FAN_CPU": 0x00052000,
             "EAPI_ID_HWMON_FAN_SYSTEM": 0x00052001,
         }
+        for i in self.board_information_string.keys():
+            self.board_information.update({i:self.get_board_string_data(i)})
+        for i in self.board_information_value.keys():
+            self.board_information.update({i:self.get_board_value_data(i)})
+        print(self.board_information)
 
     def initialize(self):
         EApiStatus_t = ctypes.c_int

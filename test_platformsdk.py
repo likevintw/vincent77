@@ -45,6 +45,7 @@ class TestHandler(unittest.TestCase):
         handler = platformsdk.PlatformSDK()
         status = handler.initial_EApiLibrary()
         print(status)
+        
     def test_check_table(self):
         handler = platformsdk.PlatformSDK()
         print()
