@@ -225,7 +225,7 @@ class PlatformSDK:
             n = (1 << 32) + n
         n=hex(n)
         if n=="0xfffff0ff":
-            return "EAPI_STATUS_ERROR"
+            return "EAPI_STATUS_ERROR, Generic error"
         elif n=="0xfffffcff":
             return "EAPI_STATUS_UNSUPPORTED"
     
@@ -249,20 +249,25 @@ class PlatformSDK:
     def get_board_value_data(self, id_number):
         pValue = ctypes.c_uint32(0)
 
-        # 調用函數
-        print("555555555", id_number)
         status = self.e_api_library.EApiBoardGetValue(
             id_number, ctypes.byref(pValue))
 
-        if status == 0:  # 假設 0 是成功的狀態碼
+        if status == 0:
             return pValue.value
         else:
             error_message=self.handle_error_code(status)
-            print("eeeeeeeeeeeeeerror", status,error_message)
+            print("error: ",id_number, status,error_message)
             return None
 
     def initial_EApiLibrary(self):
-        return self.e_api_library.EApiLibInitialize()
+        status =self.e_api_library.EApiLibInitialize()
+
+        if status == 0:
+            return status
+        else:
+            error_message=self.handle_error_code(status)
+            print("error: ", status,error_message)
+            return None
 
     def get_gpio_level(self,id):
         buf_len=100

@@ -39,13 +39,11 @@ class TestHandler(unittest.TestCase):
     def test_get_board_value_data(self):
         handler = platformsdk.PlatformSDK()
         status = handler.get_board_value_data(handler.EAPI_ID_HWMON_TEMP_CPU)
-        status=handler.handle_error_code(status)
         print(status)
 
     def test_initial_EApiLibrary(self):
         handler = platformsdk.PlatformSDK()
         status = handler.initial_EApiLibrary()
-        status=handler.handle_error_code(status)
         print(status)
 
 
