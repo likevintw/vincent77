@@ -7,6 +7,8 @@ import platform
 class PlatformSDK:
     def __init__(self):
         self.e_api_library = None
+        self.board_information_string=None
+        self.board_information_value=None
         self.EApiBoardGetStringA = None
         self.EApiBoardGetValue = None
         self.EApiLibInitialize= None
@@ -40,6 +42,37 @@ class PlatformSDK:
         self.e_api_library = ctypes.CDLL(e_api_library_path)
 
     def initial_constant(self):
+        self.board_information_string={
+            "EAPI_ID_BOARD_MANUFACTURER_STR":0x0,
+            "EAPI_ID_BOARD_NAME_STR":0x1,
+            "EAPI_ID_BOARD_REVISION_STR":0x2,
+            "EAPI_ID_BOARD_SERIAL_STR":0x3,
+            "EAPI_ID_BOARD_BIOS_REVISION_STR":0x4,
+            "EAPI_ID_BOARD_HW_REVISION_STR":0x5,
+            "EAPI_ID_BOARD_PLATFORM_TYPE_STR":0x6,
+            "EAPI_ID_BOARD_EC_REVISION_STR":0x101,
+            "EAPI_ID_BOARD_OS_REVISION_STR":0x102,
+            "EAPI_ID_BOARD_CPU_MODEL_NAME_STR":0x103
+        }
+        #define EAPI_ID_HWMON_TEMP_CPU               EAPI_UINT32_C(0x00050000 + 0)
+        self.board_information_value = {
+            "EAPI_ID_HWMON_TEMP_CPU": 0x00050000,
+            "EAPI_ID_HWMON_FAN_SYSTEM": 0x00052001,
+            "EAPI_ID_HWMON_TEMP_SYSTEM": 0x00050002,
+            "EAPI_ID_HWMON_CURRENT_OEM1": 0x00053001,
+            "EAPI_ID_HWMON_VOLTAGE_3V3": 0x00051003,
+            "EAPI_ID_HWMON_VOLTAGE_VCORE": 0x00051000,
+            "EAPI_ID_HWMON_VOLTAGE_5V": 0x00051004,
+            "EAPI_ID_HWMON_VOLTAGE_12V": 0x00051005,
+            "EAPI_ID_HWMON_VOLTAGE_VBAT": 0x00051008,
+            "EAPI_ID_HWMON_VOLTAGE_DC": 0x0005100D,
+            "EAPI_ID_HWMON_VOLTAGE_3VSB": 0x00051007,
+            "EAPI_ID_HWMON_VOLTAGE_5VSB": 0x00051006,
+            "EAPI_ID_HWMON_VOLTAGE_VIN": 0x00051018,
+            "EAPI_ID_GPIO_POE_PINNUM": 0x00070001,
+            "EAPI_ID_HWMON_FAN_CPU": 0x00052000,
+        }
+
         self.EAPI_VER_MASK_VER = 0xFF000000
         self.EAPI_VER_MASK_REV = 0x00FF0000
         self.EAPI_VER_MASK_BUILD = 0x0000FFFF
@@ -129,19 +162,6 @@ class PlatformSDK:
         self.EAPI_ID_HWMON_VOLTAGE_1V8 = self.EAPI_ID_HWMON_VOLTAGE_BASE + 22
         self.EAPI_ID_HWMON_VOLTAGE_DC2 = self.EAPI_ID_HWMON_VOLTAGE_BASE + 23
         self.EAPI_ID_HWMON_VOLTAGE_VIN = self.EAPI_ID_HWMON_VOLTAGE_BASE + 24
-
-        self.EAPI_ID_HWMON_FAN_MAX = 10
-        self.EAPI_ID_HWMON_FAN_BASE = 0x00052000
-        self.EAPI_ID_HWMON_FAN_CPU = self.EAPI_ID_HWMON_FAN_BASE + 0
-        self.EAPI_ID_HWMON_FAN_SYSTEM = self.EAPI_ID_HWMON_FAN_BASE + 1
-        self.EAPI_ID_HWMON_FAN_CPU2 = self.EAPI_ID_HWMON_FAN_BASE + 2
-        self.EAPI_ID_HWMON_FAN_OEM0 = self.EAPI_ID_HWMON_FAN_BASE + 3
-        self.EAPI_ID_HWMON_FAN_OEM1 = self.EAPI_ID_HWMON_FAN_BASE + 4
-        self.EAPI_ID_HWMON_FAN_OEM2 = self.EAPI_ID_HWMON_FAN_BASE + 5
-        self.EAPI_ID_HWMON_FAN_OEM3 = self.EAPI_ID_HWMON_FAN_BASE + 6
-        self.EAPI_ID_HWMON_FAN_OEM4 = self.EAPI_ID_HWMON_FAN_BASE + 7
-        self.EAPI_ID_HWMON_FAN_OEM5 = self.EAPI_ID_HWMON_FAN_BASE + 8
-        self.EAPI_ID_HWMON_FAN_OEM6 = self.EAPI_ID_HWMON_FAN_BASE + 9
 
         self.EAPI_ID_HWMON_CURRENT_MAX = 3
         self.EAPI_ID_HWMON_CURRENT_BASE = 0x00053000

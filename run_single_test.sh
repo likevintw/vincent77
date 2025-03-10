@@ -19,4 +19,6 @@ sudo python3 -m unittest -v test_platformsdk
 sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_board_string_data
 sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_board_value_data
 sudo python3 -m unittest -v test_platformsdk.TestHandler.test_initial_EApiLibrary
+sudo python3 -m unittest -v test_platformsdk.TestHandler.test_check_table
+
 
