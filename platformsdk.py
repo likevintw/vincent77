@@ -219,6 +219,10 @@ class PlatformSDK:
         self.EApiLibInitialize = prototype(
             ("EApiGPIOGetLevel", self.e_api_library))
         
+    def handle_error_code(self,n):
+        if n < 0:
+            n = (1 << 32) + n
+        return hex(n)
     def get_board_string_data(self, id_number):
         # 緩衝區大小和初始化
         CMD_RETURN_BUF_SIZE = 4096
