@@ -7,7 +7,7 @@ import platform
 class PlatformSDK:
     def __init__(self):
         self.e_api_library = None
-        self.fnEApiBoardGetStringA = None
+        self.EApiBoardGetStringA = None
         self.EApiBoardGetValue = None
         self.EApiLibInitialize= None
 
@@ -193,7 +193,7 @@ class PlatformSDK:
             ctypes.POINTER(ctypes.c_char),   # 參數 2: char *pValue
             ctypes.POINTER(ctypes.c_uint32)  # 參數 3: uint32_t *pBufLen
         )
-        self.fnEApiBoardGetStringA = prototype(
+        self.EApiBoardGetStringA = prototype(
             ("EApiBoardGetStringA", self.e_api_library))
 
         prototype = ctypes.CFUNCTYPE(
