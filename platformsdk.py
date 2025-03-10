@@ -7,8 +7,8 @@ import platform
 class PlatformSDK:
     def __init__(self):
         self.e_api_library = None
-        self.EApiBoardGetValue= None
         self.fnEApiBoardGetStringA=None
+        self.EApiBoardGetValue= None
 
         self.import_library()
         self.initial_constant()
@@ -197,6 +197,11 @@ class PlatformSDK:
             ctypes.POINTER(ctypes.c_uint32),   
         )
         self.EApiBoardGetValue = prototype(("EApiBoardGetValue", self.e_api_library))
+
+        prototype = ctypes.CFUNCTYPE(
+            EApiStatus_t,  
+        )
+        self.EApiBoardGetValue = prototype(("EApiLibInitialize", self.e_api_library))
         
         
 
@@ -227,4 +232,5 @@ class PlatformSDK:
             print("eeeeeeeeeeeeeerror",status)
             return None
 
-
+    def initial_EApiLibrary(self):
+        return self.e_api_library.EApiLibInitialize()
