@@ -226,7 +226,7 @@ class PlatformSDK:
         pBufLen = ctypes.c_uint32(buf_len)  # 創建緩衝區長度
 
         # 調用函數
-        status = self.e_api_library.EApiBoardGetStringA(
+        status = self.EApiBoardGetStringA(
             id_number, pValue, ctypes.byref(pBufLen))
 
         if status == 0:  # 假設 0 是成功的狀態碼
