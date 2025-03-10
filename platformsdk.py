@@ -7,8 +7,9 @@ import platform
 class PlatformSDK:
     def __init__(self):
         self.e_api_library = None
-        self.fnEApiBoardGetStringA=None
-        self.EApiBoardGetValue= None
+        self.fnEApiBoardGetStringA = None
+        self.EApiBoardGetValue = None
+        self.EApiLibInitialize= None
 
         self.import_library()
         self.initial_constant()
@@ -33,7 +34,8 @@ class PlatformSDK:
             pass
 
         else:
-            print(f"disable to import library, architechture:{architecture.lower()}, os:{os_name}")
+            print(
+                f"disable to import library, architechture:{architecture.lower()}, os:{os_name}")
 
         self.e_api_library = ctypes.CDLL(e_api_library_path)
 
@@ -66,7 +68,6 @@ class PlatformSDK:
         self.EAPI_STATUS_LOCKED = 0xFFFFF8FE
         self.EAPI_STATUS_ERROR = 0xFFFFF0FF
         self.EAPI_STATUS_SUCCESS = 0
-
 
         self.EAPI_ID_BASE_GET_NAME_INFO = 0x00000000
         self.EAPI_ID_BASE_GET_NAME_HWMON = 0x10000000
@@ -155,10 +156,13 @@ class PlatformSDK:
         self.EAPI_ID_HWMON_MAX = self.EAPI_ID_HWMON_VOLTAGE_MAX
 
         self.EAPI_KELVINS_OFFSET = 2731
-        self.EAPI_ENCODE_CELCIUS = lambda Celsius: ((Celsius) * 10) + self.EAPI_KELVINS_OFFSET
-        self.EAPI_DECODE_CELCIUS = lambda Kelvins: ((Kelvins) - self.EAPI_KELVINS_OFFSET) / 10
+        self.EAPI_ENCODE_CELCIUS = lambda Celsius: (
+            (Celsius) * 10) + self.EAPI_KELVINS_OFFSET
+        self.EAPI_DECODE_CELCIUS = lambda Kelvins: (
+            (Kelvins) - self.EAPI_KELVINS_OFFSET) / 10
         self.EAPI_DECODE_HWMON_VALUE = lambda RawValue: RawValue / 1000
-        self.EAPI_CELCIUS_TO_FAHRENHEIT = lambda Celsius: 32 + (Celsius * 9 / 5)
+        self.EAPI_CELCIUS_TO_FAHRENHEIT = lambda Celsius: 32 + \
+            (Celsius * 9 / 5)
 
         self.EAPI_ID_CAP_MAX = 12
         self.EAPI_ID_CAP_BASE = 0x00060000
@@ -189,48 +193,66 @@ class PlatformSDK:
             ctypes.POINTER(ctypes.c_char),   # 參數 2: char *pValue
             ctypes.POINTER(ctypes.c_uint32)  # 參數 3: uint32_t *pBufLen
         )
-        self.fnEApiBoardGetStringA = prototype(("EApiBoardGetStringA", self.e_api_library))
-        
-        prototype = ctypes.CFUNCTYPE(
-            EApiStatus_t,           
-            EApiId_t,               
-            ctypes.POINTER(ctypes.c_uint32),   
-        )
-        self.EApiBoardGetValue = prototype(("EApiBoardGetValue", self.e_api_library))
+        self.fnEApiBoardGetStringA = prototype(
+            ("EApiBoardGetStringA", self.e_api_library))
 
         prototype = ctypes.CFUNCTYPE(
-            EApiStatus_t,  
+            EApiStatus_t,
+            EApiId_t,
+            ctypes.POINTER(ctypes.c_uint32),
         )
-        self.EApiBoardGetValue = prototype(("EApiLibInitialize", self.e_api_library))
-        
-        
+        self.EApiBoardGetValue = prototype(
+            ("EApiBoardGetValue", self.e_api_library))
 
-    def get_board_string_data(self,id_number):
+        prototype = ctypes.CFUNCTYPE(
+            EApiStatus_t,
+        )
+        self.EApiBoardGetValue = prototype(
+            ("EApiLibInitialize", self.e_api_library))
+
+        prototype = ctypes.CFUNCTYPE(
+            EApiStatus_t,
+            EApiId_t,
+            ctypes.c_uint32,
+            ctypes.POINTER(ctypes.c_uint32),
+        )
+        self.EApiLibInitialize = prototype(
+            ("EApiGPIOGetLevel", self.e_api_library))
+        
+    def get_board_string_data(self, id_number):
         # 緩衝區大小和初始化
         buf_len = 100
         pValue = ctypes.create_string_buffer(buf_len)  # 創建一個字符緩衝區
         pBufLen = ctypes.c_uint32(buf_len)  # 創建緩衝區長度
 
         # 調用函數
-        status = self.e_api_library.EApiBoardGetStringA(id_number, pValue, ctypes.byref(pBufLen))
+        status = self.e_api_library.EApiBoardGetStringA(
+            id_number, pValue, ctypes.byref(pBufLen))
 
         if status == 0:  # 假設 0 是成功的狀態碼
             return pValue.value.decode("utf-8")
         else:
-            print("eeeeeeeeeeeeeerror",status)
+            print("eeeeeeeeeeeeeerror", status)
             return None
-    def get_board_value_data(self,id_number):
+
+    def get_board_value_data(self, id_number):
         pValue = ctypes.c_uint32(0)
 
         # 調用函數
-        print("555555555",id_number)
-        status = self.e_api_library.EApiBoardGetValue(id_number, ctypes.byref(pValue))
-        
+        print("555555555", id_number)
+        status = self.e_api_library.EApiBoardGetValue(
+            id_number, ctypes.byref(pValue))
+
         if status == 0:  # 假設 0 是成功的狀態碼
             return pValue.value
         else:
-            print("eeeeeeeeeeeeeerror",status)
+            print("eeeeeeeeeeeeeerror", status)
             return None
 
     def initial_EApiLibrary(self):
         return self.e_api_library.EApiLibInitialize()
+
+    def get_gpio_level(self,id):
+        buf_len=100
+        pLevel = ctypes.c_uint32(buf_len)  # 創建緩衝區長度
+        self.e_api_library.EApiGPIOGetLevel()

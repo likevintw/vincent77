@@ -19,22 +19,22 @@ class TestHandler(unittest.TestCase):
         print()
         for i in range(10):
             status = handler.get_board_string_data(i)
-            print(i,status)
-        for i in range(16,19):
+            print(i, status)
+        for i in range(16, 19):
             status = handler.get_board_string_data(i)
-            print(i,status)
-        for i in range(257,260):
+            print(i, status)
+        for i in range(257, 260):
             status = handler.get_board_string_data(i)
-            print(i,status)
-        for i in range(513,526):
+            print(i, status)
+        for i in range(513, 526):
             status = handler.get_board_string_data(i)
-            print(i,status)
-        for i in range(327680,327690):
+            print(i, status)
+        for i in range(327680, 327690):
             status = handler.get_board_string_data(i)
-            print(i,status)
-        for i in range(330240,330265):
+            print(i, status)
+        for i in range(330240, 330265):
             status = handler.get_board_string_data(i)
-            print(i,status)
+            print(i, status)
 
     def test_get_board_value_data(self):
         handler = platformsdk.PlatformSDK()
@@ -45,6 +45,7 @@ class TestHandler(unittest.TestCase):
         handler = platformsdk.PlatformSDK()
         status = handler.initial_EApiLibrary()
         print(status)
+
 
 if __name__ == '__main__':
     unittest.main()
