@@ -4,10 +4,6 @@ import os
 import platform
 
 
-
-
-
-
 class PlatformSDK:
     def __init__(self):
         self.e_api_library = None
