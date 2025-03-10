@@ -38,7 +38,8 @@ class TestHandler(unittest.TestCase):
 
     def test_get_board_information(self):
         handler = platformsdk.PlatformSDK()
-        print(handler.board_information)
+        for i in handler.board_information.keys():
+            print(i,handler.board_information[i])
 
     def test_get_board_value_data(self):
         handler = platformsdk.PlatformSDK()
