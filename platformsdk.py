@@ -176,4 +176,4 @@ class PlatformSDK:
     def get_available_memory(self):
         available_memory=0
         status=self.EApiGetMemoryAvailable(ctypes.byref(available_memory))
-        print(status,available_memory)
+        print(status,available_memory.value.decode("utf-8"))
