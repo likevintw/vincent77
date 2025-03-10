@@ -223,10 +223,10 @@ class PlatformSDK:
         n=int(n)
         if n < 0:
             n = (1 << 32) + n
-        n=hex(n).upper()
-        if n=="0xFFFFF0FF":
+        n=hex(n)
+        if n=="0xfffff0ff":
             return "EAPI_STATUS_ERROR"
-        elif n=="0xFFFFFCFF":
+        elif n=="0xfffffcff":
             return "EAPI_STATUS_UNSUPPORTED"
     
     def get_board_string_data(self, id_number):
