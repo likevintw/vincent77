@@ -222,8 +222,8 @@ class PlatformSDK:
     def get_board_string_data(self, id_number):
         # 緩衝區大小和初始化
         buf_len = 100
-        pValue = ctypes.create_string_buffer(buf_len)  # 創建一個字符緩衝區
-        pBufLen = ctypes.c_uint32(buf_len)  # 創建緩衝區長度
+        pValue = ctypes.create_string_buffer(0)  # 創建一個字符緩衝區
+        pBufLen = ctypes.c_uint32(0)  # 創建緩衝區長度
 
         # 調用函數
         status = self.EApiBoardGetStringA(
