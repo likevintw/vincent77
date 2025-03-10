@@ -16,7 +16,7 @@ logging.basicConfig(
 class TestHandler(unittest.TestCase):
     def test_get_board_information(self):
         handler = platformsdk.PlatformSDK()
-        logging.debug()
+        logging.debug("")
         for i in handler.board_information.keys():
             logging.debug(i,"\t",handler.board_information[i])
 
@@ -32,7 +32,7 @@ class TestHandler(unittest.TestCase):
 
     def test_check_table(self):
         handler = platformsdk.PlatformSDK()
-        logging.debug()
+        logging.debug("")
         for i in handler.board_information_value.keys():
             logging.debug(i,handler.board_information_value[i])
         for i in handler.board_information_string.keys():
@@ -40,7 +40,7 @@ class TestHandler(unittest.TestCase):
 
     def test_get_available_memory(self):
         handler = platformsdk.PlatformSDK()
-        logging.debug()
+        logging.debug("")
         logging.debug(handler.get_available_memory)
     
 if __name__ == '__main__':
