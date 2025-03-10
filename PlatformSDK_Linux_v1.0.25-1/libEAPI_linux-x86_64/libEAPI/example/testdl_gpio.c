@@ -251,7 +251,7 @@ bool LibInitialize(void)
 		if (EApiLibInitialize != NULL)
 		{
 			status = EApiLibInitialize();
-			print("fffffff:%d\n", status);
+			printf("fffffff:%d\n", status);
 		}
 		else
 		{
