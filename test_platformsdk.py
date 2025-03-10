@@ -41,7 +41,7 @@ class TestHandler(unittest.TestCase):
     def test_get_available_memory(self):
         handler = platformsdk.PlatformSDK()
         print("")
-        print(handler.get_available_memory)
+        print(handler.get_available_memory())
     
 if __name__ == '__main__':
     unittest.main()
