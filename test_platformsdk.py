@@ -36,6 +36,10 @@ class TestHandler(unittest.TestCase):
             status = handler.get_board_string_data(i)
             print(i, status)
 
+    def test_get_board_information(self):
+        handler = platformsdk.PlatformSDK()
+        print(handler.board_information)
+
     def test_get_board_value_data(self):
         handler = platformsdk.PlatformSDK()
         status = handler.get_board_value_data(handler.EAPI_ID_HWMON_TEMP_CPU)
@@ -45,7 +49,7 @@ class TestHandler(unittest.TestCase):
         handler = platformsdk.PlatformSDK()
         status = handler.initial_EApiLibrary()
         print(status)
-        
+
     def test_check_table(self):
         handler = platformsdk.PlatformSDK()
         print()
@@ -53,7 +57,7 @@ class TestHandler(unittest.TestCase):
             print(i,handler.board_information_value[i])
         for i in handler.board_information_string.keys():
             print(i,handler.board_information_string[i])
-
+        
 
 if __name__ == '__main__':
     unittest.main()

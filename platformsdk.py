@@ -129,21 +129,17 @@ class PlatformSDK:
             return "EAPI_STATUS_UNSUPPORTED"
     
     def get_board_string_data(self, id_number):
-        print("111111",id_number)
-        # 緩衝區大小和初始化
         CMD_RETURN_BUF_SIZE = 4096
-        pValue = ctypes.create_string_buffer(CMD_RETURN_BUF_SIZE)  # 創建一個字符緩衝區
-        pBufLen = ctypes.c_uint32(CMD_RETURN_BUF_SIZE)  # 創建緩衝區長度
+        pValue = ctypes.create_string_buffer(CMD_RETURN_BUF_SIZE)  
+        pBufLen = ctypes.c_uint32(CMD_RETURN_BUF_SIZE) 
 
-        # 調用函數
         status = self.EApiBoardGetStringA(
             id_number, pValue, ctypes.byref(pBufLen))
 
-        if status == 0:  # 假設 0 是成功的狀態碼
+        if status == 0: 
             return pValue.value.decode("utf-8")
         else:
             error_message=self.handle_error_code(status)
-            # print("error: ",id_number, status,error_message)
             return error_message
 
     def get_board_value_data(self, id_number):
