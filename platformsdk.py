@@ -13,7 +13,7 @@ class PlatformSDK:
         self.EApiBoardGetStringA = None
         self.EApiBoardGetValue = None
         self.EApiLibInitialize= None
-        self.EApiBoardGetStringA= None
+        self.EApiGetMemoryAvailable= None
 
         self.import_library()
         self.initialize()
