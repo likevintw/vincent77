@@ -17,6 +17,7 @@ class PlatformSDK:
         self.EApiGetMemoryAvailable = None
         self.EApiGetDiskInfo = None
         self.EApiETPReadDeviceData = None
+        self.EApiETPReadUserData=None
         self.EApiGPIOGetLevel = None
         self.EApiExtFunctionGetStatus = None
         self.EApiExtFunctionSetStatus = None
@@ -157,6 +158,13 @@ class PlatformSDK:
         )
         self.EApiETPReadDeviceData = prototype(
             ("EApiETPReadDeviceData", self.e_api_library))
+
+        prototype = ctypes.CFUNCTYPE(
+            EApiStatus_t,
+            ctypes.POINTER(ctypes.POINTER(ETP_USER_DATA))  # 傳入 DISK_INFO 結構的指針
+        )
+        self.EApiETPReadUserData = prototype(
+            ("EApiETPReadUserData", self.e_api_library))
 
         prototype = ctypes.CFUNCTYPE(
             EApiStatus_t,
@@ -325,12 +333,25 @@ class PlatformSDK:
             return None
 
     def get_etp_device_data(self):
-        etp_data_size = ctypes.sizeof(ETP_DATA)
-        print(etp_data_size)
-        PETP_USER_DATA = ctypes.POINTER(ETP_USER_DATA)
-        status = self.EApiETPReadDeviceData(PETP_USER_DATA)
+        # etp_data_size = ctypes.sizeof(ETP_DATA)
+        # print(etp_data_size)
+        etp_data = ETP_DATA()
+        # LP_ETP_USER_DATA = ctypes.POINTER(ETP_USER_DATA)
+        status = self.EApiETPReadDeviceData(etp_data)
         if status == 0:
-            return status
+            return etp_data
+        else:
+            error_message = self.handle_error_code(status)
+            return error_message
+    
+    def get_etp_user_data(self):
+        # etp_data_size = ctypes.sizeof(ETP_DATA)
+        # print(etp_data_size)
+        # etp_data = ctypes.POINTER(ETP_DATA)
+        etp_user_data = ctypes.POINTER(ETP_USER_DATA)
+        status = self.EApiETPReadUserData(etp_user_data)
+        if status == 0:
+            return etp_user_data
         else:
             error_message = self.handle_error_code(status)
             return error_message
@@ -458,6 +479,8 @@ class PlatformSDK:
         #     error_message = self.handle_error_code(status)
         #     return error_message
         pass
+
+
 class DiskPartInfo:
     def __init__(self, partition_id, partition_size, partition_name):
         self.partition_id = partition_id

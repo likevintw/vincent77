@@ -62,10 +62,15 @@ class TestHandler(unittest.TestCase):
             print(f"  Partition Size: {part_info.partition_size} MB")
             print(f"  Partition Name: {part_info.partition_name}")
 
-    @unittest.skip("todo")
     def test_get_etp_device_data(self):
         handler = platformsdk.PlatformSDK()
-        print(handler.get_etp_device_data())
+        result=handler.get_etp_device_data()
+        print(result.DeviceOrderText[:])
+    def test_get_etp_user_data(self):
+        handler = platformsdk.PlatformSDK()
+        result=handler.get_etp_user_data()
+        print(result.UserSpace1[:])
+    
 
     def test_get_led_id_list(self):
         handler = platformsdk.PlatformSDK()
