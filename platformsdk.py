@@ -383,7 +383,7 @@ class PlatformSDK:
         bitmask = ctypes.c_uint32(1)
         gpio_direction = ctypes.c_uint32(direction)
         status = self.EApiGPIOSetDirection(id_number_int_type,
-                                           bitmask
+                                           bitmask,
                                            gpio_direction)
         if status == 0:
             return True

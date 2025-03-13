@@ -29,6 +29,7 @@ sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_gpio_level
 
 # Todo
 sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_etp_device_data
+sudo python3 -m unittest -v test_platformsdk.TestHandler.test_set_gpio_direction
 
 
 
