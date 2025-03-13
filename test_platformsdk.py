@@ -22,7 +22,8 @@ class TestHandler(unittest.TestCase):
 
     def test_get_board_value_data(self):
         handler = platformsdk.PlatformSDK()
-        status = handler.get_board_value_data(handler.board_information_value["EAPI_ID_HWMON_TEMP_CPU"])
+        status = handler.get_board_value_data(
+            handler.board_information_value["EAPI_ID_HWMON_TEMP_CPU"])
         print(status)
 
     def test_initial_EApiLibrary(self):
@@ -76,20 +77,22 @@ class TestHandler(unittest.TestCase):
     def test_set_led_status(self):
         handler = platformsdk.PlatformSDK()
         print(handler.set_led_status(0))
+
     def test_get_gpio_count(self):
         handler = platformsdk.PlatformSDK()
         print(handler.get_gpio_count())
+
     def test_get_gpio_level(self):
         handler = platformsdk.PlatformSDK()
         print(handler.get_gpio_level(0))
+
     def test_get_gpio_direction(self):
         handler = platformsdk.PlatformSDK()
         print(handler.get_gpio_direction(0))
+
     def test_get_gpio_capability(self):
         handler = platformsdk.PlatformSDK()
         print(handler.get_gpio_capability(0))
-        
-        
 
 
 if __name__ == '__main__':

@@ -13,15 +13,15 @@ class PlatformSDK:
         self.EApiBoardGetStringA = None
         self.EApiBoardGetValue = None
         self.EApiLibInitialize = None
-        self.EApiLibUnInitialize=None
+        self.EApiLibUnInitialize = None
         self.EApiGetMemoryAvailable = None
         self.EApiGetDiskInfo = None
         self.EApiETPReadDeviceData = None
-        self.EApiGPIOGetLevel=None
+        self.EApiGPIOGetLevel = None
         self.EApiExtFunctionGetStatus = None
         self.EApiExtFunctionSetStatus = None
-        self.EApiGPIOGetCount=None
-        self.EApiGPIOGetDirection=None
+        self.EApiGPIOGetCount = None
+        self.EApiGPIOGetDirection = None
 
         self.led_id_list = []
 
@@ -133,8 +133,6 @@ class PlatformSDK:
         self.EApiLibUnInitialize = prototype(
             ("EApiLibUnInitialize", self.e_api_library))
 
-        
-
         prototype = ctypes.CFUNCTYPE(
             EApiStatus_t,
             ctypes.POINTER(ctypes.c_float)
@@ -206,7 +204,6 @@ class PlatformSDK:
         self.EApiGPIOGetDirectionCaps = prototype(
             ("EApiGPIOGetDirectionCaps", self.e_api_library))
 
-
     def handle_error_code(self, n):
         n = int(n)
         if n < 0:
@@ -260,7 +257,6 @@ class PlatformSDK:
         #     error_message = self.handle_error_code(status)
         #     print(f"run EApiLibUnInitialize fail: {error_message}")
 
-
     def get_available_memory(self):
         try:
             available_memory = ctypes.c_float()
@@ -276,12 +272,12 @@ class PlatformSDK:
             disk_info_c = DiskInfoC()
             status = self.EApiGetDiskInfo(ctypes.byref(disk_info_c))
             disk_info_obj = DiskInfo(disk_count=disk_info_c.disk_count,
-                disk_part_info=[DiskPartInfo(
-                    partition_id=disk_info_c.disk_part_info[i].partition_id,
-                    partition_size=disk_info_c.disk_part_info[i].partition_size,
-                    partition_name=disk_info_c.disk_part_info[i].partition_name.decode(
-                        "utf-8")
-                ) for i in range(disk_info_c.disk_count)])
+                                     disk_part_info=[DiskPartInfo(
+                                         partition_id=disk_info_c.disk_part_info[i].partition_id,
+                                         partition_size=disk_info_c.disk_part_info[i].partition_size,
+                                         partition_name=disk_info_c.disk_part_info[i].partition_name.decode(
+                                             "utf-8")
+                                     ) for i in range(disk_info_c.disk_count)])
             print(status)
             return disk_info_obj
         except Exception as e:
@@ -328,9 +324,9 @@ class PlatformSDK:
             return error_message
 
     def get_gpio_count(self):
-        buffer=0
+        buffer = 0
         count = ctypes.c_uint32(buffer)
-        status=self.EApiGPIOGetCount(ctypes.byref(count))
+        status = self.EApiGPIOGetCount(ctypes.byref(count))
         if status == 0:
             return status
         else:
@@ -340,35 +336,38 @@ class PlatformSDK:
     def get_gpio_level(self, id_number=0):
         bitmask = ctypes.c_uint32(1)
         level = ctypes.c_uint32(0)
-        status=self.EApiGPIOGetLevel(id_number,bitmask,ctypes.byref(level))
+        status = self.EApiGPIOGetLevel(id_number, bitmask, ctypes.byref(level))
         if status == 0:
             return level
         else:
             error_message = self.handle_error_code(status)
             return error_message
 
-    def get_gpio_direction(self,id_number=0):
+    def get_gpio_direction(self, id_number=0):
         id_number_int_type = ctypes.c_int(id_number)
         direction = ctypes.c_uint32()
         bitmask = ctypes.c_uint32(1)
-        status=self.EApiGPIOGetDirection(id_number_int_type,bitmask,ctypes.byref(direction))
+        status = self.EApiGPIOGetDirection(
+            id_number_int_type, bitmask, ctypes.byref(direction))
         if status == 0:
             return direction
         else:
             error_message = self.handle_error_code(status)
             return error_message
-    def get_gpio_capability(self,id_number=0):
+
+    def get_gpio_capability(self, id_number=0):
         id_number_int_type = ctypes.c_int(id_number)
         gpio_input = ctypes.c_uint32(0)
         gpio_output = ctypes.c_uint32(0)
-        status=self.EApiGPIOGetDirectionCaps(id_number_int_type,
-        ctypes.byref(gpio_input),
-        ctypes.byref(gpio_output))
+        status = self.EApiGPIOGetDirectionCaps(id_number_int_type,
+                                               ctypes.byref(gpio_input),
+                                               ctypes.byref(gpio_output))
         if status == 0:
             return direction
         else:
             error_message = self.handle_error_code(status)
             return error_message
+
 
 class DiskPartInfo:
     def __init__(self, partition_id, partition_size, partition_name):
