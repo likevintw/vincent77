@@ -4,6 +4,7 @@ import platformsdk
 import os
 import logging
 
+
 logging.basicConfig(
     level=logging.DEBUG,  # 设置日志级别（ DEBUG, INFO, WARNING, ERROR, CRITICAL）
     format='%(asctime)s - %(levelname)s - %(message)s',  # 设置日志输出格式
@@ -108,7 +109,7 @@ class TestHandler(unittest.TestCase):
 
     def test_get_watchdog_capaility(self):
         handler = platformsdk.PlatformSDK()
-        result=handler.get_watchdog_capaility()
+        result=handler.get_watchdog_capability()
         max_delay_in_milliseconds=result[0]
         max_event_timeout_in_milliseconds=result[1]
         max_reset_timeout_in_milliseconds=result[2]
@@ -116,7 +117,11 @@ class TestHandler(unittest.TestCase):
         print(max_delay_in_milliseconds)
         print(max_event_timeout_in_milliseconds)
         print(max_reset_timeout_in_milliseconds)
-
+    @unittest.skip("no source")
+    def test_get_storage_capability(self):
+        handler = platformsdk.PlatformSDK()
+        result=handler.get_watchdog_capability()
+        print(result)
 
 if __name__ == '__main__':
     unittest.main()

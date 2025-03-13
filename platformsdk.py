@@ -25,6 +25,7 @@ class PlatformSDK:
         self.EApiGPIOSetDirection = None
         self.EApiGPIOSetLevel = None
         self.EApiWDogGetCap = None
+        self.EApiStorageCap=None
 
         self.led_id_list = []
 
@@ -234,6 +235,15 @@ class PlatformSDK:
         self.EApiWDogGetCap = prototype(
             ("EApiWDogGetCap", self.e_api_library))
 
+        # prototype = ctypes.CFUNCTYPE(
+        #             EApiStatus_t,
+        #             EApiId_t,
+        #             ctypes.POINTER(ctypes.c_uint32),
+        #             ctypes.POINTER(ctypes.c_uint32)
+        #         )
+        # self.EApiStorageCap = prototype(
+        #     ("EApiStorageCap", self.e_api_library))
+
     def handle_error_code(self, n):
         n = int(n)
         if n < 0:
@@ -424,7 +434,7 @@ class PlatformSDK:
             error_message = self.handle_error_code(status)
             return error_message
 
-    def get_watchdog_capaility(self):
+    def get_watchdog_capability(self):
         max_delay_in_milliseconds = ctypes.c_uint32(0)
         max_event_timeout_in_milliseconds = ctypes.c_uint32(0)
         max_reset_timeout_in_milliseconds = ctypes.c_uint32(0)
@@ -437,7 +447,17 @@ class PlatformSDK:
             error_message = self.handle_error_code(status)
             return error_message
 
-
+    def get_storage_capability(self, id_number=0):
+        # id_number_int_type = ctypes.c_int(id_number)
+        # storage_size = ctypes.c_uint32(0)
+        # block_length= ctypes.c_uint32(0)
+        # status=self.EApiStorageCap(id_number_int_type,ctypes.byref(storage_size),ctypes.byref(block_length))
+        # if status == 0:
+        #     return storage_size.value,block_length.value
+        # else:
+        #     error_message = self.handle_error_code(status)
+        #     return error_message
+        pass
 class DiskPartInfo:
     def __init__(self, partition_id, partition_size, partition_name):
         self.partition_id = partition_id
