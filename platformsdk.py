@@ -333,13 +333,13 @@ class PlatformSDK:
             return None
 
     def get_etp_device_data(self):
-        # etp_data_size = ctypes.sizeof(ETP_DATA)
-        # print(etp_data_size)
-        etp_data = ETP_DATA()
-        # LP_ETP_USER_DATA = ctypes.POINTER(ETP_USER_DATA)
-        status = self.EApiETPReadDeviceData(etp_data)
+        PETP_DATA = ctypes.POINTER(ETP_DATA)
+        pReadDeviceData = None
+        etp_data = ETP_DATA()  # 創建 ETP_DATA 實例
+        pReadDeviceData = ctypes.pointer(etp_data)
+        status = self.EApiETPReadUserData(pReadDeviceData)
         if status == 0:
-            return etp_data
+            return pReadDeviceData
         else:
             error_message = self.handle_error_code(status)
             return error_message
