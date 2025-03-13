@@ -21,6 +21,7 @@ class PlatformSDK:
         self.EApiExtFunctionGetStatus = None
         self.EApiExtFunctionSetStatus = None
         self.EApiGPIOGetCount=None
+        self.EApiGPIOGetDirection=None
 
         self.led_id_list = []
 
@@ -185,7 +186,14 @@ class PlatformSDK:
         self.EApiGPIOGetCount = prototype(
             ("EApiGPIOGetCount", self.e_api_library))
 
-    
+        prototype = ctypes.CFUNCTYPE(
+            EApiStatus_t,
+            EApiId_t,
+            ctypes.c_uint32,
+            ctypes.POINTER(ctypes.c_uint32)
+        )
+        self.EApiGPIOGetDirection = prototype(
+            ("EApiGPIOGetDirection", self.e_api_library))
 
 
     def handle_error_code(self, n):
@@ -322,6 +330,16 @@ class PlatformSDK:
         buf_len = 100
         pLevel = ctypes.c_uint32(buf_len)
         self.EApiGPIOGetLevel()
+    def get_gpio_direction(self,id_number=0):
+        id_number_int_type = ctypes.c_int(id_number)
+        direction = ctypes.c_uint32()
+        bitmask = ctypes.c_uint32(1)
+        status=self.EApiGPIOGetDirection(id_number_int_type,bitmask,direction)
+        if status == 0:
+            return direction
+        else:
+            error_message = self.handle_error_code(status)
+            return error_message
 
 class DiskPartInfo:
     def __init__(self, partition_id, partition_size, partition_name):
