@@ -12,8 +12,8 @@ sudo python3 -m unittest -v test_susiiot.TestHandler.test_get_json_format_data
 sudo python3 -m unittest -v test_susiiot.TestHandler.test_get_system_temperature
 sudo python3 -m unittest -v test_susiiot.TestHandler.test_get_id_dictionary
 sudo python3 -m unittest -v test_susiiot.TestHandler.test_get_gpio_list
-sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_board_string_data
 
+sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_board_string_data
 sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_board_value_data
 sudo python3 -m unittest -v test_platformsdk.TestHandler.test_initial_EApiLibrary
 sudo python3 -m unittest -v test_platformsdk.TestHandler.test_check_table
@@ -31,10 +31,10 @@ sudo python3 -m unittest -v test_platformsdk.TestHandler.test_set_gpio_direction
 sudo python3 -m unittest -v test_platformsdk.TestHandler.test_set_gpio_level
 sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_watchdog_capaility
 sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_storage_capability
-
-# Todo
 sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_etp_device_data
 sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_etp_user_data
+
+# Todo
 
 
 
