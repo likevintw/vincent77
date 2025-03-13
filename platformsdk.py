@@ -22,6 +22,7 @@ class PlatformSDK:
         self.EApiExtFunctionSetStatus = None
         self.EApiGPIOGetCount = None
         self.EApiGPIOGetDirection = None
+        self.EApiGPIOSetDirection = None
 
         self.led_id_list = []
 
@@ -204,6 +205,15 @@ class PlatformSDK:
         self.EApiGPIOGetDirectionCaps = prototype(
             ("EApiGPIOGetDirectionCaps", self.e_api_library))
 
+        prototype = ctypes.CFUNCTYPE(
+            EApiStatus_t,
+            EApiId_t,
+            ctypes.c_uint32,
+            ctypes.c_uint32
+        )
+        self.EApiGPIOSetDirection = prototype(
+            ("EApiGPIOSetDirection", self.e_api_library))
+
     def handle_error_code(self, n):
         n = int(n)
         if n < 0:
@@ -364,6 +374,19 @@ class PlatformSDK:
                                                ctypes.byref(gpio_output))
         if status == 0:
             return direction
+        else:
+            error_message = self.handle_error_code(status)
+            return error_message
+
+    def set_gpio_direction(self, id_number=0, direction=0):
+        id_number_int_type = ctypes.c_int(id_number)
+        bitmask = ctypes.c_uint32(1)
+        gpio_direction = ctypes.c_uint32(direction)
+        status = self.EApiGPIOSetDirection(id_number_int_type,
+                                           bitmask
+                                           gpio_direction)
+        if status == 0:
+            return True
         else:
             error_message = self.handle_error_code(status)
             return error_message
