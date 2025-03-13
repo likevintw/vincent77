@@ -16,6 +16,7 @@ class PlatformSDK:
         self.EApiGetMemoryAvailable = None
         self.EApiGetDiskInfo = None
         self.EApiETPReadDeviceData = None
+        self.EApiGPIOGetLevel=None
         self.EApiExtFunctionGetStatus = None
         self.EApiExtFunctionSetStatus = None
         self.EApiGPIOGetCount=None
@@ -170,6 +171,13 @@ class PlatformSDK:
         self.EApiExtFunctionSetStatus = prototype(
             ("EApiExtFunctionSetStatus", self.e_api_library))
 
+        prototype = ctypes.CFUNCTYPE(
+            EApiStatus_t,
+            ctypes.POINTER(ctypes.c_uint32)
+        )
+        self.EApiGPIOGetCount = prototype(
+            ("EApiGPIOGetCount", self.e_api_library))
+
     def handle_error_code(self, n):
         n = int(n)
         if n < 0:
@@ -286,6 +294,14 @@ class PlatformSDK:
             error_message = self.handle_error_code(result)
             return error_message
 
+    def get_gpio_count(self):
+        count = ctypes.c_uint32(0)
+        status=self.EApiGPIOGetCount(ctypes.byref(count))
+        if status == 0:
+            return status
+        else:
+            error_message = self.handle_error_code(status)
+            return error_message
 
 class DiskPartInfo:
     def __init__(self, partition_id, partition_size, partition_name):

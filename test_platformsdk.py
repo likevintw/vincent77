@@ -77,6 +77,9 @@ class TestHandler(unittest.TestCase):
     def test_set_led_status(self):
         handler = platformsdk.PlatformSDK()
         print(handler.set_led_status(0))
+    def test_get_gpio_count(self):
+        handler = platformsdk.PlatformSDK()
+        print(handler.get_gpio_count())
 
 
 if __name__ == '__main__':
