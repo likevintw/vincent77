@@ -18,6 +18,7 @@ class PlatformSDK:
         self.EApiGetDiskInfo=None
         self.EApiETPReadDeviceData=None
         self.EApiExtFunctionGetStatus=None
+        self.EApiExtFunctionSetStatus=None
 
         self.led_id_list=[]
 
@@ -158,6 +159,16 @@ class PlatformSDK:
         )
         self.EApiExtFunctionGetStatus = prototype(
             ("EApiExtFunctionGetStatus", self.e_api_library))
+
+        prototype = ctypes.CFUNCTYPE(
+            EApiStatus_t,
+            EApiId_t, 
+            ctypes.c_uint32
+        )
+        self.EApiExtFunctionSetStatus = prototype(
+            ("EApiExtFunctionSetStatus", self.e_api_library))
+
+            
         
     def handle_error_code(self,n):
         n=int(n)
@@ -254,12 +265,25 @@ class PlatformSDK:
         status = ctypes.c_uint32()
         result = self.EApiExtFunctionGetStatus(id_number_int_type,ctypes.byref(status))
         print(id_number_int_type,status,result)
-        
+
         if result == 0:
             return status
         else:
             error_message=self.handle_error_code(result)
             return error_message
+    
+    def set_led_status(self,id_number=0):
+        id_number_int_type = ctypes.c_int(id_number)
+        status = ctypes.c_uint32()
+        result = self.EApiExtFunctionSetStatus(id_number_int_type,status)
+        print(id_number_int_type,status,result)
+
+        if result == 0:
+            return status
+        else:
+            error_message=self.handle_error_code(result)
+            return error_message
+
 
 class DiskPartInfo:
     def __init__(self, partition_id, partition_size, partition_name):

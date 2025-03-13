@@ -69,6 +69,9 @@ class TestHandler(unittest.TestCase):
     def test_get_led_status(self):
         handler = platformsdk.PlatformSDK()
         print(handler.get_led_status(0))
+    def test_set_led_status(self):
+        handler = platformsdk.PlatformSDK()
+        print(handler.set_led_status(0))
     
 if __name__ == '__main__':
     unittest.main()
