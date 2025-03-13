@@ -133,14 +133,7 @@ class PlatformSDK:
         self.EApiLibUnInitialize = prototype(
             ("EApiLibUnInitialize", self.e_api_library))
 
-        prototype = ctypes.CFUNCTYPE(
-            EApiStatus_t,
-            EApiId_t,
-            ctypes.c_uint32,
-            ctypes.POINTER(ctypes.c_uint32),
-        )
-        self.EApiGPIOGetLevel = prototype(
-            ("EApiGPIOGetLevel", self.e_api_library))
+        
 
         prototype = ctypes.CFUNCTYPE(
             EApiStatus_t,
@@ -190,10 +183,28 @@ class PlatformSDK:
             EApiStatus_t,
             EApiId_t,
             ctypes.c_uint32,
+            ctypes.POINTER(ctypes.c_uint32),
+        )
+        self.EApiGPIOGetLevel = prototype(
+            ("EApiGPIOGetLevel", self.e_api_library))
+
+        prototype = ctypes.CFUNCTYPE(
+            EApiStatus_t,
+            EApiId_t,
+            ctypes.c_uint32,
             ctypes.POINTER(ctypes.c_uint32)
         )
         self.EApiGPIOGetDirection = prototype(
             ("EApiGPIOGetDirection", self.e_api_library))
+
+        prototype = ctypes.CFUNCTYPE(
+            EApiStatus_t,
+            EApiId_t,
+            ctypes.POINTER(ctypes.c_uint32),
+            ctypes.POINTER(ctypes.c_uint32)
+        )
+        self.EApiGPIOGetDirectionCaps = prototype(
+            ("EApiGPIOGetDirectionCaps", self.e_api_library))
 
 
     def handle_error_code(self, n):
@@ -335,6 +346,18 @@ class PlatformSDK:
         direction = ctypes.c_uint32()
         bitmask = ctypes.c_uint32(1)
         status=self.EApiGPIOGetDirection(id_number_int_type,bitmask,direction)
+        if status == 0:
+            return direction
+        else:
+            error_message = self.handle_error_code(status)
+            return error_message
+    def get_gpio_capability(self,id_number=0):
+        id_number_int_type = ctypes.c_int(id_number)
+        gpio_input = ctypes.c_uint32(0)
+        gpio_output = ctypes.c_uint32(0)
+        status=self.EApiGPIOGetDirectionCaps(id_number_int_type,
+        ctypes.byref(gpio_input),
+        ctypes.byref(gpio_output))
         if status == 0:
             return direction
         else:
