@@ -18,6 +18,7 @@ class PlatformSDK:
         self.EApiETPReadDeviceData = None
         self.EApiExtFunctionGetStatus = None
         self.EApiExtFunctionSetStatus = None
+        self.EApiGPIOGetCount=None
 
         self.led_id_list = []
 
@@ -196,7 +197,7 @@ class PlatformSDK:
     def get_board_value_data(self, id_number):
         pValue = ctypes.c_uint32(0)
 
-        status = self.e_api_library.EApiBoardGetValue(
+        status = self.EApiBoardGetValue(
             id_number, ctypes.byref(pValue))
 
         if status == 0:
@@ -206,7 +207,7 @@ class PlatformSDK:
             return error_message
 
     def initial_EApiLibrary(self):
-        status = self.e_api_library.EApiLibInitialize()
+        status = self.EApiLibInitialize()
 
         if status == 0:
             return status
@@ -217,7 +218,7 @@ class PlatformSDK:
     def get_gpio_level(self, id):
         buf_len = 100
         pLevel = ctypes.c_uint32(buf_len)  # 創建緩衝區長度
-        self.e_api_library.EApiGPIOGetLevel()
+        self.EApiGPIOGetLevel()
 
     def get_available_memory(self):
         try:
