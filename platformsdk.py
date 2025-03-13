@@ -107,7 +107,7 @@ class PlatformSDK:
         prototype = ctypes.CFUNCTYPE(
             EApiStatus_t,
         )
-        self.EApiBoardGetValue = prototype(
+        self.EApiLibInitialize = prototype(
             ("EApiLibInitialize", self.e_api_library))
 
         prototype = ctypes.CFUNCTYPE(
@@ -116,7 +116,7 @@ class PlatformSDK:
             ctypes.c_uint32,
             ctypes.POINTER(ctypes.c_uint32),
         )
-        self.EApiLibInitialize = prototype(
+        self.EApiGPIOGetLevel = prototype(
             ("EApiGPIOGetLevel", self.e_api_library))
         
         prototype = ctypes.CFUNCTYPE(
