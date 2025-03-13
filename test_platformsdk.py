@@ -18,7 +18,7 @@ class TestHandler(unittest.TestCase):
         handler = platformsdk.PlatformSDK()
         print("")
         for i in handler.board_information.keys():
-            print(i,"\t",handler.board_information[i])
+            print(i, "\t", handler.board_information[i])
 
     def test_get_board_value_data(self):
         handler = platformsdk.PlatformSDK()
@@ -34,9 +34,9 @@ class TestHandler(unittest.TestCase):
         handler = platformsdk.PlatformSDK()
         print("")
         for i in handler.board_information_value.keys():
-            print(i,handler.board_information_value[i])
+            print(i, handler.board_information_value[i])
         for i in handler.board_information_string.keys():
-            print(i,handler.board_information_string[i])
+            print(i, handler.board_information_string[i])
 
     def test_get_available_memory(self):
         handler = platformsdk.PlatformSDK()
@@ -46,32 +46,37 @@ class TestHandler(unittest.TestCase):
     def test_get_disk_information(self):
         handler = platformsdk.PlatformSDK()
         print("")
-        disk_info_obj=handler.get_disk_information()
+        disk_info_obj = handler.get_disk_information()
 
         if disk_info_obj is None:
             print("No disk information available.")
             return
-        
+
         print(f"Total disk count: {disk_info_obj.disk_count}")
-        
+
         # 輸出每個磁碟分區的資料
         for idx, part_info in enumerate(disk_info_obj.disk_part_info):
             print(f"Partition {idx + 1}:")
             print(f"  Partition ID: {part_info.partition_id}")
             print(f"  Partition Size: {part_info.partition_size} MB")
             print(f"  Partition Name: {part_info.partition_name}")
+
     def test_get_etp_device_data(self):
         handler = platformsdk.PlatformSDK()
         print(handler.get_etp_device_data())
+
     def test_get_led_id_list(self):
         handler = platformsdk.PlatformSDK()
         print(handler.get_led_id_list())
+
     def test_get_led_status(self):
         handler = platformsdk.PlatformSDK()
         print(handler.get_led_status(0))
+
     def test_set_led_status(self):
         handler = platformsdk.PlatformSDK()
         print(handler.set_led_status(0))
-    
+
+
 if __name__ == '__main__':
     unittest.main()

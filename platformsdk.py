@@ -4,23 +4,22 @@ import os
 import platform
 
 
-
 class PlatformSDK:
     def __init__(self):
         self.e_api_library = None
-        self.board_information_string=None
-        self.board_information_value=None
-        self.board_information={}
+        self.board_information_string = None
+        self.board_information_value = None
+        self.board_information = {}
         self.EApiBoardGetStringA = None
         self.EApiBoardGetValue = None
-        self.EApiLibInitialize= None
-        self.EApiGetMemoryAvailable= None
-        self.EApiGetDiskInfo=None
-        self.EApiETPReadDeviceData=None
-        self.EApiExtFunctionGetStatus=None
-        self.EApiExtFunctionSetStatus=None
+        self.EApiLibInitialize = None
+        self.EApiGetMemoryAvailable = None
+        self.EApiGetDiskInfo = None
+        self.EApiETPReadDeviceData = None
+        self.EApiExtFunctionGetStatus = None
+        self.EApiExtFunctionSetStatus = None
 
-        self.led_id_list=[]
+        self.led_id_list = []
 
         self.import_library()
         self.initialize()
@@ -56,19 +55,20 @@ class PlatformSDK:
         EAPI_ID_EXT_FUNC_LED_MAX = 0x0000000F
 
         # 生成 LED ID 列表，範圍從 EAPI_ID_EXT_FUNC_LED_MIN 到 EAPI_ID_EXT_FUNC_LED_MAX
-        self.led_id_list = [EAPI_ID_EXT_FUNC_LED_MIN + i for i in range(EAPI_ID_EXT_FUNC_LED_MAX - EAPI_ID_EXT_FUNC_LED_MIN + 1)]
+        self.led_id_list = [EAPI_ID_EXT_FUNC_LED_MIN + i for i in range(
+            EAPI_ID_EXT_FUNC_LED_MAX - EAPI_ID_EXT_FUNC_LED_MIN + 1)]
 
-        self.board_information_string={
-            "EAPI_ID_BOARD_MANUFACTURER_STR":0x0,
-            "EAPI_ID_BOARD_NAME_STR":0x1,
-            "EAPI_ID_BOARD_REVISION_STR":0x2,
-            "EAPI_ID_BOARD_SERIAL_STR":0x3,
-            "EAPI_ID_BOARD_BIOS_REVISION_STR":0x4,
-            "EAPI_ID_BOARD_HW_REVISION_STR":0x5,
-            "EAPI_ID_BOARD_PLATFORM_TYPE_STR":0x6,
-            "EAPI_ID_BOARD_EC_REVISION_STR":0x101,
-            "EAPI_ID_BOARD_OS_REVISION_STR":0x102,
-            "EAPI_ID_BOARD_CPU_MODEL_NAME_STR":0x103,
+        self.board_information_string = {
+            "EAPI_ID_BOARD_MANUFACTURER_STR": 0x0,
+            "EAPI_ID_BOARD_NAME_STR": 0x1,
+            "EAPI_ID_BOARD_REVISION_STR": 0x2,
+            "EAPI_ID_BOARD_SERIAL_STR": 0x3,
+            "EAPI_ID_BOARD_BIOS_REVISION_STR": 0x4,
+            "EAPI_ID_BOARD_HW_REVISION_STR": 0x5,
+            "EAPI_ID_BOARD_PLATFORM_TYPE_STR": 0x6,
+            "EAPI_ID_BOARD_EC_REVISION_STR": 0x101,
+            "EAPI_ID_BOARD_OS_REVISION_STR": 0x102,
+            "EAPI_ID_BOARD_CPU_MODEL_NAME_STR": 0x103,
         }
         self.board_information_value = {
             "EAPI_ID_HWMON_TEMP_CPU": 0x00050000,
@@ -87,13 +87,14 @@ class PlatformSDK:
             "EAPI_ID_HWMON_FAN_CPU": 0x00052000,
             "EAPI_ID_HWMON_FAN_SYSTEM": 0x00052001,
         }
-        
+
         for i in self.board_information_string.keys():
-            result=self.get_board_string_data(self.board_information_string[i])
-            self.board_information.update({i:result})
+            result = self.get_board_string_data(
+                self.board_information_string[i])
+            self.board_information.update({i: result})
         for i in self.board_information_value.keys():
-            result=self.get_board_value_data(self.board_information_value[i])
-            self.board_information.update({i:result})
+            result = self.get_board_value_data(self.board_information_value[i])
+            self.board_information.update({i: result})
 
     def initialize(self):
         EApiStatus_t = ctypes.c_int
@@ -130,14 +131,14 @@ class PlatformSDK:
         )
         self.EApiGPIOGetLevel = prototype(
             ("EApiGPIOGetLevel", self.e_api_library))
-        
+
         prototype = ctypes.CFUNCTYPE(
             EApiStatus_t,
             ctypes.POINTER(ctypes.c_float)
         )
         self.EApiGetMemoryAvailable = prototype(
             ("EApiGetMemoryAvailable", self.e_api_library))
-        
+
         prototype = ctypes.CFUNCTYPE(
             EApiStatus_t,
             ctypes.POINTER(DiskInfoC)  # 傳入 DISK_INFO 結構的指針
@@ -154,7 +155,7 @@ class PlatformSDK:
 
         prototype = ctypes.CFUNCTYPE(
             EApiStatus_t,
-            EApiId_t, 
+            EApiId_t,
             ctypes.POINTER(ctypes.c_uint32)
         )
         self.EApiExtFunctionGetStatus = prototype(
@@ -162,36 +163,34 @@ class PlatformSDK:
 
         prototype = ctypes.CFUNCTYPE(
             EApiStatus_t,
-            EApiId_t, 
+            EApiId_t,
             ctypes.c_uint32
         )
         self.EApiExtFunctionSetStatus = prototype(
             ("EApiExtFunctionSetStatus", self.e_api_library))
 
-            
-        
-    def handle_error_code(self,n):
-        n=int(n)
+    def handle_error_code(self, n):
+        n = int(n)
         if n < 0:
             n = (1 << 32) + n
-        n=hex(n)
-        if n=="0xfffff0ff":
+        n = hex(n)
+        if n == "0xfffff0ff":
             return "EAPI_STATUS_ERROR, Generic error"
-        elif n=="0xfffffcff":
+        elif n == "0xfffffcff":
             return "EAPI_STATUS_UNSUPPORTED"
-    
+
     def get_board_string_data(self, id_number):
         CMD_RETURN_BUF_SIZE = 4096
-        pValue = ctypes.create_string_buffer(CMD_RETURN_BUF_SIZE)  
-        pBufLen = ctypes.c_uint32(CMD_RETURN_BUF_SIZE) 
+        pValue = ctypes.create_string_buffer(CMD_RETURN_BUF_SIZE)
+        pBufLen = ctypes.c_uint32(CMD_RETURN_BUF_SIZE)
 
         status = self.EApiBoardGetStringA(
             id_number, pValue, ctypes.byref(pBufLen))
 
-        if status == 0: 
+        if status == 0:
             return pValue.value.decode("utf-8")
         else:
-            error_message=self.handle_error_code(status)
+            error_message = self.handle_error_code(status)
             return error_message
 
     def get_board_value_data(self, id_number):
@@ -203,31 +202,32 @@ class PlatformSDK:
         if status == 0:
             return pValue.value
         else:
-            error_message=self.handle_error_code(status)
+            error_message = self.handle_error_code(status)
             return error_message
 
     def initial_EApiLibrary(self):
-        status =self.e_api_library.EApiLibInitialize()
+        status = self.e_api_library.EApiLibInitialize()
 
         if status == 0:
             return status
         else:
-            error_message=self.handle_error_code(status)
+            error_message = self.handle_error_code(status)
             return error_message
 
-    def get_gpio_level(self,id):
-        buf_len=100
+    def get_gpio_level(self, id):
+        buf_len = 100
         pLevel = ctypes.c_uint32(buf_len)  # 創建緩衝區長度
         self.e_api_library.EApiGPIOGetLevel()
 
     def get_available_memory(self):
         try:
             available_memory = ctypes.c_float()
-            status = self.EApiGetMemoryAvailable(ctypes.byref(available_memory))
+            status = self.EApiGetMemoryAvailable(
+                ctypes.byref(available_memory))
             print(status, available_memory.value)
             return available_memory.value
         except Exception as e:
-            print("error: ",e)
+            print("error: ", e)
             return None
 
     def get_disk_information(self):
@@ -235,53 +235,55 @@ class PlatformSDK:
             disk_info_c = DiskInfoC()
             status = self.EApiGetDiskInfo(ctypes.byref(disk_info_c))
             disk_info_obj = DiskInfo(disk_count=disk_info_c.disk_count,
-                disk_part_info=[DiskPartInfo(
-                    partition_id=disk_info_c.disk_part_info[i].partition_id,
-                    partition_size=disk_info_c.disk_part_info[i].partition_size,
-                    partition_name=disk_info_c.disk_part_info[i].partition_name.decode("utf-8")
-                ) for i in range(disk_info_c.disk_count)])
+                                     disk_part_info=[DiskPartInfo(
+                                         partition_id=disk_info_c.disk_part_info[i].partition_id,
+                                         partition_size=disk_info_c.disk_part_info[i].partition_size,
+                                         partition_name=disk_info_c.disk_part_info[i].partition_name.decode(
+                                             "utf-8")
+                                     ) for i in range(disk_info_c.disk_count)])
             print(status)
             return disk_info_obj
         except Exception as e:
-            print("error: ",e)
+            print("error: ", e)
             return None
 
     def get_etp_device_data(self):
         etp_data_size = ctypes.sizeof(ETP_DATA)
         print(etp_data_size)
         PETP_USER_DATA = ctypes.POINTER(ETP_USER_DATA)
-        status=self.EApiETPReadDeviceData(PETP_USER_DATA)
+        status = self.EApiETPReadDeviceData(PETP_USER_DATA)
         if status == 0:
             return status
         else:
-            error_message=self.handle_error_code(status)
+            error_message = self.handle_error_code(status)
             return error_message
 
     def get_led_id_list(self):
         return self.led_id_list
 
-    def get_led_status(self,id_number=0):
+    def get_led_status(self, id_number=0):
         id_number_int_type = ctypes.c_int(id_number)
         status = ctypes.c_uint32()
-        result = self.EApiExtFunctionGetStatus(id_number_int_type,ctypes.byref(status))
-        print(id_number_int_type,status,result)
+        result = self.EApiExtFunctionGetStatus(
+            id_number_int_type, ctypes.byref(status))
+        print(id_number_int_type, status, result)
 
         if result == 0:
             return status
         else:
-            error_message=self.handle_error_code(result)
+            error_message = self.handle_error_code(result)
             return error_message
-    
-    def set_led_status(self,id_number=0):
+
+    def set_led_status(self, id_number=0):
         id_number_int_type = ctypes.c_int(id_number)
         status = ctypes.c_uint32()
-        result = self.EApiExtFunctionSetStatus(id_number_int_type,status)
-        print(id_number_int_type,status,result)
+        result = self.EApiExtFunctionSetStatus(id_number_int_type, status)
+        print(id_number_int_type, status, result)
 
         if result == 0:
             return status
         else:
-            error_message=self.handle_error_code(result)
+            error_message = self.handle_error_code(result)
             return error_message
 
 
@@ -291,26 +293,32 @@ class DiskPartInfo:
         self.partition_size = partition_size
         self.partition_name = partition_name
 
+
 class DiskInfo:
     def __init__(self, disk_count, disk_part_info):
         self.disk_count = disk_count
         self.disk_part_info = disk_part_info
 
 # 定義 ctypes 結構映射
+
+
 class DiskPartInfoC(ctypes.Structure):
     _fields_ = [("partition_id", ctypes.c_int),
                 ("partition_size", ctypes.c_int),
                 ("partition_name", ctypes.c_char_p)]
 
+
 class DiskInfoC(ctypes.Structure):
     _fields_ = [("disk_count", ctypes.c_int),
                 ("disk_part_info", DiskPartInfoC * 8)]  # 最多支持 8 個分區
+
 
 class ETP_USER_DATA(ctypes.Structure):
     _fields_ = [
         ("UserSpace1", ctypes.c_ubyte * 128),  # A6, offset 0
         ("UserSpace2", ctypes.c_ubyte * 128)   # A6, offset 128
     ]
+
 
 class ETP_DATA(ctypes.Structure):
     _fields_ = [
