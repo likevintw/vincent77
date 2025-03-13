@@ -127,7 +127,7 @@ class TestHandler(unittest.TestCase):
     @unittest.skip("no source")
     def test_get_storage_capability(self):
         handler = platformsdk.PlatformSDK()
-        result = handler.get_watchdog_capability()
+        result = handler.get_storage_capability()
         print(result)
 
 

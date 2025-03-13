@@ -243,6 +243,7 @@ class PlatformSDK:
         self.EApiWDogGetCap = prototype(
             ("EApiWDogGetCap", self.e_api_library))
 
+        # undefined symbol: EApiStorageCap
         # prototype = ctypes.CFUNCTYPE(
         #             EApiStatus_t,
         #             EApiId_t,
@@ -497,16 +498,16 @@ class PlatformSDK:
             return error_message
 
     def get_storage_capability(self, id_number=0):
-        # id_number_int_type = ctypes.c_int(id_number)
-        # storage_size = ctypes.c_uint32(0)
-        # block_length= ctypes.c_uint32(0)
-        # status=self.EApiStorageCap(id_number_int_type,ctypes.byref(storage_size),ctypes.byref(block_length))
-        # if status == 0:
-        #     return storage_size.value,block_length.value
-        # else:
-        #     error_message = self.handle_error_code(status)
-        #     return error_message
-        pass
+        id_number_int_type = ctypes.c_int(id_number)
+        storage_size = ctypes.c_uint32(0)
+        block_length = ctypes.c_uint32(0)
+        status = self.EApiStorageCap(id_number_int_type, ctypes.byref(
+            storage_size), ctypes.byref(block_length))
+        if status == 0:
+            return storage_size.value, block_length.value
+        else:
+            error_message = self.handle_error_code(status)
+            return error_message
 
 
 class DiskPartInfo:
