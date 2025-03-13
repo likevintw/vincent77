@@ -65,11 +65,11 @@ class TestHandler(unittest.TestCase):
     def test_get_etp_device_data(self):
         handler = platformsdk.PlatformSDK()
         result=handler.get_etp_device_data()
-        print(result.DeviceOrderText[:])
+        print(result)
     def test_get_etp_user_data(self):
         handler = platformsdk.PlatformSDK()
         result=handler.get_etp_user_data()
-        print(result.UserSpace1[:])
+        print(result)
     
 
     def test_get_led_id_list(self):

@@ -333,23 +333,29 @@ class PlatformSDK:
             return None
 
     def get_etp_device_data(self):
-        PETP_DATA = ctypes.POINTER(ETP_DATA)
-        pReadDeviceData = None
-        etp_data = ETP_DATA()  # 創建 ETP_DATA 實例
-        pReadDeviceData = ctypes.pointer(etp_data)
-        status = self.EApiETPReadUserData(pReadDeviceData)
+        device_data = ctypes.pointer(ctypes.pointer(ETP_USER_DATA()))
+        status = self.EApiETPReadUserData(device_data)
+        etp_user_data = device_data.contents.contents
+        userspace_1 = bytes(etp_user_data.UserSpace1).decode('utf-8').strip('\x00')
+        userspace_2 = bytes(etp_user_data.UserSpace2).decode('utf-8').strip('\x00')
+        print("status ",status)
+        print("userspace1: ",userspace_1)
+        print("userspace2: ",userspace_2)
         if status == 0:
-            return pReadDeviceData
+            return etp_user_data
         else:
             error_message = self.handle_error_code(status)
             return error_message
     
     def get_etp_user_data(self):
-        # etp_data_size = ctypes.sizeof(ETP_DATA)
-        # print(etp_data_size)
-        # etp_data = ctypes.POINTER(ETP_DATA)
-        etp_user_data = ctypes.POINTER(ETP_USER_DATA)
-        status = self.EApiETPReadUserData(etp_user_data)
+        device_data = ctypes.pointer(ctypes.pointer(ETP_USER_DATA()))
+        status = self.EApiETPReadUserData(device_data)
+        etp_user_data = device_data.contents.contents
+        userspace_1 = bytes(etp_user_data.UserSpace1).decode('utf-8').strip('\x00')
+        userspace_2 = bytes(etp_user_data.UserSpace2).decode('utf-8').strip('\x00')
+        print("status ",status)
+        print("userspace1: ",userspace_1)
+        print("userspace2: ",userspace_2)
         if status == 0:
             return etp_user_data
         else:
