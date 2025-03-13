@@ -61,12 +61,14 @@ class TestHandler(unittest.TestCase):
             print(f"  Partition Size: {part_info.partition_size} MB")
             print(f"  Partition Name: {part_info.partition_name}")
     def test_get_etp_device_data(self):
-        # todo
         handler = platformsdk.PlatformSDK()
         print(handler.get_etp_device_data())
     def test_get_led_id_list(self):
         handler = platformsdk.PlatformSDK()
         print(handler.get_led_id_list())
+    def test_get_led_status(self):
+        handler = platformsdk.PlatformSDK()
+        print(handler.get_led_status(0))
     
 if __name__ == '__main__':
     unittest.main()

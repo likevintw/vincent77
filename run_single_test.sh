@@ -25,6 +25,7 @@ sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_available_memo
 sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_disk_information
 sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_etp_device_data
 sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_led_id_list
+sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_led_status
 
 
 

@@ -249,8 +249,17 @@ class PlatformSDK:
     def get_led_id_list(self):
         return self.led_id_list
 
-    def get_led_status(self):
-        self.EApiExtFunctionGetStatus()
+    def get_led_status(self,id_number=0):
+        id_number_int_type = ctypes.c_int(id_number)
+        status = ctypes.c_uint32()
+        result = self.EApiExtFunctionGetStatus(id_number_int_type,ctypes.byref(status))
+        print(id_number_int_type,status,result)
+        
+        if result == 0:
+            return status
+        else:
+            error_message=self.handle_error_code(result)
+            return error_message
 
 class DiskPartInfo:
     def __init__(self, partition_id, partition_size, partition_name):
