@@ -16,6 +16,10 @@ class PlatformSDK:
         self.EApiLibInitialize= None
         self.EApiGetMemoryAvailable= None
         self.EApiGetDiskInfo=None
+        self.EApiETPReadDeviceData=None
+        self.EApiExtFunctionGetStatus=None
+
+        self.led_id_list=[]
 
         self.import_library()
         self.initialize()
@@ -46,6 +50,13 @@ class PlatformSDK:
         self.e_api_library = ctypes.CDLL(e_api_library_path)
 
     def initial_constant(self):
+        # LED ID 範圍的最小值和最大值
+        EAPI_ID_EXT_FUNC_LED_MIN = 0x00000000
+        EAPI_ID_EXT_FUNC_LED_MAX = 0x0000000F
+
+        # 生成 LED ID 列表，範圍從 EAPI_ID_EXT_FUNC_LED_MIN 到 EAPI_ID_EXT_FUNC_LED_MAX
+        self.led_id_list = [EAPI_ID_EXT_FUNC_LED_MIN + i for i in range(EAPI_ID_EXT_FUNC_LED_MAX - EAPI_ID_EXT_FUNC_LED_MIN + 1)]
+
         self.board_information_string={
             "EAPI_ID_BOARD_MANUFACTURER_STR":0x0,
             "EAPI_ID_BOARD_NAME_STR":0x1,
@@ -132,6 +143,21 @@ class PlatformSDK:
         )
         self.EApiGetDiskInfo = prototype(
             ("EApiGetDiskInfo", self.e_api_library))
+
+        prototype = ctypes.CFUNCTYPE(
+            EApiStatus_t,
+            ctypes.POINTER(ctypes.POINTER(ETP_USER_DATA))  # 傳入 DISK_INFO 結構的指針
+        )
+        self.EApiETPReadDeviceData = prototype(
+            ("EApiETPReadDeviceData", self.e_api_library))
+
+        prototype = ctypes.CFUNCTYPE(
+            EApiStatus_t,
+            EApiId_t, 
+            ctypes.POINTER(ctypes.c_uint32)
+        )
+        self.EApiExtFunctionGetStatus = prototype(
+            ("EApiExtFunctionGetStatus", self.e_api_library))
         
     def handle_error_code(self,n):
         n=int(n)
@@ -208,7 +234,24 @@ class PlatformSDK:
         except Exception as e:
             print("error: ",e)
             return None
-    
+
+    def get_etp_device_data(self):
+        etp_data_size = ctypes.sizeof(ETP_DATA)
+        print(etp_data_size)
+        PETP_USER_DATA = ctypes.POINTER(ETP_USER_DATA)
+        status=self.EApiETPReadDeviceData(PETP_USER_DATA)
+        if status == 0:
+            return status
+        else:
+            error_message=self.handle_error_code(status)
+            return error_message
+
+    def get_led_id_list(self):
+        return self.led_id_list
+
+    def get_led_status(self):
+        self.EApiExtFunctionGetStatus()
+
 class DiskPartInfo:
     def __init__(self, partition_id, partition_size, partition_name):
         self.partition_id = partition_id
@@ -229,3 +272,20 @@ class DiskPartInfoC(ctypes.Structure):
 class DiskInfoC(ctypes.Structure):
     _fields_ = [("disk_count", ctypes.c_int),
                 ("disk_part_info", DiskPartInfoC * 8)]  # 最多支持 8 個分區
+
+class ETP_USER_DATA(ctypes.Structure):
+    _fields_ = [
+        ("UserSpace1", ctypes.c_ubyte * 128),  # A6, offset 0
+        ("UserSpace2", ctypes.c_ubyte * 128)   # A6, offset 128
+    ]
+
+class ETP_DATA(ctypes.Structure):
+    _fields_ = [
+        ("DeviceOrderText", ctypes.c_ubyte * 40),
+        ("DeviceOrderNumber", ctypes.c_ubyte * 10),
+        ("DeviceIndex", ctypes.c_ubyte * 3),
+        ("DeviceSerialNumber", ctypes.c_ubyte * 15),
+        ("OperatingSystem", ctypes.c_ubyte * 40),
+        ("Image", ctypes.c_ubyte * 40),
+        ("Reverse", ctypes.c_ubyte * 92)
+    ]
