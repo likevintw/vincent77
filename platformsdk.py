@@ -345,7 +345,7 @@ class PlatformSDK:
         id_number_int_type = ctypes.c_int(id_number)
         direction = ctypes.c_uint32()
         bitmask = ctypes.c_uint32(1)
-        status=self.EApiGPIOGetDirection(id_number_int_type,bitmask,direction)
+        status=self.EApiGPIOGetDirection(id_number_int_type,bitmask,ctypes.byref(direction))
         if status == 0:
             return direction
         else:
