@@ -106,6 +106,17 @@ class TestHandler(unittest.TestCase):
         level = 0
         print(handler.set_gpio_level(id_number, level))
 
+    def test_get_watchdog_capaility(self):
+        handler = platformsdk.PlatformSDK()
+        result=handler.get_watchdog_capaility()
+        max_delay_in_milliseconds=result[0]
+        max_event_timeout_in_milliseconds=result[1]
+        max_reset_timeout_in_milliseconds=result[2]
+        print()
+        print(max_delay_in_milliseconds)
+        print(max_event_timeout_in_milliseconds)
+        print(max_reset_timeout_in_milliseconds)
+
 
 if __name__ == '__main__':
     unittest.main()

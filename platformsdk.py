@@ -24,6 +24,7 @@ class PlatformSDK:
         self.EApiGPIOGetDirection = None
         self.EApiGPIOSetDirection = None
         self.EApiGPIOSetLevel = None
+        self.EApiWDogGetCap = None
 
         self.led_id_list = []
 
@@ -224,6 +225,15 @@ class PlatformSDK:
         self.EApiGPIOSetLevel = prototype(
             ("EApiGPIOSetLevel", self.e_api_library))
 
+        prototype = ctypes.CFUNCTYPE(
+            EApiStatus_t,
+            ctypes.POINTER(ctypes.c_uint32),
+            ctypes.POINTER(ctypes.c_uint32),
+            ctypes.POINTER(ctypes.c_uint32)
+        )
+        self.EApiWDogGetCap = prototype(
+            ("EApiWDogGetCap", self.e_api_library))
+
     def handle_error_code(self, n):
         n = int(n)
         if n < 0:
@@ -410,6 +420,19 @@ class PlatformSDK:
                                        gpio_level)
         if status == 0:
             return True
+        else:
+            error_message = self.handle_error_code(status)
+            return error_message
+
+    def get_watchdog_capaility(self):
+        max_delay_in_milliseconds = ctypes.c_uint32(0)
+        max_event_timeout_in_milliseconds = ctypes.c_uint32(0)
+        max_reset_timeout_in_milliseconds = ctypes.c_uint32(0)
+        status = self.EApiWDogGetCap(max_delay_in_milliseconds,
+                                     max_event_timeout_in_milliseconds,
+                                     max_reset_timeout_in_milliseconds)
+        if status == 0:
+            return max_delay_in_milliseconds.value, max_event_timeout_in_milliseconds.value, max_reset_timeout_in_milliseconds.value
         else:
             error_message = self.handle_error_code(status)
             return error_message
