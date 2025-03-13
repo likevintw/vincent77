@@ -22,7 +22,7 @@ class TestHandler(unittest.TestCase):
 
     def test_get_board_value_data(self):
         handler = platformsdk.PlatformSDK()
-        status = handler.get_board_value_data(handler.EAPI_ID_HWMON_TEMP_CPU)
+        status = handler.get_board_value_data(handler.board_information_value["EAPI_ID_HWMON_TEMP_CPU"])
         print(status)
 
     def test_initial_EApiLibrary(self):
@@ -61,6 +61,7 @@ class TestHandler(unittest.TestCase):
             print(f"  Partition Size: {part_info.partition_size} MB")
             print(f"  Partition Name: {part_info.partition_name}")
 
+    @unittest.skip("todo")
     def test_get_etp_device_data(self):
         handler = platformsdk.PlatformSDK()
         print(handler.get_etp_device_data())

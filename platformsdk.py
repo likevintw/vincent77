@@ -224,7 +224,6 @@ class PlatformSDK:
             available_memory = ctypes.c_float()
             status = self.EApiGetMemoryAvailable(
                 ctypes.byref(available_memory))
-            print(status, available_memory.value)
             return available_memory.value
         except Exception as e:
             print("error: ", e)
@@ -235,12 +234,12 @@ class PlatformSDK:
             disk_info_c = DiskInfoC()
             status = self.EApiGetDiskInfo(ctypes.byref(disk_info_c))
             disk_info_obj = DiskInfo(disk_count=disk_info_c.disk_count,
-                                        disk_part_info=[DiskPartInfo(
-                                            partition_id=disk_info_c.disk_part_info[i].partition_id,
-                                            partition_size=disk_info_c.disk_part_info[i].partition_size,
-                                            partition_name=disk_info_c.disk_part_info[i].partition_name.decode(
-                                                "utf-8")
-                                        ) for i in range(disk_info_c.disk_count)])
+                disk_part_info=[DiskPartInfo(
+                    partition_id=disk_info_c.disk_part_info[i].partition_id,
+                    partition_size=disk_info_c.disk_part_info[i].partition_size,
+                    partition_name=disk_info_c.disk_part_info[i].partition_name.decode(
+                        "utf-8")
+                ) for i in range(disk_info_c.disk_count)])
             print(status)
             return disk_info_obj
         except Exception as e:
