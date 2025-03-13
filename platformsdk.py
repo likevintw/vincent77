@@ -333,14 +333,14 @@ class PlatformSDK:
             return None
 
     def get_etp_device_data(self):
-        device_data = ctypes.pointer(ctypes.pointer(ETP_USER_DATA()))
-        status = self.EApiETPReadUserData(device_data)
+        device_data = ctypes.pointer(ctypes.pointer(ETP_DATA()))
+        status = self.EApiETPReadDeviceData(device_data)
         etp_user_data = device_data.contents.contents
-        userspace_1 = bytes(etp_user_data.UserSpace1).decode('utf-8').strip('\x00')
-        userspace_2 = bytes(etp_user_data.UserSpace2).decode('utf-8').strip('\x00')
+        device_order_text = bytes(etp_user_data.DeviceOrderText).decode('utf-8').strip('\x00')
+        device_drder_number = bytes(etp_user_data.DeviceOrderNumber).decode('utf-8').strip('\x00')
         print("status ",status)
-        print("userspace1: ",userspace_1)
-        print("userspace2: ",userspace_2)
+        print("device_order_text: ",device_order_text)
+        print("device_drder_number: ",device_drder_number)
         if status == 0:
             return etp_user_data
         else:
@@ -348,9 +348,9 @@ class PlatformSDK:
             return error_message
     
     def get_etp_user_data(self):
-        device_data = ctypes.pointer(ctypes.pointer(ETP_USER_DATA()))
-        status = self.EApiETPReadUserData(device_data)
-        etp_user_data = device_data.contents.contents
+        user_data = ctypes.pointer(ctypes.pointer(ETP_USER_DATA()))
+        status = self.EApiETPReadUserData(user_data)
+        etp_user_data = user_data.contents.contents
         userspace_1 = bytes(etp_user_data.UserSpace1).decode('utf-8').strip('\x00')
         userspace_2 = bytes(etp_user_data.UserSpace2).decode('utf-8').strip('\x00')
         print("status ",status)
