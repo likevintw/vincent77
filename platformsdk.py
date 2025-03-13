@@ -13,6 +13,7 @@ class PlatformSDK:
         self.EApiBoardGetStringA = None
         self.EApiBoardGetValue = None
         self.EApiLibInitialize = None
+        self.EApiLibUnInitialize=None
         self.EApiGetMemoryAvailable = None
         self.EApiGetDiskInfo = None
         self.EApiETPReadDeviceData = None
@@ -127,6 +128,12 @@ class PlatformSDK:
 
         prototype = ctypes.CFUNCTYPE(
             EApiStatus_t,
+        )
+        self.EApiLibUnInitialize = prototype(
+            ("EApiLibUnInitialize", self.e_api_library))
+
+        prototype = ctypes.CFUNCTYPE(
+            EApiStatus_t,
             EApiId_t,
             ctypes.c_uint32,
             ctypes.POINTER(ctypes.c_uint32),
@@ -178,6 +185,9 @@ class PlatformSDK:
         self.EApiGPIOGetCount = prototype(
             ("EApiGPIOGetCount", self.e_api_library))
 
+    
+
+
     def handle_error_code(self, n):
         n = int(n)
         if n < 0:
@@ -215,18 +225,22 @@ class PlatformSDK:
             return error_message
 
     def initial_EApiLibrary(self):
-        status = self.EApiLibInitialize()
 
+        status = self.EApiLibInitialize()
         if status == 0:
-            return status
+            print("run EApiLibInitialize successfully")
         else:
             error_message = self.handle_error_code(status)
-            return error_message
+            print(f"run EApiLibInitialize fail: {error_message}")
 
-    def get_gpio_level(self, id):
-        buf_len = 100
-        pLevel = ctypes.c_uint32(buf_len)  # 創建緩衝區長度
-        self.EApiGPIOGetLevel()
+        # occurs Segmentation fault
+        # status = self.EApiLibUnInitialize()
+        # if status == 0:
+        #     print("run EApiLibUnInitialize successfully")
+        # else:
+        #     error_message = self.handle_error_code(status)
+        #     print(f"run EApiLibUnInitialize fail: {error_message}")
+
 
     def get_available_memory(self):
         try:
@@ -295,13 +309,19 @@ class PlatformSDK:
             return error_message
 
     def get_gpio_count(self):
-        count = ctypes.c_uint32(0)
+        buffer=0
+        count = ctypes.c_uint32(buffer)
         status=self.EApiGPIOGetCount(ctypes.byref(count))
         if status == 0:
             return status
         else:
             error_message = self.handle_error_code(status)
             return error_message
+
+    def get_gpio_level(self, id):
+        buf_len = 100
+        pLevel = ctypes.c_uint32(buf_len)
+        self.EApiGPIOGetLevel()
 
 class DiskPartInfo:
     def __init__(self, partition_id, partition_size, partition_name):

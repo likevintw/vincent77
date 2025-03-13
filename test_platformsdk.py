@@ -28,7 +28,6 @@ class TestHandler(unittest.TestCase):
     def test_initial_EApiLibrary(self):
         handler = platformsdk.PlatformSDK()
         status = handler.initial_EApiLibrary()
-        print(status)
 
     def test_check_table(self):
         handler = platformsdk.PlatformSDK()
@@ -80,6 +79,9 @@ class TestHandler(unittest.TestCase):
     def test_get_gpio_count(self):
         handler = platformsdk.PlatformSDK()
         print(handler.get_gpio_count())
+    def test_get_gpio_level(self):
+        handler = platformsdk.PlatformSDK()
+        print(handler.get_gpio_level())
 
 
 if __name__ == '__main__':
