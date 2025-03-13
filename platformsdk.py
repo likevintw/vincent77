@@ -23,6 +23,7 @@ class PlatformSDK:
         self.EApiGPIOGetCount = None
         self.EApiGPIOGetDirection = None
         self.EApiGPIOSetDirection = None
+        self.EApiGPIOSetLevel = None
 
         self.led_id_list = []
 
@@ -214,6 +215,15 @@ class PlatformSDK:
         self.EApiGPIOSetDirection = prototype(
             ("EApiGPIOSetDirection", self.e_api_library))
 
+        prototype = ctypes.CFUNCTYPE(
+            EApiStatus_t,
+            EApiId_t,
+            ctypes.c_uint32,
+            ctypes.c_uint32
+        )
+        self.EApiGPIOSetLevel = prototype(
+            ("EApiGPIOSetLevel", self.e_api_library))
+
     def handle_error_code(self, n):
         n = int(n)
         if n < 0:
@@ -385,6 +395,19 @@ class PlatformSDK:
         status = self.EApiGPIOSetDirection(id_number_int_type,
                                            bitmask,
                                            gpio_direction)
+        if status == 0:
+            return True
+        else:
+            error_message = self.handle_error_code(status)
+            return error_message
+
+    def set_gpio_level(self, id_number=0, level=0):
+        id_number_int_type = ctypes.c_int(id_number)
+        bitmask = ctypes.c_uint32(1)
+        gpio_level = ctypes.c_uint32(level)
+        status = self.EApiGPIOSetLevel(id_number_int_type,
+                                       bitmask,
+                                       gpio_level)
         if status == 0:
             return True
         else:

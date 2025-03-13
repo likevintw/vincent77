@@ -93,11 +93,18 @@ class TestHandler(unittest.TestCase):
     def test_get_gpio_capability(self):
         handler = platformsdk.PlatformSDK()
         print(handler.get_gpio_capability(0))
+
     def test_set_gpio_direction(self):
         handler = platformsdk.PlatformSDK()
-        id_number=0
-        direction=0
-        print(handler.set_gpio_direction(id_number,direction))
+        id_number = 0
+        direction = 0
+        print(handler.set_gpio_direction(id_number, direction))
+
+    def test_set_gpio_level(self):
+        handler = platformsdk.PlatformSDK()
+        id_number = 0
+        level = 0
+        print(handler.set_gpio_level(id_number, level))
 
 
 if __name__ == '__main__':
