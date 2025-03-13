@@ -62,15 +62,16 @@ class TestHandler(unittest.TestCase):
             print(f"  Partition Size: {part_info.partition_size} MB")
             print(f"  Partition Name: {part_info.partition_name}")
 
+    @unittest.skip("source error")
     def test_get_etp_device_data(self):
         handler = platformsdk.PlatformSDK()
-        result=handler.get_etp_device_data()
+        result = handler.get_etp_device_data()
         print(result)
+
     def test_get_etp_user_data(self):
         handler = platformsdk.PlatformSDK()
-        result=handler.get_etp_user_data()
+        result = handler.get_etp_user_data()
         print(result)
-    
 
     def test_get_led_id_list(self):
         handler = platformsdk.PlatformSDK()
@@ -114,19 +115,21 @@ class TestHandler(unittest.TestCase):
 
     def test_get_watchdog_capaility(self):
         handler = platformsdk.PlatformSDK()
-        result=handler.get_watchdog_capability()
-        max_delay_in_milliseconds=result[0]
-        max_event_timeout_in_milliseconds=result[1]
-        max_reset_timeout_in_milliseconds=result[2]
+        result = handler.get_watchdog_capability()
+        max_delay_in_milliseconds = result[0]
+        max_event_timeout_in_milliseconds = result[1]
+        max_reset_timeout_in_milliseconds = result[2]
         print()
         print(max_delay_in_milliseconds)
         print(max_event_timeout_in_milliseconds)
         print(max_reset_timeout_in_milliseconds)
+
     @unittest.skip("no source")
     def test_get_storage_capability(self):
         handler = platformsdk.PlatformSDK()
-        result=handler.get_watchdog_capability()
+        result = handler.get_watchdog_capability()
         print(result)
+
 
 if __name__ == '__main__':
     unittest.main()

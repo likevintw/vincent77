@@ -17,7 +17,7 @@ class PlatformSDK:
         self.EApiGetMemoryAvailable = None
         self.EApiGetDiskInfo = None
         self.EApiETPReadDeviceData = None
-        self.EApiETPReadUserData=None
+        self.EApiETPReadUserData = None
         self.EApiGPIOGetLevel = None
         self.EApiExtFunctionGetStatus = None
         self.EApiExtFunctionSetStatus = None
@@ -26,7 +26,7 @@ class PlatformSDK:
         self.EApiGPIOSetDirection = None
         self.EApiGPIOSetLevel = None
         self.EApiWDogGetCap = None
-        self.EApiStorageCap=None
+        self.EApiStorageCap = None
 
         self.led_id_list = []
 
@@ -334,28 +334,34 @@ class PlatformSDK:
 
     def get_etp_device_data(self):
         device_data = ctypes.pointer(ctypes.pointer(ETP_DATA()))
+        # device_data = ctypes.pointer(ctypes.pointer(ETP_USER_DATA()))
         status = self.EApiETPReadDeviceData(device_data)
-        etp_user_data = device_data.contents.contents
-        device_order_text = bytes(etp_user_data.DeviceOrderText).decode('utf-8').strip('\x00')
-        device_drder_number = bytes(etp_user_data.DeviceOrderNumber).decode('utf-8').strip('\x00')
-        print("status ",status)
-        print("device_order_text: ",device_order_text)
-        print("device_drder_number: ",device_drder_number)
+        # argument 1: <class 'TypeError'>: expected LP_LP_ETP_USER_DATA instance instead of LP_LP_ETP_DATA
+        etp_device_data = device_data.contents.contents
+        device_order_text = bytes(
+            etp_device_data.DeviceOrderText).decode('utf-8').strip('\x00')
+        device_drder_number = bytes(
+            etp_device_data.DeviceOrderNumber).decode('utf-8').strip('\x00')
+        print("status ", status)
+        print("device_order_text: ", device_order_text)
+        print("device_drder_number: ", device_drder_number)
         if status == 0:
             return etp_user_data
         else:
             error_message = self.handle_error_code(status)
             return error_message
-    
+
     def get_etp_user_data(self):
         user_data = ctypes.pointer(ctypes.pointer(ETP_USER_DATA()))
         status = self.EApiETPReadUserData(user_data)
         etp_user_data = user_data.contents.contents
-        userspace_1 = bytes(etp_user_data.UserSpace1).decode('utf-8').strip('\x00')
-        userspace_2 = bytes(etp_user_data.UserSpace2).decode('utf-8').strip('\x00')
-        print("status ",status)
-        print("userspace1: ",userspace_1)
-        print("userspace2: ",userspace_2)
+        userspace_1 = bytes(etp_user_data.UserSpace1).decode(
+            'utf-8').strip('\x00')
+        userspace_2 = bytes(etp_user_data.UserSpace2).decode(
+            'utf-8').strip('\x00')
+        print("status ", status)
+        print("userspace1: ", userspace_1)
+        print("userspace2: ", userspace_2)
         if status == 0:
             return etp_user_data
         else:
