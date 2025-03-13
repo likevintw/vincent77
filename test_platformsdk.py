@@ -81,7 +81,7 @@ class TestHandler(unittest.TestCase):
         print(handler.get_gpio_count())
     def test_get_gpio_level(self):
         handler = platformsdk.PlatformSDK()
-        print(handler.get_gpio_level())
+        print(handler.get_gpio_level(0))
     def test_get_gpio_direction(self):
         handler = platformsdk.PlatformSDK()
         print(handler.get_gpio_direction(0))

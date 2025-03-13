@@ -337,10 +337,16 @@ class PlatformSDK:
             error_message = self.handle_error_code(status)
             return error_message
 
-    def get_gpio_level(self, id):
-        buf_len = 100
-        pLevel = ctypes.c_uint32(buf_len)
-        self.EApiGPIOGetLevel()
+    def get_gpio_level(self, id_number=0):
+        bitmask = ctypes.c_uint32(1)
+        level = ctypes.c_uint32(0)
+        status=self.EApiGPIOGetLevel(id_number,bitmask,ctypes.byref(level))
+        if status == 0:
+            return level
+        else:
+            error_message = self.handle_error_code(status)
+            return error_message
+
     def get_gpio_direction(self,id_number=0):
         id_number_int_type = ctypes.c_int(id_number)
         direction = ctypes.c_uint32()

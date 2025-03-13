@@ -25,9 +25,11 @@ sudo python3 -m unittest -v test_platformsdk.TestHandler.test_set_led_status
 sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_gpio_count
 sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_gpio_direction
 sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_gpio_capability
+sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_gpio_level
 
 # Todo
 sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_etp_device_data
+
 
 
 
