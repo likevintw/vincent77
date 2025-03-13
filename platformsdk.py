@@ -342,9 +342,25 @@ class PlatformSDK:
             etp_device_data.DeviceOrderText).decode('utf-8').strip('\x00')
         device_drder_number = bytes(
             etp_device_data.DeviceOrderNumber).decode('utf-8').strip('\x00')
+        device_index = bytes(
+            etp_device_data.DeviceIndex).decode('utf-8').strip('\x00')
+        device_serial_umber = bytes(
+            etp_device_data.DeviceSerialNumber).decode('utf-8').strip('\x00')
+        device_operating_system = bytes(
+            etp_device_data.OperatingSystem).decode('utf-8').strip('\x00')
+        device_image = bytes(
+            etp_device_data.Image).decode('utf-8').strip('\x00')
+        reverse = bytes(
+            etp_device_data.Reverse).decode('utf-8').strip('\x00')
         print("status ", status)
         print("device_order_text: ", device_order_text)
         print("device_drder_number: ", device_drder_number)
+        print("DeviceIndex: ", device_index)
+        print("DeviceSerialNumber: ", device_serial_umber)
+        print("OperatingSystem: ", device_operating_system)
+        print("Image: ", device_image)
+        print("Reverse: ", reverse)
+        
         if status == 0:
             return etp_user_data
         else:
