@@ -360,7 +360,7 @@ class PlatformSDK:
         print("OperatingSystem: ", device_operating_system)
         print("Image: ", device_image)
         print("Reverse: ", reverse)
-        
+
         if status == 0:
             return etp_user_data
         else:
@@ -520,8 +520,6 @@ class DiskInfo:
     def __init__(self, disk_count, disk_part_info):
         self.disk_count = disk_count
         self.disk_part_info = disk_part_info
-
-# 定義 ctypes 結構映射
 
 
 class DiskPartInfoC(ctypes.Structure):
