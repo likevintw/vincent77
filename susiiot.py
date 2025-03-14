@@ -67,10 +67,10 @@ class SusiIot:
             exit(1)
 
         self.susi_iot_library.SusiIoTInitialize.restype = ctypes.c_int
-        self.susi_iot_library.SusiIoTGetPFCapabilityString.restype = ctypes.c_char_p
-        self.susi_iot_library.SusiIoTGetPFData.argtypes = [
-            ctypes.c_uint32, ctypes.POINTER(JsonT)]
-        self.susi_iot_library.SusiIoTGetPFData.restype = ctypes.c_uint32
+        # self.susi_iot_library.SusiIoTGetPFCapabilityString.restype = ctypes.c_char_p
+        # self.susi_iot_library.SusiIoTGetPFData.argtypes = [
+        #     ctypes.c_uint32, ctypes.POINTER(JsonT)]
+        # self.susi_iot_library.SusiIoTGetPFData.restype = ctypes.c_uint32
         self.susi_iot_library.SusiIoTSetValue.argtypes = [
             ctypes.c_uint32, ctypes.POINTER(JsonT)]
         self.susi_iot_library.SusiIoTSetValue.restype = ctypes.c_uint32
