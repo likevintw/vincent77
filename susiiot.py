@@ -15,6 +15,7 @@ class SusiIot:
         self.json_preserve_order = 0x100
         self.susi_information = None
         self.susi_id_dictionary = {}
+        self.susi_id_name_table = {}
         self.gpio_list = []
         self.memory_list = []
 
@@ -30,6 +31,40 @@ class SusiIot:
         except Exception as e:
             print(e)
   
+    def create_name_id_list(self):
+        data_sorts=["Platform Information","Hardware Monitor","GPIO","SDRAM","DiskInfo","SUSIIoT Information","M2Talk","Backlight"]
+        for data_sort in data_sorts:
+            try:
+                id_value=self.susi_information[data_sort]["id"]
+                self.susi_id_name_table.update({data_sort:id_value})
+                for item in self.susi_information[data_sort]["e"]:
+                    self.susi_id_name_table.update({item["n"]:item["id"]})
+            except Exception as e:
+                print(e)
+                
+        data_sort="Platform Information"
+        id_value=self.susi_information[data_sort]["id"]
+        self.susi_id_name_table.update({data_sort:id_value})
+        data_sorts=["Voltage","Temperature"]
+        for data_sort in data_sorts:
+            id_value=self.susi_information["Hardware Monitor"][data_sort]["id"]
+            self.susi_id_name_table.update({item["n"]:item["id"]})
+            sources=self.susi_information["Hardware Monitor"][data_sort]["e"]
+            for source in sources:
+                self.susi_id_name_table.update({data_sort+" "+source["n"]:source["id"]})
+
+        data_sorts=["Voltage","Temperature"]
+        for data_sort in data_sorts:
+            id_value=self.susi_information["Hardware Monitor"][data_sort]["id"]
+            self.susi_id_name_table.update({item["n"]:item["id"]})
+            sources=self.susi_information["Hardware Monitor"][data_sort]["e"]
+            for source in sources:
+                self.susi_id_name_table.update({data_sort+" "+source["n"]:source["id"]})
+
+            
+        for i in self.susi_id_name_table.keys():
+            print(i, self.susi_id_name_table[i])
+
     def import_library(self):
         current_dir = os.path.dirname(os.path.realpath(__file__))+"/"
         architecture = platform.machine()
@@ -242,83 +277,8 @@ class SusiIot:
         else:
             return None
 
-    def get_vcore(self):
-        try:
-            return self.susi_information["Hardware Monitor"]["Voltage"]["e"][0]["v"]
-        except:
-            return None
+    
 
-    def get_vcore_max(self):
-        try:
-            return self.susi_information["Hardware Monitor"]["Voltage"]["e"][0]["max"]
-        except:
-            return None
-
-    def get_vcore_min(self):
-        try:
-            return self.susi_information["Hardware Monitor"]["Voltage"]["e"][0]["min"]
-        except:
-            return None
-
-    def get_5v_standby(self):
-        try:
-            return self.susi_information["Hardware Monitor"]["Voltage"]["e"][1]["v"]
-        except:
-            return None
-
-    def get_5v_standby_max(self):
-        try:
-            return self.susi_information["Hardware Monitor"]["Voltage"]["e"][1]["max"]
-        except:
-            return None
-
-    def get_5v_standby_min(self):
-        try:
-            return self.susi_information["Hardware Monitor"]["Voltage"]["e"][1]["min"]
-        except:
-            return None
-
-    def get_cmos_battery(self):
-        try:
-            return self.susi_information["Hardware Monitor"]["Voltage"]["e"][2]["v"]
-        except:
-            return None
-
-    def get_cmos_battery_max(self):
-        try:
-            return self.susi_information["Hardware Monitor"]["Voltage"]["e"][2]["max"]
-        except:
-            return None
-
-    def get_cmos_battery_min(self):
-        try:
-            return self.susi_information["Hardware Monitor"]["Voltage"]["e"][2]["min"]
-        except:
-            return None
-
-    def get_dc_power(self):
-        try:
-            return self.susi_information["Hardware Monitor"]["Voltage"]["e"][3]["v"]
-        except:
-            return None
-
-    def get_dc_power_max(self):
-        try:
-            return self.susi_information["Hardware Monitor"]["Voltage"]["e"][3]["max"]
-        except:
-            return None
-
-    def get_dc_power_min(self):
-        try:
-            return self.susi_information["Hardware Monitor"]["Voltage"]["e"][3]["min"]
-        except:
-            return None
-
-    def get_cpu_temperature_in_celsius(self):
-        try:
-            return self.susi_information["Hardware Monitor"]["Temperature"]["e"][0]["v"]
-        except:
-            return None
 
     def get_cpu_temperature_max_in_celsius(self):
         try:
@@ -332,11 +292,7 @@ class SusiIot:
         except:
             return None
 
-    def get_system_temperature_in_celsius(self):
-        try:
-            return self.susi_information["Hardware Monitor"]["Temperature"]["e"][1]["v"]
-        except:
-            return None
+
 
     def get_system_temperature_max_in_celsius(self):
         try:
@@ -563,13 +519,63 @@ class SusiIot:
             return None
     @property
     def system_temperature_in_celsius(self):
-        return self.cusor.system_temperature_in_celsius()
+        try:
+            return self.susi_information["Hardware Monitor"]["Temperature"]["e"][1]["v"]
+        except:
+            return None
+    
+    def voltage_vcore(self):
+        try:
+            return self.susi_information["Hardware Monitor"]["Voltage"]["e"][0]["v"]
+        except:
+            return None
+
+    def voltage_3p3v_standby(self):
+        try:
+            return self.susi_information["Hardware Monitor"]["Voltage"]["e"][1]["v"]
+        except:
+            return None
+    def voltage_5v(self):
+        results=self.susi_information["Hardware Monitor"]["Voltage"]["e"]
+        for result in results:
+            if item["n"]=="5V":
+                return item["v"]
+
+    def voltage_12v(self):
+        results=self.susi_information["Hardware Monitor"]["Voltage"]["e"]
+        for result in results:
+            if item["n"]=="12V":
+                return item["v"]
+        return None
+    def voltage_5v_standby(self):
+        results=self.susi_information["Hardware Monitor"]["Voltage"]["e"]
+        for result in results:
+            if item["n"]=="5V Standby":
+                return item["v"]
+        return None
+    def voltage_mos_battery(self):
+        results=self.susi_information["Hardware Monitor"]["Voltage"]["e"]
+        for result in results:
+            if item["n"]=="CMOS Battery":
+                return item["v"]
+        return None
+
+    def get_dc_power(self):
+        pass
+        # todo
+    
     @property
     def cpu_fan_speed(self):
-        return self.cusor.cpu_fan_speed()
+        try:
+            return self.susi_information["Hardware Monitor"]["Fan Speed"]["e"][0]["v"]
+        except:
+            return None
     @property
     def system_fan_speed(self):
-        return self.cusor.system_fan_speed()
+        try:
+            return self.susi_information["Hardware Monitor"]["Fan Speed"]["e"][0]["v"]
+        except:
+            return None
 
 
 class JsonType:
