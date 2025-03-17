@@ -10,19 +10,15 @@ class SusiIot:
         self.susi_iot_library = None
         self.json_library = None
         self.susi_iot_library_status = None
-        self.id_list = None
         self.json_max_indent = 0x1F
         self.json_preserve_order = 0x100
         self.susi_information = None
-        self.susi_id_dictionary = {}
         self.susi_id_name_table = {}
         self.gpio_list = []
         self.memory_list = []
 
         self.import_library()
         self.initialize()
-        self.id_list = self.extract_ids(self.susi_information)
-        self.susi_id_dictionary = self.get_id_dictionary()
         self.create_name_id_list()
 
     def __del__(self):
@@ -168,10 +164,6 @@ class SusiIot:
             exit(1)
 
         self.susi_iot_library.SusiIoTInitialize.restype = ctypes.c_int
-        # self.susi_iot_library.SusiIoTGetPFCapabilityString.restype = ctypes.c_char_p
-        # self.susi_iot_library.SusiIoTGetPFData.argtypes = [
-        #     ctypes.c_uint32, ctypes.POINTER(JsonT)]
-        # self.susi_iot_library.SusiIoTGetPFData.restype = ctypes.c_uint32
         self.susi_iot_library.SusiIoTSetValue.argtypes = [
             ctypes.c_uint32, ctypes.POINTER(JsonT)]
         self.susi_iot_library.SusiIoTSetValue.restype = ctypes.c_uint32
@@ -224,26 +216,8 @@ class SusiIot:
         data = json.loads(json_str)
         return data
 
-    def extract_ids(self, data, id_list=None):
-        if id_list is None:
-            id_list = []
-
-        if isinstance(data, dict):
-            for key, value in data.items():
-                if key == "id":
-                    id_list.append(value)
-                self.extract_ids(value, id_list)
-        elif isinstance(data, list):
-            for item in data:
-                self.extract_ids(item, id_list)
-
-        return id_list
-
     def get_susi_information(self):
         return self.susi_information
-
-    def get_id_list(self):
-        return self.id_list
 
     def get_susi_json_t(self):
         return self.susi_json_t
@@ -284,18 +258,6 @@ class SusiIot:
         result_ptr = self.json_library.json_integer(value)
         result = result_ptr.contents
         return self.susi_iot_library.SusiIoTSetValue(device_id, result)
-
-    def get_id_dictionary(self):
-        if self.susi_id_dictionary == {}:
-            id_list = self.get_id_list()
-            for device_id in id_list:
-                results = self.get_data_by_id(device_id)
-                try:
-                    self.susi_id_dictionary.update(
-                        {results['n']: results['id']})
-                except:
-                    pass
-        return self.susi_id_dictionary
 
     @property
     def boot_up_times(self):
