@@ -30,38 +30,38 @@ class SusiIot:
             pass
         except Exception as e:
             print(e)
-  
+
     def create_name_id_list(self):
-    #     self.susi_information={
-    #         "SUSIIoT Information": {
-    #     "e": [
-    #         {
-    #             "n": "version",
-    #             "sv": "1.0.23985",
-    #             "asm": "r",
-    #             "id": 257
-    #         }
-    #     ],
-    #     "bn": "SUSIIoT Information",
-    #     "bu": "Info",
-    #     "bt": 1276020076,
-    #     "ver": 1,
-    #     "id": 256
-    # }
-    #     }
-        data_sort="Platform Information"
+        self.susi_information = {
+            "SUSIIoT Information": {
+                "e": [
+                    {
+                        "n": "version",
+                        "sv": "1.0.23985",
+                        "asm": "r",
+                        "id": 257
+                    }
+                ],
+                "bn": "SUSIIoT Information",
+                "bu": "Info",
+                "bt": 1276020076,
+                "ver": 1,
+                "id": 256
+            }
+        }
+        data_sort = "Platform Information"
         try:
-            id_value=self.susi_information[data_sort]["id"]
-            self.susi_id_name_table.update({data_sort:id_value})
+            id_value = self.susi_information[data_sort]["id"]
+            self.susi_id_name_table.update({data_sort: id_value})
             for item in self.susi_information[data_sort]["e"]:
-                self.susi_id_name_table.update({item["n"]:item["id"]})
+                self.susi_id_name_table.update({item["n"]: item["id"]})
         except Exception as e:
             print(e)
-        
-        data_sort="Hardware Monitor"
+
+        data_sort = "Hardware Monitor"
         try:
-            id_value=self.susi_information[data_sort]["id"]
-            self.susi_id_name_table.update({data_sort:id_value})
+            id_value = self.susi_information[data_sort]["id"]
+            self.susi_id_name_table.update({data_sort: id_value})
         except Exception as e:
             print(e)
 
@@ -69,40 +69,44 @@ class SusiIot:
             if "id" in item or "bn" in item:
                 pass
             else:
-                sources=self.susi_information[data_sort][item]['e']
+                sources = self.susi_information[data_sort][item]['e']
                 for source in sources:
-                    self.susi_id_name_table.update({item+" "+source["n"]:source["id"]})
+                    self.susi_id_name_table.update(
+                        {item+" "+source["n"]: source["id"]})
 
-        
-        data_sort="GPIO"
-        id_value=self.susi_information[data_sort]["id"]
-        self.susi_id_name_table.update({data_sort:id_value})
+        data_sort = "GPIO"
+        id_value = self.susi_information[data_sort]["id"]
+        self.susi_id_name_table.update({data_sort: id_value})
         for data_index in self.susi_information[data_sort].keys():
             if "GPIO" in data_index:
-                self.susi_id_name_table.update({data_index:self.susi_information[data_sort][data_index]["id"]})
+                self.susi_id_name_table.update(
+                    {data_index: self.susi_information[data_sort][data_index]["id"]})
                 for informations in self.susi_information[data_sort][data_index]["e"]:
-                    self.susi_id_name_table.update({data_index+" "+informations["n"]:informations["id"]})
+                    self.susi_id_name_table.update(
+                        {data_index+" "+informations["n"]: informations["id"]})
 
-        data_sort="SDRAM"
-        id_value=self.susi_information[data_sort]["id"]
-        self.susi_id_name_table.update({data_sort:id_value})
+        data_sort = "SDRAM"
+        id_value = self.susi_information[data_sort]["id"]
+        self.susi_id_name_table.update({data_sort: id_value})
         for data_index in self.susi_information[data_sort].keys():
             if "SDRAM" in data_index:
-                self.susi_id_name_table.update({data_index:self.susi_information[data_sort][data_index]["id"]})
+                self.susi_id_name_table.update(
+                    {data_index: self.susi_information[data_sort][data_index]["id"]})
                 for informations in self.susi_information[data_sort][data_index]["e"]:
-                    self.susi_id_name_table.update({data_index+" "+informations["n"]:informations["id"]})
-        
-        data_sort="DiskInfo"
-        id_value=self.susi_information[data_sort]["id"]
-        self.susi_id_name_table.update({data_sort:id_value})
-        for data_index in self.susi_information[data_sort]["e"]:
-            self.susi_id_name_table.update({data_index["n"]:data_index["id"]})
+                    self.susi_id_name_table.update(
+                        {data_index+" "+informations["n"]: informations["id"]})
 
-        data_sort="SUSIIoT Information"
-        id_value=self.susi_information[data_sort]["id"]
-        self.susi_id_name_table.update({data_sort:id_value})
+        data_sort = "DiskInfo"
+        id_value = self.susi_information[data_sort]["id"]
+        self.susi_id_name_table.update({data_sort: id_value})
         for data_index in self.susi_information[data_sort]["e"]:
-            self.susi_id_name_table.update({data_index["n"]:data_index["id"]})
+            self.susi_id_name_table.update({data_index["n"]: data_index["id"]})
+
+        data_sort = "SUSIIoT Information"
+        id_value = self.susi_information[data_sort]["id"]
+        self.susi_id_name_table.update({data_sort: id_value})
+        for data_index in self.susi_information[data_sort]["e"]:
+            self.susi_id_name_table.update({data_index["n"]: data_index["id"]})
 
         for i in self.susi_id_name_table.keys():
             print(i, self.susi_id_name_table[i])
@@ -319,9 +323,6 @@ class SusiIot:
         else:
             return None
 
-    
-
-
     def get_cpu_temperature_max_in_celsius(self):
         try:
             return self.susi_information["Hardware Monitor"]["Temperature"]["e"][0]["max"]
@@ -333,8 +334,6 @@ class SusiIot:
             return self.susi_information["Hardware Monitor"]["Temperature"]["e"][0]["min"]
         except:
             return None
-
-
 
     def get_system_temperature_max_in_celsius(self):
         try:
@@ -559,13 +558,14 @@ class SusiIot:
             return self.susi_information["Hardware Monitor"]["Temperature"]["e"][0]["v"]
         except:
             return None
+
     @property
     def system_temperature_in_celsius(self):
         try:
             return self.susi_information["Hardware Monitor"]["Temperature"]["e"][1]["v"]
         except:
             return None
-    
+
     def voltage_vcore(self):
         try:
             return self.susi_information["Hardware Monitor"]["Voltage"]["e"][0]["v"]
@@ -577,41 +577,45 @@ class SusiIot:
             return self.susi_information["Hardware Monitor"]["Voltage"]["e"][1]["v"]
         except:
             return None
+
     def voltage_5v(self):
-        results=self.susi_information["Hardware Monitor"]["Voltage"]["e"]
+        results = self.susi_information["Hardware Monitor"]["Voltage"]["e"]
         for result in results:
-            if item["n"]=="5V":
+            if item["n"] == "5V":
                 return item["v"]
 
     def voltage_12v(self):
-        results=self.susi_information["Hardware Monitor"]["Voltage"]["e"]
+        results = self.susi_information["Hardware Monitor"]["Voltage"]["e"]
         for result in results:
-            if item["n"]=="12V":
+            if item["n"] == "12V":
                 return item["v"]
         return None
+
     def voltage_5v_standby(self):
-        results=self.susi_information["Hardware Monitor"]["Voltage"]["e"]
+        results = self.susi_information["Hardware Monitor"]["Voltage"]["e"]
         for result in results:
-            if item["n"]=="5V Standby":
+            if item["n"] == "5V Standby":
                 return item["v"]
         return None
+
     def voltage_mos_battery(self):
-        results=self.susi_information["Hardware Monitor"]["Voltage"]["e"]
+        results = self.susi_information["Hardware Monitor"]["Voltage"]["e"]
         for result in results:
-            if item["n"]=="CMOS Battery":
+            if item["n"] == "CMOS Battery":
                 return item["v"]
         return None
 
     def get_dc_power(self):
         pass
         # todo
-    
+
     @property
     def cpu_fan_speed(self):
         try:
             return self.susi_information["Hardware Monitor"]["Fan Speed"]["e"][0]["v"]
         except:
             return None
+
     @property
     def system_fan_speed(self):
         try:

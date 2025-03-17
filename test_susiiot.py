@@ -324,10 +324,11 @@ class TestHandler(unittest.TestCase):
     def test_cpu_temperature_in_celsius(self):
         handler = susiiot.SusiIot()
         print(handler.cpu_temperature_in_celsius)
-        
+
     def test_create_name_id_list(self):
         handler = susiiot.SusiIot()
         handler.create_name_id_list()
+
 
 if __name__ == '__main__':
     unittest.main()
