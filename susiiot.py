@@ -32,36 +32,53 @@ class SusiIot:
             print(e)
   
     def create_name_id_list(self):
-        data_sorts=["Platform Information","Hardware Monitor","GPIO","SDRAM","DiskInfo","SUSIIoT Information","M2Talk","Backlight"]
-        for data_sort in data_sorts:
-            try:
-                id_value=self.susi_information[data_sort]["id"]
-                self.susi_id_name_table.update({data_sort:id_value})
-                for item in self.susi_information[data_sort]["e"]:
-                    self.susi_id_name_table.update({item["n"]:item["id"]})
-            except Exception as e:
-                print(e)
-                
         data_sort="Platform Information"
         id_value=self.susi_information[data_sort]["id"]
         self.susi_id_name_table.update({data_sort:id_value})
-        data_sorts=["Voltage","Temperature"]
-        for data_sort in data_sorts:
-            id_value=self.susi_information["Hardware Monitor"][data_sort]["id"]
+        for item in self.susi_information[data_sort]["e"]:
             self.susi_id_name_table.update({item["n"]:item["id"]})
-            sources=self.susi_information["Hardware Monitor"][data_sort]["e"]
+        
+        data_sort="Hardware Monitor"
+        id_value=self.susi_information[data_sort]["id"]
+        self.susi_id_name_table.update({data_sort:id_value})
+        items=["Voltage","Temperature"]
+        for item in items:
+            id_value=self.susi_information[data_sort][item]["id"]
+            sources=self.susi_information[data_sort][item]["e"]
             for source in sources:
                 self.susi_id_name_table.update({data_sort+" "+source["n"]:source["id"]})
 
-        data_sorts=["Voltage","Temperature"]
-        for data_sort in data_sorts:
-            id_value=self.susi_information["Hardware Monitor"][data_sort]["id"]
-            self.susi_id_name_table.update({item["n"]:item["id"]})
-            sources=self.susi_information["Hardware Monitor"][data_sort]["e"]
-            for source in sources:
-                self.susi_id_name_table.update({data_sort+" "+source["n"]:source["id"]})
+        
+        data_sort="GPIO"
+        id_value=self.susi_information[data_sort]["id"]
+        self.susi_id_name_table.update({data_sort:id_value})
+        for data_index in self.susi_information[data_sort].keys():
+            if "GPIO" in data_index:
+                self.susi_id_name_table.update({data_index:self.susi_information[data_sort][data_index]["id"]})
+                for informations in self.susi_information[data_sort][data_index]["e"]:
+                    self.susi_id_name_table.update({data_index+" "+informations["n"]:informations["id"]})
 
-            
+        data_sort="SDRAM"
+        id_value=self.susi_information[data_sort]["id"]
+        self.susi_id_name_table.update({data_sort:id_value})
+        for data_index in self.susi_information[data_sort].keys():
+            if "SDRAM" in data_index:
+                self.susi_id_name_table.update({data_index:self.susi_information[data_sort][data_index]["id"]})
+                for informations in self.susi_information[data_sort][data_index]["e"]:
+                    self.susi_id_name_table.update({data_index+" "+informations["n"]:informations["id"]})
+        
+        data_sort="DiskInfo"
+        id_value=self.susi_information[data_sort]["id"]
+        self.susi_id_name_table.update({data_sort:id_value})
+        for data_index in self.susi_information[data_sort]["e"]:
+            self.susi_id_name_table.update({data_index["n"]:data_index["id"]})
+
+        data_sort="SUSIIoT Information"
+        id_value=self.susi_information[data_sort]["id"]
+        self.susi_id_name_table.update({data_sort:id_value})
+        for data_index in self.susi_information[data_sort]["e"]:
+            self.susi_id_name_table.update({data_index["n"]:data_index["id"]})
+
         for i in self.susi_id_name_table.keys():
             print(i, self.susi_id_name_table[i])
 
