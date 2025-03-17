@@ -39,11 +39,50 @@ class TestCasesModule(unittest.TestCase):
         handler = susiiot.SusiIot()
         for i in range(8):
             print(handler.get_gpio_direction(i))
-            
+
     def test_get_gpio_level(self):
         handler = susiiot.SusiIot()
         for i in range(8):
-            print(handler.get_gpio_level(i))
+            print(i,handler.get_gpio_level(i))
+    
+    def test_set_gpio_00(self):
+        handler = susiiot.SusiIot()
+        result = handler.set_value(17039873, 0)
+        result = handler.get_data_by_id(17039873)
+        print(result)
+        result = handler.set_value(17039873, 1)
+        result = handler.get_data_by_id(17039873)
+        print(result)
+
+    def test_set_gpio_direction(self):
+        handler = susiiot.SusiIot()
+        origin=0
+        changed=0
+        for i in range(8):
+            print(f"GPIO {i}")
+            origin=handler.get_gpio_direction(i)
+            self.assertEqual(handler.get_gpio_direction(i),origin)
+            changed=origin^1
+            handler.set_gpio_direction(i,changed)
+            self.assertNotEqual(handler.get_gpio_direction(i),origin)
+            handler.set_gpio_direction(i,origin)
+            self.assertEqual(handler.get_gpio_direction(i),origin)
+    
+    def test_set_gpio_level(self):
+        # todo
+        pass
+        # handler = susiiot.SusiIot()
+        # origin=0
+        # changed=0
+        # for i in range(8):
+        #     print(f"GPIO {i}")
+        #     origin=handler.get_gpio_level(i)
+        #     self.assertEqual(handler.get_gpio_level(i),origin)
+        #     changed=origin^1
+        #     handler.set_gpio_level(i,changed)
+        #     self.assertNotEqual(handler.get_gpio_level(i),origin)
+        #     handler.set_gpio_level(i,origin)
+        #     self.assertEqual(handler.get_gpio_level(i),origin)
 
     @unittest.skip("same id bug")
     def test_disk_total_disk_space(self):

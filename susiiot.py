@@ -325,21 +325,42 @@ class SusiIot:
         pass
 
     def get_gpio_direction(self, gpio_number=0):
-        gpio_index=f"GPIO0{gpio_number} Dir"
         try:
-            id_number = self.susi_id_name_table[gpio_index]
-            return self.get_data_by_id(id_number)["bv"]
+            gpio_string = self.gpio_list[gpio_number]
+            id_number=self.susi_information["GPIO"][gpio_string]["e"][0]["id"]
+            return self.get_data_by_id(id_number)['bv']
+        except:
+            return None
+
+    def set_gpio_direction(self, gpio_number=0,level=0):
+        try:
+            gpio_string = self.gpio_list[gpio_number]
+            id_number=self.susi_information["GPIO"][gpio_string]["e"][0]["id"]
+            self.set_value(id_number,level)
+            return True
+        except:
+            return None
+    
+    def get_gpio_level(self, gpio_number=0):
+        try:
+            gpio_string = self.gpio_list[gpio_number]
+            id_number=self.susi_information["GPIO"][gpio_string]["e"][1]["id"]
+            print(id_number)
+            return self.get_data_by_id(id_number)['bv']
+        except:
+            return None
+
+    def set_gpio_level(self, gpio_number=0,level=0):
+        try:
+            gpio_string = self.gpio_list[gpio_number]
+            id_number=self.susi_information["GPIO"][gpio_string]["e"][1]["id"]
+            print(id_number)
+            self.set_value(id_number,level)
+            return True
         except:
             return None
 
     
-    def get_gpio_level(self, gpio_number=0):
-        gpio_index=f"GPIO0{gpio_number} Level"
-        try:
-            id_number = self.susi_id_name_table[gpio_index]
-            return self.get_data_by_id(id_number)["bv"]
-        except:
-            return None
 
     @property
     def memory_count(self):
