@@ -32,21 +32,46 @@ class SusiIot:
             print(e)
   
     def create_name_id_list(self):
+    #     self.susi_information={
+    #         "SUSIIoT Information": {
+    #     "e": [
+    #         {
+    #             "n": "version",
+    #             "sv": "1.0.23985",
+    #             "asm": "r",
+    #             "id": 257
+    #         }
+    #     ],
+    #     "bn": "SUSIIoT Information",
+    #     "bu": "Info",
+    #     "bt": 1276020076,
+    #     "ver": 1,
+    #     "id": 256
+    # }
+    #     }
         data_sort="Platform Information"
-        id_value=self.susi_information[data_sort]["id"]
-        self.susi_id_name_table.update({data_sort:id_value})
-        for item in self.susi_information[data_sort]["e"]:
-            self.susi_id_name_table.update({item["n"]:item["id"]})
+        try:
+            id_value=self.susi_information[data_sort]["id"]
+            self.susi_id_name_table.update({data_sort:id_value})
+            for item in self.susi_information[data_sort]["e"]:
+                self.susi_id_name_table.update({item["n"]:item["id"]})
+        except Exception as e:
+            print(e)
         
         data_sort="Hardware Monitor"
-        id_value=self.susi_information[data_sort]["id"]
-        self.susi_id_name_table.update({data_sort:id_value})
-        items=["Voltage","Temperature"]
-        for item in items:
-            id_value=self.susi_information[data_sort][item]["id"]
-            sources=self.susi_information[data_sort][item]["e"]
-            for source in sources:
-                self.susi_id_name_table.update({data_sort+" "+source["n"]:source["id"]})
+        try:
+            id_value=self.susi_information[data_sort]["id"]
+            self.susi_id_name_table.update({data_sort:id_value})
+        except Exception as e:
+            print(e)
+
+        for item in self.susi_information[data_sort]:
+            if "id" in item or "bn" in item:
+                pass
+            else:
+                sources=self.susi_information[data_sort][item]['e']
+                for source in sources:
+                    self.susi_id_name_table.update({item+" "+source["n"]:source["id"]})
 
         
         data_sort="GPIO"
