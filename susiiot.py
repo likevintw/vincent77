@@ -29,7 +29,7 @@ class SusiIot:
             pass
         except Exception as e:
             print(e)
-
+  
     def import_library(self):
         current_dir = os.path.dirname(os.path.realpath(__file__))+"/"
         architecture = platform.machine()
@@ -554,6 +554,22 @@ class SusiIot:
             return self.susi_information["SUSIIoT Information"]["e"][0]['sv']
         except:
             return None
+
+    @property
+    def cpu_temperature_in_celsius(self):
+        try:
+            return self.susi_information["Hardware Monitor"]["Temperature"]["e"][0]["v"]
+        except:
+            return None
+    @property
+    def system_temperature_in_celsius(self):
+        return self.cusor.system_temperature_in_celsius()
+    @property
+    def cpu_fan_speed(self):
+        return self.cusor.cpu_fan_speed()
+    @property
+    def system_fan_speed(self):
+        return self.cusor.system_fan_speed()
 
 
 class JsonType:

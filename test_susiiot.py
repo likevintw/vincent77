@@ -321,6 +321,9 @@ class TestHandler(unittest.TestCase):
         results = handler.get_susiiot_version()
         self.assertNotEqual(results, None)
 
+    def test_cpu_temperature_in_celsius(self):
+        handler = susiiot.SusiIot()
+        print(handler.cpu_temperature_in_celsius)
 
 if __name__ == '__main__':
     unittest.main()
