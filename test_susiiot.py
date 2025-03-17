@@ -321,13 +321,179 @@ class TestHandler(unittest.TestCase):
         results = handler.get_susiiot_version()
         self.assertNotEqual(results, None)
 
+
+class TestCasesUNO1372G(unittest.TestCase):
+    def test_boot_up_times(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.boot_up_times, None)
+
+    def test_running_time_in_hours(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.running_time_in_hours, None)
+
+    def test_board_name(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.board_name, None)
+
+    def test_bios_revision(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.bios_revision, None)
+
+    def test_firmware_name(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.firmware_name, None)
+
+    def test_driver_version(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.driver_version, None)
+
+    def test_firmware_version(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.firmware_version, None)
+
+    @unittest.skip("same id bug")
+    def test_disk_total_disk_space(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.disk_total_disk_space, None)
+
+    def test_disk_free_disk_space(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.disk_free_disk_space, None)
+
+    def test_voltage_vcore(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.voltage_vcore, None)
+
+    def test_voltage_5v_standby(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.voltage_5v_standby, None)
+
+    def test_voltage_mos_battery(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.voltage_mos_battery, None)
+
+    def test_dc_power(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.dc_power, None)
+
     def test_cpu_temperature_in_celsius(self):
         handler = susiiot.SusiIot()
-        print(handler.cpu_temperature_in_celsius)
+        self.assertNotEqual(handler.cpu_temperature_in_celsius, None)
 
-    def test_create_name_id_list(self):
+    def test_system_temperature_in_celsius(self):
         handler = susiiot.SusiIot()
-        handler.create_name_id_list()
+        self.assertNotEqual(handler.system_temperature_in_celsius, None)
+
+
+class TestCasesModule(unittest.TestCase):
+    def test_boot_up_times(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.boot_up_times, None)
+
+    def test_running_time_in_hours(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.running_time_in_hours, None)
+
+    def test_board_name(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.board_name, None)
+
+    def test_bios_revision(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.bios_revision, None)
+
+    def test_firmware_name(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.firmware_name, None)
+
+    def test_driver_version(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.driver_version, None)
+
+    def test_firmware_version(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.firmware_version, None)
+
+    @unittest.skip("same id bug")
+    def test_disk_total_disk_space(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.disk_total_disk_space, None)
+
+    def test_disk_free_disk_space(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.disk_free_disk_space, None)
+
+    def test_voltage_vcore(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.voltage_vcore, None)
+
+    def test_voltage_vcore(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.voltage_vcore, None)
+
+    def test_voltage_3p3v_standby(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.voltage_3p3v_standby, None)
+
+    def test_voltage_5v(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.voltage_5v, None)
+
+    def test_voltage_12v(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.voltage_12v, None)
+
+    def test_voltage_5v_standby(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.voltage_5v_standby, None)
+
+    def test_voltage_cmos_battery(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.voltage_cmos_battery, None)
+
+    def test_dc_power(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.dc_power, None)
+
+    def test_cpu_temperature_in_celsius(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.cpu_temperature_in_celsius, None)
+
+    def test_system_temperature_in_celsius(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.system_temperature_in_celsius, None)
+
+    def test_cpu_fan_speed(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.cpu_fan_speed, None)
+
+    def test_system_fan_speed(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.system_fan_speed, None)
+
+    def test_susiiot_version(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.susiiot_version, None)
+
+    @unittest.skip("api get null")
+    def test_backlight_frequency(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.backlight_frequency, None)
+
+    @unittest.skip("api get null")
+    def test_backlight_polarity(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.backlight_polarity, None)
+
+    @unittest.skip("api get null")
+    def test_backlight_backlight(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.backlight_backlight, None)
+
+    @unittest.skip("api get null")
+    def test_backlight_brightness(self):
+        handler = susiiot.SusiIot()
+        self.assertNotEqual(handler.backlight_brightness, None)
 
 
 if __name__ == '__main__':

@@ -36,8 +36,8 @@ sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_etp_user_data
 
 # Todo
 
-sudo python3 -m unittest -v test_susiiot.TestHandler.test_create_name_id_list
-
+sudo python3 -m unittest -v test_susiiot.TestCases.test_cpu_temperature_in_celsius
+sudo python3 -m unittest -v test_susiiot.TestCases
 
 
 
