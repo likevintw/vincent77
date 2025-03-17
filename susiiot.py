@@ -164,19 +164,24 @@ class SusiIot:
             exit(1)
 
         self.susi_iot_library.SusiIoTInitialize.restype = ctypes.c_int
+
         self.susi_iot_library.SusiIoTSetValue.argtypes = [
             ctypes.c_uint32, ctypes.POINTER(JsonT)]
         self.susi_iot_library.SusiIoTSetValue.restype = ctypes.c_uint32
 
-        self.susi_iot_library.SusiIoTGetPFDataString.restype = ctypes.c_char_p
         self.susi_iot_library.SusiIoTGetLoggerPath.restype = ctypes.c_char_p
+
+        self.susi_iot_library.SusiIoTGetPFDataString.restype = ctypes.c_char_p
         self.susi_iot_library.SusiIoTGetPFDataString.argtypes = [
             ctypes.c_uint32]
+
         self.susi_iot_library.SusiIoTGetPFDataStringByUri.restype = ctypes.c_char_p
         self.susi_iot_library.SusiIoTGetPFDataStringByUri.argtypes = [
             ctypes.c_char_p]
+
         self.json_library.json_dumps.restype = ctypes.c_char_p
         self.json_library.json_integer.restype = ctypes.POINTER(JsonT)
+
         self.json_library.json_real.restype = ctypes.POINTER(JsonT)
         self.json_library.json_string.restype = ctypes.POINTER(JsonT)
 
@@ -319,13 +324,22 @@ class SusiIot:
     def gpio_counter(self):
         pass
 
-    @property
-    def gpio_direction(self, gpio_number=0):
-        pass
+    def get_gpio_direction(self, gpio_number=0):
+        gpio_index=f"GPIO0{gpio_number} Dir"
+        try:
+            id_number = self.susi_id_name_table[gpio_index]
+            return self.get_data_by_id(id_number)["bv"]
+        except:
+            return None
 
-    @property
-    def gpio_level(self, gpio_number=0):
-        pass
+    
+    def get_gpio_level(self, gpio_number=0):
+        gpio_index=f"GPIO0{gpio_number} Level"
+        try:
+            id_number = self.susi_id_name_table[gpio_index]
+            return self.get_data_by_id(id_number)["bv"]
+        except:
+            return None
 
     @property
     def memory_count(self):

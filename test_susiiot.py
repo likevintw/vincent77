@@ -35,6 +35,16 @@ class TestCasesModule(unittest.TestCase):
         handler = susiiot.SusiIot()
         print(handler.firmware_version)
 
+    def test_get_gpio_direction(self):
+        handler = susiiot.SusiIot()
+        for i in range(8):
+            print(handler.get_gpio_direction(i))
+            
+    def test_get_gpio_level(self):
+        handler = susiiot.SusiIot()
+        for i in range(8):
+            print(handler.get_gpio_level(i))
+
     @unittest.skip("same id bug")
     def test_disk_total_disk_space(self):
         handler = susiiot.SusiIot()
