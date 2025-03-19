@@ -39,7 +39,7 @@ sudo python3 -m unittest -v test_susiiot.TestCases.test_cpu_temperature_in_celsi
 export LOG_LEVEL=DEBUG && sudo -E python3 -m unittest -v test_susiiot.TestCases.test_backlight_polarity
 export LOG_LEVEL=DEBUG && sudo -E python3 -m unittest -v test_susiiot.TestCases.test_system_temperature_in_celsius
 
-export LOG_LEVEL=DEBUG && sudo -E python3 -m unittest -v test_susiiot.TestCases.test_id_api_result
+export LOG_LEVEL=DEBUG && sudo -E python3 -m unittest -v test_susiiot.TestCases.test_set_gpio_level
 
 
 

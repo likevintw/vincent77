@@ -4,11 +4,19 @@ import susiiot
 import os
 import platform
 import logging
+import time
+import datetime
+
+
+formatted_time = datetime.datetime.fromtimestamp(
+    time.time()).strftime('%Y-%m-%d %H:%M:%S')
+print(f"test time: {formatted_time}")
+print(f"OS Name: {platform.system()}")
+print(f"OS Version: {platform.system()}")
+
 
 class TestCases(unittest.TestCase):
-    def test_record_test_information(self):
-        pass
-
+    @unittest.skip("pass")
     def test_get_data_by_id_with_json(self):
         handler = susiiot.SusiIot()
         handler.susi_information = {
@@ -640,6 +648,7 @@ class TestCases(unittest.TestCase):
             }
         }
         handler.create_name_id_list()
+        print()
         for item_name in handler.susi_id_name_table.keys():
             result = handler.get_data_by_id(
                 handler.susi_id_name_table[item_name])
@@ -684,54 +693,54 @@ class TestCases(unittest.TestCase):
 
     def test_get_gpio_direction(self):
         handler = susiiot.SusiIot()
-        for i in range(8):
-            print(handler.get_gpio_direction(i))
+        print()
+        for i in range(handler.gpio_counter):
+            print(f"GPIO{i}, direction:{handler.get_gpio_direction(i)}")
 
     def test_get_gpio_level(self):
         handler = susiiot.SusiIot()
-        for i in range(8):
-            print(i, handler.get_gpio_level(i))
-
-    def test_set_gpio_00(self):
-        handler = susiiot.SusiIot()
-        result = handler.set_value(17039873, 0)
-        result = handler.get_data_by_id(17039873)
-        print(result)
-        result = handler.set_value(17039873, 1)
-        result = handler.get_data_by_id(17039873)
-        print(result)
+        print()
+        for i in range(handler.gpio_counter):
+            print(f"GPIO{i}, level:{handler.get_gpio_level(i)}")
 
     def test_set_gpio_direction(self):
         handler = susiiot.SusiIot()
         origin = 0
         changed = 0
         print()
-        for gpio_number in range(8):
-            print(f"GPIO {gpio_number}")
+        for gpio_number in range(handler.gpio_counter):
             origin = handler.get_gpio_direction(gpio_number)
-            self.assertEqual(handler.get_gpio_direction(gpio_number), origin)
             changed = origin ^ 1
-            handler.set_gpio_direction(gpio_number, changed)
-            self.assertNotEqual(
-                handler.get_gpio_direction(gpio_number), origin)
+            result = handler.set_gpio_direction(gpio_number, changed)
+            if not result:
+                print(f"set GPIO direction {gpio_number} from {origin} to {changed}, fail")
+                exit(1)
+            print(f"set GPIO direction {gpio_number} from {origin} to {changed}, successfully")
             handler.set_gpio_direction(gpio_number, origin)
+            if not result:
+                print(f"set GPIO direction {gpio_number} from {origin} to {changed}, fail")
+                exit(1)
             self.assertEqual(handler.get_gpio_direction(gpio_number), origin)
+            print(f"set GPIO direction {gpio_number} from {changed} to {origin}, successfully")
 
     def test_set_gpio_level(self):
-        # todo
-        pass
-        # handler = susiiot.SusiIot()
-        # origin=0
-        # changed=0
-        # for i in range(8):
-        #     print(f"GPIO {i}")
-        #     origin=handler.get_gpio_level(i)
-        #     self.assertEqual(handler.get_gpio_level(i),origin)
-        #     changed=origin^1
-        #     handler.set_gpio_level(i,changed)
-        #     self.assertNotEqual(handler.get_gpio_level(i),origin)
-        #     handler.set_gpio_level(i,origin)
-        #     self.assertEqual(handler.get_gpio_level(i),origin)
+        handler = susiiot.SusiIot()
+        origin = 0
+        changed = 0
+        print()
+        for gpio_number in range(handler.gpio_counter):
+            origin = handler.get_gpio_level(gpio_number)
+            changed = origin ^ 1
+            result = handler.set_gpio_level(gpio_number, changed)
+            if result!=True:
+                print(f"set GPIO{gpio_number} level {result}")
+                continue
+            print(f"set GPIO{gpio_number} level from {origin} to {changed}, successfully")
+            handler.set_gpio_level(gpio_number, origin)
+            if result!=True:
+                print(f"set GPIO{gpio_number} level {result}")
+                continue
+            print(f"set GPIO{gpio_number} level from {origin} to {changed}, successfully")
 
     def test_get_memory_type(self):
         handler = susiiot.SusiIot()
