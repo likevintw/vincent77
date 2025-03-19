@@ -6,6 +6,7 @@ import platform
 import logging
 
 class TestCases(unittest.TestCase):
+    def test_record_test_information(self):
     def test_boot_up_times(self):
         handler = susiiot.SusiIot()
         print(handler.boot_up_times)
