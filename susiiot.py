@@ -6,10 +6,11 @@ import platform
 import logging
 
 log_level = os.getenv('LOG_LEVEL', 'INFO').upper()
-print("log_level",log_level)
+print("log_level", log_level)
 logging.basicConfig(level=log_level,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
+
 
 class SusiIot:
     def __init__(self):
@@ -274,7 +275,10 @@ class SusiIot:
     def boot_up_times(self):
         try:
             id_number = self.susi_id_name_table["Boot up times"]
-            return self.get_data_by_id(id_number)["v"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result["v"]
         except:
             return None
 
@@ -282,7 +286,10 @@ class SusiIot:
     def running_time_in_hours(self):
         try:
             id_number = self.susi_id_name_table["Running time (hours)"]
-            return self.get_data_by_id(id_number)["v"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result["v"]
         except:
             return None
 
@@ -410,7 +417,10 @@ class SusiIot:
     def disk_total_disk_space(self):
         try:
             id_number = self.susi_id_name_table["Disk - Total Disk Space"]
-            return self.get_data_by_id(id_number)["v"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result["v"]
         except:
             return None
 
@@ -418,7 +428,10 @@ class SusiIot:
     def disk_free_disk_space(self):
         try:
             id_number = self.susi_id_name_table["Disk - Free Disk Space"]
-            return self.get_data_by_id(id_number)["v"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result["v"]
         except:
             return None
 
@@ -426,7 +439,10 @@ class SusiIot:
     def disk_media_recovery_total_disk_space(self):
         try:
             id_number = self.susi_id_name_table["Disk -media-recovery Total Disk Space"]
-            return self.get_data_by_id(id_number)["v"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result["v"]
         except:
             return None
 
@@ -434,7 +450,10 @@ class SusiIot:
     def disk_media_recovery_free_disk_space(self):
         try:
             id_number = self.susi_id_name_table["Disk -media-recovery Free Disk Space"]
-            return self.get_data_by_id(id_number)["v"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result["v"]
         except:
             return None
 
@@ -442,7 +461,10 @@ class SusiIot:
     def disk_home_total_disk_space(self):
         try:
             id_number = self.susi_id_name_table["Disk -home Total Disk Space"]
-            return self.get_data_by_id(id_number)["v"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result["v"]
         except:
             return None
 
@@ -450,7 +472,10 @@ class SusiIot:
     def disk_free_disk_space(self):
         try:
             id_number = self.susi_id_name_table["Disk -home Free Disk Space"]
-            return self.get_data_by_id(id_number)["v"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result["v"]
         except:
             return None
 
@@ -458,7 +483,10 @@ class SusiIot:
     def voltage_vcore(self):
         try:
             id_number = self.susi_id_name_table["Voltage Vcore"]
-            return self.get_data_by_id(id_number)["v"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result["v"]
         except:
             return None
 
@@ -466,7 +494,10 @@ class SusiIot:
     def voltage_3p3v(self):
         try:
             id_number = self.susi_id_name_table["Voltage 3.3V"]
-            return self.get_data_by_id(id_number)["v"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result["v"]
         except:
             return None
 
@@ -474,7 +505,10 @@ class SusiIot:
     def voltage_5v(self):
         try:
             id_number = self.susi_id_name_table["Voltage 5V"]
-            return self.get_data_by_id(id_number)["v"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result["v"]
         except:
             return None
 
@@ -482,7 +516,10 @@ class SusiIot:
     def voltage_12v(self):
         try:
             id_number = self.susi_id_name_table["Voltage 12V"]
-            return self.get_data_by_id(id_number)["v"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result["v"]
         except:
             return None
 
@@ -490,7 +527,10 @@ class SusiIot:
     def voltage_5v_standby(self):
         try:
             id_number = self.susi_id_name_table["Voltage 5V Standby"]
-            return self.get_data_by_id(id_number)["v"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result["v"]
         except:
             return None
 
@@ -498,7 +538,10 @@ class SusiIot:
     def voltage_cmos_battery(self):
         try:
             id_number = self.susi_id_name_table["Voltage CMOS Battery"]
-            return self.get_data_by_id(id_number)["v"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result["v"]
         except:
             return None
 
@@ -506,7 +549,10 @@ class SusiIot:
     def dc_power(self):
         try:
             id_number = self.susi_id_name_table["Voltage DC"]
-            return self.get_data_by_id(id_number)["v"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result["v"]
         except:
             return None
 
@@ -514,7 +560,10 @@ class SusiIot:
     def cpu_temperature_in_celsius(self):
         try:
             id_number = self.susi_id_name_table["Temperature System"]
-            return self.get_data_by_id(id_number)["v"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result["v"]
         except:
             return None
 
@@ -522,9 +571,9 @@ class SusiIot:
     def system_temperature_in_celsius(self):
         try:
             id_number = self.susi_id_name_table["Temperature System"]
-            result=self.get_data_by_id(id_number) 
+            result = self.get_data_by_id(id_number)
             if not result:
-                logger.debug(f"{id_number} result is {result}") 
+                logger.debug(f"{id_number} result is {result}")
             return result["v"]
         except:
             return None
@@ -533,7 +582,10 @@ class SusiIot:
     def cpu_fan_speed(self):
         try:
             id_number = self.susi_id_name_table["Fan Speed CPU"]
-            return self.get_data_by_id(id_number)["v"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result["v"]
         except:
             return None
 
@@ -541,7 +593,10 @@ class SusiIot:
     def system_fan_speed(self):
         try:
             id_number = self.susi_id_name_table["Fan Speed System"]
-            return self.get_data_by_id(id_number)["v"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result["v"]
         except:
             return None
 
@@ -557,7 +612,10 @@ class SusiIot:
     def backlight_frequency(self):
         try:
             id_number = self.susi_id_name_table["Backlight frequency"]
-            return self.get_data_by_id(id_number)["v"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result["v"]
         except:
             return None
 
@@ -565,9 +623,9 @@ class SusiIot:
     def backlight_polarity(self):
         try:
             id_number = self.susi_id_name_table["Backlight polarity"]
-            result=self.get_data_by_id(id_number) 
+            result = self.get_data_by_id(id_number)
             if not result:
-                logger.debug(f"{id_number} result is {result}") 
+                logger.debug(f"{id_number} result is {result}")
             return result["v"]
         except:
             return None
@@ -576,7 +634,10 @@ class SusiIot:
     def backlight_backlight(self):
         try:
             id_number = self.susi_id_name_table["Backlight backlight"]
-            return self.get_data_by_id(id_number)["v"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result["v"]
         except:
             return None
 
@@ -584,7 +645,10 @@ class SusiIot:
     def backlight_brightness(self):
         try:
             id_number = self.susi_id_name_table["Backlight brightness"]
-            return self.get_data_by_id(id_number)["v"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result["v"]
         except:
             return None
 
