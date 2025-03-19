@@ -6,10 +6,10 @@ import logging
 
 
 logging.basicConfig(
-    level=logging.DEBUG,  # 设置日志级别（ DEBUG, INFO, WARNING, ERROR, CRITICAL）
-    format='%(asctime)s - %(levelname)s - %(message)s',  # 设置日志输出格式
+    level=logging.DEBUG,
+    format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.StreamHandler()  # 输出到控制台
+        logging.StreamHandler()
     ]
 )
 

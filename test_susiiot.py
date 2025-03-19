@@ -5,8 +5,11 @@ import os
 import platform
 import logging
 
+
 class TestCases(unittest.TestCase):
     def test_record_test_information(self):
+        pass
+
     def test_boot_up_times(self):
         handler = susiiot.SusiIot()
         print(handler.boot_up_times)
@@ -84,6 +87,21 @@ class TestCases(unittest.TestCase):
         #     self.assertNotEqual(handler.get_gpio_level(i),origin)
         #     handler.set_gpio_level(i,origin)
         #     self.assertEqual(handler.get_gpio_level(i),origin)
+
+    def test_get_memory_type(self):
+        handler = susiiot.SusiIot()
+        for i in range(handler.memory_count):
+            print(f"SDRAM{i} type: {handler.get_memory_type(i)}")
+
+    def test_get_module_type(self):
+        handler = susiiot.SusiIot()
+        for i in range(handler.memory_count):
+            print(f"SDRAM{i} module: {handler.get_module_type(i)}")
+
+    def test_get_module_size_in_GB(self):
+        handler = susiiot.SusiIot()
+        for i in range(handler.memory_count):
+            print(f"SDRAM{i} module size: {handler.get_module_size_in_GB(i)} GB")
 
     @unittest.skip("same id bug")
     def test_disk_total_disk_space(self):

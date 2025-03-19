@@ -29,11 +29,8 @@ class SusiIot:
         self.create_name_id_list()
 
     def __del__(self):
-        try:
-            # self.susi_iot_library.SusiIoTUninitialize()
-            pass
-        except:
-            pass
+        pass
+        # self.susi_iot_library.SusiIoTUninitialize()
 
     def create_name_id_list(self):
         data_sort = "Platform Information"
@@ -318,6 +315,14 @@ class SusiIot:
             return None
 
     @property
+    def library_version(self):
+        try:
+            id_number = self.susi_id_name_table["Driver version"]
+            return self.get_data_by_id(id_number)["sv"]
+        except:
+            return None
+
+    @property
     def driver_version(self):
         try:
             id_number = self.susi_id_name_table["Driver version"]
@@ -330,152 +335,6 @@ class SusiIot:
         try:
             id_number = self.susi_id_name_table["Firmware version"]
             return self.get_data_by_id(id_number)["sv"]
-        except:
-            return None
-
-    @property
-    def gpio_counter(self):
-        pass
-
-    def get_gpio_direction(self, gpio_number=0):
-        try:
-            gpio_string = self.gpio_list[gpio_number]
-            id_number = self.susi_information["GPIO"][gpio_string]["e"][0]["id"]
-            return self.get_data_by_id(id_number)['bv']
-        except:
-            return None
-
-    def set_gpio_direction(self, gpio_number=0, level=0):
-        try:
-            gpio_string = self.gpio_list[gpio_number]
-            id_number = self.susi_information["GPIO"][gpio_string]["e"][0]["id"]
-            self.set_value(id_number, level)
-            return True
-        except:
-            return None
-
-    def get_gpio_level(self, gpio_number=0):
-        try:
-            gpio_string = self.gpio_list[gpio_number]
-            id_number = self.susi_information["GPIO"][gpio_string]["e"][1]["id"]
-            print(id_number)
-            return self.get_data_by_id(id_number)['bv']
-        except:
-            return None
-
-    def set_gpio_level(self, gpio_number=0, level=0):
-        try:
-            gpio_string = self.gpio_list[gpio_number]
-            id_number = self.susi_information["GPIO"][gpio_string]["e"][1]["id"]
-            print(id_number)
-            self.set_value(id_number, level)
-            return True
-        except:
-            return None
-
-    @property
-    def memory_count(self):
-        pass
-
-    @property
-    def memory_type(self, memory_number=0):
-        pass
-
-    @property
-    def module_type(self, memory_number=0):
-        pass
-
-    @property
-    def module_size_in_GB(self, memory_number=0):
-        pass
-
-    @property
-    def memory_speed(self, memory_number=0):
-        pass
-
-    @property
-    def memory_rank(self, memory_number=0):
-        pass
-
-    @property
-    def memory_voltage(self, memory_number=0):
-        pass
-
-    @property
-    def memory_bank(self, memory_number=0):
-        pass
-
-    @property
-    def memory_week_year(self, memory_number=0):
-        pass
-
-    @property
-    def memory_temperature(self, memory_number=0):
-        pass
-
-    @property
-    def disk_total_disk_space(self):
-        try:
-            id_number = self.susi_id_name_table["Disk - Total Disk Space"]
-            result = self.get_data_by_id(id_number)
-            if not result:
-                logger.debug(f"{id_number} result is {result}")
-            return result["v"]
-        except:
-            return None
-
-    @property
-    def disk_free_disk_space(self):
-        try:
-            id_number = self.susi_id_name_table["Disk - Free Disk Space"]
-            result = self.get_data_by_id(id_number)
-            if not result:
-                logger.debug(f"{id_number} result is {result}")
-            return result["v"]
-        except:
-            return None
-
-    @property
-    def disk_media_recovery_total_disk_space(self):
-        try:
-            id_number = self.susi_id_name_table["Disk -media-recovery Total Disk Space"]
-            result = self.get_data_by_id(id_number)
-            if not result:
-                logger.debug(f"{id_number} result is {result}")
-            return result["v"]
-        except:
-            return None
-
-    @property
-    def disk_media_recovery_free_disk_space(self):
-        try:
-            id_number = self.susi_id_name_table["Disk -media-recovery Free Disk Space"]
-            result = self.get_data_by_id(id_number)
-            if not result:
-                logger.debug(f"{id_number} result is {result}")
-            return result["v"]
-        except:
-            return None
-
-    @property
-    def disk_home_total_disk_space(self):
-        try:
-            id_number = self.susi_id_name_table["Disk -home Total Disk Space"]
-            result = self.get_data_by_id(id_number)
-            if not result:
-                logger.debug(f"{id_number} result is {result}")
-            return result["v"]
-        except:
-            return None
-
-    @property
-    def disk_free_disk_space(self):
-        try:
-            id_number = self.susi_id_name_table["Disk -home Free Disk Space"]
-            result = self.get_data_by_id(id_number)
-            if not result:
-                logger.debug(f"{id_number} result is {result}")
-            return result["v"]
         except:
             return None
 
@@ -571,6 +430,274 @@ class SusiIot:
     def system_temperature_in_celsius(self):
         try:
             id_number = self.susi_id_name_table["Temperature System"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result["v"]
+        except:
+            return None
+
+    @property
+    def gpio_counter(self):
+        pass
+
+    def get_gpio_direction(self, gpio_number=0):
+        try:
+            gpio_string = self.gpio_list[gpio_number]
+            id_number = self.susi_information["GPIO"][gpio_string]["e"][0]["id"]
+            return self.get_data_by_id(id_number)['bv']
+        except:
+            return None
+
+    def set_gpio_direction(self, gpio_number=0, level=0):
+        try:
+            gpio_string = self.gpio_list[gpio_number]
+            id_number = self.susi_information["GPIO"][gpio_string]["e"][0]["id"]
+            self.set_value(id_number, level)
+            return True
+        except:
+            return None
+
+    def get_gpio_level(self, gpio_number=0):
+        try:
+            gpio_string = self.gpio_list[gpio_number]
+            id_number = self.susi_information["GPIO"][gpio_string]["e"][1]["id"]
+            print(id_number)
+            return self.get_data_by_id(id_number)['bv']
+        except:
+            return None
+
+    def set_gpio_level(self, gpio_number=0, level=0):
+        try:
+            gpio_string = self.gpio_list[gpio_number]
+            id_number = self.susi_information["GPIO"][gpio_string]["e"][1]["id"]
+            print(id_number)
+            self.set_value(id_number, level)
+            return True
+        except:
+            return None
+
+    @property
+    def memory_count(self):
+        return len(self.memory_list)
+
+    def get_memory_type(self, memory_number=0):
+        try:
+            memory_name = self.memory_list[memory_number]
+            id_number = self.susi_id_name_table[memory_name+" "+"Memory Type"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result['sv']
+        except:
+            return None
+
+    def get_module_type(self, memory_number=0):
+        try:
+            memory_name = self.memory_list[memory_number]
+            id_number = self.susi_id_name_table[memory_name+" "+"Module Type"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result['sv']
+        except:
+            return None
+
+    def get_module_size_in_GB(self, memory_number=0):
+        try:
+            memory_name = self.memory_list[memory_number]
+            id_number = self.susi_id_name_table[memory_name+" "+"Module Size"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result['v']
+        except:
+            return None
+
+    def get_memory_speed(self, memory_number=0):
+        try:
+            memory_name = self.memory_list[memory_number]
+            id_number = self.susi_id_name_table[memory_name+" "+"Memory Speed"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result['v']
+        except:
+            return None
+
+    def get_memory_rank(self, memory_number=0):
+        try:
+            memory_name = self.memory_list[memory_number]
+            id_number = self.susi_id_name_table[memory_name+" "+"Rank"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result['v']
+        except:
+            return None
+
+    def get_memory_voltage(self, memory_number=0):
+        try:
+            memory_name = self.memory_list[memory_number]
+            id_number = self.susi_id_name_table[memory_name+" "+"Voltage"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result['v']
+        except:
+            return None
+
+    def get_memory_bank(self, memory_number=0):
+        try:
+            memory_name = self.memory_list[memory_number]
+            id_number = self.susi_id_name_table[memory_name+" "+"Bank"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result['v']
+        except:
+            return None
+
+    def get_memory_week_year(self, memory_number=0):
+        try:
+            memory_name = self.memory_list[memory_number]
+            id_number = self.susi_id_name_table[memory_name+" "+"Week Year"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result['v']
+        except:
+            return None
+
+    def get_memory_temperature(self, memory_number=0):
+        try:
+            memory_name = self.memory_list[memory_number]
+            id_number = self.susi_id_name_table[memory_name+" "+"Temperature"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result['v']
+        except:
+            return None
+
+    def get_memory_write_protection(self, memory_number=0):
+        try:
+            memory_name = self.memory_list[memory_number]
+            id_number = self.susi_id_name_table[memory_name +
+                                                " "+"Write Protection"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result['v']
+        except:
+            return None
+
+    def get_memory_module_manufacture(self, memory_number=0):
+        try:
+            memory_name = self.memory_list[memory_number]
+            id_number = self.susi_id_name_table[memory_name +
+                                                " "+"Module Manufacture"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result['sv']
+        except:
+            return None
+
+    def get_memory_dram_manufacture(self, memory_number=0):
+        try:
+            memory_name = self.memory_list[memory_number]
+            id_number = self.susi_id_name_table[memory_name +
+                                                " "+"DRAM Manufacture"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result['sv']
+        except:
+            return None
+
+    def get_memory_part_number(self, memory_number=0):
+        try:
+            memory_name = self.memory_list[memory_number]
+            id_number = self.susi_id_name_table[memory_name+" "+"Part Number"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result['sv']
+        except:
+            return None
+
+    def get_memory_specific(self, memory_number=0):
+        try:
+            memory_name = self.memory_list[memory_number]
+            id_number = self.susi_id_name_table[memory_name +
+                                                " "+"Specific Data"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result['sv']
+        except:
+            return None
+
+    @property
+    def disk_total_disk_space(self):
+        try:
+            id_number = self.susi_id_name_table["Disk - Total Disk Space"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result["v"]
+        except:
+            return None
+
+    @property
+    def disk_free_disk_space(self):
+        try:
+            id_number = self.susi_id_name_table["Disk - Free Disk Space"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result["v"]
+        except:
+            return None
+
+    @property
+    def disk_media_recovery_total_disk_space(self):
+        try:
+            id_number = self.susi_id_name_table["Disk -media-recovery Total Disk Space"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result["v"]
+        except:
+            return None
+
+    @property
+    def disk_media_recovery_free_disk_space(self):
+        try:
+            id_number = self.susi_id_name_table["Disk -media-recovery Free Disk Space"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result["v"]
+        except:
+            return None
+
+    @property
+    def disk_home_total_disk_space(self):
+        try:
+            id_number = self.susi_id_name_table["Disk -home Total Disk Space"]
+            result = self.get_data_by_id(id_number)
+            if not result:
+                logger.debug(f"{id_number} result is {result}")
+            return result["v"]
+        except:
+            return None
+
+    @property
+    def disk_free_disk_space(self):
+        try:
+            id_number = self.susi_id_name_table["Disk -home Free Disk Space"]
             result = self.get_data_by_id(id_number)
             if not result:
                 logger.debug(f"{id_number} result is {result}")
