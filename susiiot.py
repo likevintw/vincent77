@@ -3,7 +3,13 @@ import json
 import sys
 import os
 import platform
+import logging
 
+log_level = os.getenv('LOG_LEVEL', 'INFO').upper()
+print("log_level",log_level)
+logging.basicConfig(level=log_level,
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 class SusiIot:
     def __init__(self):
@@ -457,7 +463,7 @@ class SusiIot:
             return None
 
     @property
-    def voltage_3p3v_standby(self):
+    def voltage_3p3v(self):
         try:
             id_number = self.susi_id_name_table["Voltage 3.3V"]
             return self.get_data_by_id(id_number)["v"]
@@ -516,7 +522,10 @@ class SusiIot:
     def system_temperature_in_celsius(self):
         try:
             id_number = self.susi_id_name_table["Temperature System"]
-            return self.get_data_by_id(id_number)["v"]
+            result=self.get_data_by_id(id_number) 
+            if not result:
+                logger.debug(f"{id_number} result is {result}") 
+            return result["v"]
         except:
             return None
 
@@ -556,7 +565,10 @@ class SusiIot:
     def backlight_polarity(self):
         try:
             id_number = self.susi_id_name_table["Backlight polarity"]
-            return self.get_data_by_id(id_number)["v"]
+            result=self.get_data_by_id(id_number) 
+            if not result:
+                logger.debug(f"{id_number} result is {result}") 
+            return result["v"]
         except:
             return None
 

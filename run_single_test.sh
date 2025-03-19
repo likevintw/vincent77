@@ -33,11 +33,11 @@ sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_watchdog_capai
 sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_storage_capability
 sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_etp_device_data
 sudo python3 -m unittest -v test_platformsdk.TestHandler.test_get_etp_user_data
+sudo python3 -m unittest -v test_susiiot.TestCases.test_cpu_temperature_in_celsius
 
 # Todo
-
-sudo python3 -m unittest -v test_susiiot.TestCases.test_cpu_temperature_in_celsius
-sudo python3 -m unittest -v test_susiiot.TestCases
+export LOG_LEVEL=DEBUG && sudo -E python3 -m unittest -v test_susiiot.TestCases.test_backlight_polarity
+export LOG_LEVEL=DEBUG && sudo -E python3 -m unittest -v test_susiiot.TestCases.test_system_temperature_in_celsius
 
 
 
