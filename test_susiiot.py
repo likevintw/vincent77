@@ -723,6 +723,7 @@ class TestCases(unittest.TestCase):
             self.assertEqual(handler.get_gpio_direction(gpio_number), origin)
             print(f"set GPIO direction {gpio_number} from {changed} to {origin}, successfully")
 
+
     def test_set_gpio_level(self):
         handler = susiiot.SusiIot()
         origin = 0
@@ -732,15 +733,21 @@ class TestCases(unittest.TestCase):
             origin = handler.get_gpio_level(gpio_number)
             changed = origin ^ 1
             result = handler.set_gpio_level(gpio_number, changed)
-            if result!=True:
-                print(f"set GPIO{gpio_number} level {result}")
+            if result==False:
+                print(f"set GPIO{gpio_number} level {result}, Please check the direction; it must be output.")
+                continue
+            if result==None:
+                print(f"GPIO{gpio_number} is not exist")
                 continue
             print(f"set GPIO{gpio_number} level from {origin} to {changed}, successfully")
             handler.set_gpio_level(gpio_number, origin)
-            if result!=True:
-                print(f"set GPIO{gpio_number} level {result}")
+            if result==False:
+                print(f"set GPIO{gpio_number} level {result}, Please check the direction; it must be output.")
                 continue
-            print(f"set GPIO{gpio_number} level from {origin} to {changed}, successfully")
+            if result==None:
+                print(f"GPIO{gpio_number} is not exist")
+                continue
+            print(f"set GPIO{gpio_number} level from {changed} to {origin}, successfully")
 
     def test_get_memory_type(self):
         handler = susiiot.SusiIot()

@@ -471,20 +471,19 @@ class SusiIot:
     def is_gpio_output(self, gpio_number=0):
         try:
             gpio_string = self.gpio_list[gpio_number]
-            id_number = self.susi_information["GPIO"][gpio_string]["e"][1]["id"]
-            if self.get_data_by_id(id_number)['bv'] == 0:
+            id_number = self.susi_information["GPIO"][gpio_string]["e"][0]["id"]
+            if self.get_data_by_id(id_number)['bv']==0:
                 return True
         except:
             return False
 
     def set_gpio_level(self, gpio_number=0, level=0):
         gpio_direction_is_output = self.is_gpio_output(gpio_number)
-        # if not gpio_direction_is_output:
-        #     return False
+        if not gpio_direction_is_output:
+            return False
         gpio_string = self.gpio_list[gpio_number]
         id_number = self.susi_information["GPIO"][gpio_string]["e"][1]["id"]
         result = self.set_value(id_number, level)
-        print(result)
         if result != 0:
             return False
         return True
