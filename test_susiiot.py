@@ -43,8 +43,8 @@ class TestCasesModule(unittest.TestCase):
     def test_get_gpio_level(self):
         handler = susiiot.SusiIot()
         for i in range(8):
-            print(i,handler.get_gpio_level(i))
-    
+            print(i, handler.get_gpio_level(i))
+
     def test_set_gpio_00(self):
         handler = susiiot.SusiIot()
         result = handler.set_value(17039873, 0)
@@ -56,18 +56,19 @@ class TestCasesModule(unittest.TestCase):
 
     def test_set_gpio_direction(self):
         handler = susiiot.SusiIot()
-        origin=0
-        changed=0
+        origin = 0
+        changed = 0
         for gpio_number in range(8):
             print(f"GPIO {gpio_number}")
-            origin=handler.get_gpio_direction(gpio_number)
-            self.assertEqual(handler.get_gpio_direction(gpio_number),origin)
-            changed=origin^1
-            handler.set_gpio_direction(gpio_number,changed)
-            self.assertNotEqual(handler.get_gpio_direction(gpio_number),origin)
-            handler.set_gpio_direction(gpio_number,origin)
-            self.assertEqual(handler.get_gpio_direction(gpio_number),origin)
-    
+            origin = handler.get_gpio_direction(gpio_number)
+            self.assertEqual(handler.get_gpio_direction(gpio_number), origin)
+            changed = origin ^ 1
+            handler.set_gpio_direction(gpio_number, changed)
+            self.assertNotEqual(
+                handler.get_gpio_direction(gpio_number), origin)
+            handler.set_gpio_direction(gpio_number, origin)
+            self.assertEqual(handler.get_gpio_direction(gpio_number), origin)
+
     def test_set_gpio_level(self):
         # todo
         pass
