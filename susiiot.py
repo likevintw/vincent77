@@ -186,13 +186,6 @@ class SusiIot:
         self.susi_iot_library.SusiIoTGetPFDataStringByUri.argtypes = [
             ctypes.c_char_p]
             
-        prototype = ctypes.CFUNCTYPE(
-            SusiIoTStatus_t,
-            ctypes.POINTER(ctypes.c_void_p)
-        )
-        self.SusiIoTMemFree = prototype(
-            ("SusiIoTMemFree", self.susi_iot_library))
-
         self.json_library.json_dumps.restype = ctypes.c_char_p
         self.json_library.json_integer.restype = ctypes.POINTER(JsonT)
 
@@ -801,10 +794,6 @@ class SusiIot:
         except:
             return None
 
-    @property
-    def memory_free(self):
-        jsonObject = self.json_library.json_object()
-        # todo SusiIoTMemFree
 
 
 class JsonType:
