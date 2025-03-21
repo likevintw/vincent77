@@ -28,19 +28,16 @@ sudo docker run \
 
 sudo docker run \
     -it \
+    --rm \
     --name susi_iot_demo \
     --privileged \
-    -v /sys/:/sys/ \
-    -v /proc/:/proc/ \
-    -v /etc/:/etc/ \
-    -v /dev/:/dev/ \
-    -v /var/:/var/ \
+    -v /sys/firmware/efi/efivars/:/sys/firmware/efi/efivars/ \
     -v /home/:/volume \
     ubuntu:20.04 \
     /bin/bash
 
 apt-get update && \
-    apt-get install -y git git-core python3 python3-pip libjansson4 
+    apt-get install -y git python3 python3-pip libjansson4 
 
 git clone https://github.com/likevintw/vincent77.git && \
     cd vincent77 && \
