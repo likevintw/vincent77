@@ -14,7 +14,10 @@ print(f"test time: {formatted_time}")
 print(f"OS Name: {platform.system()}")
 print(f"OS Version: {platform.system()}")
 print(f"architecture: {platform.machine()}")
-
+try:
+    print(os.system("git log --oneline -10"))
+excep:
+pass
 
 class AttributeTestCases(unittest.TestCase):
     @unittest.skip("pass")
