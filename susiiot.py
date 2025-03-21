@@ -194,13 +194,18 @@ class SusiIot:
             self.susi_json_t = self.json_library.json_dumps(jsonObject, self.get_json_indent(
                 4) | self.json_max_indent | self.get_json_real_precision(10))
             self.susi_information = self.turn_byte_to_json(self.susi_json_t)
-
-        for key in self.susi_information["GPIO"].keys():
-            if "GPIO" in key:
-                self.gpio_list.append(key)
-        for key in self.susi_information["SDRAM"].keys():
-            if "SDRAM" in key:
-                self.memory_list.append(key)
+        try:
+            for key in self.susi_information["GPIO"].keys():
+                if "GPIO" in key:
+                    self.gpio_list.append(key)
+        except:
+            pass
+        try:
+            for key in self.susi_information["SDRAM"].keys():
+                if "SDRAM" in key:
+                    self.memory_list.append(key)
+        except:
+            pass
 
     def check_root_authorization(self):
         if os.geteuid() != 0:
