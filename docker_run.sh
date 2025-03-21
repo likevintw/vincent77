@@ -43,7 +43,6 @@ sudo docker run \
     --name susi_iot_demo \
     --privileged \
     -v /sys/firmware/efi/efivars/:/sys/firmware/efi/efivars/ \
-    -v /lib/firmware/:/lib/firmware/ \
     -v /home/:/volume \
     susiiot_ubuntu:1.0.1 \
     /bin/bash
@@ -55,6 +54,7 @@ git clone https://github.com/likevintw/vincent77.git && \
     cd vincent77 && \
     sudo python3 -m unittest -v test_susiiot.TestCases > "$(date +\%Y\%m\%d\%H\%M\%S)_result.txt"
 
-git clone https://github.com/likevintw/vincent77.git && \
+cd root  && \
+    git clone https://github.com/likevintw/vincent77.git && \
     cd vincent77 && \
     python3 -m unittest -v test_susiiot.TestCases > "$(date +\%Y\%m\%d\%H\%M\%S)_result.txt"
