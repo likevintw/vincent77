@@ -229,8 +229,7 @@ class SusiIot:
         data = json.loads(json_str)
         return data
 
-    def get_susi_information(self):
-        return self.susi_information
+
 
     def get_susi_json_t(self):
         return self.susi_json_t
@@ -271,6 +270,10 @@ class SusiIot:
         result_ptr = self.json_library.json_integer(value)
         result = result_ptr.contents
         return self.susi_iot_library.SusiIoTSetValue(device_id, result)
+    
+    @property
+    def susi_information(self):
+        return self.susi_information
 
     @property
     def boot_up_times(self):
