@@ -41,7 +41,10 @@ export LOG_LEVEL=DEBUG && sudo -E python3 -m unittest -v test_susiiot.TestCases.
 
 export LOG_LEVEL=DEBUG && sudo -E python3 -m unittest -v test_susiiot.TestCases.test_set_gpio_level
 
-sudo python3 -m unittest -v test_susiiot.TestCases > "$(date +\%Y\%m\%d\%H\%M\%S)_result.txt"
+
+git clone https://github.com/likevintw/vincent77.git && \
+    cd vincent77 && \
+    sudo python3 -m unittest -v test_susiiot.TestCases > "$(date +\%Y\%m\%d\%H\%M\%S)_result.txt"
 
 
 

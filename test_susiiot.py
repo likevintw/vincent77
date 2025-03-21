@@ -15,9 +15,12 @@ print(f"OS Name: {platform.system()}")
 print(f"OS Version: {platform.system()}")
 print(f"architecture: {platform.machine()}")
 try:
-    print(os.system("git log --oneline -10"))
-excep:
-pass
+    print("code version")
+    os.system("git log --oneline -1")
+except:
+    pass
+print()
+
 
 class AttributeTestCases(unittest.TestCase):
     @unittest.skip("pass")
@@ -845,16 +848,21 @@ class AttributeTestCases(unittest.TestCase):
 class TestCases(unittest.TestCase):
     def test_susi_information(self):
         handler = susiiot.SusiIot()
+        print()
+        print("test_susi_information")
         print(handler.susiiot_information)
 
     def test_susi_id_name_table(self):
         handler = susiiot.SusiIot()
         print()
+        print("test_susi_id_name_table")
         for name in handler.susi_id_name_table.keys():
             print(name, handler.susi_id_name_table[name])
 
     def test_get_data_by_id(self):
         handler = susiiot.SusiIot()
+        print()
+        print("test_get_data_by_id")
         for item_name in handler.susi_id_name_table.keys():
             result = handler.get_data_by_id(
                 handler.susi_id_name_table[item_name])
