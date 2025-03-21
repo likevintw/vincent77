@@ -59,3 +59,11 @@ sudo python3 -m unittest -v test_susiiot.py
 ```sh
 python3 -m unittest -v test_susiiot.py
 ```
+
+### Run Test
+apt-get update && \
+    apt-get install -y git python3 python3-pip libjansson4 
+
+git clone https://github.com/likevintw/vincent77.git && \
+    cd vincent77 && \
+    sudo python3 -m unittest -v test_susiiot.TestCases > "$(date +\%Y\%m\%d\%H\%M\%S)_result.txt"
