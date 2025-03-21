@@ -231,17 +231,11 @@ class SusiIot:
 
 
 
-    def get_susi_json_t(self):
-        return self.susi_json_t
-
     def get_data_by_id(self, device_id):
         result = self.susi_iot_library.SusiIoTGetPFDataString(device_id)
         return self.turn_byte_to_json(result)
 
-    def get_data_by_uri(self, uri):
-        result = self.susi_iot_library.SusiIoTGetPFDataStringByUri(
-            uri.encode('utf-8'))
-        return result.decode('utf-8')
+
 
    
 
