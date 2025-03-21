@@ -733,18 +733,18 @@ class AttributeTestCases(unittest.TestCase):
             origin = handler.get_gpio_level(gpio_number)
             changed = origin ^ 1
             result = handler.set_gpio_level(gpio_number, changed)
-            if result==False:
+            if result == False:
                 print(f"set GPIO{gpio_number} level {result}, Please check the direction; it must be output.")
                 continue
-            if result==None:
+            if result == None:
                 print(f"GPIO{gpio_number} is not exist")
                 continue
             print(f"set GPIO{gpio_number} level from {origin} to {changed}, successfully")
             handler.set_gpio_level(gpio_number, origin)
-            if result==False:
+            if result == False:
                 print(f"set GPIO{gpio_number} level {result}, Please check the direction; it must be output.")
                 continue
-            if result==None:
+            if result == None:
                 print(f"GPIO{gpio_number} is not exist")
                 continue
             print(f"set GPIO{gpio_number} level from {changed} to {origin}, successfully")
@@ -836,14 +836,15 @@ class AttributeTestCases(unittest.TestCase):
     def test_backlight_brightness(self):
         handler = susiiot.SusiIot()
         print(handler.backlight_brightness)
-    
+
+
 class TestCases(unittest.TestCase):
     def test_susi_id_name_table(self):
         handler = susiiot.SusiIot()
         print()
         for name in handler.susi_id_name_table.keys():
-            print(name,handler.susi_id_name_table[name])
-            
+            print(name, handler.susi_id_name_table[name])
+
     def test_get_data_by_id(self):
         handler = susiiot.SusiIot()
         for item_name in handler.susi_id_name_table.keys():
@@ -851,6 +852,7 @@ class TestCases(unittest.TestCase):
                 handler.susi_id_name_table[item_name])
             print(f"{item_name} result is {result}")
             print()
+
 
 if __name__ == '__main__':
     unittest.main()

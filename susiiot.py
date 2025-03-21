@@ -18,7 +18,6 @@ class SusiIot:
         self.json_library = None
         self.susi_iot_library_status = None
         self.json_max_indent = 0x1F
-        self.json_preserve_order = 0x100
         self.susi_information = None
         self.susi_id_name_table = {}
         self.gpio_list = []
@@ -167,8 +166,8 @@ class SusiIot:
             print(f"Error: {e}")
             exit(1)
 
-        SusiIoTStatus_t =ctypes.c_int
-        SusiIoTId_t=ctypes.c_int
+        SusiIoTStatus_t = ctypes.c_int
+        SusiIoTId_t = ctypes.c_int
 
         self.susi_iot_library.SusiIoTInitialize.restype = ctypes.c_int
 
@@ -185,14 +184,13 @@ class SusiIot:
         self.susi_iot_library.SusiIoTGetPFDataStringByUri.restype = ctypes.c_char_p
         self.susi_iot_library.SusiIoTGetPFDataStringByUri.argtypes = [
             ctypes.c_char_p]
-            
+
         self.json_library.json_dumps.restype = ctypes.c_char_p
         self.json_library.json_integer.restype = ctypes.POINTER(JsonT)
 
         self.json_library.json_real.restype = ctypes.POINTER(JsonT)
         self.json_library.json_string.restype = ctypes.POINTER(JsonT)
 
-    
         self.susi_iot_library_status = self.susi_iot_library.SusiIoTInitialize()
 
         jsonObject = self.json_library.json_object()
@@ -229,21 +227,15 @@ class SusiIot:
         data = json.loads(json_str)
         return data
 
-
-
     def get_data_by_id(self, device_id):
         result = self.susi_iot_library.SusiIoTGetPFDataString(device_id)
         return self.turn_byte_to_json(result)
-
-
-
-   
 
     def set_value(self, device_id, value):
         result_ptr = self.json_library.json_integer(value)
         result = result_ptr.contents
         return self.susi_iot_library.SusiIoTSetValue(device_id, result)
-    
+
     @property
     def susi_information(self):
         return self.susi_information
@@ -452,7 +444,7 @@ class SusiIot:
         try:
             gpio_string = self.gpio_list[gpio_number]
             id_number = self.susi_information["GPIO"][gpio_string]["e"][0]["id"]
-            if self.get_data_by_id(id_number)['bv']==0:
+            if self.get_data_by_id(id_number)['bv'] == 0:
                 return True
         except:
             return False
@@ -769,7 +761,6 @@ class SusiIot:
             return result["v"]
         except:
             return None
-
 
 
 class JsonType:
