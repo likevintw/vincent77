@@ -3,13 +3,7 @@ import json
 import sys
 import os
 import platform
-import logging
 
-log_level = os.getenv('LOG_LEVEL', 'INFO').upper()
-print("log_level", log_level)
-logging.basicConfig(level=log_level,
-                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
 
 
 class SusiIot:
