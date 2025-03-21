@@ -5,7 +5,6 @@ import os
 import platform
 
 
-
 class SusiIot:
     def __init__(self):
         self.susi_iot_library = None
@@ -231,7 +230,7 @@ class SusiIot:
         return self.susi_iot_library.SusiIoTSetValue(device_id, result)
 
     @property
-    def susi_information(self):
+    def susiiot_information(self):
         return self.susi_information
 
     @property

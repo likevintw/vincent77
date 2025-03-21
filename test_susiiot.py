@@ -13,6 +13,7 @@ formatted_time = datetime.datetime.fromtimestamp(
 print(f"test time: {formatted_time}")
 print(f"OS Name: {platform.system()}")
 print(f"OS Version: {platform.system()}")
+print(f"architecture: {platform.machine()}")
 
 
 class AttributeTestCases(unittest.TestCase):
@@ -839,6 +840,10 @@ class AttributeTestCases(unittest.TestCase):
 
 
 class TestCases(unittest.TestCase):
+    def test_susi_information(self):
+        handler = susiiot.SusiIot()
+        print(handler.susiiot_information)
+
     def test_susi_id_name_table(self):
         handler = susiiot.SusiIot()
         print()
