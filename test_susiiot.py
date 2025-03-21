@@ -845,6 +845,10 @@ class AttributeTestCases(unittest.TestCase):
 
 
 class TestCases(unittest.TestCase):
+    def test_get_susi_information_string(self):
+        handler = susiiot.SusiIot()
+        print(handler.get_susi_information_string())
+
     def test_susi_information(self):
         handler = susiiot.SusiIot()
         print()

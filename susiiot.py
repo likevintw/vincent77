@@ -133,14 +133,14 @@ class SusiIot:
         if os_name == "Linux" and 'x86' in architecture.lower():
             susi_iot_library_path = current_dir+"libSusiIoT.x86.so"
             json_library_path = current_dir+"libjansson.x86.so"
-            susi_iot_library_path = "/usr/lib/libSusiIoT.so"
-            json_library_path = "/usr/lib/x86_64-linux-gnu/libjansson.so.4"
+            # susi_iot_library_path = "/usr/lib/libSusiIoT.so"
+            # json_library_path = "/usr/lib/x86_64-linux-gnu/libjansson.so.4"
 
         elif os_name == "Linux" and 'aarch64' in architecture.lower():
             susi_iot_library_path = current_dir+"libSusiIoT.arm.so"
             json_library_path = current_dir+"libjansson.arm.so"
-            susi_iot_library_path = "/usr/lib/libSusiIoT.so"
-            json_library_path = "/usr/lib/x86_64-linux-gnu/libjansson.so.4"
+            # susi_iot_library_path = "/usr/lib/libSusiIoT.so"
+            # json_library_path = "/usr/lib/x86_64-linux-gnu/libjansson.so.4"
 
         elif os_name == "Windows" and 'x86' in architecture.lower():
             pass
@@ -188,29 +188,36 @@ class SusiIot:
         self.json_library.json_real.restype = ctypes.POINTER(JsonT)
         self.json_library.json_string.restype = ctypes.POINTER(JsonT)
 
+        prototype = ctypes.CFUNCTYPE(
+             ctypes.c_char_p
+        )
+        self.SusiIoTGetPFCapabilityString = prototype(
+            ("SusiIoTGetPFCapabilityString", self.susi_iot_library))
+        print("11111111")
         self.susi_iot_library_status = self.susi_iot_library.SusiIoTInitialize()
+        print("11111000000")
+        self.get_susi_information_string()
+        print("222222")
+        # self.get_susi_information()
+        print("333333333")
+        # self.get_gpio_list()
+        print("4444444")
+        # self.get_sdram_list()
 
-        jsonObject = self.json_library.json_object()
-        if self.susi_iot_library.SusiIoTGetPFCapability(jsonObject) != 0:
-            self.susi_information = "SusiIoTGetPFCapability failed."
-            exit(1)
-        else:
-            self.susi_json_t = self.json_library.json_dumps(jsonObject, self.get_json_indent(
-                4) | self.json_max_indent | self.get_json_real_precision(10))
-            self.susi_information = self.turn_byte_to_json(self.susi_json_t)
+    def get_gpio_list(self):
         try:
             for key in self.susi_information["GPIO"].keys():
                 if "GPIO" in key:
                     self.gpio_list.append(key)
         except:
             pass
+    def get_sdram_list(self):
         try:
             for key in self.susi_information["SDRAM"].keys():
                 if "SDRAM" in key:
                     self.memory_list.append(key)
         except:
             pass
-
     def check_root_authorization(self):
         if os.geteuid() != 0:
             raise PermissionError(
@@ -238,8 +245,20 @@ class SusiIot:
         result = result_ptr.contents
         return self.susi_iot_library.SusiIoTSetValue(device_id, result)
 
-    @property
-    def susiiot_information(self):
+    def get_susi_information_string(self):
+        capability_string =self.SusiIoTGetPFCapabilityString()
+        return capability_string.decode('utf-8')
+
+    def get_susi_information(self):
+        jsonObject = self.json_library.json_object()
+        if self.susi_iot_library.SusiIoTGetPFCapability(jsonObject) != 0:
+            self.susi_information = "SusiIoTGetPFCapability failed."
+            exit(1)
+        else:
+            self.susi_json_t = self.json_library.json_dumps(jsonObject, self.get_json_indent(
+                4) | self.json_max_indent | self.get_json_real_precision(10))
+            self.susi_information = self.turn_byte_to_json(self.susi_json_t)
+
         return self.susi_information
 
     @property
