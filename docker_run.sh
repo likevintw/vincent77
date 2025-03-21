@@ -32,7 +32,7 @@ sudo docker run \
     --name susi_iot_demo \
     --privileged \
     -v /sys/firmware/efi/efivars/:/sys/firmware/efi/efivars/ \
-    -v /dev/:/dev/ \
+    -v /etc/:/etc/ \
     -v /home/:/volume \
     ubuntu:20.04 \
     /bin/bash
