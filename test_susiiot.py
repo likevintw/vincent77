@@ -15,7 +15,7 @@ print(f"OS Name: {platform.system()}")
 print(f"OS Version: {platform.system()}")
 
 
-class TestCases(unittest.TestCase):
+class AttributeTestCases(unittest.TestCase):
     @unittest.skip("pass")
     def test_get_data_by_id_with_json(self):
         handler = susiiot.SusiIot()
@@ -724,7 +724,6 @@ class TestCases(unittest.TestCase):
             self.assertEqual(handler.get_gpio_direction(gpio_number), origin)
             print(f"set GPIO direction {gpio_number} from {changed} to {origin}, successfully")
 
-
     def test_set_gpio_level(self):
         handler = susiiot.SusiIot()
         origin = 0
@@ -838,7 +837,20 @@ class TestCases(unittest.TestCase):
         handler = susiiot.SusiIot()
         print(handler.backlight_brightness)
     
-
+class TestCases(unittest.TestCase):
+    def test_susi_id_name_table(self):
+        handler = susiiot.SusiIot()
+        print()
+        for name in handler.susi_id_name_table.keys():
+            print(name,handler.susi_id_name_table[name])
+            
+    def test_get_data_by_id(self):
+        handler = susiiot.SusiIot()
+        for item_name in handler.susi_id_name_table.keys():
+            result = handler.get_data_by_id(
+                handler.susi_id_name_table[item_name])
+            print(f"{item_name} result is {result}")
+            print()
 
 if __name__ == '__main__':
     unittest.main()
