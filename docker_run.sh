@@ -37,6 +37,17 @@ sudo docker run \
     ubuntu:20.04 \
     /bin/bash
 
+sudo docker run \
+    -it \
+    --rm \
+    --name susi_iot_demo \
+    --privileged \
+    -v /sys/firmware/efi/efivars/:/sys/firmware/efi/efivars/ \
+    -v /etc/:/etc/ \
+    -v /home/:/volume \
+    susiiot_ubuntu:1.0.1 \
+    /bin/bash
+
 apt-get update && \
     apt-get install -y git python3 python3-pip libjansson4 
 
