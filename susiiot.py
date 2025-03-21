@@ -196,9 +196,9 @@ class SusiIot:
             
         self.susi_iot_library_status = self.susi_iot_library.SusiIoTInitialize()
         
-        self.get_susi_information_string()
+        # self.get_susi_information_string()
         
-        # self.get_susi_information()
+        self.get_susi_information()
         
         self.get_gpio_list()
         
@@ -265,7 +265,9 @@ class SusiIot:
             self.susi_information = self.turn_byte_to_json(self.susi_json_t)
 
         return self.susi_information
-
+    @property
+    def susi_iot_information(self):
+        return self.susi_information
     @property
     def boot_up_times(self):
         try:

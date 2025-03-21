@@ -853,7 +853,7 @@ class TestCases(unittest.TestCase):
         handler = susiiot.SusiIot()
         print()
         print("test_susi_information")
-        print(handler.susiiot_information)
+        print(handler.susi_iot_information)
 
     def test_susi_id_name_table(self):
         handler = susiiot.SusiIot()
