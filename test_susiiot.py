@@ -8,17 +8,16 @@ import time
 import datetime
 
 
+try:
+    os.system("git log --oneline -1")
+except:
+    pass
 formatted_time = datetime.datetime.fromtimestamp(
     time.time()).strftime('%Y-%m-%d %H:%M:%S')
 print(f"test time: {formatted_time}")
 print(f"OS Name: {platform.system()}")
 print(f"OS Version: {platform.system()}")
 print(f"architecture: {platform.machine()}")
-try:
-    print("code version")
-    os.system("git log --oneline -1")
-except:
-    pass
 print()
 
 
