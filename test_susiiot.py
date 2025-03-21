@@ -16,7 +16,7 @@ print(f"OS Version: {platform.system()}")
 
 
 class TestCases(unittest.TestCase):
-    @unittest.skip("pass")
+    # @unittest.skip("pass")
     def test_get_data_by_id_with_json(self):
         handler = susiiot.SusiIot()
         handler.susi_information = {
