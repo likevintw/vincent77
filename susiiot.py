@@ -193,16 +193,16 @@ class SusiIot:
         )
         self.SusiIoTGetPFCapabilityString = prototype(
             ("SusiIoTGetPFCapabilityString", self.susi_iot_library))
-        print("11111111")
+            
         self.susi_iot_library_status = self.susi_iot_library.SusiIoTInitialize()
-        print("11111000000")
+        
         self.get_susi_information_string()
-        print("222222")
+        
         # self.get_susi_information()
-        print("333333333")
-        # self.get_gpio_list()
-        print("4444444")
-        # self.get_sdram_list()
+        
+        self.get_gpio_list()
+        
+        self.get_sdram_list()
 
     def get_gpio_list(self):
         try:
@@ -247,7 +247,12 @@ class SusiIot:
 
     def get_susi_information_string(self):
         capability_string =self.SusiIoTGetPFCapabilityString()
-        return capability_string.decode('utf-8')
+        capability_string=capability_string.decode('utf-8')
+        try:
+            self.susi_information = json.loads(capability_string)
+        except json.JSONDecodeError as e:
+            print("解析 JSON 失敗:", e)
+        return self.susi_information
 
     def get_susi_information(self):
         jsonObject = self.json_library.json_object()
