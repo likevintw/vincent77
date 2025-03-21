@@ -42,7 +42,7 @@ sudo docker run \
     --rm \
     --name susi_iot_demo \
     --privileged \
-    -v /sys/firmware/:/sys/firmware/ \
+    -v /sys/firmware/efi/efivars/:/sys/firmware/efi/efivars/ \
     -v /home/:/volume \
     susiiot_ubuntu:1.0.1 \
     /bin/bash
