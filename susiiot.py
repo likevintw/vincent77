@@ -131,16 +131,16 @@ class SusiIot:
         json_library_path = ""
 
         if os_name == "Linux" and 'x86' in architecture.lower():
-            susi_iot_library_path = current_dir+"libSusiIoT.x86.so"
-            json_library_path = current_dir+"libjansson.x86.so"
-            # susi_iot_library_path = "/usr/lib/libSusiIoT.so"
-            # json_library_path = "/usr/lib/x86_64-linux-gnu/libjansson.so.4"
+            # susi_iot_library_path = current_dir+"libSusiIoT.x86.so"
+            # json_library_path = current_dir+"libjansson.x86.so"
+            susi_iot_library_path = "/usr/lib/libSusiIoT.so"
+            json_library_path = "/usr/lib/x86_64-linux-gnu/libjansson.so.4"
 
         elif os_name == "Linux" and 'aarch64' in architecture.lower():
-            susi_iot_library_path = current_dir+"libSusiIoT.arm.so"
-            json_library_path = current_dir+"libjansson.arm.so"
-            # susi_iot_library_path = "/usr/lib/libSusiIoT.so"
-            # json_library_path = "/usr/lib/x86_64-linux-gnu/libjansson.so.4"
+            # susi_iot_library_path = current_dir+"libSusiIoT.arm.so"
+            # json_library_path = current_dir+"libjansson.arm.so"
+            susi_iot_library_path = "/usr/lib/libSusiIoT.so"
+            json_library_path = "/usr/lib/x86_64-linux-gnu/libjansson.so.4"
 
         elif os_name == "Windows" and 'x86' in architecture.lower():
             pass
@@ -196,9 +196,9 @@ class SusiIot:
             
         self.susi_iot_library_status = self.susi_iot_library.SusiIoTInitialize()
         
-        # self.get_susi_information_string()
+        self.get_susi_information_string()
         
-        self.get_susi_information()
+        # self.get_susi_information()
         
         self.get_gpio_list()
         

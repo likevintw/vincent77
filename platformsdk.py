@@ -35,16 +35,18 @@ class PlatformSDK:
         self.initial_constant()
 
     def import_library(self):
-        current_dir = os.path.dirname(os.path.realpath(__file__))+"/"
+        library_path = "/usr/src/advantech/libEAPI/"
         architecture = platform.machine()
         os_name = platform.system()
         e_api_library_path = ""
 
         if os_name == "Linux" and 'x86' in architecture.lower():
-            e_api_library_path = current_dir+"libEAPI.x86.so"
+            library_path+="libEAPI_linux-x86_64/"
+            e_api_library_path = library_path+"libEAPI.so"
 
         elif os_name == "Linux" and 'aarch64' in architecture.lower():
-            e_api_library_path = current_dir+"libSusiIoT.arm.so"
+            library_path+="libEAPI_linux-aarch64/"
+            e_api_library_path = library_path+"libEAPI.so"
 
         elif os_name == "Windows" and 'x86' in architecture.lower():
             pass
