@@ -41,11 +41,11 @@ class PlatformSDK:
         e_api_library_path = ""
 
         if os_name == "Linux" and 'x86' in architecture.lower():
-            library_path+="libEAPI_linux-x86_64/"
+            library_path += "libEAPI_linux-x86_64/"
             e_api_library_path = library_path+"libEAPI.so"
 
         elif os_name == "Linux" and 'aarch64' in architecture.lower():
-            library_path+="libEAPI_linux-aarch64/"
+            library_path += "libEAPI_linux-aarch64/"
             e_api_library_path = library_path+"libEAPI.so"
 
         elif os_name == "Windows" and 'x86' in architecture.lower():

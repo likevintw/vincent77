@@ -189,19 +189,19 @@ class SusiIot:
         self.json_library.json_string.restype = ctypes.POINTER(JsonT)
 
         prototype = ctypes.CFUNCTYPE(
-             ctypes.c_char_p
+            ctypes.c_char_p
         )
         self.SusiIoTGetPFCapabilityString = prototype(
             ("SusiIoTGetPFCapabilityString", self.susi_iot_library))
-            
+
         self.susi_iot_library_status = self.susi_iot_library.SusiIoTInitialize()
-        
+
         self.get_susi_information_string()
-        
+
         # self.get_susi_information()
-        
+
         self.get_gpio_list()
-        
+
         self.get_sdram_list()
 
     def get_gpio_list(self):
@@ -211,6 +211,7 @@ class SusiIot:
                     self.gpio_list.append(key)
         except:
             pass
+
     def get_sdram_list(self):
         try:
             for key in self.susi_information["SDRAM"].keys():
@@ -218,6 +219,7 @@ class SusiIot:
                     self.memory_list.append(key)
         except:
             pass
+
     def check_root_authorization(self):
         if os.geteuid() != 0:
             raise PermissionError(
@@ -246,8 +248,8 @@ class SusiIot:
         return self.susi_iot_library.SusiIoTSetValue(device_id, result)
 
     def get_susi_information_string(self):
-        capability_string =self.SusiIoTGetPFCapabilityString()
-        capability_string=capability_string.decode('utf-8')
+        capability_string = self.SusiIoTGetPFCapabilityString()
+        capability_string = capability_string.decode('utf-8')
         try:
             self.susi_information = json.loads(capability_string)
         except json.JSONDecodeError as e:
@@ -265,9 +267,11 @@ class SusiIot:
             self.susi_information = self.turn_byte_to_json(self.susi_json_t)
 
         return self.susi_information
+
     @property
     def susi_iot_information(self):
         return self.susi_information
+
     @property
     def boot_up_times(self):
         try:
