@@ -196,9 +196,9 @@ class SusiIot:
             
         self.susi_iot_library_status = self.susi_iot_library.SusiIoTInitialize()
         
-        # self.get_susi_information_string()
+        self.get_susi_information_string()
         
-        self.get_susi_information()
+        # self.get_susi_information()
         
         self.get_gpio_list()
         
