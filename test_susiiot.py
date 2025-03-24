@@ -684,7 +684,6 @@ class AttributeTestCases(unittest.TestCase):
     def test_bios_revision(self):
         handler = susiiot.SusiIot()
         print(handler.bios_revision)
-        handler.cpu
 
     def test_firmware_name(self):
         handler = susiiot.SusiIot()

@@ -3,29 +3,29 @@ from typing import List
 import ifeature
 
 
-class IMotherboard(ABC, ifeature.IFeature):
-    @abstractmethod
+class IMotherboard(ABC):
     @property
+    @abstractmethod
     def name(self) -> str:
         pass
 
-    @abstractmethod
     @property
+    @abstractmethod
     def cpu_model(self) -> str:
         pass
 
-    @abstractmethod
     @property
+    @abstractmethod
     def os_revision(self) -> str:
         pass
 
-    @abstractmethod
     @property
+    @abstractmethod
     def bios_revision(self) -> str:
         pass
 
-    @abstractmethod
     @property
+    @abstractmethod
     def ec_revision(self) -> str:
         pass
 
@@ -37,12 +37,12 @@ class IMotherboard(ABC, ifeature.IFeature):
     def get_temperature(self, temperature_source) -> float:
         pass
 
-    @abstractmethod
     @property
+    @abstractmethod
     def voltage_sources(self) -> List[str]:
         pass
 
-    @abstractmethod
     @property
+    @abstractmethod
     def temperature_sources(self) -> List[str]:
         pass

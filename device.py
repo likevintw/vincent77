@@ -1,28 +1,56 @@
 
 import susiiot
 import imotherboad
+import igpio
+import iwatchdog
 
 
 class Device(imotherboad.IMotherboard):
     def __init__(self):
-        self.library = None
+        self.sdk=None
 
     def initialize():
-        # check device version to determine library, susi, platform or others
         pass
 
+    @abstractmethod
     @property
-    def cpu_temperature_in_celsius(self):
-        return self.cusor.get_cpu_tempature()
+    def name(self) -> str:
+        return
 
+    @abstractmethod
     @property
-    def system_temperature_in_celsius(self):
-        return self.cusor.system_temperature_in_celsius()
+    def cpu_model(self) -> str:
+        pass
 
+    @abstractmethod
     @property
-    def cpu_fan_speed(self):
-        return self.cusor.cpu_fan_speed()
+    def os_revision(self) -> str:
+        return "todo"
 
+    @abstractmethod
     @property
-    def system_fan_speed(self):
-        return self.cusor.system_fan_speed()
+    def bios_revision(self) -> str:
+        pass
+
+    @abstractmethod
+    @property
+    def ec_revision(self) -> str:
+        pass
+
+    @abstractmethod
+    def get_voltage(self, voltage_source) -> float:
+        pass
+
+    @abstractmethod
+    def get_temperature(self, temperature_source) -> float:
+        pass
+
+    @abstractmethod
+    @property
+    def voltage_sources(self) -> List[str]:
+        pass
+
+    @abstractmethod
+    @property
+    def temperature_sources(self) -> List[str]:
+        pass
