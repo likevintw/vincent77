@@ -1,0 +1,14 @@
+[Unit]
+Description=Susi API Service
+ 
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/Advantech/susi/service
+ExecStart=/opt/Advantech/susi/service/exeSusiService.sh
+Restart=always
+ReStartSec=60
+
+[Install]
+WantedBy=multi-user.target
