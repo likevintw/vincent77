@@ -156,13 +156,13 @@ class SusiIot:
         self.json_library = ctypes.CDLL(json_library_path)
 
     def initialize(self):
+        
         try:
             if not self.check_root_authorization():
                 print("check_root_authorizationcheck_root_authorization")
         except PermissionError as e:
             print(f"Error: {e}")
             exit(1)
-
         SusiIoTStatus_t = ctypes.c_int
         SusiIoTId_t = ctypes.c_int
 
@@ -187,21 +187,19 @@ class SusiIot:
 
         self.json_library.json_real.restype = ctypes.POINTER(JsonT)
         self.json_library.json_string.restype = ctypes.POINTER(JsonT)
-
         prototype = ctypes.CFUNCTYPE(
             ctypes.c_char_p
         )
         self.SusiIoTGetPFCapabilityString = prototype(
             ("SusiIoTGetPFCapabilityString", self.susi_iot_library))
 
+        print("77777777")
         self.susi_iot_library_status = self.susi_iot_library.SusiIoTInitialize()
 
-        self.get_susi_information_string()
-
-        # self.get_susi_information()
-
+        print("888888888")
+        # self.get_susi_information_string()
+        self.get_susi_information()
         self.get_gpio_list()
-
         self.get_sdram_list()
 
     def get_gpio_list(self):
