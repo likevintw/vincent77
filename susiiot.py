@@ -193,10 +193,7 @@ class SusiIot:
         self.SusiIoTGetPFCapabilityString = prototype(
             ("SusiIoTGetPFCapabilityString", self.susi_iot_library))
 
-        print("77777777")
         self.susi_iot_library_status = self.susi_iot_library.SusiIoTInitialize()
-
-        print("888888888")
         # self.get_susi_information_string()
         self.get_susi_information()
         self.get_gpio_list()
