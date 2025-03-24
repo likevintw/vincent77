@@ -3,9 +3,10 @@ import json
 import sys
 import os
 import platform
+import imotherboad
 
 
-class SusiIot:
+class SusiIot(imotherboad.IMotherboard):
     def __init__(self):
         self.susi_iot_library = None
         self.json_library = None

@@ -1,7 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import List
+import ifeature
 
-class IMotherboard(ABC):
+class IMotherboard(ABC,ifeature.IFeature):
     @abstractmethod
     @property
     def name(self) -> str:
@@ -28,11 +29,11 @@ class IMotherboard(ABC):
         pass
 
     @abstractmethod
-    def get_voltage(self, voltage_src) -> float:
+    def get_voltage(self, voltage_source) -> float:
         pass
 
     @abstractmethod
-    def get_temperature(self, temperature_src) -> float:
+    def get_temperature(self, temperature_source) -> float:
         pass
 
     @abstractmethod

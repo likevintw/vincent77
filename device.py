@@ -1,8 +1,8 @@
 
 import susiiot
+import imotherboad
 
-
-class Device:
+class Device(imotherboad.IMotherboard):
     def __init__(self):
         self.library = None
 
