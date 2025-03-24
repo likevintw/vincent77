@@ -720,15 +720,19 @@ class AttributeTestCases(unittest.TestCase):
             changed = origin ^ 1
             result = handler.set_gpio_direction(gpio_number, changed)
             if not result:
-                print(f"set GPIO direction {gpio_number} from {origin} to {changed}, fail")
+                print(
+                    f"set GPIO direction {gpio_number} from {origin} to {changed}, fail")
                 exit(1)
-            print(f"set GPIO direction {gpio_number} from {origin} to {changed}, successfully")
+            print(
+                f"set GPIO direction {gpio_number} from {origin} to {changed}, successfully")
             handler.set_gpio_direction(gpio_number, origin)
             if not result:
-                print(f"set GPIO direction {gpio_number} from {origin} to {changed}, fail")
+                print(
+                    f"set GPIO direction {gpio_number} from {origin} to {changed}, fail")
                 exit(1)
             self.assertEqual(handler.get_gpio_direction(gpio_number), origin)
-            print(f"set GPIO direction {gpio_number} from {changed} to {origin}, successfully")
+            print(
+                f"set GPIO direction {gpio_number} from {changed} to {origin}, successfully")
 
     def test_set_gpio_level(self):
         handler = susiiot.SusiIot()
@@ -740,20 +744,24 @@ class AttributeTestCases(unittest.TestCase):
             changed = origin ^ 1
             result = handler.set_gpio_level(gpio_number, changed)
             if result == False:
-                print(f"set GPIO{gpio_number} level {result}, Please check the direction; it must be output.")
+                print(
+                    f"set GPIO{gpio_number} level {result}, Please check the direction; it must be output.")
                 continue
             if result == None:
                 print(f"GPIO{gpio_number} is not exist")
                 continue
-            print(f"set GPIO{gpio_number} level from {origin} to {changed}, successfully")
+            print(
+                f"set GPIO{gpio_number} level from {origin} to {changed}, successfully")
             handler.set_gpio_level(gpio_number, origin)
             if result == False:
-                print(f"set GPIO{gpio_number} level {result}, Please check the direction; it must be output.")
+                print(
+                    f"set GPIO{gpio_number} level {result}, Please check the direction; it must be output.")
                 continue
             if result == None:
                 print(f"GPIO{gpio_number} is not exist")
                 continue
-            print(f"set GPIO{gpio_number} level from {changed} to {origin}, successfully")
+            print(
+                f"set GPIO{gpio_number} level from {changed} to {origin}, successfully")
 
     def test_get_memory_type(self):
         handler = susiiot.SusiIot()
@@ -768,7 +776,8 @@ class AttributeTestCases(unittest.TestCase):
     def test_get_module_size_in_GB(self):
         handler = susiiot.SusiIot()
         for i in range(handler.memory_count):
-            print(f"SDRAM{i} module size: {handler.get_module_size_in_GB(i)} GB")
+            print(
+                f"SDRAM{i} module size: {handler.get_module_size_in_GB(i)} GB")
 
     @unittest.skip("same id bug")
     def test_disk_total_disk_space(self):

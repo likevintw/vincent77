@@ -156,7 +156,7 @@ class SusiIot:
         self.json_library = ctypes.CDLL(json_library_path)
 
     def initialize(self):
-        
+
         try:
             if not self.check_root_authorization():
                 print("check_root_authorizationcheck_root_authorization")
