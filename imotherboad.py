@@ -2,7 +2,8 @@ from abc import ABC, abstractmethod
 from typing import List
 import ifeature
 
-class IMotherboard(ABC,ifeature.IFeature):
+
+class IMotherboard(ABC, ifeature.IFeature):
     @abstractmethod
     @property
     def name(self) -> str:

@@ -2,17 +2,21 @@ from abc import ABC, abstractmethod
 from typing import List
 from enum import Enum
 
+
 class GpioDirectionType(Enum):
     INPUT = 0
     OUTPUT = 1
+
 
 class GpioLevelType(Enum):
     LOW = 0
     HIGH = 1
 
+
 class InputLevelChangedEventTypes(Enum):
     RisingEdge = 0
     FallingEdge = 1
+
 
 class IGpio(ABC):
     @abstractmethod
@@ -20,11 +24,10 @@ class IGpio(ABC):
         pass
 
     @abstractmethod
-    def set_level(self, pin: str, level:GpioLevelType) -> None:
+    def set_level(self, pin: str, level: GpioLevelType) -> None:
         pass
 
     @abstractmethod
     @property
     def pins(self) -> List[str]:
         pass
-

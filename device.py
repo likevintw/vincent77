@@ -2,6 +2,7 @@
 import susiiot
 import imotherboad
 
+
 class Device(imotherboad.IMotherboard):
     def __init__(self):
         self.library = None
