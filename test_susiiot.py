@@ -880,6 +880,10 @@ class TestCases(unittest.TestCase):
             print(f"{item_name} result is {result}")
             print()
 
+class TestMotherBoardInterface(unittest.TestCase):
+    def test_name(self):
+        mother_board = susiiot.SusiIot()
+        print(mother_board.name)
 
 if __name__ == '__main__':
     unittest.main()

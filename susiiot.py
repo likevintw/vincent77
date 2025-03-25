@@ -6,7 +6,7 @@ import platform
 import imotherboad
 
 
-class SusiIot:
+class SusiIot(imotherboad.IMotherboard):
     def __init__(self):
         self.susi_iot_library = None
         self.json_library = None
@@ -16,6 +16,8 @@ class SusiIot:
         self.susi_id_name_table = {}
         self.gpio_list = []
         self.memory_list = []
+        self.voltage_source_list=[]
+        self.temperature_source_list=[]
 
         self.import_library()
         self.initialize()
@@ -50,6 +52,22 @@ class SusiIot:
         except:
             pass
 
+        data_sort = "Voltage"
+        try:
+            for key in self.susi_id_name_table.keys():
+                if data_sort in key:
+                    self.voltage_source_list.append(data_sort)
+        except:
+            pass
+
+        data_sort = "Temperature"
+        try:
+            for key in self.susi_id_name_table.keys():
+                if data_sort in key:
+                    self.temperature_source_list.append(data_sort)
+        except:
+            pass
+        
         data_sort = "GPIO"
         try:
             id_value = self.susi_information[data_sort]["id"]
@@ -789,6 +807,45 @@ class SusiIot:
             return result["v"]
         except:
             return None
+
+    @property
+    def name(self) -> str:
+        try:
+            for item in self.susi_information["Platform Information"]["e"]:
+                if item["n"]=="Board name":
+                    return item["sv"]
+            return None
+        except:
+            return None
+
+    @property
+    def cpu_model(self) -> str:
+        return "todo"
+
+    @property
+    def os_revision(self) -> str:
+        return "todo"
+
+    @property
+    def bios_revision(self) -> str:
+        try:
+            for item in self.susi_information["Platform Information"]["e"]:
+                if item["n"]=="BIOS revision":
+                    return item["sv"]
+            return None
+        except:
+            return None
+    
+    @property
+    def ec_revision(self) -> str:
+        return "todo"
+
+    @property
+    def voltage_sources(self) -> List[str]:
+        return self.voltage_source_list
+    @property
+    def temperature_sources(self) -> List[str]:
+        return self.temperature_source_list
 
 class JsonType:
     JSON_OBJECT = 0

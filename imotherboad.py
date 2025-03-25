@@ -29,14 +29,6 @@ class IMotherboard(ABC):
     def ec_revision(self) -> str:
         pass
 
-    @abstractmethod
-    def get_voltage(self, voltage_source) -> float:
-        pass
-
-    @abstractmethod
-    def get_temperature(self, temperature_source) -> float:
-        pass
-
     @property
     @abstractmethod
     def voltage_sources(self) -> List[str]:
@@ -45,4 +37,12 @@ class IMotherboard(ABC):
     @property
     @abstractmethod
     def temperature_sources(self) -> List[str]:
+        pass
+
+    @abstractmethod
+    def get_voltage(self, voltage_source) -> float:
+        pass
+
+    @abstractmethod
+    def get_temperature(self, temperature_source) -> float:
         pass
