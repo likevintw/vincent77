@@ -889,7 +889,6 @@ class TestMotherBoardInterface(unittest.TestCase):
     def test_cpu_model(self):
         mother_board = susiiot.SusiIot()
         print(mother_board.cpu_model)
-        print(mother_board.name)
 
     def test_os_revision(self):
         mother_board = susiiot.SusiIot()
@@ -924,6 +923,81 @@ class TestMotherBoardInterface(unittest.TestCase):
         for source in sources:
             result = mother_board.get_temperature(source)
             print(source, result)
+
+    def test_pins(self):
+        gpio = susiiot.SusiIot()
+        sources = gpio.pins
+        print()
+        for source in sources:
+            print(source)
+
+    def test_get_direction(self):
+        gpio = susiiot.SusiIot()
+        sources = gpio.pins
+        print()
+        for source in sources:
+            result = gpio.get_direction(source)
+            print(source, result)
+
+    def test_set_direction(self):
+        gpio = susiiot.SusiIot()
+        sources = gpio.pins
+        print()
+        for source in sources:
+            origin = gpio.get_direction(source)
+            changed = origin ^ 1
+            result = gpio.set_direction(source, changed)
+            if not result:
+                print(
+                    f"set GPIO direction {source} from {origin} to {changed}, fail")
+                exit(1)
+            print(
+                f"set GPIO direction {source} from {origin} to {changed}, successfully")
+            gpio.set_direction(source, origin)
+            if not result:
+                print(
+                    f"set GPIO direction {source} from {origin} to {changed}, fail")
+                exit(1)
+            self.assertEqual(gpio.get_direction(source), origin)
+            print(
+                f"set GPIO direction {source} from {changed} to {origin}, successfully")
+
+
+    def test_get_level(self):
+        gpio = susiiot.SusiIot()
+        sources = gpio.pins
+        print()
+        for source in sources:
+            result = gpio.get_level(source)
+            print(source, result)
+
+    def test_set_level(self):
+        gpio = susiiot.SusiIot()
+        sources = gpio.pins
+        print()
+        for source in sources:
+            origin = gpio.get_level(source)
+            changed = origin ^ 1
+            result = gpio.set_level(source, changed)
+            if result == False:
+                print(
+                    f"set GPIO{source} level {result}, Please check the direction; it must be output.")
+                continue
+            if result == None:
+                print(f"GPIO{source} is not exist")
+                continue
+            print(
+                f"set GPIO{source} level from {origin} to {changed}, successfully")
+            gpio.set_level(source, origin)
+            if result == False:
+                print(
+                    f"set GPIO{source} level {result}, Please check the direction; it must be output.")
+                continue
+            if result == None:
+                print(f"GPIO{source} is not exist")
+                continue
+            print(
+                f"set GPIO{source} level from {changed} to {origin}, successfully")
 
 
 if __name__ == '__main__':

@@ -4,10 +4,12 @@ import sys
 import os
 import platform
 import imotherboad
+import igpio
 from typing import List
 
 
-class SusiIot(imotherboad.IMotherboard):
+class SusiIot(imotherboad.IMotherboard,
+              igpio.IGpio):
     def __init__(self):
         self.susi_iot_library = None
         self.json_library = None
@@ -20,6 +22,10 @@ class SusiIot(imotherboad.IMotherboard):
 
         self.import_library()
         self.initialize()
+        self.get_susi_information_string()
+        # self.get_susi_information()
+        self.get_gpio_list()
+        self.get_sdram_list()
         self.create_name_id_list()
 
     def __del__(self):
@@ -212,10 +218,6 @@ class SusiIot(imotherboad.IMotherboard):
             ("SusiIoTGetPFCapabilityString", self.susi_iot_library))
 
         self.susi_iot_library.SusiIoTInitialize()
-        self.get_susi_information_string()
-        # self.get_susi_information()
-        self.get_gpio_list()
-        self.get_sdram_list()
 
     def get_gpio_list(self):
         try:
@@ -491,6 +493,14 @@ class SusiIot(imotherboad.IMotherboard):
         try:
             gpio_string = self.gpio_list[gpio_number]
             id_number = self.susi_information["GPIO"][gpio_string]["e"][0]["id"]
+            if self.get_data_by_id(id_number)['bv'] == 0:
+                return True
+        except:
+            return False
+
+    def is_gpio_output_with_gpio_name(self, gpio_name=0):
+        try:
+            id_number = self.susi_information["GPIO"][gpio_name]["e"][0]["id"]
             if self.get_data_by_id(id_number)['bv'] == 0:
                 return True
         except:
@@ -864,6 +874,44 @@ class SusiIot(imotherboad.IMotherboard):
             return float(result["v"])
         except:
             pass
+
+    @property
+    def pins(self) -> List[str]:
+        return self.gpio_list
+
+    def get_direction(self, pin: str) -> None:
+        try:
+            id_number = self.susi_information["GPIO"][pin]["e"][0]["id"]
+            return self.get_data_by_id(id_number)['bv']
+        except:
+            return None
+
+    def set_direction(self, pin: str, direction: igpio.GpioDirectionType) -> None:
+        try:
+            id_number = self.susi_information["GPIO"][pin]["e"][0]["id"]
+            result = self.set_value(id_number, direction)
+            if result != 0:
+                return False
+            return True
+        except:
+            return None
+
+    def get_level(self, pin: str) -> None:
+        try:
+            id_number = self.susi_information["GPIO"][pin]["e"][1]["id"]
+            return self.get_data_by_id(id_number)['bv']
+        except:
+            return None
+
+    def set_level(self, pin: str, level: igpio.GpioLevelType) -> None:
+        gpio_direction_is_output = self.is_gpio_output_with_gpio_name(pin)
+        if not gpio_direction_is_output:
+            return False
+            id_number = self.susi_information["GPIO"][pin]["e"][1]["id"]
+            result = self.set_value(id_number, level)
+            if result != 0:
+                return False
+        return True
 
 
 class JsonType:

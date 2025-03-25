@@ -20,6 +20,14 @@ class InputLevelChangedEventTypes(Enum):
 
 class IGpio(ABC):
     @abstractmethod
+    def get_direction(self, pin: str) -> None:
+        pass
+
+    @abstractmethod
+    def set_direction(self, pin: str, direction: GpioDirectionType) -> None:
+        pass
+
+    @abstractmethod
     def get_level(self, pin: str) -> None:
         pass
 
@@ -27,7 +35,7 @@ class IGpio(ABC):
     def set_level(self, pin: str, level: GpioLevelType) -> None:
         pass
 
-    @abstractmethod
     @property
+    @abstractmethod
     def pins(self) -> List[str]:
         pass
