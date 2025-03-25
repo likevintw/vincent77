@@ -4,6 +4,7 @@ import sys
 import os
 import platform
 import imotherboad
+from typing import List
 
 
 class SusiIot(imotherboad.IMotherboard):
@@ -56,7 +57,7 @@ class SusiIot(imotherboad.IMotherboard):
         try:
             for key in self.susi_id_name_table.keys():
                 if data_sort in key:
-                    self.voltage_source_list.append(data_sort)
+                    self.voltage_source_list.append(key)
         except:
             pass
 
@@ -64,7 +65,7 @@ class SusiIot(imotherboad.IMotherboard):
         try:
             for key in self.susi_id_name_table.keys():
                 if data_sort in key:
-                    self.temperature_source_list.append(data_sort)
+                    self.temperature_source_list.append(key)
         except:
             pass
 
@@ -850,7 +851,7 @@ class SusiIot(imotherboad.IMotherboard):
 
     def get_voltage(self, voltage_source) -> float:
         try:
-            id_number = self.voltage_source_list[voltage_source]
+            id_number = self.susi_id_name_table[voltage_source]
             result = self.get_data_by_id(id_number)
             return float(result["v"])
         except:
@@ -858,7 +859,7 @@ class SusiIot(imotherboad.IMotherboard):
 
     def get_temperature(self, temperature_source) -> float:
         try:
-            id_number = self.temperature_source_list[temperature_source]
+            id_number = self.susi_id_name_table[temperature_source]
             result = self.get_data_by_id(id_number)
             return float(result["v"])
         except:
