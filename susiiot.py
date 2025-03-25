@@ -31,11 +31,13 @@ class SusiIot(imotherboad.IMotherboard,
     def __del__(self):
         pass
         # self.susi_iot_library.SusiIoTUninitialize()
+
     def check_root_authorization(self):
         if os.geteuid() != 0:
             sys.exit("Error: Please run this program as root (use sudo).")
         else:
             return True
+
     def get_name_id_list(self):
         data_sort = "Platform Information"
         try:
@@ -231,8 +233,6 @@ class SusiIot(imotherboad.IMotherboard,
                     self.memory_list.append(key)
         except:
             pass
-
-    
 
     def get_json_indent(self, n):
         json_max_indent = 0x1F

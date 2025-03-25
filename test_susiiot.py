@@ -962,7 +962,6 @@ class TestMotherBoardInterface(unittest.TestCase):
             print(
                 f"set GPIO direction {source} from {changed} to {origin}, successfully")
 
-
     def test_get_level(self):
         gpio = susiiot.SusiIot()
         sources = gpio.pins
