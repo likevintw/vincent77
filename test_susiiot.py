@@ -880,10 +880,51 @@ class TestCases(unittest.TestCase):
             print(f"{item_name} result is {result}")
             print()
 
+
 class TestMotherBoardInterface(unittest.TestCase):
     def test_name(self):
         mother_board = susiiot.SusiIot()
         print(mother_board.name)
+
+    def test_cpu_model(self):
+        mother_board = susiiot.SusiIot()
+        print(mother_board.cpu_model)
+        print(mother_board.name)
+
+    def test_os_revision(self):
+        mother_board = susiiot.SusiIot()
+        print(mother_board.os_revision)
+
+    def test_bios_revision(self):
+        mother_board = susiiot.SusiIot()
+        print(mother_board.bios_revision)
+
+    def test_ec_revision(self):
+        mother_board = susiiot.SusiIot()
+        print(mother_board.ec_revision)
+
+    def test_voltage_sources(self):
+        mother_board = susiiot.SusiIot()
+        print(mother_board.voltage_sources)
+
+    def test_temperature_sources(self):
+        mother_board = susiiot.SusiIot()
+        print(mother_board.temperature_sources)
+
+    def test_get_voltage(self):
+        mother_board = susiiot.SusiIot()
+        sources = mother_board.voltage_sources
+        for source in sources:
+            result = mother_board.get_voltage(source)
+            print(source, result)
+
+    def test_get_temperature(self):
+        mother_board = susiiot.SusiIot()
+        sources = mother_board.temperature_sources
+        for source in sources:
+            result = mother_board.get_temperature(source)
+            print(source, result)
+
 
 if __name__ == '__main__':
     unittest.main()

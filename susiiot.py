@@ -16,8 +16,8 @@ class SusiIot(imotherboad.IMotherboard):
         self.susi_id_name_table = {}
         self.gpio_list = []
         self.memory_list = []
-        self.voltage_source_list=[]
-        self.temperature_source_list=[]
+        self.voltage_source_list = []
+        self.temperature_source_list = []
 
         self.import_library()
         self.initialize()
@@ -67,7 +67,7 @@ class SusiIot(imotherboad.IMotherboard):
                     self.temperature_source_list.append(data_sort)
         except:
             pass
-        
+
         data_sort = "GPIO"
         try:
             id_value = self.susi_information[data_sort]["id"]
@@ -812,7 +812,7 @@ class SusiIot(imotherboad.IMotherboard):
     def name(self) -> str:
         try:
             for item in self.susi_information["Platform Information"]["e"]:
-                if item["n"]=="Board name":
+                if item["n"] == "Board name":
                     return item["sv"]
             return None
         except:
@@ -830,12 +830,12 @@ class SusiIot(imotherboad.IMotherboard):
     def bios_revision(self) -> str:
         try:
             for item in self.susi_information["Platform Information"]["e"]:
-                if item["n"]=="BIOS revision":
+                if item["n"] == "BIOS revision":
                     return item["sv"]
             return None
         except:
             return None
-    
+
     @property
     def ec_revision(self) -> str:
         return "todo"
@@ -843,9 +843,27 @@ class SusiIot(imotherboad.IMotherboard):
     @property
     def voltage_sources(self) -> List[str]:
         return self.voltage_source_list
+
     @property
     def temperature_sources(self) -> List[str]:
         return self.temperature_source_list
+
+    def get_voltage(self, voltage_source) -> float:
+        try:
+            id_number = self.voltage_source_list[voltage_source]
+            result = self.get_data_by_id(id_number)
+            return float(result["v"])
+        except:
+            pass
+
+    def get_temperature(self, temperature_source) -> float:
+        try:
+            id_number = self.temperature_source_list[temperature_source]
+            result = self.get_data_by_id(id_number)
+            return float(result["v"])
+        except:
+            pass
+
 
 class JsonType:
     JSON_OBJECT = 0
