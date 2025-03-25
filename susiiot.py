@@ -20,19 +20,23 @@ class SusiIot(imotherboad.IMotherboard,
         self.voltage_source_list = []
         self.temperature_source_list = []
 
+        self.check_root_authorization()
         self.import_library()
-        self.initialize()
+        self.initialize_library()
         self.get_susi_information_string()
-        # self.get_susi_information()
         self.get_gpio_list()
         self.get_sdram_list()
-        self.create_name_id_list()
+        self.get_name_id_list()
 
     def __del__(self):
         pass
         # self.susi_iot_library.SusiIoTUninitialize()
-
-    def create_name_id_list(self):
+    def check_root_authorization(self):
+        if os.geteuid() != 0:
+            sys.exit("Error: Please run this program as root (use sudo).")
+        else:
+            return True
+    def get_name_id_list(self):
         data_sort = "Platform Information"
         try:
             id_value = self.susi_information[data_sort]["id"]
@@ -179,14 +183,7 @@ class SusiIot(imotherboad.IMotherboard,
         self.susi_iot_library = ctypes.CDLL(susi_iot_library_path)
         self.json_library = ctypes.CDLL(json_library_path)
 
-    def initialize(self):
-
-        try:
-            if not self.check_root_authorization():
-                print("check_root_authorizationcheck_root_authorization")
-        except PermissionError as e:
-            print(f"Error: {e}")
-            exit(1)
+    def initialize_library(self):
         SusiIoTStatus_t = ctypes.c_int
         SusiIoTId_t = ctypes.c_int
 
@@ -235,12 +232,7 @@ class SusiIot(imotherboad.IMotherboard,
         except:
             pass
 
-    def check_root_authorization(self):
-        if os.geteuid() != 0:
-            raise PermissionError(
-                "Please run this program with root authorization (sudo).")
-        else:
-            return True
+    
 
     def get_json_indent(self, n):
         json_max_indent = 0x1F
@@ -269,7 +261,7 @@ class SusiIot(imotherboad.IMotherboard,
         try:
             self.susi_information = json.loads(capability_string)
         except json.JSONDecodeError as e:
-            print("解析 JSON 失敗:", e)
+            print("Failed to parse JSON.:", e)
         return self.susi_information
 
     def get_susi_information(self):
