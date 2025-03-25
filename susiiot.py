@@ -11,8 +11,6 @@ class SusiIot(imotherboad.IMotherboard):
     def __init__(self):
         self.susi_iot_library = None
         self.json_library = None
-        self.susi_iot_library_status = None
-        self.json_max_indent = 0x1F
         self.susi_information = None
         self.susi_id_name_table = {}
         self.gpio_list = []
@@ -213,7 +211,7 @@ class SusiIot(imotherboad.IMotherboard):
         self.SusiIoTGetPFCapabilityString = prototype(
             ("SusiIoTGetPFCapabilityString", self.susi_iot_library))
 
-        self.susi_iot_library_status = self.susi_iot_library.SusiIoTInitialize()
+        self.susi_iot_library.SusiIoTInitialize()
         self.get_susi_information_string()
         # self.get_susi_information()
         self.get_gpio_list()
@@ -243,7 +241,8 @@ class SusiIot(imotherboad.IMotherboard):
             return True
 
     def get_json_indent(self, n):
-        return n & self.json_max_indent
+        json_max_indent = 0x1F
+        return n & json_max_indent
 
     def get_json_real_precision(self, n):
         return ((n & 0x1F) << 11)
@@ -272,13 +271,14 @@ class SusiIot(imotherboad.IMotherboard):
         return self.susi_information
 
     def get_susi_information(self):
+        json_max_indent = 0x1F
         jsonObject = self.json_library.json_object()
         if self.susi_iot_library.SusiIoTGetPFCapability(jsonObject) != 0:
             self.susi_information = "SusiIoTGetPFCapability failed."
             exit(1)
         else:
             self.susi_json_t = self.json_library.json_dumps(jsonObject, self.get_json_indent(
-                4) | self.json_max_indent | self.get_json_real_precision(10))
+                4) | json_max_indent | self.get_json_real_precision(10))
             self.susi_information = self.turn_byte_to_json(self.susi_json_t)
 
         return self.susi_information
