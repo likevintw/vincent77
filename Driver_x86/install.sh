@@ -13,7 +13,7 @@ LINUX_LIB_DIR="/usr/lib"
 LINUX_ADV_DIR="/usr/lib/Advantech"
 LINUX_SUSI_INI_DIR=${LINUX_ADV_DIR}"/Susi/ini"
 LINUX_SUSIIOT_MODULE_DIR=${LINUX_ADV_DIR}"/iot/modules"
-CPU_NAME=$(cat /proc/cpuinfo | grep "model name" | uniq)
+
 usage()
 {
 	cat >&2 <<-eof
@@ -54,9 +54,7 @@ installlibrary()
 	cp -af ${THIS}/modules/libSUSIDrv.so ${LINUX_SUSIIOT_MODULE_DIR}/
 	cp -af ${THIS}/modules/libDiskInfo.so ${LINUX_SUSIIOT_MODULE_DIR}/
 	cp -af ${THIS}/modules/libSUSIDevice.so ${LINUX_SUSIIOT_MODULE_DIR}/
-	if echo "${CPU_NAME}" | grep -q "Intel";then
-		cp -af ${THIS}/modules/libSUSIAIIoT.so ${LINUX_SUSIIOT_MODULE_DIR}/
-	fi
+	cp -af ${THIS}/modules/libSUSIAIIoT.so ${LINUX_SUSIIOT_MODULE_DIR}/
 	ldconfig
 }
 
@@ -89,10 +87,8 @@ case ${1} in
 		if [ ${ans} != "Y" -a ${ans} != "y" ];then
 			exit 1
 		fi
-		if echo "${CPU_NAME}" | grep -q "Intel";then
-			echo "Install SUSI AI service."
-			install_ai_service
-		fi
+		echo "Install SUSI AI service."
+		install_ai_service
 		echo "Install SUSI library."
 		installlibrary
 		ldconfig -p | grep "${LIB4_NAME}\|${LIB3_NAME}\|${LIBE_NAME}\|${JNI4_NAME}\|${DEVICE_NAME}\|${JANSSON_NAME}\|${IOT_NAME}\|${AI_NAME}"
@@ -100,10 +96,8 @@ case ${1} in
 	"s")
 		uninstalllibrary
 		remove_ai_service
-		if echo "${CPU_NAME}" | grep -q "Intel";then
-			echo "Install SUSI AI service."
-			install_ai_service
-		fi
+		echo "Install SUSI AI service."
+		install_ai_service
 		echo "Install SUSI library."
 		installlibrary
 		ldconfig -p | grep "${LIB4_NAME}\|${LIB3_NAME}\|${LIBE_NAME}\|${JNI4_NAME}\|${DEVICE_NAME}\|${JANSSON_NAME}\|${IOT_NAME}\|${AI_NAME}"
