@@ -1,3 +1,2 @@
-rm susiiot.cpython-38.pyc &&\
-    python -m compileall susiiot.py &&\
-    cp __pycache__/susiiot.cpython-38.pyc .
+sudo python -m compileall susiiot.py &&\
+    sudo cp __pycache__/susiiot.cpython-38.pyc .

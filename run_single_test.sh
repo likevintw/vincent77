@@ -47,6 +47,7 @@ git clone https://github.com/likevintw/vincent77.git && \
     sudo python3 -m unittest -v test_susiiot.TestCases > "$(date +\%Y\%m\%d\%H\%M\%S)_result.txt"
 
 sudo python3 -m unittest -v test_susiiot.TestMotherBoardInterface
+sudo python3 -m unittest -v test_susiiot.TestCases.test_susi_id_name_table
 
 
 

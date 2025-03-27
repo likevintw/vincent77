@@ -22,7 +22,7 @@ class SusiIot(imotherboad.IMotherboard,
         self.memory_list = []
         self.voltage_source_list = []
         self.temperature_source_list = []
-        
+
         self.check_root_authorization()
         self.import_library()
         self.initialize_library()
@@ -34,7 +34,8 @@ class SusiIot(imotherboad.IMotherboard,
         self.get_name_id_list()
 
     def __del__(self):
-        self.susi_iot_library.SusiIoTUninitialize()
+        pass
+        # self.susi_iot_library.SusiIoTUninitialize()
 
     def check_root_authorization(self):
         if os.geteuid() != 0:
@@ -186,8 +187,10 @@ class SusiIot(imotherboad.IMotherboard,
             print(
                 f"disable to import library, architechture:{architecture.lower()}, os:{os_name}")
 
-        self.json_library = ctypes.CDLL(json_library_path,mode=ctypes.RTLD_GLOBAL)
-        self.susi_iot_library = ctypes.CDLL(susi_iot_library_path,mode=ctypes.RTLD_GLOBAL)
+        self.json_library = ctypes.CDLL(
+            json_library_path, mode=ctypes.RTLD_GLOBAL)
+        self.susi_iot_library = ctypes.CDLL(
+            susi_iot_library_path, mode=ctypes.RTLD_GLOBAL)
 
     def initialize_library(self):
         SusiIoTStatus_t = ctypes.c_int
@@ -219,9 +222,8 @@ class SusiIot(imotherboad.IMotherboard,
         )
         self.SusiIoTGetPFCapabilityString = prototype(
             ("SusiIoTGetPFCapabilityString", self.susi_iot_library))
-        
-        self.susi_iot_library.SusiIoTUninitialize.restype = ctypes.c_int
 
+        self.susi_iot_library.SusiIoTUninitialize.restype = ctypes.c_int
 
     def get_gpio_list(self):
         try:

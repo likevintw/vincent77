@@ -21,7 +21,6 @@ print(f"architecture: {platform.machine()}")
 print()
 
 
-
 class TestMotherBoardInterface(unittest.TestCase):
     def test_name(self):
         mother_board = susiiot.SusiIot()

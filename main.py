@@ -9,5 +9,5 @@ susiiot = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(susiiot)
 
 # 呼叫 susiiot 中的函式 (假設 susiiot.py 內有 `init` 函式)
-handler=susiiot.SusiIot()
+handler = susiiot.SusiIot()
 print(handler.get_susi_information_string())

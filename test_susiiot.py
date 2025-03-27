@@ -23,6 +23,7 @@ print(f"OS Version: {platform.system()}")
 print(f"architecture: {platform.machine()}")
 print()
 
+
 # py_file = "susiiot.py"
 # pyc_file = "susiiot.cpython-38.pyc"
 # pyc_cache_dir = "__pycache__"

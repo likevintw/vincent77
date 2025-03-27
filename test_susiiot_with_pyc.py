@@ -1,0 +1,63 @@
+
+import unittest
+import os
+import platform
+import logging
+import time
+import datetime
+import importlib.util
+import shutil
+import compileall
+
+
+try:
+    os.system("git log --oneline -1")
+except:
+    pass
+formatted_time = datetime.datetime.fromtimestamp(
+    time.time()).strftime('%Y-%m-%d %H:%M:%S')
+print(f"test time: {formatted_time}")
+print(f"OS Name: {platform.system()}")
+print(f"OS Version: {platform.system()}")
+print(f"architecture: {platform.machine()}")
+print()
+
+
+class TestCases(unittest.TestCase):
+    def setUp(self):
+        pyc_path = "susiiot.cpython-38.pyc"
+        spec = importlib.util.spec_from_file_location("susiiot", pyc_path)
+        self.susiiot = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(self.susiiot)
+
+    @unittest.skip("todo")
+    def test_get_susi_information_string(self):
+        handler = self.susiiot.SusiIot()
+        print(handler.get_susi_information_string())
+
+    def test_susi_information(self):
+        handler = self.susiiot.SusiIot()
+        print()
+        print("test_susi_information")
+        print(handler.susi_iot_information)
+
+    def test_susi_id_name_table(self):
+        handler = self.susiiot.SusiIot()
+        print()
+        print("test_susi_id_name_table")
+        for name in handler.susi_id_name_table.keys():
+            print(name, handler.susi_id_name_table[name])
+
+    def test_get_data_by_id(self):
+        handler = self.susiiot.SusiIot()
+        print()
+        print("test_get_data_by_id")
+        for item_name in handler.susi_id_name_table.keys():
+            result = handler.get_data_by_id(
+                handler.susi_id_name_table[item_name])
+            print(f"{item_name} result is {result}")
+            print()
+
+
+if __name__ == '__main__':
+    unittest.main()
