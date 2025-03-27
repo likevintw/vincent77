@@ -49,6 +49,12 @@ git clone https://github.com/likevintw/vincent77.git && \
 sudo python3 -m unittest -v test_susiiot.TestMotherBoardInterface
 sudo python3 -m unittest -v test_susiiot.TestCases.test_susi_id_name_table
 
+# Test cases in host
+sudo rm -rf __pycache__/
+sudo python3 -m unittest -v test_susiiot
+sudo python3 -m unittest -v test_susiiot_with_pyc
+# Test cases in container
+rm -rf __pycache__/
 python3 -m unittest -v test_susiiot
 python3 -m unittest -v test_susiiot_with_pyc
 
