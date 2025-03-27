@@ -1,0 +1,378 @@
+test time: 2025-03-27 09:54:49
+OS Name: Linux
+OS Version: Linux
+architecture: x86_64
+test_susiiot.py
+container: 0e4cb39515d1
+
+None
+None
+None
+None
+V1.13
+UNO-1372G-J021AE
+170
+None
+31.0
+23.431
+None
+4.2.23870
+B0200
+19.13.512
+
+GPIO0, direction:1
+GPIO1, direction:1
+GPIO2, direction:1
+GPIO3, direction:1
+GPIO4, direction:0
+GPIO5, direction:0
+GPIO6, direction:0
+GPIO7, direction:0
+
+GPIO0, level:1
+GPIO1, level:1
+GPIO2, level:1
+GPIO3, level:1
+GPIO4, level:0
+GPIO5, level:0
+GPIO6, level:0
+GPIO7, level:0
+SDRAM0 type: DDR3 SDRAM
+SDRAM0 module size: 4 GB
+SDRAM0 module: SO-DIMM
+1034
+
+set GPIO direction 0 from 1 to 0, successfully
+set GPIO direction 0 from 0 to 1, successfully
+set GPIO direction 1 from 1 to 0, successfully
+set GPIO direction 1 from 0 to 1, successfully
+set GPIO direction 2 from 1 to 0, successfully
+set GPIO direction 2 from 0 to 1, successfully
+set GPIO direction 3 from 1 to 0, successfully
+set GPIO direction 3 from 0 to 1, successfully
+set GPIO direction 4 from 0 to 1, successfully
+set GPIO direction 4 from 1 to 0, successfully
+set GPIO direction 5 from 0 to 1, successfully
+set GPIO direction 5 from 1 to 0, successfully
+set GPIO direction 6 from 0 to 1, successfully
+set GPIO direction 6 from 1 to 0, successfully
+set GPIO direction 7 from 0 to 1, successfully
+set GPIO direction 7 from 1 to 0, successfully
+
+set GPIO0 level False, Please check the direction; it must be output.
+set GPIO1 level False, Please check the direction; it must be output.
+set GPIO2 level False, Please check the direction; it must be output.
+set GPIO3 level False, Please check the direction; it must be output.
+set GPIO4 level from 0 to 1, successfully
+set GPIO4 level from 1 to 0, successfully
+set GPIO5 level from 0 to 1, successfully
+set GPIO5 level from 1 to 0, successfully
+set GPIO6 level from 0 to 1, successfully
+set GPIO6 level from 1 to 0, successfully
+set GPIO7 level from 0 to 1, successfully
+set GPIO7 level from 1 to 0, successfully
+1.0.23870
+None
+31.0
+None
+None
+None
+5.196
+2.914
+0.835
+
+test_get_data_by_id
+Platform Information result is {'e': [{'n': 'Boot up times', 'v': 170, 'id': 16843010}, {'n': 'Running time (hours)', 'v': 1034, 'id': 16843011}, {'n': 'Board name', 'sv': 'UNO-1372G-J021AE', 'id': 16843778}, {'n': 'BIOS revision', 'sv': 'V1.13', 'id': 16843781}, {'n': 'Firmware Name', 'sv': 'B0200', 'id': 16843784}, {'n': 'Driver version', 'sv': '4.2.23870', 'id': 16843265}, {'n': 'Library version', 'sv': '4.2.23870', 'id': 16843266}, {'n': 'Firmware version', 'sv': '19.13.512', 'id': 16843267}], 'bn': 'Platform Information', 'id': 65536}
+
+Boot up times result is {'n': 'Boot up times', 'v': 170, 'id': 16843010}
+
+Running time (hours) result is {'n': 'Running time (hours)', 'v': 1034, 'id': 16843011}
+
+Board name result is {'n': 'Board name', 'sv': 'UNO-1372G-J021AE', 'id': 16843778}
+
+BIOS revision result is {'n': 'BIOS revision', 'sv': 'V1.13', 'id': 16843781}
+
+Firmware Name result is {'n': 'Firmware Name', 'sv': 'B0200', 'id': 16843784}
+
+Driver version result is {'n': 'Driver version', 'sv': '4.2.23870', 'id': 16843265}
+
+Library version result is {'n': 'Library version', 'sv': '4.2.23870', 'id': 16843266}
+
+Firmware version result is {'n': 'Firmware version', 'sv': '19.13.512', 'id': 16843267}
+
+Hardware Monitor result is {'id': 131072, 'bn': 'Hardware Monitor', 'Voltage': {'e': [{'n': 'Vcore', 'v': 0.841, 'id': 16908801}, {'n': '5V Standby', 'v': 5.184, 'id': 16908807}, {'n': 'CMOS Battery', 'v': 2.92, 'id': 16908809}, {'n': 'DC', 'v': 23.431, 'id': 16908814}], 'bn': 'Voltage', 'id': 131584}, 'Temperature': {'e': [{'n': 'CPU', 'v': 31.0, 'id': 16908545}, {'n': 'System', 'v': 31.0, 'id': 16908547}], 'bn': 'Temperature', 'id': 131328}}
+
+Voltage Vcore result is {'n': 'Vcore', 'v': 0.844, 'id': 16908801}
+
+Voltage 5V Standby result is {'n': '5V Standby', 'v': 5.202, 'id': 16908807}
+
+Voltage CMOS Battery result is {'n': 'CMOS Battery', 'v': 2.909, 'id': 16908809}
+
+Voltage DC result is {'n': 'DC', 'v': 23.46, 'id': 16908814}
+
+Temperature CPU result is {'n': 'CPU', 'v': 31.0, 'id': 16908545}
+
+Temperature System result is {'n': 'System', 'v': 31.0, 'id': 16908547}
+
+GPIO result is {'id': 262144, 'bn': 'GPIO', 'GPIO00': {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039873}, {'n': 'Level', 'bv': 1, 'id': 17040129}], 'bn': 'GPIO00', 'id': 17039617}, 'GPIO01': {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039874}, {'n': 'Level', 'bv': 1, 'id': 17040130}], 'bn': 'GPIO01', 'id': 17039618}, 'GPIO02': {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039875}, {'n': 'Level', 'bv': 1, 'id': 17040131}], 'bn': 'GPIO02', 'id': 17039619}, 'GPIO03': {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039876}, {'n': 'Level', 'bv': 1, 'id': 17040132}], 'bn': 'GPIO03', 'id': 17039620}, 'GPIO04': {'e': [{'n': 'Dir', 'bv': 0, 'id': 17039877}, {'n': 'Level', 'bv': 0, 'id': 17040133}], 'bn': 'GPIO04', 'id': 17039621}, 'GPIO05': {'e': [{'n': 'Dir', 'bv': 0, 'id': 17039878}, {'n': 'Level', 'bv': 0, 'id': 17040134}], 'bn': 'GPIO05', 'id': 17039622}, 'GPIO06': {'e': [{'n': 'Dir', 'bv': 0, 'id': 17039879}, {'n': 'Level', 'bv': 0, 'id': 17040135}], 'bn': 'GPIO06', 'id': 17039623}, 'GPIO07': {'e': [{'n': 'Dir', 'bv': 0, 'id': 17039880}, {'n': 'Level', 'bv': 0, 'id': 17040136}], 'bn': 'GPIO07', 'id': 17039624}}
+
+GPIO00 result is {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039873}, {'n': 'Level', 'bv': 1, 'id': 17040129}], 'bn': 'GPIO00', 'id': 17039617}
+
+GPIO00 Dir result is {'n': 'Dir', 'bv': 1, 'id': 17039873}
+
+GPIO00 Level result is {'n': 'Level', 'bv': 1, 'id': 17040129}
+
+GPIO01 result is {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039874}, {'n': 'Level', 'bv': 1, 'id': 17040130}], 'bn': 'GPIO01', 'id': 17039618}
+
+GPIO01 Dir result is {'n': 'Dir', 'bv': 1, 'id': 17039874}
+
+GPIO01 Level result is {'n': 'Level', 'bv': 1, 'id': 17040130}
+
+GPIO02 result is {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039875}, {'n': 'Level', 'bv': 1, 'id': 17040131}], 'bn': 'GPIO02', 'id': 17039619}
+
+GPIO02 Dir result is {'n': 'Dir', 'bv': 1, 'id': 17039875}
+
+GPIO02 Level result is {'n': 'Level', 'bv': 1, 'id': 17040131}
+
+GPIO03 result is {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039876}, {'n': 'Level', 'bv': 1, 'id': 17040132}], 'bn': 'GPIO03', 'id': 17039620}
+
+GPIO03 Dir result is {'n': 'Dir', 'bv': 1, 'id': 17039876}
+
+GPIO03 Level result is {'n': 'Level', 'bv': 1, 'id': 17040132}
+
+GPIO04 result is {'e': [{'n': 'Dir', 'bv': 0, 'id': 17039877}, {'n': 'Level', 'bv': 0, 'id': 17040133}], 'bn': 'GPIO04', 'id': 17039621}
+
+GPIO04 Dir result is {'n': 'Dir', 'bv': 0, 'id': 17039877}
+
+GPIO04 Level result is {'n': 'Level', 'bv': 0, 'id': 17040133}
+
+GPIO05 result is {'e': [{'n': 'Dir', 'bv': 0, 'id': 17039878}, {'n': 'Level', 'bv': 0, 'id': 17040134}], 'bn': 'GPIO05', 'id': 17039622}
+
+GPIO05 Dir result is {'n': 'Dir', 'bv': 0, 'id': 17039878}
+
+GPIO05 Level result is {'n': 'Level', 'bv': 0, 'id': 17040134}
+
+GPIO06 result is {'e': [{'n': 'Dir', 'bv': 0, 'id': 17039879}, {'n': 'Level', 'bv': 0, 'id': 17040135}], 'bn': 'GPIO06', 'id': 17039623}
+
+GPIO06 Dir result is {'n': 'Dir', 'bv': 0, 'id': 17039879}
+
+GPIO06 Level result is {'n': 'Level', 'bv': 0, 'id': 17040135}
+
+GPIO07 result is {'e': [{'n': 'Dir', 'bv': 0, 'id': 17039880}, {'n': 'Level', 'bv': 0, 'id': 17040136}], 'bn': 'GPIO07', 'id': 17039624}
+
+GPIO07 Dir result is {'n': 'Dir', 'bv': 0, 'id': 17039880}
+
+GPIO07 Level result is {'n': 'Level', 'bv': 0, 'id': 17040136}
+
+SDRAM result is {'id': 337117184, 'bn': 'SDRAM', 'SDRAM0': {'bn': 'SDRAM0', 'id': 337117185, 'e': [{'n': 'Memory Type', 'id': 337117441, 'sv': 'DDR3 SDRAM'}, {'n': 'Module Type', 'id': 337117697, 'sv': 'SO-DIMM'}, {'n': 'Module Size', 'id': 337117953, 'v': 4}, {'n': 'Memory Speed', 'id': 337118209, 'sv': '1600'}, {'n': 'Rank', 'id': 337118465, 'v': 1}, {'n': 'Voltage', 'id': 337118721, 'v': 1.35}, {'n': 'Bank', 'id': 337118977, 'sv': '8'}, {'n': 'Week Year', 'id': 337119233, 'sv': '36-18'}, {'n': 'Temperature', 'id': 337119489, 'v': 28.25}, {'n': 'Write Protection', 'id': 337119745, 'sv': 'Disable'}, {'n': 'Module Manufacture', 'id': 337120001, 'sv': 'Unknown'}, {'n': 'DRAM Manufacture', 'id': 337120257, 'sv': 'Unknown'}, {'n': 'Part Number', 'id': 337121537, 'sv': 'SQR-SD3M-4G1K6SNLB'}, {'n': 'Specific Data', 'id': 337125633, 'sv': 'DCA1-180903050'}]}}
+
+SDRAM0 result is {'bn': 'SDRAM0', 'id': 337117185, 'e': [{'n': 'Memory Type', 'id': 337117441, 'sv': 'DDR3 SDRAM'}, {'n': 'Module Type', 'id': 337117697, 'sv': 'SO-DIMM'}, {'n': 'Module Size', 'id': 337117953, 'v': 4}, {'n': 'Memory Speed', 'id': 337118209, 'sv': '1600'}, {'n': 'Rank', 'id': 337118465, 'v': 1}, {'n': 'Voltage', 'id': 337118721, 'v': 1.35}, {'n': 'Bank', 'id': 337118977, 'sv': '8'}, {'n': 'Week Year', 'id': 337119233, 'sv': '36-18'}, {'n': 'Temperature', 'id': 337119489, 'v': 28.25}, {'n': 'Write Protection', 'id': 337119745, 'sv': 'Disable'}, {'n': 'Module Manufacture', 'id': 337120001, 'sv': 'Unknown'}, {'n': 'DRAM Manufacture', 'id': 337120257, 'sv': 'Unknown'}, {'n': 'Part Number', 'id': 337121537, 'sv': 'SQR-SD3M-4G1K6SNLB'}, {'n': 'Specific Data', 'id': 337125633, 'sv': 'DCA1-180903050'}]}
+
+SDRAM0 Memory Type result is {'n': 'Memory Type', 'id': 337117441, 'sv': 'DDR3 SDRAM'}
+
+SDRAM0 Module Type result is {'n': 'Module Type', 'id': 337117697, 'sv': 'SO-DIMM'}
+
+SDRAM0 Module Size result is {'n': 'Module Size', 'id': 337117953, 'v': 4}
+
+SDRAM0 Memory Speed result is {'n': 'Memory Speed', 'id': 337118209, 'sv': '1600'}
+
+SDRAM0 Rank result is {'n': 'Rank', 'id': 337118465, 'v': 1}
+
+SDRAM0 Voltage result is {'n': 'Voltage', 'id': 337118721, 'v': 1.35}
+
+SDRAM0 Bank result is {'n': 'Bank', 'id': 337118977, 'sv': '8'}
+
+SDRAM0 Week Year result is {'n': 'Week Year', 'id': 337119233, 'sv': '36-18'}
+
+SDRAM0 Temperature result is {'n': 'Temperature', 'id': 337119489, 'v': 28.25}
+
+SDRAM0 Write Protection result is {'n': 'Write Protection', 'id': 337119745, 'sv': 'Disable'}
+
+SDRAM0 Module Manufacture result is {'n': 'Module Manufacture', 'id': 337120001, 'sv': 'Unknown'}
+
+SDRAM0 DRAM Manufacture result is {'n': 'DRAM Manufacture', 'id': 337120257, 'sv': 'Unknown'}
+
+SDRAM0 Part Number result is {'n': 'Part Number', 'id': 337121537, 'sv': 'SQR-SD3M-4G1K6SNLB'}
+
+SDRAM0 Specific Data result is {'n': 'Specific Data', 'id': 337125633, 'sv': 'DCA1-180903050'}
+
+DiskInfo result is {'e': [{'n': 'Disk -volume Total Disk Space', 'id': 353697792, 'v': 36232}, {'n': 'Disk -volume Free Disk Space', 'id': 353697793, 'v': 33757}, {'n': 'Disk -etc-board Total Disk Space', 'id': 353698048, 'v': 18600}, {'n': 'Disk -etc-board Free Disk Space', 'id': 353698049, 'v': 4599}, {'n': 'Disk -etc-resolv.conf Total Disk Space', 'id': 353698304, 'v': 18600}, {'n': 'Disk -etc-resolv.conf Free Disk Space', 'id': 353698305, 'v': 4599}, {'n': 'Disk -etc-hostname Total Disk Space', 'id': 353698560, 'v': 18600}, {'n': 'Disk -etc-hostname Free Disk Space', 'id': 353698561, 'v': 4599}, {'n': 'Disk -etc-hosts Total Disk Space', 'id': 353698816, 'v': 18600}, {'n': 'Disk -etc-hosts Free Disk Space', 'id': 353698817, 'v': 4599}], 'bn': 'DiskInfo', 'id': 353697792}
+
+Disk -volume Total Disk Space result is {'e': [{'n': 'Disk -volume Total Disk Space', 'id': 353697792, 'v': 36232}, {'n': 'Disk -volume Free Disk Space', 'id': 353697793, 'v': 33757}, {'n': 'Disk -etc-board Total Disk Space', 'id': 353698048, 'v': 18600}, {'n': 'Disk -etc-board Free Disk Space', 'id': 353698049, 'v': 4599}, {'n': 'Disk -etc-resolv.conf Total Disk Space', 'id': 353698304, 'v': 18600}, {'n': 'Disk -etc-resolv.conf Free Disk Space', 'id': 353698305, 'v': 4599}, {'n': 'Disk -etc-hostname Total Disk Space', 'id': 353698560, 'v': 18600}, {'n': 'Disk -etc-hostname Free Disk Space', 'id': 353698561, 'v': 4599}, {'n': 'Disk -etc-hosts Total Disk Space', 'id': 353698816, 'v': 18600}, {'n': 'Disk -etc-hosts Free Disk Space', 'id': 353698817, 'v': 4599}], 'bn': 'DiskInfo', 'id': 353697792}
+
+Disk -volume Free Disk Space result is {'n': 'Disk -volume Free Disk Space', 'id': 353697793, 'v': 33757}
+
+Disk -etc-board Total Disk Space result is {'n': 'Disk -etc-board Total Disk Space', 'id': 353698048, 'v': 18600}
+
+Disk -etc-board Free Disk Space result is {'n': 'Disk -etc-board Free Disk Space', 'id': 353698049, 'v': 4599}
+
+Disk -etc-resolv.conf Total Disk Space result is {'n': 'Disk -etc-resolv.conf Total Disk Space', 'id': 353698304, 'v': 18600}
+
+Disk -etc-resolv.conf Free Disk Space result is {'n': 'Disk -etc-resolv.conf Free Disk Space', 'id': 353698305, 'v': 4599}
+
+Disk -etc-hostname Total Disk Space result is {'n': 'Disk -etc-hostname Total Disk Space', 'id': 353698560, 'v': 18600}
+
+Disk -etc-hostname Free Disk Space result is {'n': 'Disk -etc-hostname Free Disk Space', 'id': 353698561, 'v': 4599}
+
+Disk -etc-hosts Total Disk Space result is {'n': 'Disk -etc-hosts Total Disk Space', 'id': 353698816, 'v': 18600}
+
+Disk -etc-hosts Free Disk Space result is {'n': 'Disk -etc-hosts Free Disk Space', 'id': 353698817, 'v': 4599}
+
+SUSIIoT Information result is {'e': [{'n': 'version', 'sv': '1.0.23870', 'id': 257}], 'bn': 'SUSIIoT Information', 'id': 256}
+
+version result is {'n': 'version', 'sv': '1.0.23870', 'id': 257}
+
+{'Platform Information': {'e': [{'n': 'Boot up times', 'v': 170, 'asm': 'r', 'id': 16843010, 'u': 'times'}, {'n': 'Running time (hours)', 'v': 1034, 'asm': 'r', 'id': 16843011, 'u': 'hour'}, {'n': 'Board name', 'sv': 'UNO-1372G-J021AE', 'asm': 'r', 'id': 16843778}, {'n': 'BIOS revision', 'sv': 'V1.13', 'asm': 'r', 'id': 16843781}, {'n': 'Firmware Name', 'sv': 'B0200', 'asm': 'r', 'id': 16843784}, {'n': 'Driver version', 'sv': '4.2.23870', 'asm': 'r', 'id': 16843265}, {'n': 'Library version', 'sv': '4.2.23870', 'asm': 'r', 'id': 16843266}, {'n': 'Firmware version', 'sv': '19.13.512', 'asm': 'r', 'id': 16843267}], 'bn': 'Platform Information', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 65536}, 'Hardware Monitor': {'id': 131072, 'bn': 'Hardware Monitor', 'Voltage': {'e': [{'n': 'Vcore', 'v': 0.841, 'max': 50.0, 'min': 0.0, 'asm': 'r', 'id': 16908801, 'sui': 'Chart'}, {'n': '5V Standby', 'v': 5.196, 'max': 50.0, 'min': 0.0, 'asm': 'r', 'id': 16908807, 'sui': 'Chart'}, {'n': 'CMOS Battery', 'v': 2.914, 'max': 50.0, 'min': 0.0, 'asm': 'r', 'id': 16908809, 'sui': 'Chart'}, {'n': 'DC', 'v': 23.431, 'max': 50.0, 'min': 0.0, 'asm': 'r', 'id': 16908814, 'sui': 'Chart'}], 'bn': 'Voltage', 'bt': 1276020076, 'bu': 'V', 'ver': 1, 'id': 131584}, 'Temperature': {'e': [{'n': 'CPU', 'v': 31.0, 'max': 100.0, 'min': 0.0, 'asm': 'r', 'id': 16908545, 'sui': 'Chart'}, {'n': 'System', 'v': 31.0, 'max': 100.0, 'min': 0.0, 'asm': 'r', 'id': 16908547, 'sui': 'Chart'}], 'bn': 'Temperature', 'bt': 1276020076, 'bu': 'Cel', 'ver': 1, 'id': 131328}}, 'GPIO': {'id': 262144, 'bn': 'GPIO', 'GPIO00': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039873, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 1, 'max': 1, 'min': 0, 'id': 17040129, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'GPIO00', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039617}, 'GPIO01': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039874, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 1, 'max': 1, 'min': 0, 'id': 17040130, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'GPIO01', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039618}, 'GPIO02': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039875, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 1, 'max': 1, 'min': 0, 'id': 17040131, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'GPIO02', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039619}, 'GPIO03': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039876, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 1, 'max': 1, 'min': 0, 'id': 17040132, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'GPIO03', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039620}, 'GPIO04': {'e': [{'n': 'Dir', 'bv': 0, 'max': 1, 'min': 0, 'id': 17039877, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040133, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'GPIO04', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039621}, 'GPIO05': {'e': [{'n': 'Dir', 'bv': 0, 'max': 1, 'min': 0, 'id': 17039878, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040134, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'GPIO05', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039622}, 'GPIO06': {'e': [{'n': 'Dir', 'bv': 0, 'max': 1, 'min': 0, 'id': 17039879, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040135, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'GPIO06', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039623}, 'GPIO07': {'e': [{'n': 'Dir', 'bv': 0, 'max': 1, 'min': 0, 'id': 17039880, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040136, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'GPIO07', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039624}}, 'SDRAM': {'id': 337117184, 'bn': 'SDRAM', 'SDRAM0': {'bn': 'SDRAM0', 'bu': '', 'bt': 1743069290, 'ver': 1, 'id': 337117185, 'e': [{'n': 'Memory Type', 'id': 337117441, 'sv': 'DDR3 SDRAM', 'asm': 'r', 'ui': 'label'}, {'n': 'Module Type', 'id': 337117697, 'sv': 'SO-DIMM', 'asm': 'r', 'ui': 'label'}, {'n': 'Module Size', 'id': 337117953, 'v': 4, 'asm': 'r', 'ui': 'label', 'u': 'GB'}, {'n': 'Memory Speed', 'id': 337118209, 'sv': '1600', 'asm': 'r', 'ui': 'label', 'u': 'MT/s'}, {'n': 'Rank', 'id': 337118465, 'v': 1, 'asm': 'r', 'ui': 'label', 'u': 'Ranks'}, {'n': 'Voltage', 'id': 337118721, 'v': 1.35, 'asm': 'r', 'ui': 'label', 'u': 'V'}, {'n': 'Bank', 'id': 337118977, 'sv': '8', 'asm': 'r', 'ui': 'label'}, {'n': 'Week Year', 'id': 337119233, 'sv': '36-18', 'asm': 'r', 'ui': 'label'}, {'n': 'Temperature', 'id': 337119489, 'v': 28.25, 'asm': 'r', 'ui': 'label', 'min': 0.0, 'max': 100.0, 'u': 'Celsuis'}, {'n': 'Write Protection', 'id': 337119745, 'sv': 'Disable', 'asm': 'r', 'ui': 'label'}, {'n': 'Module Manufacture', 'id': 337120001, 'sv': 'Unknown', 'asm': 'r', 'ui': 'label'}, {'n': 'DRAM Manufacture', 'id': 337120257, 'sv': 'Unknown', 'asm': 'r', 'ui': 'label'}, {'n': 'Part Number', 'id': 337121537, 'sv': 'SQR-SD3M-4G1K6SNLB', 'asm': 'r', 'ui': 'label'}, {'n': 'Specific Data', 'id': 337125633, 'sv': 'DCA1-180903050', 'asm': 'r', 'ui': 'label'}]}}, 'DiskInfo': {'e': [{'n': 'Disk -volume Total Disk Space', 'max': 1073741824, 'min': 0, 'id': 353697792, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 36232}, {'n': 'Disk -volume Free Disk Space', 'max': 1073741824, 'min': 0, 'id': 353697793, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 33757}, {'n': 'Disk -etc-board Total Disk Space', 'max': 1073741824, 'min': 0, 'id': 353698048, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 18600}, {'n': 'Disk -etc-board Free Disk Space', 'max': 1073741824, 'min': 0, 'id': 353698049, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 4599}, {'n': 'Disk -etc-resolv.conf Total Disk Space', 'max': 1073741824, 'min': 0, 'id': 353698304, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 18600}, {'n': 'Disk -etc-resolv.conf Free Disk Space', 'max': 1073741824, 'min': 0, 'id': 353698305, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 4599}, {'n': 'Disk -etc-hostname Total Disk Space', 'max': 1073741824, 'min': 0, 'id': 353698560, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 18600}, {'n': 'Disk -etc-hostname Free Disk Space', 'max': 1073741824, 'min': 0, 'id': 353698561, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 4599}, {'n': 'Disk -etc-hosts Total Disk Space', 'max': 1073741824, 'min': 0, 'id': 353698816, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 18600}, {'n': 'Disk -etc-hosts Free Disk Space', 'max': 1073741824, 'min': 0, 'id': 353698817, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 4599}], 'bn': 'DiskInfo', 'bu': '', 'bt': 1276020076, 'ver': 1, 'id': 353697792}, 'SUSIIoT Information': {'e': [{'n': 'version', 'sv': '1.0.23870', 'asm': 'r', 'id': 257}], 'bn': 'SUSIIoT Information', 'bu': 'Info', 'bt': 1276020076, 'ver': 1, 'id': 256}}
+
+test_susi_id_name_table
+Platform Information 65536
+Boot up times 16843010
+Running time (hours) 16843011
+Board name 16843778
+BIOS revision 16843781
+Firmware Name 16843784
+Driver version 16843265
+Library version 16843266
+Firmware version 16843267
+Hardware Monitor 131072
+Voltage Vcore 16908801
+Voltage 5V Standby 16908807
+Voltage CMOS Battery 16908809
+Voltage DC 16908814
+Temperature CPU 16908545
+Temperature System 16908547
+GPIO 262144
+GPIO00 17039617
+GPIO00 Dir 17039873
+GPIO00 Level 17040129
+GPIO01 17039618
+GPIO01 Dir 17039874
+GPIO01 Level 17040130
+GPIO02 17039619
+GPIO02 Dir 17039875
+GPIO02 Level 17040131
+GPIO03 17039620
+GPIO03 Dir 17039876
+GPIO03 Level 17040132
+GPIO04 17039621
+GPIO04 Dir 17039877
+GPIO04 Level 17040133
+GPIO05 17039622
+GPIO05 Dir 17039878
+GPIO05 Level 17040134
+GPIO06 17039623
+GPIO06 Dir 17039879
+GPIO06 Level 17040135
+GPIO07 17039624
+GPIO07 Dir 17039880
+GPIO07 Level 17040136
+SDRAM 337117184
+SDRAM0 337117185
+SDRAM0 Memory Type 337117441
+SDRAM0 Module Type 337117697
+SDRAM0 Module Size 337117953
+SDRAM0 Memory Speed 337118209
+SDRAM0 Rank 337118465
+SDRAM0 Voltage 337118721
+SDRAM0 Bank 337118977
+SDRAM0 Week Year 337119233
+SDRAM0 Temperature 337119489
+SDRAM0 Write Protection 337119745
+SDRAM0 Module Manufacture 337120001
+SDRAM0 DRAM Manufacture 337120257
+SDRAM0 Part Number 337121537
+SDRAM0 Specific Data 337125633
+DiskInfo 353697792
+Disk -volume Total Disk Space 353697792
+Disk -volume Free Disk Space 353697793
+Disk -etc-board Total Disk Space 353698048
+Disk -etc-board Free Disk Space 353698049
+Disk -etc-resolv.conf Total Disk Space 353698304
+Disk -etc-resolv.conf Free Disk Space 353698305
+Disk -etc-hostname Total Disk Space 353698560
+Disk -etc-hostname Free Disk Space 353698561
+Disk -etc-hosts Total Disk Space 353698816
+Disk -etc-hosts Free Disk Space 353698817
+SUSIIoT Information 256
+version 257
+
+test_susi_information
+{'Platform Information': {'e': [{'n': 'Boot up times', 'v': 170, 'asm': 'r', 'id': 16843010, 'u': 'times'}, {'n': 'Running time (hours)', 'v': 1034, 'asm': 'r', 'id': 16843011, 'u': 'hour'}, {'n': 'Board name', 'sv': 'UNO-1372G-J021AE', 'asm': 'r', 'id': 16843778}, {'n': 'BIOS revision', 'sv': 'V1.13', 'asm': 'r', 'id': 16843781}, {'n': 'Firmware Name', 'sv': 'B0200', 'asm': 'r', 'id': 16843784}, {'n': 'Driver version', 'sv': '4.2.23870', 'asm': 'r', 'id': 16843265}, {'n': 'Library version', 'sv': '4.2.23870', 'asm': 'r', 'id': 16843266}, {'n': 'Firmware version', 'sv': '19.13.512', 'asm': 'r', 'id': 16843267}], 'bn': 'Platform Information', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 65536}, 'Hardware Monitor': {'id': 131072, 'bn': 'Hardware Monitor', 'Voltage': {'e': [{'n': 'Vcore', 'v': 0.835, 'max': 50.0, 'min': 0.0, 'asm': 'r', 'id': 16908801, 'sui': 'Chart'}, {'n': '5V Standby', 'v': 5.19, 'max': 50.0, 'min': 0.0, 'asm': 'r', 'id': 16908807, 'sui': 'Chart'}, {'n': 'CMOS Battery', 'v': 2.914, 'max': 50.0, 'min': 0.0, 'asm': 'r', 'id': 16908809, 'sui': 'Chart'}, {'n': 'DC', 'v': 23.46, 'max': 50.0, 'min': 0.0, 'asm': 'r', 'id': 16908814, 'sui': 'Chart'}], 'bn': 'Voltage', 'bt': 1276020076, 'bu': 'V', 'ver': 1, 'id': 131584}, 'Temperature': {'e': [{'n': 'CPU', 'v': 31.0, 'max': 100.0, 'min': 0.0, 'asm': 'r', 'id': 16908545, 'sui': 'Chart'}, {'n': 'System', 'v': 31.0, 'max': 100.0, 'min': 0.0, 'asm': 'r', 'id': 16908547, 'sui': 'Chart'}], 'bn': 'Temperature', 'bt': 1276020076, 'bu': 'Cel', 'ver': 1, 'id': 131328}}, 'GPIO': {'id': 262144, 'bn': 'GPIO', 'GPIO00': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039873, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 1, 'max': 1, 'min': 0, 'id': 17040129, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'GPIO00', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039617}, 'GPIO01': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039874, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 1, 'max': 1, 'min': 0, 'id': 17040130, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'GPIO01', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039618}, 'GPIO02': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039875, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 1, 'max': 1, 'min': 0, 'id': 17040131, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'GPIO02', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039619}, 'GPIO03': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039876, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 1, 'max': 1, 'min': 0, 'id': 17040132, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'GPIO03', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039620}, 'GPIO04': {'e': [{'n': 'Dir', 'bv': 0, 'max': 1, 'min': 0, 'id': 17039877, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040133, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'GPIO04', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039621}, 'GPIO05': {'e': [{'n': 'Dir', 'bv': 0, 'max': 1, 'min': 0, 'id': 17039878, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040134, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'GPIO05', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039622}, 'GPIO06': {'e': [{'n': 'Dir', 'bv': 0, 'max': 1, 'min': 0, 'id': 17039879, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040135, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'GPIO06', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039623}, 'GPIO07': {'e': [{'n': 'Dir', 'bv': 0, 'max': 1, 'min': 0, 'id': 17039880, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040136, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'GPIO07', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039624}}, 'SDRAM': {'id': 337117184, 'bn': 'SDRAM', 'SDRAM0': {'bn': 'SDRAM0', 'bu': '', 'bt': 1743069290, 'ver': 1, 'id': 337117185, 'e': [{'n': 'Memory Type', 'id': 337117441, 'sv': 'DDR3 SDRAM', 'asm': 'r', 'ui': 'label'}, {'n': 'Module Type', 'id': 337117697, 'sv': 'SO-DIMM', 'asm': 'r', 'ui': 'label'}, {'n': 'Module Size', 'id': 337117953, 'v': 4, 'asm': 'r', 'ui': 'label', 'u': 'GB'}, {'n': 'Memory Speed', 'id': 337118209, 'sv': '1600', 'asm': 'r', 'ui': 'label', 'u': 'MT/s'}, {'n': 'Rank', 'id': 337118465, 'v': 1, 'asm': 'r', 'ui': 'label', 'u': 'Ranks'}, {'n': 'Voltage', 'id': 337118721, 'v': 1.35, 'asm': 'r', 'ui': 'label', 'u': 'V'}, {'n': 'Bank', 'id': 337118977, 'sv': '8', 'asm': 'r', 'ui': 'label'}, {'n': 'Week Year', 'id': 337119233, 'sv': '36-18', 'asm': 'r', 'ui': 'label'}, {'n': 'Temperature', 'id': 337119489, 'v': 28.25, 'asm': 'r', 'ui': 'label', 'min': 0.0, 'max': 100.0, 'u': 'Celsuis'}, {'n': 'Write Protection', 'id': 337119745, 'sv': 'Disable', 'asm': 'r', 'ui': 'label'}, {'n': 'Module Manufacture', 'id': 337120001, 'sv': 'Unknown', 'asm': 'r', 'ui': 'label'}, {'n': 'DRAM Manufacture', 'id': 337120257, 'sv': 'Unknown', 'asm': 'r', 'ui': 'label'}, {'n': 'Part Number', 'id': 337121537, 'sv': 'SQR-SD3M-4G1K6SNLB', 'asm': 'r', 'ui': 'label'}, {'n': 'Specific Data', 'id': 337125633, 'sv': 'DCA1-180903050', 'asm': 'r', 'ui': 'label'}]}}, 'DiskInfo': {'e': [{'n': 'Disk -volume Total Disk Space', 'max': 1073741824, 'min': 0, 'id': 353697792, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 36232}, {'n': 'Disk -volume Free Disk Space', 'max': 1073741824, 'min': 0, 'id': 353697793, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 33757}, {'n': 'Disk -etc-board Total Disk Space', 'max': 1073741824, 'min': 0, 'id': 353698048, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 18600}, {'n': 'Disk -etc-board Free Disk Space', 'max': 1073741824, 'min': 0, 'id': 353698049, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 4599}, {'n': 'Disk -etc-resolv.conf Total Disk Space', 'max': 1073741824, 'min': 0, 'id': 353698304, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 18600}, {'n': 'Disk -etc-resolv.conf Free Disk Space', 'max': 1073741824, 'min': 0, 'id': 353698305, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 4599}, {'n': 'Disk -etc-hostname Total Disk Space', 'max': 1073741824, 'min': 0, 'id': 353698560, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 18600}, {'n': 'Disk -etc-hostname Free Disk Space', 'max': 1073741824, 'min': 0, 'id': 353698561, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 4599}, {'n': 'Disk -etc-hosts Total Disk Space', 'max': 1073741824, 'min': 0, 'id': 353698816, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 18600}, {'n': 'Disk -etc-hosts Free Disk Space', 'max': 1073741824, 'min': 0, 'id': 353698817, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 4599}], 'bn': 'DiskInfo', 'bu': '', 'bt': 1276020076, 'ver': 1, 'id': 353697792}, 'SUSIIoT Information': {'e': [{'n': 'version', 'sv': '1.0.23870', 'asm': 'r', 'id': 257}], 'bn': 'SUSIIoT Information', 'bu': 'Info', 'bt': 1276020076, 'ver': 1, 'id': 256}}
+V1.13
+todo
+todo
+
+GPIO00 1
+GPIO01 1
+GPIO02 1
+GPIO03 1
+GPIO04 0
+GPIO05 0
+GPIO06 0
+GPIO07 0
+
+GPIO00 1
+GPIO01 1
+GPIO02 1
+GPIO03 1
+GPIO04 0
+GPIO05 0
+GPIO06 0
+GPIO07 0
+Temperature CPU 32.0
+Temperature System 31.0
+Voltage Vcore 0.838
+Voltage 5V Standby 5.196
+Voltage CMOS Battery 2.909
+Voltage DC 23.46
+UNO-1372G-J021AE
+todo
+
+GPIO00
+GPIO01
+GPIO02
+GPIO03
+GPIO04
+GPIO05
+GPIO06
+GPIO07
+
+set GPIO direction GPIO00 from 1 to 0, successfully
+set GPIO direction GPIO00 from 0 to 1, successfully
+set GPIO direction GPIO01 from 1 to 0, successfully
+d_name : libSUSIAIIoT.so
+d_name : libSUSIDrv.so
+d_name : libSUSIDevice.so
+d_name : libDiskInfo.so
+libSUSIAIIoT.so
+libSUSIDrv.so
+libSUSIDevice.so
+libDiskInfo.so
+set GPIO direction GPIO01 from 0 to 1, successfully
+set GPIO direction GPIO02 from 1 to 0, successfully
+set GPIO direction GPIO02 from 0 to 1, successfully
+set GPIO direction GPIO03 from 1 to 0, successfully
+set GPIO direction GPIO03 from 0 to 1, successfully
+set GPIO direction GPIO04 from 0 to 1, successfully
+set GPIO direction GPIO04 from 1 to 0, successfully
+set GPIO direction GPIO05 from 0 to 1, successfully
+set GPIO direction GPIO05 from 1 to 0, successfully
+set GPIO direction GPIO06 from 0 to 1, successfully
+set GPIO direction GPIO06 from 1 to 0, successfully
+set GPIO direction GPIO07 from 0 to 1, successfully
+set GPIO direction GPIO07 from 1 to 0, successfully
+
+set GPIOGPIO00 level False, Please check the direction; it must be output.
+set GPIOGPIO01 level False, Please check the direction; it must be output.
+set GPIOGPIO02 level False, Please check the direction; it must be output.
+set GPIOGPIO03 level False, Please check the direction; it must be output.
+set GPIOGPIO04 level from 0 to 1, successfully
+set GPIOGPIO04 level from 1 to 0, successfully
+set GPIOGPIO05 level from 0 to 1, successfully
+set GPIOGPIO05 level from 1 to 0, successfully
+set GPIOGPIO06 level from 0 to 1, successfully
+set GPIOGPIO06 level from 1 to 0, successfully
+set GPIOGPIO07 level from 0 to 1, successfully
+set GPIOGPIO07 level from 1 to 0, successfully
+['Temperature CPU', 'Temperature System']
+['Voltage Vcore', 'Voltage 5V Standby', 'Voltage CMOS Battery', 'Voltage DC']
