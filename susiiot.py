@@ -21,6 +21,14 @@ class SusiIot(imotherboad.IMotherboard,
         self.voltage_source_list = []
         self.temperature_source_list = []
 
+        print("AAAAAAA")
+        for i in sys.modules:
+            print(i,sys.modules[i])
+        # if "susiiot" in sys.modules:
+        #     del sys.modules["susiiot"]
+        print("BBBBBBBBBBBB")
+
+        print("CCCCCCCCCC")
         self.check_root_authorization()
         self.import_library()
         self.initialize_library()
@@ -189,6 +197,7 @@ class SusiIot(imotherboad.IMotherboard,
             print(
                 f"disable to import library, architechture:{architecture.lower()}, os:{os_name}")
 
+        
         self.susi_iot_library = ctypes.CDLL(susi_iot_library_path)
         self.json_library = ctypes.CDLL(json_library_path)
 
