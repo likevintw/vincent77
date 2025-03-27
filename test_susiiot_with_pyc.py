@@ -30,7 +30,6 @@ class TestCases(unittest.TestCase):
         self.susiiot = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(self.susiiot)
 
-    @unittest.skip("todo")
     def test_get_susi_information_string(self):
         handler = self.susiiot.SusiIot()
         print(handler.get_susi_information_string())

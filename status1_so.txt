@@ -1,6 +1,0 @@
-82967729796ad0d9062651653afe3146  ifeature.cpython-38.pyc
-d2d77025eb776c04bdc2f3782912f782  igpio.cpython-38.pyc
-ef68f19822868a7e83089025fed41dde  imotherboad.cpython-38.pyc
-ca4c541ba9d74d63010184018c584f55  susiiot.cpython-38.pyc
-f75be37d413b8f7565999fd03b0a16c1  test_susiiot.cpython-38.pyc
-a5b24b0f3096c6d0e34553a736a09d29  test_susiiot_for_test.cpython-38.pyc
