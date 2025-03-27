@@ -37,6 +37,16 @@
 #     ubuntu:20.04 \
 #     /bin/bash
 
+docker run \
+    -itd \
+    --network host \
+    --name susi_iot_demo \
+    --privileged \
+    -v /etc/board/:/etc/board/ \
+    -v /home/:/volume \
+    ubuntu:20.04 \
+    /bin/bash
+
 sudo docker run \
     -it \
     --rm \
