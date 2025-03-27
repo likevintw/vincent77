@@ -6,6 +6,8 @@ import platform
 import imotherboad
 import igpio
 from typing import List
+import importlib
+
 
 
 class SusiIot(imotherboad.IMotherboard,
@@ -21,13 +23,11 @@ class SusiIot(imotherboad.IMotherboard,
         self.voltage_source_list = []
         self.temperature_source_list = []
 
-        print("AAAAAAA")
-        for i in sys.modules:
-            print(i,sys.modules[i])
+        print("11111AAAAAAA")
         # if "susiiot" in sys.modules:
         #     del sys.modules["susiiot"]
+        importlib.invalidate_caches()
         print("BBBBBBBBBBBB")
-
         print("CCCCCCCCCC")
         self.check_root_authorization()
         self.import_library()
@@ -45,7 +45,7 @@ class SusiIot(imotherboad.IMotherboard,
 
     def __del__(self):
         print("dddddddddddestructure")
-        # self.susi_iot_library.SusiIoTUninitialize()
+        self.susi_iot_library.SusiIoTUninitialize()
 
     def check_root_authorization(self):
         if os.geteuid() != 0:
@@ -200,6 +200,9 @@ class SusiIot(imotherboad.IMotherboard,
         
         self.susi_iot_library = ctypes.CDLL(susi_iot_library_path)
         self.json_library = ctypes.CDLL(json_library_path)
+        
+        # for i in sys.modules:
+        #     print(i,sys.modules[i])
 
     def initialize_library(self):
         SusiIoTStatus_t = ctypes.c_int
