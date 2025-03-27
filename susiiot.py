@@ -11,6 +11,7 @@ from typing import List
 class SusiIot(imotherboad.IMotherboard,
               igpio.IGpio):
     def __init__(self):
+        print("cccccccccccconstructure")
         self.susi_iot_library = None
         self.json_library = None
         self.susi_information = None
@@ -23,13 +24,19 @@ class SusiIot(imotherboad.IMotherboard,
         self.check_root_authorization()
         self.import_library()
         self.initialize_library()
+        print("111111111")
+        self.susi_iot_library.SusiIoTInitialize()
+        print("2222222222")
         self.get_susi_information_string()
+        print("333333333")
+        self.get_susi_information()
+        print("4444444")
         self.get_gpio_list()
         self.get_sdram_list()
         self.get_name_id_list()
 
     def __del__(self):
-        pass
+        print("dddddddddddestructure")
         # self.susi_iot_library.SusiIoTUninitialize()
 
     def check_root_authorization(self):
@@ -215,8 +222,9 @@ class SusiIot(imotherboad.IMotherboard,
         )
         self.SusiIoTGetPFCapabilityString = prototype(
             ("SusiIoTGetPFCapabilityString", self.susi_iot_library))
+        
+        self.susi_iot_library.SusiIoTUninitialize.restype = ctypes.c_int
 
-        self.susi_iot_library.SusiIoTInitialize()
 
     def get_gpio_list(self):
         try:
