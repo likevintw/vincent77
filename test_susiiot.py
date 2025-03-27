@@ -22,10 +22,7 @@ print(f"OS Name: {platform.system()}")
 print(f"OS Version: {platform.system()}")
 print(f"architecture: {platform.machine()}")
 print(f"test_susiiot.py")
-try:
-    print(f"container: {os.popen('cat /etc/hostname').read().strip()}")
-except:
-    print(f"container: None")
+print(f"container: {os.popen('cat /etc/hostname').read().strip()}")
 print()
 
 class AttributeTestCases(unittest.TestCase):
