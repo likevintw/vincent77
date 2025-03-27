@@ -1,27 +1,6 @@
-ubuntu@linux:~/kengwei/vincent77$ ldd /lib/libSusiIoT.so
-        linux-vdso.so.1 (0x0000ffff8925f000)
-        libjansson.so.4 => /lib/aarch64-linux-gnu/libjansson.so.4 (0x0000ffff891c6000)
-        libdl.so.2 => /lib/aarch64-linux-gnu/libdl.so.2 (0x0000ffff891b2000)
-        libstdc++.so.6 => /lib/aarch64-linux-gnu/libstdc++.so.6 (0x0000ffff88fcd000)
-        libgcc_s.so.1 => /lib/aarch64-linux-gnu/libgcc_s.so.1 (0x0000ffff88fa9000)
-        libpthread.so.0 => /lib/aarch64-linux-gnu/libpthread.so.0 (0x0000ffff88f78000)
-        libc.so.6 => /lib/aarch64-linux-gnu/libc.so.6 (0x0000ffff88e05000)
-        /lib/ld-linux-aarch64.so.1 (0x0000ffff8922f000)
-        libm.so.6 => /lib/aarch64-linux-gnu/libm.so.6 (0x0000ffff88d5a000)
-ubuntu@linux:~/kengwei/vincent77$ sudo python3 -m unittest test_susiiot_for_test.py
-531116d (HEAD -> master) todo, debug
-test time: 2025-03-27 02:53:04
-OS Name: Linux
-OS Version: Linux
-architecture: aarch64
-
-cccccccccccconstructure
-11111AAAAAAA
-BBBBBBBBBBBB
-CCCCCCCCCC
-111111111
-d_name : libSUSIDevice.so
-d_name : libDiskInfo.so
-d_name : libSUSIDrv.so
-libSUSIDevice.so
-Segmentation fault
+82967729796ad0d9062651653afe3146  ifeature.cpython-38.pyc
+d2d77025eb776c04bdc2f3782912f782  igpio.cpython-38.pyc
+ef68f19822868a7e83089025fed41dde  imotherboad.cpython-38.pyc
+ca4c541ba9d74d63010184018c584f55  susiiot.cpython-38.pyc
+f75be37d413b8f7565999fd03b0a16c1  test_susiiot.cpython-38.pyc
+a5b24b0f3096c6d0e34553a736a09d29  test_susiiot_for_test.cpython-38.pyc

@@ -1,11 +1,14 @@
 
 import unittest
-import susiiot
 import os
 import platform
+import susiiot
 import logging
 import time
 import datetime
+import importlib.util
+import shutil
+import compileall
 
 
 try:
@@ -20,6 +23,27 @@ print(f"OS Version: {platform.system()}")
 print(f"architecture: {platform.machine()}")
 print()
 
+# py_file = "susiiot.py"
+# pyc_file = "susiiot.cpython-38.pyc"
+# pyc_cache_dir = "__pycache__"
+# pyc_cache_path = os.path.join(pyc_cache_dir, pyc_file)
+
+# if os.path.exists(pyc_file):
+#     os.remove(pyc_file)
+
+# compileall.compile_file(py_file, force=True, quiet=True)
+
+# if os.path.exists(pyc_cache_path):
+#     shutil.move(pyc_cache_path, pyc_file)
+
+# pyc_path = "susiiot.cpython-38.pyc"
+
+# # 載入 .pyc 模組
+# spec = importlib.util.spec_from_file_location("susiiot", pyc_path)
+# susiiot = importlib.util.module_from_spec(spec)
+# spec.loader.exec_module(susiiot)
+# handler=susiiot.SusiIot()
+# print(handler.get_susi_information_string())
 
 class AttributeTestCases(unittest.TestCase):
     @unittest.skip("pass")

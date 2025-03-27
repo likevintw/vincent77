@@ -7,13 +7,13 @@ import imotherboad
 import igpio
 from typing import List
 import importlib
-
+import time
+import subprocess
 
 
 class SusiIot(imotherboad.IMotherboard,
               igpio.IGpio):
     def __init__(self):
-        print("cccccccccccconstructure")
         self.susi_iot_library = None
         self.json_library = None
         self.susi_information = None
@@ -22,29 +22,18 @@ class SusiIot(imotherboad.IMotherboard,
         self.memory_list = []
         self.voltage_source_list = []
         self.temperature_source_list = []
-
-        print("11111AAAAAAA")
-        # if "susiiot" in sys.modules:
-        #     del sys.modules["susiiot"]
-        importlib.invalidate_caches()
-        print("BBBBBBBBBBBB")
-        print("CCCCCCCCCC")
+        
         self.check_root_authorization()
         self.import_library()
         self.initialize_library()
-        print("111111111")
         self.susi_iot_library.SusiIoTInitialize()
-        print("2222222222")
         self.get_susi_information_string()
-        print("333333333")
-        self.get_susi_information()
-        print("4444444")
+        # self.get_susi_information()
         self.get_gpio_list()
         self.get_sdram_list()
         self.get_name_id_list()
 
     def __del__(self):
-        print("dddddddddddestructure")
         self.susi_iot_library.SusiIoTUninitialize()
 
     def check_root_authorization(self):
@@ -197,12 +186,8 @@ class SusiIot(imotherboad.IMotherboard,
             print(
                 f"disable to import library, architechture:{architecture.lower()}, os:{os_name}")
 
-        
-        self.susi_iot_library = ctypes.CDLL(susi_iot_library_path)
-        self.json_library = ctypes.CDLL(json_library_path)
-        
-        # for i in sys.modules:
-        #     print(i,sys.modules[i])
+        self.json_library = ctypes.CDLL(json_library_path,mode=ctypes.RTLD_GLOBAL)
+        self.susi_iot_library = ctypes.CDLL(susi_iot_library_path,mode=ctypes.RTLD_GLOBAL)
 
     def initialize_library(self):
         SusiIoTStatus_t = ctypes.c_int
