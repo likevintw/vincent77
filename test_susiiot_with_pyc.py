@@ -20,6 +20,11 @@ print(f"test time: {formatted_time}")
 print(f"OS Name: {platform.system()}")
 print(f"OS Version: {platform.system()}")
 print(f"architecture: {platform.machine()}")
+print(f"test_susiiot_with_pyc.py")
+try:
+    print(f"container: {os.popen('cat /etc/hostname').read().strip()}")
+except:
+    print(f"container: None")
 print()
 
 
