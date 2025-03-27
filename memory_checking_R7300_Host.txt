@@ -1,0 +1,15 @@
+==21295== HEAP SUMMARY:
+==21295==     in use at exit: 994,163 bytes in 3,254 blocks
+==21295==   total heap usage: 19,116 allocs, 15,862 frees, 13,622,763 bytes allocated
+==21295==
+==21295== LEAK SUMMARY:
+==21295==    definitely lost: 43,595 bytes in 73 blocks
+==21295==    indirectly lost: 0 bytes in 0 blocks
+==21295==      possibly lost: 8,128 bytes in 13 blocks
+==21295==    still reachable: 942,440 bytes in 3,168 blocks
+==21295==         suppressed: 0 bytes in 0 blocks
+==21295== Rerun with --leak-check=full to see details of leaked memory
+==21295==
+==21295== Use --track-origins=yes to see where uninitialised values come from
+==21295== For lists of detected and suppressed errors, rerun with: -s
+==21295== ERROR SUMMARY: 3526 errors from 211 contexts (suppressed: 0 from 0)

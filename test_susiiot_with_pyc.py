@@ -28,32 +28,32 @@ except:
 print()
 
 
+pyc_path = "susiiot.cpython-38.pyc"
+spec = importlib.util.spec_from_file_location("susiiot", pyc_path)
+SUSIIOT = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(SUSIIOT)
+
 class TestCases(unittest.TestCase):
-    def setUp(self):
-        pyc_path = "susiiot.cpython-38.pyc"
-        spec = importlib.util.spec_from_file_location("susiiot", pyc_path)
-        self.susiiot = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(self.susiiot)
 
     def test_get_susi_information_string(self):
-        handler = self.susiiot.SusiIot()
+        handler = SUSIIOT.SusiIot()
         print(handler.get_susi_information_string())
 
     def test_susi_information(self):
-        handler = self.susiiot.SusiIot()
+        handler = SUSIIOT.SusiIot()
         print()
         print("test_susi_information")
         print(handler.susi_iot_information)
 
     def test_susi_id_name_table(self):
-        handler = self.susiiot.SusiIot()
+        handler = SUSIIOT.SusiIot()
         print()
         print("test_susi_id_name_table")
         for name in handler.susi_id_name_table.keys():
             print(name, handler.susi_id_name_table[name])
 
     def test_get_data_by_id(self):
-        handler = self.susiiot.SusiIot()
+        handler = SUSIIOT.SusiIot()
         print()
         print("test_get_data_by_id")
         for item_name in handler.susi_id_name_table.keys():

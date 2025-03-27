@@ -1,0 +1,226 @@
+8f8f3bd add result
+test time: 2025-03-27 08:47:37
+OS Name: Linux
+OS Version: Linux
+architecture: aarch64
+test_susiiot_with_pyc.py
+container: 
+
+
+test_get_data_by_id
+Platform Information result is {'e': [{'n': 'Board manufacturer', 'sv': 'Advantech', 'id': 16843777}, {'n': 'Board name', 'sv': 'EPC-R7300', 'id': 16843778}, {'n': 'Driver version', 'sv': '4.2.23737', 'id': 16843265}, {'n': 'Library version', 'sv': '4.2.23737', 'id': 16843266}], 'bn': 'Platform Information', 'id': 65536}
+
+Board manufacturer result is {'n': 'Board manufacturer', 'sv': 'Advantech', 'id': 16843777}
+
+Board name result is {'n': 'Board name', 'sv': 'EPC-R7300', 'id': 16843778}
+
+Driver version result is {'n': 'Driver version', 'sv': '4.2.23737', 'id': 16843265}
+
+Library version result is {'n': 'Library version', 'sv': '4.2.23737', 'id': 16843266}
+
+Hardware Monitor result is {'id': 131072, 'bn': 'Hardware Monitor', 'Temperature': {'e': [{'n': 'CPU-therm', 'v': 43.8, 'id': 16908545}, {'n': 'GPU-therm', 'v': 43.8, 'id': 16908549}], 'bn': 'Temperature', 'id': 131328}}
+
+Temperature CPU-therm result is {'n': 'CPU-therm', 'v': 44.1, 'id': 16908545}
+
+Temperature GPU-therm result is {'n': 'GPU-therm', 'v': 43.4, 'id': 16908549}
+
+GPIO result is {'id': 262144, 'bn': 'GPIO', 'UIO_GPIO2': {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039873}, {'n': 'Level', 'bv': 0, 'id': 17040129}], 'bn': 'UIO_GPIO2', 'id': 17039617}, 'UIO_GPIO4': {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039874}, {'n': 'Level', 'bv': 0, 'id': 17040130}], 'bn': 'UIO_GPIO4', 'id': 17039618}, 'UIO_GPIO5': {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039875}, {'n': 'Level', 'bv': 0, 'id': 17040131}], 'bn': 'UIO_GPIO5', 'id': 17039619}, 'UIO_GPIO6': {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039876}, {'n': 'Level', 'bv': 0, 'id': 17040132}], 'bn': 'UIO_GPIO6', 'id': 17039620}, 'UIO_GPIO7': {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039877}, {'n': 'Level', 'bv': 0, 'id': 17040133}], 'bn': 'UIO_GPIO7', 'id': 17039621}, 'UIO_GPIO8': {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039878}, {'n': 'Level', 'bv': 0, 'id': 17040134}], 'bn': 'UIO_GPIO8', 'id': 17039622}, 'UIO_GPIO9': {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039879}, {'n': 'Level', 'bv': 0, 'id': 17040135}], 'bn': 'UIO_GPIO9', 'id': 17039623}, 'UIO_GPIO10': {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039880}, {'n': 'Level', 'bv': 1, 'id': 17040136}], 'bn': 'UIO_GPIO10', 'id': 17039624}, 'UIO_GPIO11_CPU': {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039881}, {'n': 'Level', 'bv': 0, 'id': 17040137}], 'bn': 'UIO_GPIO11_CPU', 'id': 17039625}, 'UIO_GPIO12_CPU': {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039882}, {'n': 'Level', 'bv': 0, 'id': 17040138}], 'bn': 'UIO_GPIO12_CPU', 'id': 17039626}, 'CN13_GPIO1': {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039883}, {'n': 'Level', 'bv': 0, 'id': 17040139}], 'bn': 'CN13_GPIO1', 'id': 17039627}, 'CN13_GPIO7': {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039884}, {'n': 'Level', 'bv': 0, 'id': 17040140}], 'bn': 'CN13_GPIO7', 'id': 17039628}, 'CN13_GPIO9': {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039885}, {'n': 'Level', 'bv': 0, 'id': 17040141}], 'bn': 'CN13_GPIO9', 'id': 17039629}, 'CN13_GPIO11': {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039886}, {'n': 'Level', 'bv': 0, 'id': 17040142}], 'bn': 'CN13_GPIO11', 'id': 17039630}, 'CN13_GPIO12': {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039887}, {'n': 'Level', 'bv': 0, 'id': 17040143}], 'bn': 'CN13_GPIO12', 'id': 17039631}, 'CN13_GPIO13': {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039888}, {'n': 'Level', 'bv': 0, 'id': 17040144}], 'bn': 'CN13_GPIO13', 'id': 17039632}, 'UIO_GPIO11_Expender': {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039889}, {'n': 'Level', 'bv': 0, 'id': 17040145}], 'bn': 'UIO_GPIO11_Expender', 'id': 17039633}, 'UIO_GPIO12_Expender': {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039890}, {'n': 'Level', 'bv': 0, 'id': 17040146}], 'bn': 'UIO_GPIO12_Expender', 'id': 17039634}, 'UIO_ID_SW': {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039891}, {'n': 'Level', 'bv': 0, 'id': 17040147}], 'bn': 'UIO_ID_SW', 'id': 17039635}}
+
+UIO_GPIO2 result is {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039873}, {'n': 'Level', 'bv': 0, 'id': 17040129}], 'bn': 'UIO_GPIO2', 'id': 17039617}
+
+UIO_GPIO2 Dir result is {'n': 'Dir', 'bv': 1, 'id': 17039873}
+
+UIO_GPIO2 Level result is {'n': 'Level', 'bv': 0, 'id': 17040129}
+
+UIO_GPIO4 result is {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039874}, {'n': 'Level', 'bv': 0, 'id': 17040130}], 'bn': 'UIO_GPIO4', 'id': 17039618}
+
+UIO_GPIO4 Dir result is {'n': 'Dir', 'bv': 1, 'id': 17039874}
+
+UIO_GPIO4 Level result is {'n': 'Level', 'bv': 0, 'id': 17040130}
+
+UIO_GPIO5 result is {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039875}, {'n': 'Level', 'bv': 0, 'id': 17040131}], 'bn': 'UIO_GPIO5', 'id': 17039619}
+
+UIO_GPIO5 Dir result is {'n': 'Dir', 'bv': 1, 'id': 17039875}
+
+UIO_GPIO5 Level result is {'n': 'Level', 'bv': 0, 'id': 17040131}
+
+UIO_GPIO6 result is {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039876}, {'n': 'Level', 'bv': 0, 'id': 17040132}], 'bn': 'UIO_GPIO6', 'id': 17039620}
+
+UIO_GPIO6 Dir result is {'n': 'Dir', 'bv': 1, 'id': 17039876}
+
+UIO_GPIO6 Level result is {'n': 'Level', 'bv': 0, 'id': 17040132}
+
+UIO_GPIO7 result is {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039877}, {'n': 'Level', 'bv': 0, 'id': 17040133}], 'bn': 'UIO_GPIO7', 'id': 17039621}
+
+UIO_GPIO7 Dir result is {'n': 'Dir', 'bv': 1, 'id': 17039877}
+
+UIO_GPIO7 Level result is {'n': 'Level', 'bv': 0, 'id': 17040133}
+
+UIO_GPIO8 result is {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039878}, {'n': 'Level', 'bv': 0, 'id': 17040134}], 'bn': 'UIO_GPIO8', 'id': 17039622}
+
+UIO_GPIO8 Dir result is {'n': 'Dir', 'bv': 1, 'id': 17039878}
+
+UIO_GPIO8 Level result is {'n': 'Level', 'bv': 0, 'id': 17040134}
+
+UIO_GPIO9 result is {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039879}, {'n': 'Level', 'bv': 0, 'id': 17040135}], 'bn': 'UIO_GPIO9', 'id': 17039623}
+
+UIO_GPIO9 Dir result is {'n': 'Dir', 'bv': 1, 'id': 17039879}
+
+UIO_GPIO9 Level result is {'n': 'Level', 'bv': 0, 'id': 17040135}
+
+UIO_GPIO10 result is {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039880}, {'n': 'Level', 'bv': 1, 'id': 17040136}], 'bn': 'UIO_GPIO10', 'id': 17039624}
+
+UIO_GPIO10 Dir result is {'n': 'Dir', 'bv': 1, 'id': 17039880}
+
+UIO_GPIO10 Level result is {'n': 'Level', 'bv': 1, 'id': 17040136}
+
+UIO_GPIO11_CPU result is {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039881}, {'n': 'Level', 'bv': 0, 'id': 17040137}], 'bn': 'UIO_GPIO11_CPU', 'id': 17039625}
+
+UIO_GPIO11_CPU Dir result is {'n': 'Dir', 'bv': 1, 'id': 17039881}
+
+UIO_GPIO11_CPU Level result is {'n': 'Level', 'bv': 0, 'id': 17040137}
+
+UIO_GPIO12_CPU result is {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039882}, {'n': 'Level', 'bv': 0, 'id': 17040138}], 'bn': 'UIO_GPIO12_CPU', 'id': 17039626}
+
+UIO_GPIO12_CPU Dir result is {'n': 'Dir', 'bv': 1, 'id': 17039882}
+
+UIO_GPIO12_CPU Level result is {'n': 'Level', 'bv': 0, 'id': 17040138}
+
+CN13_GPIO1 result is {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039883}, {'n': 'Level', 'bv': 0, 'id': 17040139}], 'bn': 'CN13_GPIO1', 'id': 17039627}
+
+CN13_GPIO1 Dir result is {'n': 'Dir', 'bv': 1, 'id': 17039883}
+
+CN13_GPIO1 Level result is {'n': 'Level', 'bv': 0, 'id': 17040139}
+
+CN13_GPIO7 result is {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039884}, {'n': 'Level', 'bv': 0, 'id': 17040140}], 'bn': 'CN13_GPIO7', 'id': 17039628}
+
+CN13_GPIO7 Dir result is {'n': 'Dir', 'bv': 1, 'id': 17039884}
+
+CN13_GPIO7 Level result is {'n': 'Level', 'bv': 0, 'id': 17040140}
+
+CN13_GPIO9 result is {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039885}, {'n': 'Level', 'bv': 0, 'id': 17040141}], 'bn': 'CN13_GPIO9', 'id': 17039629}
+
+CN13_GPIO9 Dir result is {'n': 'Dir', 'bv': 1, 'id': 17039885}
+
+CN13_GPIO9 Level result is {'n': 'Level', 'bv': 0, 'id': 17040141}
+
+CN13_GPIO11 result is {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039886}, {'n': 'Level', 'bv': 0, 'id': 17040142}], 'bn': 'CN13_GPIO11', 'id': 17039630}
+
+CN13_GPIO11 Dir result is {'n': 'Dir', 'bv': 1, 'id': 17039886}
+
+CN13_GPIO11 Level result is {'n': 'Level', 'bv': 0, 'id': 17040142}
+
+CN13_GPIO12 result is {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039887}, {'n': 'Level', 'bv': 0, 'id': 17040143}], 'bn': 'CN13_GPIO12', 'id': 17039631}
+
+CN13_GPIO12 Dir result is {'n': 'Dir', 'bv': 1, 'id': 17039887}
+
+CN13_GPIO12 Level result is {'n': 'Level', 'bv': 0, 'id': 17040143}
+
+CN13_GPIO13 result is {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039888}, {'n': 'Level', 'bv': 0, 'id': 17040144}], 'bn': 'CN13_GPIO13', 'id': 17039632}
+
+CN13_GPIO13 Dir result is {'n': 'Dir', 'bv': 1, 'id': 17039888}
+
+CN13_GPIO13 Level result is {'n': 'Level', 'bv': 0, 'id': 17040144}
+
+UIO_GPIO11_Expender result is {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039889}, {'n': 'Level', 'bv': 0, 'id': 17040145}], 'bn': 'UIO_GPIO11_Expender', 'id': 17039633}
+
+UIO_GPIO11_Expender Dir result is {'n': 'Dir', 'bv': 1, 'id': 17039889}
+
+UIO_GPIO11_Expender Level result is {'n': 'Level', 'bv': 0, 'id': 17040145}
+
+UIO_GPIO12_Expender result is {'e': [{'n': 'Dir', 'bv': 1, 'id': 17039890}, {'n': 'Level', 'bv': 0, 'id': 17040146}], 'bn': 'UIO_GPIO12_Expender', 'id': 17039634}
+
+UIO_GPIO12_Expender Dir result is {'n': 'Dir', 'bv': 1, 'id': 17039890}
+
+UIO_GPIO12_Expender Level result is {'n': 'Level', 'bv': 0, 'id': 17040146}
+
+DiskInfo result is {'e': [{'n': 'Disk - Total Disk Space', 'id': 353697792, 'v': 55180}, {'n': 'Disk - Free Disk Space', 'id': 353697793, 'v': 40465}], 'bn': 'DiskInfo', 'id': 353697792}
+
+Disk - Total Disk Space result is {'e': [{'n': 'Disk - Total Disk Space', 'id': 353697792, 'v': 55180}, {'n': 'Disk - Free Disk Space', 'id': 353697793, 'v': 40465}], 'bn': 'DiskInfo', 'id': 353697792}
+
+Disk - Free Disk Space result is {'n': 'Disk - Free Disk Space', 'id': 353697793, 'v': 40465}
+
+SUSIIoT Information result is {'e': [{'n': 'version', 'sv': '1.0.23737', 'id': 257}], 'bn': 'SUSIIoT Information', 'id': 256}
+
+version result is {'n': 'version', 'sv': '1.0.23737', 'id': 257}
+
+{'DiskInfo': {'e': [{'n': 'Disk - Total Disk Space', 'max': 1073741824, 'min': 0, 'id': 353697792, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 55180}, {'n': 'Disk - Free Disk Space', 'max': 1073741824, 'min': 0, 'id': 353697793, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 40465}], 'bn': 'DiskInfo', 'bu': '', 'bt': 1276020076, 'ver': 1, 'id': 353697792}, 'Platform Information': {'e': [{'n': 'Board manufacturer', 'sv': 'Advantech', 'asm': 'r', 'id': 16843777}, {'n': 'Board name', 'sv': 'EPC-R7300', 'asm': 'r', 'id': 16843778}, {'n': 'Driver version', 'sv': '4.2.23737', 'asm': 'r', 'id': 16843265}, {'n': 'Library version', 'sv': '4.2.23737', 'asm': 'r', 'id': 16843266}], 'bn': 'Platform Information', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 65536}, 'Hardware Monitor': {'id': 131072, 'bn': 'Hardware Monitor', 'Temperature': {'e': [{'n': 'CPU-therm', 'v': 44.3, 'max': 100.0, 'min': 0.0, 'asm': 'r', 'id': 16908545, 'sui': 'Chart'}, {'n': 'GPU-therm', 'v': 43.5, 'max': 100.0, 'min': 0.0, 'asm': 'r', 'id': 16908549, 'sui': 'Chart'}], 'bn': 'Temperature', 'bt': 1276020076, 'bu': 'Cel', 'ver': 1, 'id': 131328}}, 'GPIO': {'id': 262144, 'bn': 'GPIO', 'UIO_GPIO2': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039873, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040129, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'UIO_GPIO2', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039617}, 'UIO_GPIO4': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039874, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040130, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'UIO_GPIO4', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039618}, 'UIO_GPIO5': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039875, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040131, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'UIO_GPIO5', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039619}, 'UIO_GPIO6': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039876, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040132, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'UIO_GPIO6', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039620}, 'UIO_GPIO7': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039877, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040133, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'UIO_GPIO7', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039621}, 'UIO_GPIO8': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039878, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040134, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'UIO_GPIO8', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039622}, 'UIO_GPIO9': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039879, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040135, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'UIO_GPIO9', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039623}, 'UIO_GPIO10': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039880, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 1, 'max': 1, 'min': 0, 'id': 17040136, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'UIO_GPIO10', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039624}, 'UIO_GPIO11_CPU': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039881, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040137, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'UIO_GPIO11_CPU', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039625}, 'UIO_GPIO12_CPU': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039882, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040138, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'UIO_GPIO12_CPU', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039626}, 'CN13_GPIO1': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039883, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040139, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'CN13_GPIO1', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039627}, 'CN13_GPIO7': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039884, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040140, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'CN13_GPIO7', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039628}, 'CN13_GPIO9': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039885, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040141, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'CN13_GPIO9', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039629}, 'CN13_GPIO11': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039886, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040142, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'CN13_GPIO11', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039630}, 'CN13_GPIO12': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039887, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040143, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'CN13_GPIO12', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039631}, 'CN13_GPIO13': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039888, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040144, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'CN13_GPIO13', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039632}, 'UIO_GPIO11_Expender': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039889, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040145, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'UIO_GPIO11_Expender', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039633}, 'UIO_GPIO12_Expender': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039890, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040146, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'UIO_GPIO12_Expender', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039634}, 'UIO_ID_SW': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039891, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040147, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'UIO_ID_SW', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039635}}, 'SUSIIoT Information': {'e': [{'n': 'version', 'sv': '1.0.23737', 'asm': 'r', 'id': 257}], 'bn': 'SUSIIoT Information', 'bu': 'Info', 'bt': 1276020076, 'ver': 1, 'id': 256}}
+
+test_susi_id_name_table
+Platform Information 65536
+Board manufacturer 16843777
+Board name 16843778
+Driver version 16843265
+Library version 16843266
+Hardware Monitor 131072
+Temperature CPU-therm 16908545
+Temperature GPU-therm 16908549
+GPIO 262144
+UIO_GPIO2 17039617
+UIO_GPIO2 Dir 17039873
+UIO_GPIO2 Level 17040129
+UIO_GPIO4 17039618
+UIO_GPIO4 Dir 17039874
+UIO_GPIO4 Level 17040130
+UIO_GPIO5 17039619
+UIO_GPIO5 Dir 17039875
+UIO_GPIO5 Level 17040131
+UIO_GPIO6 17039620
+UIO_GPIO6 Dir 17039876
+UIO_GPIO6 Level 17040132
+UIO_GPIO7 17039621
+UIO_GPIO7 Dir 17039877
+UIO_GPIO7 Level 17040133
+UIO_GPIO8 17039622
+UIO_GPIO8 Dir 17039878
+UIO_GPIO8 Level 17040134
+UIO_GPIO9 17039623
+UIO_GPIO9 Dir 17039879
+UIO_GPIO9 Level 17040135
+UIO_GPIO10 17039624
+UIO_GPIO10 Dir 17039880
+UIO_GPIO10 Level 17040136
+UIO_GPIO11_CPU 17039625
+UIO_GPIO11_CPU Dir 17039881
+UIO_GPIO11_CPU Level 17040137
+UIO_GPIO12_CPU 17039626
+UIO_GPIO12_CPU Dir 17039882
+UIO_GPIO12_CPU Level 17040138
+CN13_GPIO1 17039627
+CN13_GPIO1 Dir 17039883
+CN13_GPIO1 Level 17040139
+CN13_GPIO7 17039628
+CN13_GPIO7 Dir 17039884
+CN13_GPIO7 Level 17040140
+CN13_GPIO9 17039629
+CN13_GPIO9 Dir 17039885
+CN13_GPIO9 Level 17040141
+CN13_GPIO11 17039630
+CN13_GPIO11 Dir 17039886
+CN13_GPIO11 Level 17040142
+CN13_GPIO12 17039631
+CN13_GPIO12 Dir 17039887
+CN13_GPIO12 Level 17040143
+CN13_GPIO13 17039632
+CN13_GPIO13 Dir 17039888
+CN13_GPIO13 Level 17040144
+UIO_GPIO11_Expender 17039633
+UIO_GPIO11_Expender Dir 17039889
+UIO_GPIO11_Expender Level 17040145
+UIO_GPIO12_Expender 17039634
+UIO_GPIO12_Expender Dir 17039890
+UIO_GPIO12_Expender Level 17040146
+DiskInfo 353697792
+Disk - Total Disk Space 353697792
+Disk - Free Disk Space 353697793
+SUSIIoT Information 256
+version 257
+
+test_susi_information
+{'DiskInfo': {'e': [{'n': 'Disk - Total Disk Space', 'max': 1073741824, 'min': 0, 'id': 353697792, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 55180}, {'n': 'Disk - Free Disk Space', 'max': 1073741824, 'min': 0, 'id': 353697793, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 40465}], 'bn': 'DiskInfo', 'bu': '', 'bt': 1276020076, 'ver': 1, 'id': 353697792}, 'Platform Information': {'e': [{'n': 'Board manufacturer', 'sv': 'Advantech', 'asm': 'r', 'id': 16843777}, {'n': 'Board name', 'sv': 'EPC-R7300', 'asm': 'r', 'id': 16843778}, {'n': 'Driver version', 'sv': '4.2.23737', 'asm': 'r', 'id': 16843265}, {'n': 'Library version', 'sv': '4.2.23737', 'asm': 'r', 'id': 16843266}], 'bn': 'Platform Information', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 65536}, 'Hardware Monitor': {'id': 131072, 'bn': 'Hardware Monitor', 'Temperature': {'e': [{'n': 'CPU-therm', 'v': 44.4, 'max': 100.0, 'min': 0.0, 'asm': 'r', 'id': 16908545, 'sui': 'Chart'}, {'n': 'GPU-therm', 'v': 43.5, 'max': 100.0, 'min': 0.0, 'asm': 'r', 'id': 16908549, 'sui': 'Chart'}], 'bn': 'Temperature', 'bt': 1276020076, 'bu': 'Cel', 'ver': 1, 'id': 131328}}, 'GPIO': {'id': 262144, 'bn': 'GPIO', 'UIO_GPIO2': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039873, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040129, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'UIO_GPIO2', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039617}, 'UIO_GPIO4': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039874, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040130, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'UIO_GPIO4', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039618}, 'UIO_GPIO5': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039875, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040131, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'UIO_GPIO5', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039619}, 'UIO_GPIO6': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039876, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040132, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'UIO_GPIO6', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039620}, 'UIO_GPIO7': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039877, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040133, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'UIO_GPIO7', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039621}, 'UIO_GPIO8': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039878, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040134, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'UIO_GPIO8', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039622}, 'UIO_GPIO9': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039879, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040135, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'UIO_GPIO9', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039623}, 'UIO_GPIO10': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039880, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 1, 'max': 1, 'min': 0, 'id': 17040136, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'UIO_GPIO10', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039624}, 'UIO_GPIO11_CPU': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039881, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040137, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'UIO_GPIO11_CPU', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039625}, 'UIO_GPIO12_CPU': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039882, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040138, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'UIO_GPIO12_CPU', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039626}, 'CN13_GPIO1': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039883, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040139, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'CN13_GPIO1', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039627}, 'CN13_GPIO7': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039884, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040140, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'CN13_GPIO7', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039628}, 'CN13_GPIO9': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039885, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040141, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'CN13_GPIO9', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039629}, 'CN13_GPIO11': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039886, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040142, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'CN13_GPIO11', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039630}, 'CN13_GPIO12': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039887, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040143, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'CN13_GPIO12', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039631}, 'CN13_GPIO13': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039888, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040144, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'CN13_GPIO13', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039632}, 'UIO_GPIO11_Expender': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039889, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040145, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'UIO_GPIO11_Expender', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039633}, 'UIO_GPIO12_Expender': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039890, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040146, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'UIO_GPIO12_Expender', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039634}, 'UIO_ID_SW': {'e': [{'n': 'Dir', 'bv': 1, 'max': 1, 'min': 0, 'id': 17039891, 'u': 'I/O', 'asm': 'rw', 'ui': 'TextBox'}, {'n': 'Level', 'bv': 0, 'max': 1, 'min': 0, 'id': 17040147, 'u': 'H/L', 'asm': 'rw', 'ui': 'TextBox'}], 'bn': 'UIO_ID_SW', 'bt': 1276020076, 'bu': 'info', 'ver': 1, 'id': 17039635}}, 'SUSIIoT Information': {'e': [{'n': 'version', 'sv': '1.0.23737', 'asm': 'r', 'id': 257}], 'bn': 'SUSIIoT Information', 'bu': 'Info', 'bt': 1276020076, 'ver': 1, 'id': 256}}
+d_name : libSUSIDevice.so
+d_name : libDiskInfo.so
+d_name : libSUSIDrv.so
+libSUSIDevice.so
+libDiskInfo.so
+libSUSIDrv.so
