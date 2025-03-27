@@ -1,173 +1,33 @@
-sys <module 'sys' (built-in)>
-builtins <module 'builtins' (built-in)>
-_frozen_importlib <module 'importlib._bootstrap' (frozen)>
-_imp <module '_imp' (built-in)>
-_warnings <module '_warnings' (built-in)>
-_io <module 'io' (built-in)>
-marshal <module 'marshal' (built-in)>
-posix <module 'posix' (built-in)>
-_frozen_importlib_external <module 'importlib._bootstrap_external' (frozen)>
-_thread <module '_thread' (built-in)>
-_weakref <module '_weakref' (built-in)>
-time <module 'time' (built-in)>
-zipimport <module 'zipimport' (frozen)>
-_codecs <module '_codecs' (built-in)>
-codecs <module 'codecs' from '/usr/lib/python3.8/codecs.py'>
-encodings.aliases <module 'encodings.aliases' from '/usr/lib/python3.8/encodings/aliases.py'>
-encodings <module 'encodings' from '/usr/lib/python3.8/encodings/__init__.py'>
-encodings.utf_8 <module 'encodings.utf_8' from '/usr/lib/python3.8/encodings/utf_8.py'>
-_signal <module '_signal' (built-in)>
-__main__ <module 'unittest.__main__' from '/usr/lib/python3.8/unittest/__main__.py'>
-encodings.latin_1 <module 'encodings.latin_1' from '/usr/lib/python3.8/encodings/latin_1.py'>
-_abc <module '_abc' (built-in)>
-abc <module 'abc' from '/usr/lib/python3.8/abc.py'>
-io <module 'io' from '/usr/lib/python3.8/io.py'>
-_stat <module '_stat' (built-in)>
-stat <module 'stat' from '/usr/lib/python3.8/stat.py'>
-_collections_abc <module '_collections_abc' from '/usr/lib/python3.8/_collections_abc.py'>
-genericpath <module 'genericpath' from '/usr/lib/python3.8/genericpath.py'>
-posixpath <module 'posixpath' from '/usr/lib/python3.8/posixpath.py'>
-os.path <module 'posixpath' from '/usr/lib/python3.8/posixpath.py'>
-os <module 'os' from '/usr/lib/python3.8/os.py'>
-_sitebuiltins <module '_sitebuiltins' from '/usr/lib/python3.8/_sitebuiltins.py'>
-_locale <module '_locale' (built-in)>
-_bootlocale <module '_bootlocale' from '/usr/lib/python3.8/_bootlocale.py'>
-types <module 'types' from '/usr/lib/python3.8/types.py'>
-importlib._bootstrap <module 'importlib._bootstrap' (frozen)>
-importlib._bootstrap_external <module 'importlib._bootstrap_external' (frozen)>
-warnings <module 'warnings' from '/usr/lib/python3.8/warnings.py'>
-importlib <module 'importlib' from '/usr/lib/python3.8/importlib/__init__.py'>
-importlib.machinery <module 'importlib.machinery' from '/usr/lib/python3.8/importlib/machinery.py'>
-importlib.abc <module 'importlib.abc' from '/usr/lib/python3.8/importlib/abc.py'>
-_operator <module '_operator' (built-in)>
-operator <module 'operator' from '/usr/lib/python3.8/operator.py'>
-keyword <module 'keyword' from '/usr/lib/python3.8/keyword.py'>
-_heapq <module '_heapq' (built-in)>
-heapq <module 'heapq' from '/usr/lib/python3.8/heapq.py'>
-itertools <module 'itertools' (built-in)>
-reprlib <module 'reprlib' from '/usr/lib/python3.8/reprlib.py'>
-_collections <module '_collections' (built-in)>
-collections <module 'collections' from '/usr/lib/python3.8/collections/__init__.py'>
-_functools <module '_functools' (built-in)>
-functools <module 'functools' from '/usr/lib/python3.8/functools.py'>
-contextlib <module 'contextlib' from '/usr/lib/python3.8/contextlib.py'>
-importlib.util <module 'importlib.util' from '/usr/lib/python3.8/importlib/util.py'>
-mpl_toolkits <module 'mpl_toolkits' from '/usr/lib/python3/dist-packages/mpl_toolkits/__init__.py'>
-apport_python_hook <module 'apport_python_hook' from '/usr/lib/python3/dist-packages/apport_python_hook.py'>
-sitecustomize <module 'sitecustomize' from '/usr/lib/python3.8/sitecustomize.py'>
-site <module 'site' from '/usr/lib/python3.8/site.py'>
-_weakrefset <module '_weakrefset' from '/usr/lib/python3.8/_weakrefset.py'>
-weakref <module 'weakref' from '/usr/lib/python3.8/weakref.py'>
-pkgutil <module 'pkgutil' from '/usr/lib/python3.8/pkgutil.py'>
-runpy <module 'runpy' from '/usr/lib/python3.8/runpy.py'>
-enum <module 'enum' from '/usr/lib/python3.8/enum.py'>
-_sre <module '_sre' (built-in)>
-sre_constants <module 'sre_constants' from '/usr/lib/python3.8/sre_constants.py'>
-sre_parse <module 'sre_parse' from '/usr/lib/python3.8/sre_parse.py'>
-sre_compile <module 'sre_compile' from '/usr/lib/python3.8/sre_compile.py'>
-copyreg <module 'copyreg' from '/usr/lib/python3.8/copyreg.py'>
-re <module 're' from '/usr/lib/python3.8/re.py'>
-token <module 'token' from '/usr/lib/python3.8/token.py'>
-tokenize <module 'tokenize' from '/usr/lib/python3.8/tokenize.py'>
-linecache <module 'linecache' from '/usr/lib/python3.8/linecache.py'>
-traceback <module 'traceback' from '/usr/lib/python3.8/traceback.py'>
-unittest.util <module 'unittest.util' from '/usr/lib/python3.8/unittest/util.py'>
-unittest.result <module 'unittest.result' from '/usr/lib/python3.8/unittest/result.py'>
-collections.abc <module 'collections.abc' from '/usr/lib/python3.8/collections/abc.py'>
-concurrent <module 'concurrent' from '/usr/lib/python3.8/concurrent/__init__.py'>
-_string <module '_string' (built-in)>
-string <module 'string' from '/usr/lib/python3.8/string.py'>
-threading <module 'threading' from '/usr/lib/python3.8/threading.py'>
-atexit <module 'atexit' (built-in)>
-logging <module 'logging' from '/usr/lib/python3.8/logging/__init__.py'>
-concurrent.futures._base <module 'concurrent.futures._base' from '/usr/lib/python3.8/concurrent/futures/_base.py'>
-concurrent.futures <module 'concurrent.futures' from '/usr/lib/python3.8/concurrent/futures/__init__.py'>
-_socket <module '_socket' (built-in)>
-math <module 'math' (built-in)>
-select <module 'select' (built-in)>
-selectors <module 'selectors' from '/usr/lib/python3.8/selectors.py'>
-errno <module 'errno' (built-in)>
-socket <module 'socket' from '/usr/lib/python3.8/socket.py'>
-signal <module 'signal' from '/usr/lib/python3.8/signal.py'>
-_posixsubprocess <module '_posixsubprocess' (built-in)>
-subprocess <module 'subprocess' from '/usr/lib/python3.8/subprocess.py'>
-_ssl <module '_ssl' from '/usr/lib/python3.8/lib-dynload/_ssl.cpython-38-aarch64-linux-gnu.so'>
-_struct <module '_struct' (built-in)>
-struct <module 'struct' from '/usr/lib/python3.8/struct.py'>
-binascii <module 'binascii' (built-in)>
-base64 <module 'base64' from '/usr/lib/python3.8/base64.py'>
-ssl <module 'ssl' from '/usr/lib/python3.8/ssl.py'>
-asyncio.constants <module 'asyncio.constants' from '/usr/lib/python3.8/asyncio/constants.py'>
-_opcode <module '_opcode' from '/usr/lib/python3.8/lib-dynload/_opcode.cpython-38-aarch64-linux-gnu.so'>
-opcode <module 'opcode' from '/usr/lib/python3.8/opcode.py'>
-dis <module 'dis' from '/usr/lib/python3.8/dis.py'>
-inspect <module 'inspect' from '/usr/lib/python3.8/inspect.py'>
-asyncio.format_helpers <module 'asyncio.format_helpers' from '/usr/lib/python3.8/asyncio/format_helpers.py'>
-asyncio.base_futures <module 'asyncio.base_futures' from '/usr/lib/python3.8/asyncio/base_futures.py'>
-asyncio.log <module 'asyncio.log' from '/usr/lib/python3.8/asyncio/log.py'>
-asyncio.coroutines <module 'asyncio.coroutines' from '/usr/lib/python3.8/asyncio/coroutines.py'>
-_contextvars <module '_contextvars' from '/usr/lib/python3.8/lib-dynload/_contextvars.cpython-38-aarch64-linux-gnu.so'>
-contextvars <module 'contextvars' from '/usr/lib/python3.8/contextvars.py'>
-asyncio.exceptions <module 'asyncio.exceptions' from '/usr/lib/python3.8/asyncio/exceptions.py'>
-asyncio.base_tasks <module 'asyncio.base_tasks' from '/usr/lib/python3.8/asyncio/base_tasks.py'>
-_asyncio <module '_asyncio' from '/usr/lib/python3.8/lib-dynload/_asyncio.cpython-38-aarch64-linux-gnu.so'>
-asyncio.events <module 'asyncio.events' from '/usr/lib/python3.8/asyncio/events.py'>
-asyncio.futures <module 'asyncio.futures' from '/usr/lib/python3.8/asyncio/futures.py'>
-asyncio.protocols <module 'asyncio.protocols' from '/usr/lib/python3.8/asyncio/protocols.py'>
-asyncio.transports <module 'asyncio.transports' from '/usr/lib/python3.8/asyncio/transports.py'>
-asyncio.sslproto <module 'asyncio.sslproto' from '/usr/lib/python3.8/asyncio/sslproto.py'>
-typing.io <class 'typing.io'>
-typing.re <class 'typing.re'>
-typing <module 'typing' from '/usr/lib/python3.8/typing.py'>
-asyncio.locks <module 'asyncio.locks' from '/usr/lib/python3.8/asyncio/locks.py'>
-asyncio.tasks <module 'asyncio.tasks' from '/usr/lib/python3.8/asyncio/tasks.py'>
-asyncio.staggered <module 'asyncio.staggered' from '/usr/lib/python3.8/asyncio/staggered.py'>
-asyncio.trsock <module 'asyncio.trsock' from '/usr/lib/python3.8/asyncio/trsock.py'>
-asyncio.base_events <module 'asyncio.base_events' from '/usr/lib/python3.8/asyncio/base_events.py'>
-asyncio.runners <module 'asyncio.runners' from '/usr/lib/python3.8/asyncio/runners.py'>
-asyncio.queues <module 'asyncio.queues' from '/usr/lib/python3.8/asyncio/queues.py'>
-asyncio.streams <module 'asyncio.streams' from '/usr/lib/python3.8/asyncio/streams.py'>
-asyncio.subprocess <module 'asyncio.subprocess' from '/usr/lib/python3.8/asyncio/subprocess.py'>
-asyncio.base_subprocess <module 'asyncio.base_subprocess' from '/usr/lib/python3.8/asyncio/base_subprocess.py'>
-asyncio.selector_events <module 'asyncio.selector_events' from '/usr/lib/python3.8/asyncio/selector_events.py'>
-asyncio.unix_events <module 'asyncio.unix_events' from '/usr/lib/python3.8/asyncio/unix_events.py'>
-asyncio <module 'asyncio' from '/usr/lib/python3.8/asyncio/__init__.py'>
-difflib <module 'difflib' from '/usr/lib/python3.8/difflib.py'>
-pprint <module 'pprint' from '/usr/lib/python3.8/pprint.py'>
-unittest.case <module 'unittest.case' from '/usr/lib/python3.8/unittest/case.py'>
-unittest.async_case <module 'unittest.async_case' from '/usr/lib/python3.8/unittest/async_case.py'>
-unittest.suite <module 'unittest.suite' from '/usr/lib/python3.8/unittest/suite.py'>
-fnmatch <module 'fnmatch' from '/usr/lib/python3.8/fnmatch.py'>
-unittest.loader <module 'unittest.loader' from '/usr/lib/python3.8/unittest/loader.py'>
-locale <module 'locale' from '/usr/lib/python3.8/locale.py'>
-gettext <module 'gettext' from '/usr/lib/python3.8/gettext.py'>
-argparse <module 'argparse' from '/usr/lib/python3.8/argparse.py'>
-unittest.signals <module 'unittest.signals' from '/usr/lib/python3.8/unittest/signals.py'>
-unittest.runner <module 'unittest.runner' from '/usr/lib/python3.8/unittest/runner.py'>
-unittest.main <module 'unittest.main' from '/usr/lib/python3.8/unittest/main.py'>
-unittest <module 'unittest' from '/usr/lib/python3.8/unittest/__init__.py'>
-zlib <module 'zlib' (built-in)>
-_compression <module '_compression' from '/usr/lib/python3.8/_compression.py'>
-_bz2 <module '_bz2' from '/usr/lib/python3.8/lib-dynload/_bz2.cpython-38-aarch64-linux-gnu.so'>
-bz2 <module 'bz2' from '/usr/lib/python3.8/bz2.py'>
-_lzma <module '_lzma' from '/usr/lib/python3.8/lib-dynload/_lzma.cpython-38-aarch64-linux-gnu.so'>
-lzma <module 'lzma' from '/usr/lib/python3.8/lzma.py'>
-pwd <module 'pwd' (built-in)>
-grp <module 'grp' (built-in)>
-shutil <module 'shutil' from '/usr/lib/python3.8/shutil.py'>
-_ctypes <module '_ctypes' from '/usr/lib/python3.8/lib-dynload/_ctypes.cpython-38-aarch64-linux-gnu.so'>
-ctypes._endian <module 'ctypes._endian' from '/usr/lib/python3.8/ctypes/_endian.py'>
-ctypes <module 'ctypes' from '/usr/lib/python3.8/ctypes/__init__.py'>
-_json <module '_json' from '/usr/lib/python3.8/lib-dynload/_json.cpython-38-aarch64-linux-gnu.so'>
-json.scanner <module 'json.scanner' from '/usr/lib/python3.8/json/scanner.py'>
-json.decoder <module 'json.decoder' from '/usr/lib/python3.8/json/decoder.py'>
-json.encoder <module 'json.encoder' from '/usr/lib/python3.8/json/encoder.py'>
-json <module 'json' from '/usr/lib/python3.8/json/__init__.py'>
-platform <module 'platform' from '/usr/lib/python3.8/platform.py'>
-ifeature <module 'ifeature' from '/home/ubuntu/kengwei/vincent77/ifeature.py'>
-imotherboad <module 'imotherboad' from '/home/ubuntu/kengwei/vincent77/imotherboad.py'>
-igpio <module 'igpio' from '/home/ubuntu/kengwei/vincent77/igpio.py'>
-susiiot <module 'susiiot' from '/home/ubuntu/kengwei/vincent77/susiiot.py'>
-_datetime <module '_datetime' (built-in)>
-datetime <module 'datetime' from '/usr/lib/python3.8/datetime.py'>
-test_susiiot_for_test <module 'test_susiiot_for_test' from '/home/ubuntu/kengwei/vincent77/test_susiiot_for_test.py'>
+ubuntu@linux:~/kengwei/vincent77$ ldd /lib/libSusiIoT.so
+        linux-vdso.so.1 (0x0000ffffa0206000)
+        libjansson.so.4 => /lib/aarch64-linux-gnu/libjansson.so.4 (0x0000ffffa016d000)
+        libdl.so.2 => /lib/aarch64-linux-gnu/libdl.so.2 (0x0000ffffa0159000)
+        libstdc++.so.6 => /lib/aarch64-linux-gnu/libstdc++.so.6 (0x0000ffff9ff74000)
+        libgcc_s.so.1 => /lib/aarch64-linux-gnu/libgcc_s.so.1 (0x0000ffff9ff50000)
+        libpthread.so.0 => /lib/aarch64-linux-gnu/libpthread.so.0 (0x0000ffff9ff1f000)
+        libc.so.6 => /lib/aarch64-linux-gnu/libc.so.6 (0x0000ffff9fdac000)
+        /lib/ld-linux-aarch64.so.1 (0x0000ffffa01d6000)
+        libm.so.6 => /lib/aarch64-linux-gnu/libm.so.6 (0x0000ffff9fd01000)
+ubuntu@linux:~/kengwei/vincent77$ sudo python3 -m unittest test_susiiot_for_test.py
+531116d (HEAD -> master) todo, debug
+test time: 2025-03-27 02:53:08
+OS Name: Linux
+OS Version: Linux
+architecture: aarch64
+
+cccccccccccconstructure
+11111AAAAAAA
+BBBBBBBBBBBB
+CCCCCCCCCC
+111111111
+d_name : libSUSIDevice.so
+d_name : libDiskInfo.so
+d_name : libSUSIDrv.so
+libSUSIDevice.so
+libDiskInfo.so
+libSUSIDrv.so
+2222222222
+333333333
+4444444
+EPC-R7300
+dddddddddddestructure
