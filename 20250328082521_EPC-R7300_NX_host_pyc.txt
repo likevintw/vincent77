@@ -1,0 +1,43 @@
+4ed9958 add device
+test time: 2025-03-28 08:25:25
+OS Name: Linux
+OS Version: Linux
+architecture: aarch64
+test_susiiot_with_pyc.py
+container: nvepcr7300a1
+
+
+test_get_data_by_id
+DiskInfo result is {'e': [{'n': 'Disk - Total Disk Space', 'id': 353697792, 'v': 119162}, {'n': 'Disk - Free Disk Space', 'id': 353697793, 'v': 76264}, {'n': 'Disk -run-user-1000-doc Total Disk Space', 'id': 353698048, 'v': 0}, {'n': 'Disk -run-user-1000-doc Free Disk Space', 'id': 353698049, 'v': 0}], 'bn': 'DiskInfo', 'id': 353697792}
+
+Disk - Total Disk Space result is {'e': [{'n': 'Disk - Total Disk Space', 'id': 353697792, 'v': 119162}, {'n': 'Disk - Free Disk Space', 'id': 353697793, 'v': 76264}, {'n': 'Disk -run-user-1000-doc Total Disk Space', 'id': 353698048, 'v': 0}, {'n': 'Disk -run-user-1000-doc Free Disk Space', 'id': 353698049, 'v': 0}], 'bn': 'DiskInfo', 'id': 353697792}
+
+Disk - Free Disk Space result is {'n': 'Disk - Free Disk Space', 'id': 353697793, 'v': 76264}
+
+Disk -run-user-1000-doc Total Disk Space result is {'n': 'Disk -run-user-1000-doc Total Disk Space', 'id': 353698048, 'v': 0}
+
+Disk -run-user-1000-doc Free Disk Space result is {'n': 'Disk -run-user-1000-doc Free Disk Space', 'id': 353698049, 'v': 0}
+
+SUSIIoT Information result is {'e': [{'n': 'version', 'sv': '1.0.23737', 'id': 257}], 'bn': 'SUSIIoT Information', 'id': 256}
+
+version result is {'n': 'version', 'sv': '1.0.23737', 'id': 257}
+
+{'DiskInfo': {'e': [{'n': 'Disk - Total Disk Space', 'max': 1073741824, 'min': 0, 'id': 353697792, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 119162}, {'n': 'Disk - Free Disk Space', 'max': 1073741824, 'min': 0, 'id': 353697793, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 76264}, {'n': 'Disk -run-user-1000-doc Total Disk Space', 'max': 1073741824, 'min': 0, 'id': 353698048, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 0}, {'n': 'Disk -run-user-1000-doc Free Disk Space', 'max': 1073741824, 'min': 0, 'id': 353698049, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 0}], 'bn': 'DiskInfo', 'bu': '', 'bt': 1276020076, 'ver': 1, 'id': 353697792}, 'SUSIIoT Information': {'e': [{'n': 'version', 'sv': '1.0.23737', 'asm': 'r', 'id': 257}], 'bn': 'SUSIIoT Information', 'bu': 'Info', 'bt': 1276020076, 'ver': 1, 'id': 256}}
+
+test_susi_id_name_table
+DiskInfo 353697792
+Disk - Total Disk Space 353697792
+Disk - Free Disk Space 353697793
+Disk -run-user-1000-doc Total Disk Space 353698048
+Disk -run-user-1000-doc Free Disk Space 353698049
+SUSIIoT Information 256
+version 257
+
+test_susi_information
+{'DiskInfo': {'e': [{'n': 'Disk - Total Disk Space', 'max': 1073741824, 'min': 0, 'id': 353697792, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 119162}, {'n': 'Disk - Free Disk Space', 'max': 1073741824, 'min': 0, 'id': 353697793, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 76264}, {'n': 'Disk -run-user-1000-doc Total Disk Space', 'max': 1073741824, 'min': 0, 'id': 353698048, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 0}, {'n': 'Disk -run-user-1000-doc Free Disk Space', 'max': 1073741824, 'min': 0, 'id': 353698049, 'u': 'MB', 'asm': 'r', 'ui': 'Label', 'v': 0}], 'bn': 'DiskInfo', 'bu': '', 'bt': 1276020076, 'ver': 1, 'id': 353697792}, 'SUSIIoT Information': {'e': [{'n': 'version', 'sv': '1.0.23737', 'asm': 'r', 'id': 257}], 'bn': 'SUSIIoT Information', 'bu': 'Info', 'bt': 1276020076, 'ver': 1, 'id': 256}}
+d_name : libDiskInfo.so
+d_name : libSUSIDevice.so
+d_name : libSUSIDrv.so
+libDiskInfo.so
+libSUSIDevice.so
+libSUSIDrv.so
