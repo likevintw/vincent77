@@ -6,9 +6,6 @@ import platform
 import imotherboad
 import igpio
 from typing import List
-import importlib
-import time
-import subprocess
 
 
 class SusiIot(imotherboad.IMotherboard,
