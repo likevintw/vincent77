@@ -68,7 +68,7 @@ cp __pycache__/susiiot.cpython-38.pyc .
 python3 -m unittest -v test_susiiot_with_pyc > "$(date +\%Y\%m\%d\%H\%M\%S)_result.txt"
 
 # x86, pyc 必須用這個指令才能抓的到log
+sudo valgrind python3 test_susiiot.py > "$(date +\%Y\%m\%d\%H\%M\%S)_result.txt"
 sudo valgrind python3 test_susiiot_with_pyc.py > "$(date +\%Y\%m\%d\%H\%M\%S)_result.txt"
-valgrind python3 test_susiiot_with_pyc.py > "$(date +\%Y\%m\%d\%H\%M\%S)_result.txt"
 apt update
 apt install valgrind
