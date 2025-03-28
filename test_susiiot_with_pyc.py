@@ -33,6 +33,7 @@ spec = importlib.util.spec_from_file_location("susiiot", pyc_path)
 SUSIIOT = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(SUSIIOT)
 
+
 class TestCases(unittest.TestCase):
 
     def test_get_susi_information_string(self):

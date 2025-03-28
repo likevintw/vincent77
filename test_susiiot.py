@@ -25,6 +25,7 @@ print(f"test_susiiot.py")
 print(f"container: {os.popen('cat /etc/hostname').read().strip()}")
 print()
 
+
 class AttributeTestCases(unittest.TestCase):
     @unittest.skip("pass")
     def test_get_data_by_id_with_json(self):

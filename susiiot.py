@@ -25,7 +25,6 @@ class SusiIot(imotherboad.IMotherboard,
         self.initialize_library()
         self.susi_iot_library.SusiIoTInitialize()
         self.get_susi_information_string()
-        # self.get_susi_information()
         self.get_gpio_list()
         self.get_sdram_list()
         self.get_name_id_list()
