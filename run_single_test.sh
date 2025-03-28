@@ -53,6 +53,10 @@ sudo python3 -m unittest -v test_susiiot.TestCases.test_susi_id_name_table
 sudo rm -rf __pycache__/
 sudo python3 -m unittest -v test_susiiot > "$(date +\%Y\%m\%d\%H\%M\%S)_result.txt"
 rm susiiot.cpython-38.pyc
+
+cp __pycache__/susiiot.cpython-36.pyc .
+mv susiiot.cpython-36.pyc susiiot.cpython-38.pyc
+
 cp __pycache__/susiiot.cpython-38.pyc .
 sudo python3 -m unittest -v test_susiiot_with_pyc > "$(date +\%Y\%m\%d\%H\%M\%S)_result.txt"
 # Test cases in container
